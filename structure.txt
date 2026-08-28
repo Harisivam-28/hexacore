@@ -1,0 +1,408 @@
+  Hexacore Precision Technologies — CNC Machining & Laser Cali...
+  /* ── Dynamic Type Scale ────────────────────────── */
+     ...
+<div id="" class="proto-bar">
+  Hexacore Precision Technologies — UI Design
+<div id="tabs" class="proto-tabs">
+  01 · Home
+  02 · About & Newsletter
+  03 · Products
+  04 · Services & Support
+  05 · Contact
+<div id="page1" class="page active">
+<div id="" class="screen-tag">
+  hexacore.com / home
+<header id="" class="site-header">
+<div id="" class="brand">
+<div id="" class="hex-mark">
+  HX
+<div id="" class="brand-text">
+<div id="" class="name">
+  HEXACORE
+<div id="" class="sub">
+  Precision Technologies
+<nav id="" class="main-nav">
+<a id="" class="current">
+  Home
+  About Us
+  Products
+  Services & Support
+  Contact
+<a id="" class="nav-cta">
+  Request a Quote
+<section id="" class="hero">
+<div id="" class="reg-mark rm-tl">
+<div id="" class="reg-mark rm-tr">
+<div id="" class="reg-mark rm-bl">
+<div id="" class="reg-mark rm-br">
+<div id="" class="hero-grid">
+  Laser Calibration  ·  CNC Precision  ·  Machine Tool Alignme...
+<h1 id="" class="">
+  Where Microns
+  Define
+  Manufacturing Excellence
+  Hexacore Precision Technologies delivers
+  sub-micron laser calibration
+  and measurement services that eliminate hidden accuracy loss...
+  automotive, aerospace and heavy engineering
+  .
+<div id="" class="hero-btns">
+<a id="" class="btn btn-orange">
+  Explore Capabilities →
+<a id="" class="btn btn-outline">
+  Request Calibration
+<div id="" class="hero-art">
+<div id="" class="spec-chip s1">
+  LASER TOL  ±0.001mm
+<div id="" class="spec-chip s2">
+  3,000+ Machines Calibrated
+<section id="" class="highlights">
+<div id="" class="highlight-item">
+<div id="" class="h-hex">
+  ±0.001
+  mm
+<h4 id="" class="">
+  Laser Accuracy
+  Volumetric positioning verified to sub-micron tolerance on a...
+<div id="" class="highlight-item">
+<div id="" class="h-hex">
+  3,000
+  +
+<h4 id="" class="">
+  Machines Calibrated
+  CNC machining centres, lathes, grinding machines and coordin...
+<div id="" class="highlight-item">
+<div id="" class="h-hex">
+  10
+  + yrs
+<h4 id="" class="">
+  Field Experience
+  Engineering-led team with deep expertise in machine tool geo...
+<div id="" class="highlight-item">
+<div id="" class="h-hex">
+  OEM
+<h4 id="" class="">
+  Trusted By Industry
+  LMW, HMT, OPEL, AMW, GAMA Automation and leading tier-1 auto...
+<section id="" class="section">
+<div id="" class="section-head">
+<div id="" class="tag">
+  Overview
+<h2 id="" class="t-h2">
+  What We Do — and Why It Matters
+  Machine tools drift. Geometry degrades.
+  Most manufacturers absorb this as unexplained scrap, rework ...
+  Hexacore Precision Technologies fixes the source: we restore...
+<a id="" class="btn btn-navy">
+  Our Credentials →
+<a id="" class="btn btn-outline">
+  Services Overview
+<footer id="footer-1" class="site-footer">
+<div id="page2" class="page">
+<div id="" class="screen-tag">
+  hexacore.com / about-us
+<header id="" class="site-header">
+<div id="" class="brand">
+<div id="" class="hex-mark">
+  HX
+<div id="" class="brand-text">
+<div id="" class="name">
+  HEXACORE
+<div id="" class="sub">
+  Precision Technologies
+<nav id="" class="main-nav">
+  Home
+<a id="" class="current">
+  About Us
+  Products
+  Services & Support
+  Contact
+<a id="" class="nav-cta">
+  Request a Quote
+<section id="" class="section">
+<div id="" class="section-head">
+<div id="" class="tag">
+  About Hexacore
+<h2 id="" class="t-h2">
+  Precision Metrology, Born on the Shop Floor.
+<div id="" class="about-grid">
+<div id="" class="about-copy">
+  Hexacore was founded to bridge the gap between machine maint...
+  metrological certainty
+  . We spent years witnessing high-performance CNC equipment u...
+  Our methodology combines hands-on engineering with
+  traceable measurement technologies
+  . We operate as an extension of your engineering team, provi...
+<h3 id="" class="">
+  Mission
+  To eliminate uncertainty in manufacturing by providing laser...
+<h3 id="" class="">
+  Vision
+  To be the definitive standard for machine accuracy services ...
+<div id="" class="factory-art">
+<div id="" class="factory-caption">
+  Facility Floor — Metrology & Precision Analysis
+<div id="" class="mv-grid">
+<div id="" class="mv-card">
+<h3 id="" class="">
+  The Value We Bring
+  Traceability:
+  Full report documentation mapped to national standards.
+  Process Efficiency:
+  Drastically reduced rework through geometric optimisation.
+  Diagnostics:
+  Advanced kinematics analysis for multi-axis systems.
+  Transparency:
+  Unbiased technical reporting—if it doesn't need fixing, we d...
+<div id="" class="mv-card">
+<h3 id="" class="">
+  Why Choose Hexacore
+  Our approach is grounded in
+  engineering depth
+  . We don't just pass or fail a machine; we model its errors....
+<div id="" class="section-head">
+<div id="" class="tag">
+  Core Values
+<h2 id="" class="t-h2">
+  Guiding Principles of Precision
+<div id="" class="values-grid">
+<div id="" class="value-card">
+<div id="" class="h-hex">
+<h4 id="" class="">
+  Integrity of Data
+  We treat every measurement point as a critical asset. Our re...
+<div id="" class="value-card">
+<div id="" class="h-hex">
+<h4 id="" class="">
+  Technical Candidacy
+  If hardware failure precludes calibration, we provide the te...
+<div id="" class="value-card">
+<div id="" class="h-hex">
+<h4 id="" class="">
+  Kinematic Mastery
+  We understand machine tool mechanics, enabling us to deliver...
+<div id="" class="value-card">
+<div id="" class="h-hex">
+<h4 id="" class="">
+  Scalable Accuracy
+  Whether it’s a single-spindle lathe or a fully-integrated 5-...
+<section id="" class="section navy">
+<div id="" class="section-head">
+<div id="" class="tag">
+  Technical Bulletin
+<h2 id="" class="t-h2">
+  Engineering Insights
+  Real-world case studies and diagnostic methodologies for the...
+<div id="" class="news-wrap">
+<div id="" class="news-cols">
+<div id="" class="news-item">
+  UPDATE — AUG 2026
+<h4 id="" class="">
+  5-Axis Volumetric Compensation
+  Optimising complex geometry output for high-speed aerospace ...
+<div id="" class="news-item">
+  CASE STUDY — JUL 2026
+<h4 id="" class="">
+  Mitigating Thermal Drift
+  Restoring surface finish consistency in heavy-duty milling a...
+<div id="" class="news-item">
+  GUIDE — JUN 2026
+<h4 id="" class="">
+  Ballbar Analysis Basics
+  How to interpret circularity plots for servo-loop troublesho...
+<div id="" class="subscribe-box">
+<h4 id="" class="">
+  Stay Updated
+  Subscribe for capability updates and engineering bulletins—n...
+<div id="" class="sub-form">
+  Subscribe
+<div id="nl-status" class="">
+<footer id="footer-2" class="site-footer">
+<div id="page3" class="page">
+<div id="" class="screen-tag">
+  hexacore.com / products
+<header id="" class="site-header">
+<div id="" class="brand">
+<div id="" class="hex-mark">
+  HX
+<div id="" class="brand-text">
+<div id="" class="name">
+  HEXACORE
+<div id="" class="sub">
+  Precision Technologies
+<nav id="" class="main-nav">
+  Home
+  About Us
+<a id="" class="current">
+  Products
+  Services &
+                    Support
+  Contact
+<a id="" class="nav-cta">
+  Request a Quote
+<section id="" class="section">
+<div id="" class="section-head">
+<div id="" class="tag">
+  Our Precision Portfolio
+<h2 id="" class="t-h2">
+  Machining Solutions for High-Demand Sectors
+  Beyond calibration, we provide precision-manufactured compon...
+<div id="" class="product-grid">
+<div id="" class="product-card">
+<div id="" class="product-img">
+<div id="" class="product-tol">
+  ±0.005mm
+<div id="" class="product-body">
+<div id="" class="cat">
+  CNC Precision
+<h4 id="" class="">
+  Rotating Shaft Assemblies
+  High-concentricity shafts for industrial power transmission ...
+<a id="" class="view-link">
+  Details →
+<div id="" class="product-card">
+<div id="" class="product-img">
+<div id="" class="product-tol">
+  Ø18.00 H7
+<div id="" class="product-body">
+<div id="" class="cat">
+  Machined Components
+<h4 id="" class="">
+  Flange Housing Kits
+  Aerospace-grade billet aluminum housings with hard-anodized ...
+<a id="" class="view-link">
+  Details →
+<div id="" class="product-card">
+<div id="" class="product-img">
+<div id="" class="product-tol">
+  ±0.01mm
+<div id="" class="product-body">
+<div id="" class="cat">
+  Industrial Systems
+<h4 id="" class="">
+  Structural Bracketry
+  Reinforced precision plates for dynamic machinery support.
+<a id="" class="view-link">
+  Details →
+<footer id="footer-3" class="site-footer">
+<div id="page4" class="page">
+<div id="" class="screen-tag">
+  hexacore.com / services-support
+<header id="" class="site-header">
+<div id="" class="brand">
+<div id="" class="hex-mark">
+  HX
+<div id="" class="brand-text">
+<div id="" class="name">
+  HEXACORE
+<div id="" class="sub">
+  Precision Technologies
+<nav id="" class="main-nav">
+  Home
+  About Us
+  Products
+<a id="" class="current">
+  Services &
+                    Support
+  Contact
+<a id="" class="nav-cta">
+  Request a Quote
+<section id="" class="section">
+<div id="" class="section-head">
+<div id="" class="tag">
+  Metrology Services
+<h2 id="" class="t-h2">
+  Restoring Machine Capability
+  We apply laboratory-grade measurement standards to your prod...
+<div id="svc-grid-dynamic" class="svc-grid">
+<div id="" class="svc-card">
+  01
+<h4 id="" class="">
+  Laser Interferometry
+  Linear and angular axis calibration with documented traceabi...
+<div id="" class="svc-card">
+  02
+<h4 id="" class="">
+  Ballbar Dynamics
+  Rapid assessment of contouring performance, backlash, and ge...
+<div id="" class="svc-card">
+  03
+<h4 id="" class="">
+  Volumetric Mapping
+  3D error field characterisation for high-tolerance CNC envir...
+<footer id="footer-4" class="site-footer">
+<div id="page5" class="page">
+<div id="" class="screen-tag">
+  hexacore.com / contact
+<header id="" class="site-header">
+<div id="" class="brand">
+<div id="" class="hex-mark">
+  HX
+<div id="" class="brand-text">
+<div id="" class="name">
+  HEXACORE
+<div id="" class="sub">
+  Precision Technologies
+<nav id="" class="main-nav">
+  Home
+  About Us
+  Products
+  Services & Support
+<a id="" class="current">
+  Contact
+<a id="" class="nav-cta">
+  Request a Quote
+<section id="" class="section">
+<div id="" class="section-head">
+<div id="" class="tag">
+  Engage With Us
+<h2 id="" class="t-h2">
+  Talk to a Field Metrologist
+  Whether you are dealing with unexplained scrap or need to qu...
+<div id="" class="contact-grid">
+<div id="" class="form-card">
+<div id="" class="form-row">
+<div id="" class="field">
+  Full Name
+<div id="" class="field">
+  Company
+<div id="" class="form-row">
+<div id="" class="field">
+  Email Address
+<div id="" class="field">
+  Phone Number
+<div id="" class="field">
+  Enquiry Type
+  Machine Calibration / Assessment
+  Precision Component Quoting
+  Technical Support
+  General Enquiry
+<div id="" class="field">
+  Message
+<div id="cf-status" class="">
+<a id="cf-submit" class="btn btn-orange">
+  Send Message →
+<div id="" class="info-stack">
+<div id="" class="info-card">
+<div id="" class="info-row">
+<div id="" class="ico">
+<div id="" class="t">
+  Address
+  Plot 14, Precision Industrial Park, Ambattur, Chennai – 6000...
+<div id="" class="info-row">
+<div id="" class="ico">
+<div id="" class="t">
+  Phone
+  +91 44 4567 8900
+<section id="" class="cta-band">
+<h2 id="" class="">
+  Your Machine Is Drifting.
+  We Can Measure It. We Can Fix It.
+  Schedule a no-obligation site assessment. We'll bring the la...
+<a id="" class="btn btn-orange">
+  Schedule a Site Assessment →
+<footer id="footer-5" class="site-footer">
+  const footerHTML = `
+<div class="footer-grid">
+  <div>
+    <...

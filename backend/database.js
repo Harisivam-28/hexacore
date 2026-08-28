@@ -118,14 +118,12 @@ async function init() {
   const pc = db.queryOne('SELECT COUNT(*) AS c FROM products').c;
   if (!pc) {
     const seeds = [
-      ['Precision Shaft Assembly',    'CNC Precision Component',   'Ground and turned shaft with tight concentricity for rotating equipment.',       '±0.005mm'],
-      ['Flange Housing',              'Machined Component',         'Multi-bore flange housing milled from billet aluminum, anodized finish.',         'Ø18.00 H7'],
-      ['Mounting Bracket Plate',      'Industrial Component',       'Structural bracket plate, waterjet blanked and CNC finished to spec.',            '±0.01mm'],
-      ['Hex Drive Fastener Set',      'Custom Manufactured Part',   'Custom hex-drive fasteners machined from stainless bar stock.',                  'M12 x 1.5'],
-      ['Precision Gearbox Housing',   'CNC Precision Component',   '5-axis milled housing with cross-drilled oil channels and sealed faces.',         '±0.008mm'],
-      ['Precision Cam Disc',          'Machined Component',         'Hardened steel cam disc, profile-ground for automated assembly lines.',           'Ra 0.4'],
-      ['Adjustable Slide Rail',       'Industrial Component',       'Precision slide rail set with hardened wear surfaces for linear motion.',         '±0.02mm'],
-      ['Prototype-to-Production Kit', 'Custom Manufactured Part',   'Engineered from customer CAD through pilot run and full production.',            'Custom Spec'],
+      ['Precision Measurement Equipment', 'Technology', 'Advanced metrology equipment for reliable performance diagnostics.', 'High Precision'],
+      ['Laser Measurement Technology', 'Technology', 'Laser interferometer systems for positioning accuracy verification.', 'Sub-micron'],
+      ['Machine Calibration Technology', 'Technology', 'Calibration tools to align and restore original machine tolerances.', 'ISO/VDI Standard'],
+      ['CNC Measurement Solutions', 'Technology', 'Integrated measurement systems for automated CNC quality control.', 'Dynamic'],
+      ['Machine Diagnostic Technology', 'Technology', 'Diagnostic systems identifying kinematic and geometric machine errors.', 'Advanced'],
+      ['Precision Engineering Solutions', 'Solutions', 'Custom engineering and technical support for complex machining challenges.', 'Custom Spec']
     ];
     seeds.forEach(([name, category, description, tolerance]) => {
       db.exec2('INSERT INTO products (name, category, description, tolerance) VALUES (?, ?, ?, ?)', [name, category, description, tolerance]);
@@ -137,12 +135,18 @@ async function init() {
   const sc = db.queryOne('SELECT COUNT(*) AS c FROM services').c;
   if (!sc) {
     const svcs = [
-      ['SVC / 01', 'CNC Milling',                    '3, 4 and 5-axis milling for complex geometries, tight tolerances and superior surface finish.'],
-      ['SVC / 02', 'CNC Turning',                    'High-precision turning for cylindrical components, shafts and rotational parts.'],
-      ['SVC / 03', 'Precision Machining',             'Micron-level accuracy machining for critical, close-tolerance applications.'],
-      ['SVC / 04', 'Custom Component Manufacturing', 'Fully custom parts engineered and produced to your exact drawings and specification.'],
-      ['SVC / 05', 'Engineering Solutions',           'DFM review, CAD/CAM programming and process design support from our engineering team.'],
-      ['SVC / 06', 'Quality Inspection',              'Full CMM dimensional inspection, material certification and SPC reporting.'],
+      ['SVC / 01', 'Linear Laser Calibration', 'Precision measurement of machine-axis positioning accuracy using laser interferometer technology.'],
+      ['SVC / 02', 'Machine Health Diagnosis / Ballbar Testing', 'Assessment of CNC machine performance through circular interpolation testing and analysis.'],
+      ['SVC / 03', 'Rotary Axis Calibration', 'Measurement and calibration of rotary-axis positioning and indexing accuracy.'],
+      ['SVC / 04', 'Off-Axis Rotary Calibration', 'Evaluation of rotary-axis errors when operating away from the rotational centre line.'],
+      ['SVC / 05', 'Axis Straightness Testing', 'Measurement of linear deviations along the machine travel to identify geometric inaccuracies.'],
+      ['SVC / 06', 'Squareness Testing', 'Verification of perpendicularity between machine axes to maintain geometric accuracy.'],
+      ['SVC / 07', 'Machine Leveling & Relocation', 'Machine leveling, alignment and relocation support to help maintain geometric performance.'],
+      ['SVC / 08', 'Axis Servo Tuning', 'Technical assessment and tuning support for servo-related machine performance issues.'],
+      ['SVC / 09', 'LM Guideway Parallelism Checking', 'Inspection of guideway alignment and parallelism to identify potential geometric errors.'],
+      ['SVC / 10', 'Software Troubleshooting', 'Technical support for machine-control and software-related issues affecting machine performance.'],
+      ['SVC / 11', 'Ballscrew Replacement Support', 'Technical support for ballscrew replacement, alignment and related machine accuracy requirements.'],
+      ['SVC / 12', 'Preventive Maintenance', 'Planned maintenance and periodic calibration support designed to reduce unexpected machine problems and downtime.']
     ];
     svcs.forEach(([number, title, description]) => {
       db.exec2('INSERT INTO services (number, title, description) VALUES (?, ?, ?)', [number, title, description]);
