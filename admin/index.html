@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin — Hexacore Precision Technologies</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:#0B1F3A; --navy-dark:#071527; --navy-mid:#12294c;
+      --orange:#F47B20; --orange-dark:#D9660D;
+      --bg:#0d1520; --surface:#111c2e; --surface2:#162236;
+      --border:#1e3152; --text:#c8d3e8; --muted:#6b7f9e;
+      --green:#22c55e; --red:#ef4444; --yellow:#f59e0b;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; }
+
+    /* ── Login Screen ── */
+    #login-screen {
+      position: fixed; inset: 0; background: var(--bg);
+      display: flex; align-items: center; justify-content: center; z-index: 999;
+    }
+    .login-card {
+      background: var(--surface); border: 1px solid var(--border);
+      padding: 48px 44px; width: 380px; border-top: 3px solid var(--orange);
+    }
+    .login-card .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+    .hex-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(145deg, var(--orange), var(--orange-dark));
+      clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0% 50%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 800;
+      color: var(--navy-dark); font-size: 16px;
+    }
+    .login-card .logo-text { font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 800; color: #fff; font-size: 18px; }
+    .login-card .logo-sub  { font-size: 10px; color: var(--muted); letter-spacing:.1em; text-transform:uppercase; margin-top:2px; }
+    .login-card h2 { font-size: 22px; color: #fff; margin-bottom: 6px; font-family: 'Barlow Semi Condensed', sans-serif; }
+    .login-card p  { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
+    .f-label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing:.06em; color: var(--muted); margin-bottom: 7px; }
+    .f-input {
+      width: 100%; padding: 11px 14px; background: var(--bg); border: 1px solid var(--border);
+      color: #fff; font-size: 14px; font-family: 'Inter', sans-serif; margin-bottom: 16px;
+      outline: none; transition: border .15s;
+    }
+    .f-input:focus { border-color: var(--orange); }
+    .btn-login {
+      width: 100%; padding: 13px; background: var(--orange); color: #fff;
+      border: none; font-weight: 700; font-size: 14px; text-transform: uppercase;
+      letter-spacing: .04em; cursor: pointer; transition: .15s;
+    }
+    .btn-login:hover { background: var(--orange-dark); }
+    .login-err { color: var(--red); font-size: 12.5px; margin-top: 12px; display: none; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 240px; flex: none; background: var(--surface);
+      border-right: 1px solid var(--border); display: flex; flex-direction: column;
+      position: sticky; top: 0; height: 100vh; overflow-y: auto;
+    }
+    .sidebar-brand {
+      padding: 24px 20px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sidebar-brand .name { font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 800; color: #fff; font-size: 17px; }
+    .sidebar-brand .sub  { font-size: 9.5px; color: var(--muted); letter-spacing:.1em; text-transform: uppercase; }
+    .nav-section { padding: 18px 0 8px; }
+    .nav-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); padding: 0 20px; margin-bottom: 6px; }
+    .nav-item {
+      display: flex; align-items: center; gap: 10px; padding: 10px 20px;
+      color: var(--muted); font-size: 13.5px; font-weight: 500; cursor: pointer;
+      border-left: 3px solid transparent; transition: .15s;
+    }
+    .nav-item:hover { color: #fff; background: var(--surface2); }
+    .nav-item.active { color: var(--orange); border-left-color: var(--orange); background: rgba(244,123,32,.07); }
+    .nav-item svg { width: 16px; height: 16px; flex: none; }
+    .sidebar-footer {
+      margin-top: auto; padding: 18px 20px; border-top: 1px solid var(--border);
+      font-size: 12px; color: var(--muted);
+    }
+    .btn-logout {
+      width: 100%; padding: 9px; background: transparent; border: 1px solid var(--border);
+      color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing:.04em;
+      cursor: pointer; margin-top: 10px; transition: .15s;
+    }
+    .btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+    /* ── Main Content ── */
+    .main { flex: 1; overflow-x: hidden; }
+    .topbar {
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 16px 32px; display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 10;
+    }
+    .topbar h1 { font-family: 'Barlow Semi Condensed', sans-serif; font-size: 22px; color: #fff; text-transform: uppercase; }
+    .topbar .badge { background: rgba(244,123,32,.15); color: var(--orange); font-size: 11px; font-family: 'IBM Plex Mono', monospace; padding: 4px 10px; letter-spacing:.05em; }
+
+    .content { padding: 32px; }
+
+    /* ── Stat Cards ── */
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 32px; }
+    .stat-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-top: 3px solid var(--orange); padding: 22px 24px;
+    }
+    .stat-card .label { font-size: 11px; text-transform: uppercase; letter-spacing:.08em; color: var(--muted); margin-bottom: 10px; }
+    .stat-card .value { font-family: 'Barlow Semi Condensed', sans-serif; font-size: 36px; color: #fff; font-weight: 800; }
+    .stat-card .sub   { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    /* ── Tabs / Panels ── */
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    /* ── Table ── */
+    .table-wrap { background: var(--surface); border: 1px solid var(--border); overflow-x: auto; }
+    .table-header { padding: 20px 24px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
+    .table-header h3 { font-family: 'Barlow Semi Condensed', sans-serif; font-size: 18px; color: #fff; text-transform: uppercase; }
+    table { width: 100%; border-collapse: collapse; }
+    thead th { background: var(--surface2); color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing:.06em; padding: 10px 18px; text-align: left; border-bottom: 1px solid var(--border); }
+    tbody tr { border-bottom: 1px solid var(--border); transition: background .12s; }
+    tbody tr:hover { background: var(--surface2); }
+    tbody td { padding: 12px 18px; font-size: 13px; color: var(--text); vertical-align: middle; }
+    .mono { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; }
+
+    /* Status badges */
+    .badge-status {
+      display: inline-block; padding: 3px 10px; border-radius: 2px;
+      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing:.04em;
+    }
+    .badge-new     { background: rgba(34,197,94,.15);   color: var(--green); }
+    .badge-pending { background: rgba(245,158,11,.15);   color: var(--yellow); }
+    .badge-read    { background: rgba(107,127,158,.15);  color: var(--muted); }
+    .badge-done    { background: rgba(34,197,94,.15);   color: var(--green); }
+
+    /* Action buttons */
+    .btn-action {
+      padding: 5px 12px; font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing:.03em; cursor: pointer; border: none; border-radius: 2px; margin-right: 4px;
+    }
+    .btn-mark { background: rgba(34,197,94,.15); color: var(--green); }
+    .btn-del  { background: rgba(239,68,68,.15);  color: var(--red); }
+    .btn-add  { background: var(--orange); color: #fff; padding: 9px 18px; font-size: 12px; }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,.7);
+      display: none; align-items: center; justify-content: center; z-index: 100;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--orange);
+      padding: 36px; width: 500px; max-width: 95vw; max-height: 90vh; overflow-y: auto;
+    }
+    .modal h3 { font-family: 'Barlow Semi Condensed', sans-serif; font-size: 20px; color: #fff; text-transform: uppercase; margin-bottom: 22px; }
+    .modal .f-input { margin-bottom: 14px; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 8px; }
+    .btn-save { background: var(--orange); color: #fff; padding: 11px 22px; font-weight:700; font-size:13px; text-transform:uppercase; border:none; cursor:pointer; }
+    .btn-cancel { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 11px 18px; font-size:13px; cursor:pointer; }
+
+    .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 14px; }
+    .empty-state svg { width: 40px; height: 40px; margin: 0 auto 14px; opacity: .4; display: block; }
+
+    @media(max-width: 900px) {
+      .sidebar { width: 60px; }
+      .sidebar .nav-label, .sidebar .nav-item span, .sidebar-brand .name,
+      .sidebar-brand .sub, .sidebar-footer .admin-name, .btn-logout { display: none; }
+      .nav-item { justify-content: center; padding: 14px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Login Screen ── -->
+<div id="login-screen">
+  <div class="login-card">
+    <div class="logo">
+      <div class="hex-icon">HX</div>
+      <div>
+        <div class="logo-text">HEXACORE</div>
+        <div class="logo-sub">Admin Panel</div>
+      </div>
+    </div>
+    <h2>Welcome Back</h2>
+    <p>Sign in to manage your website content.</p>
+    <label class="f-label">Username</label>
+    <input class="f-input" id="login-user" type="text" placeholder="admin" autocomplete="username">
+    <label class="f-label">Password</label>
+    <input class="f-input" id="login-pass" type="password" placeholder="••••••••••" autocomplete="current-password">
+    <button class="btn-login" onclick="doLogin()">Sign In →</button>
+    <div class="login-err" id="login-err">Invalid username or password.</div>
+  </div>
+</div>
+
+<!-- ── App Shell ── -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <div class="hex-icon">HX</div>
+    <div>
+      <div class="name">HEXACORE</div>
+      <div class="sub">Admin Panel</div>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Overview</div>
+    <div class="nav-item active" onclick="showPanel('dashboard')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Dashboard</span>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Enquiries</div>
+    <div class="nav-item" onclick="showPanel('contacts')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M4 6.5l8 6 8-6"/></svg>
+      <span>Contact Forms</span>
+    </div>
+    <div class="nav-item" onclick="showPanel('quotes')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2h9l3 3v17H6z"/><path d="M15 2v3h3M9 12h6M9 15.5h6M9 8.5h3"/></svg>
+      <span>Quote Requests</span>
+    </div>
+    <div class="nav-item" onclick="showPanel('newsletter')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 8l8 5 8-5"/></svg>
+      <span>Newsletter</span>
+    </div>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-label">Content</div>
+    <div class="nav-item" onclick="showPanel('products')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.4 8.7-8 11-4.6-2.3-8-6-8-11V5z"/></svg>
+      <span>Products</span>
+    </div>
+    <div class="nav-item" onclick="showPanel('services')">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2 2M17.8 17.8l2 2M2 12h3M19 12h3M4.2 19.8l2-2M17.8 6.2l2-2"/></svg>
+      <span>Services</span>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="admin-name" id="admin-name" style="font-size:12px;margin-bottom:6px;color:#fff;"></div>
+    <button class="btn-logout" onclick="logout()">Sign Out</button>
+  </div>
+</aside>
+
+<!-- ── Main ── -->
+<div class="main">
+  <div class="topbar">
+    <h1 id="panel-title">Dashboard</h1>
+    <span class="badge" id="panel-time"></span>
+  </div>
+
+  <div class="content">
+
+    <!-- DASHBOARD -->
+    <div class="panel active" id="panel-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="label">Contact Forms</div>
+          <div class="value" id="stat-contacts">—</div>
+          <div class="sub">Total submissions</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Quote Requests</div>
+          <div class="value" id="stat-quotes">—</div>
+          <div class="sub">Total requests</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Subscribers</div>
+          <div class="value" id="stat-newsletter">—</div>
+          <div class="sub">Newsletter list</div>
+        </div>
+        <div class="stat-card">
+          <div class="label">Products</div>
+          <div class="value" id="stat-products">—</div>
+          <div class="sub">Active listings</div>
+        </div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);padding:28px 26px;">
+        <h3 style="font-family:'Barlow Semi Condensed',sans-serif;font-size:18px;color:#fff;text-transform:uppercase;margin-bottom:14px;">Quick Links</h3>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="/frontend.html" target="_blank" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 18px;font-size:13px;text-decoration:none;">🌐 View Website</a>
+          <button class="btn-action btn-add" onclick="showPanel('contacts')">View Contacts</button>
+          <button class="btn-action btn-add" onclick="showPanel('quotes')">View Quotes</button>
+          <button class="btn-action btn-add" onclick="showPanel('products')">Manage Products</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACTS -->
+    <div class="panel" id="panel-contacts">
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>Contact Form Submissions</h3>
+          <button class="btn-action btn-add" onclick="loadContacts()">↻ Refresh</button>
+        </div>
+        <table id="contacts-table">
+          <thead><tr><th>#</th><th>Name</th><th>Company</th><th>Email</th><th>Subject</th><th>Message</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="contacts-body"><tr><td colspan="9" class="empty-state">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- QUOTES -->
+    <div class="panel" id="panel-quotes">
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>Quote Requests</h3>
+          <button class="btn-action btn-add" onclick="loadQuotes()">↻ Refresh</button>
+        </div>
+        <table>
+          <thead><tr><th>#</th><th>Name</th><th>Company</th><th>Email</th><th>Phone</th><th>Subject</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+          <tbody id="quotes-body"><tr><td colspan="9" class="empty-state">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="panel" id="panel-newsletter">
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>Newsletter Subscribers</h3>
+          <button class="btn-action btn-add" onclick="loadNewsletter()">↻ Refresh</button>
+        </div>
+        <table>
+          <thead><tr><th>#</th><th>Email</th><th>Subscribed On</th><th>Actions</th></tr></thead>
+          <tbody id="newsletter-body"><tr><td colspan="4" class="empty-state">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- PRODUCTS -->
+    <div class="panel" id="panel-products">
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>Products</h3>
+          <button class="btn-action btn-add" onclick="openProductModal()">+ Add Product</button>
+        </div>
+        <table>
+          <thead><tr><th>#</th><th>Name</th><th>Category</th><th>Tolerance</th><th>Description</th><th>Active</th><th>Actions</th></tr></thead>
+          <tbody id="products-body"><tr><td colspan="7" class="empty-state">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="panel" id="panel-services">
+      <div class="table-wrap">
+        <div class="table-header">
+          <h3>Services</h3>
+          <button class="btn-action btn-add" onclick="openServiceModal()">+ Add Service</button>
+        </div>
+        <table>
+          <thead><tr><th>#</th><th>Code</th><th>Title</th><th>Description</th><th>Active</th><th>Actions</th></tr></thead>
+          <tbody id="services-body"><tr><td colspan="6" class="empty-state">Loading...</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Product Modal -->
+<div class="modal-overlay" id="product-modal">
+  <div class="modal">
+    <h3 id="product-modal-title">Add Product</h3>
+    <input type="hidden" id="product-id">
+    <label class="f-label">Product Name *</label>
+    <input class="f-input" id="product-name" placeholder="e.g. Precision Shaft Assembly">
+    <label class="f-label">Category</label>
+    <input class="f-input" id="product-cat" placeholder="e.g. CNC Precision Component">
+    <label class="f-label">Tolerance / Spec</label>
+    <input class="f-input" id="product-tol" placeholder="e.g. ±0.005mm">
+    <label class="f-label">Description</label>
+    <input class="f-input" id="product-desc" placeholder="Short description...">
+    <label class="f-label">Active</label>
+    <select class="f-input" id="product-active"><option value="1">Yes</option><option value="0">No</option></select>
+    <div class="modal-actions">
+      <button class="btn-save" onclick="saveProduct()">Save Product</button>
+      <button class="btn-cancel" onclick="closeModal('product-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Service Modal -->
+<div class="modal-overlay" id="service-modal">
+  <div class="modal">
+    <h3 id="service-modal-title">Add Service</h3>
+    <input type="hidden" id="service-id">
+    <label class="f-label">Service Code</label>
+    <input class="f-input" id="service-number" placeholder="e.g. SVC / 07">
+    <label class="f-label">Service Title *</label>
+    <input class="f-input" id="service-title" placeholder="e.g. Laser Calibration">
+    <label class="f-label">Description</label>
+    <input class="f-input" id="service-desc" placeholder="Short description...">
+    <label class="f-label">Active</label>
+    <select class="f-input" id="service-active"><option value="1">Yes</option><option value="0">No</option></select>
+    <div class="modal-actions">
+      <button class="btn-save" onclick="saveService()">Save Service</button>
+      <button class="btn-cancel" onclick="closeModal('service-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const API = '';  // same origin
+  let TOKEN = localStorage.getItem('hx_token') || '';
+  let currentPanel = 'dashboard';
+
+  // ── Auth ────────────────────────────────────────────────────────
+  async function doLogin() {
+    const username = document.getElementById('login-user').value.trim();
+    const password = document.getElementById('login-pass').value;
+    const err = document.getElementById('login-err');
+    err.style.display = 'none';
+    try {
+      const res = await fetch(`${API}/api/login`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error);
+      TOKEN = data.token;
+      localStorage.setItem('hx_token', TOKEN);
+      document.getElementById('admin-name').textContent = data.username;
+      document.getElementById('login-screen').style.display = 'none';
+      init();
+    } catch (e) {
+      err.style.display = 'block';
+    }
+  }
+
+  function logout() {
+    TOKEN = '';
+    localStorage.removeItem('hx_token');
+    location.reload();
+  }
+
+  // Check existing token
+  if (TOKEN) {
+    document.getElementById('login-screen').style.display = 'none';
+    try {
+      const payload = JSON.parse(atob(TOKEN.split('.')[1]));
+      document.getElementById('admin-name').textContent = payload.username;
+    } catch {}
+    init();
+  }
+
+  document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+
+  // ── Navigation ──────────────────────────────────────────────────
+  const panelTitles = {
+    dashboard: 'Dashboard', contacts: 'Contact Forms', quotes: 'Quote Requests',
+    newsletter: 'Newsletter', products: 'Products', services: 'Services'
+  };
+
+  function showPanel(name) {
+    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    document.querySelector(`[onclick="showPanel('${name}')"]`).classList.add('active');
+    document.getElementById('panel-title').textContent = panelTitles[name] || name;
+    currentPanel = name;
+    if (name === 'contacts')   loadContacts();
+    if (name === 'quotes')     loadQuotes();
+    if (name === 'newsletter') loadNewsletter();
+    if (name === 'products')   loadProducts();
+    if (name === 'services')   loadServices();
+  }
+
+  // ── Init ─────────────────────────────────────────────────────────
+  async function init() {
+    document.getElementById('panel-time').textContent = new Date().toLocaleString('en-IN');
+    await loadStats();
+  }
+
+  async function authFetch(url, opts = {}) {
+    return fetch(url, { ...opts, headers: { ...(opts.headers || {}), 'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json' } });
+  }
+
+  // ── Stats ────────────────────────────────────────────────────────
+  async function loadStats() {
+    const [c, q, n, p] = await Promise.all([
+      authFetch('/api/contacts').then(r => r.json()),
+      authFetch('/api/quotes').then(r => r.json()),
+      authFetch('/api/newsletter').then(r => r.json()),
+      authFetch('/api/products/all').then(r => r.json()),
+    ]);
+    document.getElementById('stat-contacts').textContent   = Array.isArray(c) ? c.length : '—';
+    document.getElementById('stat-quotes').textContent     = Array.isArray(q) ? q.length : '—';
+    document.getElementById('stat-newsletter').textContent = Array.isArray(n) ? n.length : '—';
+    document.getElementById('stat-products').textContent   = Array.isArray(p) ? p.filter(x => x.active).length : '—';
+  }
+
+  // ── Contacts ─────────────────────────────────────────────────────
+  async function loadContacts() {
+    const rows = await authFetch('/api/contacts').then(r => r.json());
+    const tb = document.getElementById('contacts-body');
+    if (!rows.length) { tb.innerHTML = `<tr><td colspan="9"><div class="empty-state">No contact submissions yet.</div></td></tr>`; return; }
+    tb.innerHTML = rows.map(r => `
+      <tr>
+        <td class="mono">#${r.id}</td>
+        <td>${esc(r.name)}</td>
+        <td>${esc(r.company)}</td>
+        <td><a href="mailto:${esc(r.email)}" style="color:var(--orange)">${esc(r.email)}</a></td>
+        <td>${esc(r.subject)}</td>
+        <td style="max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(r.message)}</td>
+        <td><span class="badge-status badge-${r.status}">${r.status}</span></td>
+        <td class="mono" style="font-size:11px;">${fmtDate(r.created_at)}</td>
+        <td>
+          <button class="btn-action btn-mark" onclick="markContact(${r.id},'read')">Mark Read</button>
+          <button class="btn-action btn-del"  onclick="deleteContact(${r.id})">Delete</button>
+        </td>
+      </tr>`).join('');
+  }
+
+  async function markContact(id, status) {
+    await authFetch(`/api/contacts/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) });
+    loadContacts();
+  }
+  async function deleteContact(id) {
+    if (!confirm('Delete this contact?')) return;
+    await authFetch(`/api/contacts/${id}`, { method: 'DELETE' });
+    loadContacts(); loadStats();
+  }
+
+  // ── Quotes ───────────────────────────────────────────────────────
+  async function loadQuotes() {
+    const rows = await authFetch('/api/quotes').then(r => r.json());
+    const tb = document.getElementById('quotes-body');
+    if (!rows.length) { tb.innerHTML = `<tr><td colspan="9"><div class="empty-state">No quote requests yet.</div></td></tr>`; return; }
+    tb.innerHTML = rows.map(r => `
+      <tr>
+        <td class="mono">#${r.id}</td>
+        <td>${esc(r.name)}</td>
+        <td>${esc(r.company)}</td>
+        <td><a href="mailto:${esc(r.email)}" style="color:var(--orange)">${esc(r.email)}</a></td>
+        <td>${esc(r.phone)}</td>
+        <td>${esc(r.subject)}</td>
+        <td><span class="badge-status badge-${r.status}">${r.status}</span></td>
+        <td class="mono" style="font-size:11px;">${fmtDate(r.created_at)}</td>
+        <td>
+          <button class="btn-action btn-mark" onclick="markQuote(${r.id},'done')">Done</button>
+          <button class="btn-action btn-del"  onclick="deleteQuote(${r.id})">Delete</button>
+        </td>
+      </tr>`).join('');
+  }
+
+  async function markQuote(id, status) {
+    await authFetch(`/api/quotes/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) });
+    loadQuotes();
+  }
+  async function deleteQuote(id) {
+    if (!confirm('Delete this quote request?')) return;
+    await authFetch(`/api/quotes/${id}`, { method: 'DELETE' });
+    loadQuotes(); loadStats();
+  }
+
+  // ── Newsletter ───────────────────────────────────────────────────
+  async function loadNewsletter() {
+    const rows = await authFetch('/api/newsletter').then(r => r.json());
+    const tb = document.getElementById('newsletter-body');
+    if (!rows.length) { tb.innerHTML = `<tr><td colspan="4"><div class="empty-state">No subscribers yet.</div></td></tr>`; return; }
+    tb.innerHTML = rows.map(r => `
+      <tr>
+        <td class="mono">#${r.id}</td>
+        <td><a href="mailto:${esc(r.email)}" style="color:var(--orange)">${esc(r.email)}</a></td>
+        <td class="mono" style="font-size:11px;">${fmtDate(r.subscribed_at)}</td>
+        <td><button class="btn-action btn-del" onclick="deleteSubscriber(${r.id})">Remove</button></td>
+      </tr>`).join('');
+  }
+
+  async function deleteSubscriber(id) {
+    if (!confirm('Remove subscriber?')) return;
+    await authFetch(`/api/newsletter/${id}`, { method: 'DELETE' });
+    loadNewsletter(); loadStats();
+  }
+
+  // ── Products ─────────────────────────────────────────────────────
+  async function loadProducts() {
+    const rows = await authFetch('/api/products/all').then(r => r.json());
+    const tb = document.getElementById('products-body');
+    if (!rows.length) { tb.innerHTML = `<tr><td colspan="7"><div class="empty-state">No products yet.</div></td></tr>`; return; }
+    tb.innerHTML = rows.map(r => `
+      <tr>
+        <td class="mono">#${r.id}</td>
+        <td><strong style="color:#fff">${esc(r.name)}</strong></td>
+        <td style="font-size:12px;">${esc(r.category)}</td>
+        <td class="mono" style="color:var(--orange);font-size:11.5px;">${esc(r.tolerance)}</td>
+        <td style="font-size:12px;max-width:200px;">${esc(r.description)}</td>
+        <td><span class="badge-status ${r.active ? 'badge-done' : 'badge-read'}">${r.active ? 'Active' : 'Hidden'}</span></td>
+        <td>
+          <button class="btn-action btn-mark" onclick="openProductModal(${r.id})">Edit</button>
+          <button class="btn-action btn-del"  onclick="deleteProduct(${r.id})">Delete</button>
+        </td>
+      </tr>`).join('');
+  }
+
+  let allProducts = [];
+  function openProductModal(id) {
+    document.getElementById('product-id').value = id || '';
+    document.getElementById('product-modal-title').textContent = id ? 'Edit Product' : 'Add Product';
+    if (id) {
+      authFetch('/api/products/all').then(r => r.json()).then(rows => {
+        const p = rows.find(x => x.id === id);
+        if (!p) return;
+        document.getElementById('product-name').value   = p.name;
+        document.getElementById('product-cat').value    = p.category;
+        document.getElementById('product-tol').value    = p.tolerance;
+        document.getElementById('product-desc').value   = p.description;
+        document.getElementById('product-active').value = p.active;
+      });
+    } else {
+      ['product-name','product-cat','product-tol','product-desc'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('product-active').value = '1';
+    }
+    document.getElementById('product-modal').classList.add('open');
+  }
+
+  async function saveProduct() {
+    const id   = document.getElementById('product-id').value;
+    const body = {
+      name:        document.getElementById('product-name').value.trim(),
+      category:    document.getElementById('product-cat').value.trim(),
+      tolerance:   document.getElementById('product-tol').value.trim(),
+      description: document.getElementById('product-desc').value.trim(),
+      active:      parseInt(document.getElementById('product-active').value),
+    };
+    if (!body.name) return alert('Product name is required');
+    if (id) {
+      await authFetch(`/api/products/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+    } else {
+      await authFetch('/api/products', { method: 'POST', body: JSON.stringify(body) });
+    }
+    closeModal('product-modal'); loadProducts(); loadStats();
+  }
+
+  async function deleteProduct(id) {
+    if (!confirm('Delete this product?')) return;
+    await authFetch(`/api/products/${id}`, { method: 'DELETE' });
+    loadProducts(); loadStats();
+  }
+
+  // ── Services ─────────────────────────────────────────────────────
+  async function loadServices() {
+    const rows = await authFetch('/api/services/all').then(r => r.json());
+    const tb = document.getElementById('services-body');
+    if (!rows.length) { tb.innerHTML = `<tr><td colspan="6"><div class="empty-state">No services yet.</div></td></tr>`; return; }
+    tb.innerHTML = rows.map(r => `
+      <tr>
+        <td class="mono">#${r.id}</td>
+        <td class="mono" style="color:var(--orange);font-size:11px;">${esc(r.number)}</td>
+        <td><strong style="color:#fff">${esc(r.title)}</strong></td>
+        <td style="font-size:12px;max-width:260px;">${esc(r.description)}</td>
+        <td><span class="badge-status ${r.active ? 'badge-done' : 'badge-read'}">${r.active ? 'Active' : 'Hidden'}</span></td>
+        <td>
+          <button class="btn-action btn-mark" onclick="openServiceModal(${r.id})">Edit</button>
+          <button class="btn-action btn-del"  onclick="deleteService(${r.id})">Delete</button>
+        </td>
+      </tr>`).join('');
+  }
+
+  function openServiceModal(id) {
+    document.getElementById('service-id').value = id || '';
+    document.getElementById('service-modal-title').textContent = id ? 'Edit Service' : 'Add Service';
+    if (id) {
+      authFetch('/api/services/all').then(r => r.json()).then(rows => {
+        const s = rows.find(x => x.id === id);
+        if (!s) return;
+        document.getElementById('service-number').value = s.number;
+        document.getElementById('service-title').value  = s.title;
+        document.getElementById('service-desc').value   = s.description;
+        document.getElementById('service-active').value = s.active;
+      });
+    } else {
+      ['service-number','service-title','service-desc'].forEach(id => document.getElementById(id).value = '');
+      document.getElementById('service-active').value = '1';
+    }
+    document.getElementById('service-modal').classList.add('open');
+  }
+
+  async function saveService() {
+    const id   = document.getElementById('service-id').value;
+    const body = {
+      number:      document.getElementById('service-number').value.trim(),
+      title:       document.getElementById('service-title').value.trim(),
+      description: document.getElementById('service-desc').value.trim(),
+      active:      parseInt(document.getElementById('service-active').value),
+    };
+    if (!body.title) return alert('Service title is required');
+    if (id) {
+      await authFetch(`/api/services/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+    } else {
+      await authFetch('/api/services', { method: 'POST', body: JSON.stringify(body) });
+    }
+    closeModal('service-modal'); loadServices();
+  }
+
+  async function deleteService(id) {
+    if (!confirm('Delete this service?')) return;
+    await authFetch(`/api/services/${id}`, { method: 'DELETE' });
+    loadServices();
+  }
+
+  // ── Helpers ──────────────────────────────────────────────────────
+  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+  function esc(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+  function fmtDate(s) {
+    if (!s) return '—';
+    return new Date(s).toLocaleString('en-IN', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
+  }
+
+  // Close modals on overlay click
+  document.querySelectorAll('.modal-overlay').forEach(m => {
+    m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
+  });
+</script>
+</body>
+</html>
