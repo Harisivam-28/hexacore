@@ -323,7 +323,10 @@
       <div class="table-wrap">
         <div class="table-header">
           <h3>Newsletter Subscribers</h3>
-          <button class="btn-action btn-add" onclick="loadNewsletter()">↻ Refresh</button>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-action btn-add" onclick="openAddNewsletterModal()">+ Add Subscriber</button>
+            <button class="btn-action" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border);" onclick="loadNewsletter()">↻ Refresh</button>
+          </div>
         </div>
         <table>
           <thead><tr><th>#</th><th>Email</th><th>Subscribed On</th><th>Actions</th></tr></thead>
@@ -401,6 +404,35 @@
     <div class="modal-actions">
       <button class="btn-save" onclick="saveService()">Save Service</button>
       <button class="btn-cancel" onclick="closeModal('service-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Newsletter Edit Modal -->
+<div class="modal-overlay" id="newsletter-modal">
+  <div class="modal">
+    <h3 id="newsletter-modal-title">Edit Subscriber</h3>
+    <input type="hidden" id="newsletter-id">
+    <label class="f-label">Email Address *</label>
+    <input class="f-input" id="newsletter-email" type="email" placeholder="subscriber@example.com">
+    <div id="newsletter-edit-err" style="color:var(--red);font-size:12.5px;margin-top:-6px;margin-bottom:10px;display:none;"></div>
+    <div class="modal-actions">
+      <button class="btn-save" id="newsletter-save-btn" onclick="saveNewsletter()">Save Changes</button>
+      <button class="btn-cancel" onclick="closeModal('newsletter-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Newsletter Add Modal -->
+<div class="modal-overlay" id="newsletter-add-modal">
+  <div class="modal">
+    <h3>Add Subscriber</h3>
+    <label class="f-label">Email Address *</label>
+    <input class="f-input" id="newsletter-new-email" type="email" placeholder="newsubscriber@example.com">
+    <div id="newsletter-add-err" style="color:var(--red);font-size:12.5px;margin-top:-6px;margin-bottom:10px;display:none;"></div>
+    <div class="modal-actions">
+      <button class="btn-save" id="newsletter-add-btn" onclick="addNewsletterSubscriber()">Add Subscriber</button>
+      <button class="btn-cancel" onclick="closeModal('newsletter-add-modal')">Cancel</button>
     </div>
   </div>
 </div>
@@ -569,8 +601,90 @@
         <td class="mono">#${r.id}</td>
         <td><a href="mailto:${esc(r.email)}" style="color:var(--orange)">${esc(r.email)}</a></td>
         <td class="mono" style="font-size:11px;">${fmtDate(r.subscribed_at)}</td>
-        <td><button class="btn-action btn-del" onclick="deleteSubscriber(${r.id})">Remove</button></td>
+        <td>
+          <button class="btn-action btn-mark" onclick="openNewsletterModal(${r.id})">Edit</button>
+          <button class="btn-action btn-del" onclick="deleteSubscriber(${r.id})">Remove</button>
+        </td>
       </tr>`).join('');
+  }
+
+  function openNewsletterModal(id) {
+    // Reset modal state
+    document.getElementById('newsletter-id').value = id;
+    document.getElementById('newsletter-email').value = '';
+    const errEl = document.getElementById('newsletter-edit-err');
+    if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+    document.getElementById('newsletter-save-btn').textContent = 'Save Changes';
+    document.getElementById('newsletter-save-btn').disabled = false;
+
+    // Fetch subscribers and find by id (use == for type-safe comparison)
+    authFetch('/api/newsletter').then(r => r.json()).then(rows => {
+      const s = rows.find(x => x.id == id);
+      if (s) document.getElementById('newsletter-email').value = s.email;
+    });
+    document.getElementById('newsletter-modal').classList.add('open');
+  }
+
+  async function saveNewsletter() {
+    const id    = document.getElementById('newsletter-id').value;
+    const email = document.getElementById('newsletter-email').value.trim();
+    const errEl = document.getElementById('newsletter-edit-err');
+    const btn   = document.getElementById('newsletter-save-btn');
+    if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+    if (!email) {
+      if (errEl) { errEl.textContent = 'Email is required.'; errEl.style.display = 'block'; }
+      else alert('Email is required');
+      return;
+    }
+    btn.textContent = 'Saving…'; btn.disabled = true;
+    try {
+      const res  = await authFetch(`/api/newsletter/${id}`, { method: 'PUT', body: JSON.stringify({ email }) });
+      const data = await res.json();
+      if (!res.ok) {
+        const msg = data.error || 'Failed to update email';
+        if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; }
+        else alert(msg);
+        btn.textContent = 'Save Changes'; btn.disabled = false;
+        return;
+      }
+      closeModal('newsletter-modal');
+      loadNewsletter();
+    } catch (e) {
+      if (errEl) { errEl.textContent = 'Network error. Try again.'; errEl.style.display = 'block'; }
+      else alert('Network error');
+      btn.textContent = 'Save Changes'; btn.disabled = false;
+    }
+  }
+
+  function openAddNewsletterModal() {
+    document.getElementById('newsletter-new-email').value = '';
+    document.getElementById('newsletter-add-err').style.display = 'none';
+    document.getElementById('newsletter-add-btn').textContent = 'Add Subscriber';
+    document.getElementById('newsletter-add-btn').disabled = false;
+    document.getElementById('newsletter-add-modal').classList.add('open');
+  }
+
+  async function addNewsletterSubscriber() {
+    const email = document.getElementById('newsletter-new-email').value.trim();
+    const errEl = document.getElementById('newsletter-add-err');
+    const btn   = document.getElementById('newsletter-add-btn');
+    errEl.style.display = 'none';
+    if (!email) { errEl.textContent = 'Email is required.'; errEl.style.display = 'block'; return; }
+    btn.textContent = 'Adding…'; btn.disabled = true;
+    try {
+      const res  = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (!res.ok) { errEl.textContent = data.error || 'Failed to add subscriber.'; errEl.style.display = 'block'; btn.textContent = 'Add Subscriber'; btn.disabled = false; return; }
+      closeModal('newsletter-add-modal');
+      loadNewsletter(); loadStats();
+    } catch (e) {
+      errEl.textContent = 'Network error. Please try again.'; errEl.style.display = 'block';
+      btn.textContent = 'Add Subscriber'; btn.disabled = false;
+    }
   }
 
   async function deleteSubscriber(id) {
@@ -713,10 +827,22 @@
     return new Date(s).toLocaleString('en-IN', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
   }
 
-  // Close modals on overlay click
-  document.querySelectorAll('.modal-overlay').forEach(m => {
-    m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
+  // Close modals on overlay click (delegation — works for all modals)
+  document.addEventListener('click', e => {
+    if (e.target.classList.contains('modal-overlay')) {
+      e.target.classList.remove('open');
+    }
   });
+
+  // Enter key support for add newsletter
+  document.getElementById('newsletter-new-email').addEventListener('keydown', e => {
+    if (e.key === 'Enter') addNewsletterSubscriber();
+  });
+  document.getElementById('newsletter-email').addEventListener('keydown', e => {
+    if (e.key === 'Enter') saveNewsletter();
+  });
+  // Enter key support for login
+  // (login-pass Enter listener is registered above near init)
 </script>
 </body>
 </html>
