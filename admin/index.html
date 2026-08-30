@@ -493,6 +493,11 @@
   }
 
   document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+  ['login-user', 'login-pass'].forEach(id => {
+    document.getElementById(id).addEventListener('input', () => {
+      document.getElementById('login-err').style.display = 'none';
+    });
+  });
 
   // ── Navigation ──────────────────────────────────────────────────
   const panelTitles = {
