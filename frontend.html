@@ -3,11 +3,41 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Hexacore Precision Technologies — Precision Engineering &amp; Calibration</title>
-    <meta
-        content="Hexacore Precision Technologies delivers advanced laser calibration, machine tool alignment and CNC precision measurement services across industrial, automotive and aerospace sectors."
-        name="description" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Hexacore Precision Technologies | CNC Calibration &amp; Laser Testing (xacore.com)</title>
+    <meta name="description" content="Precision CNC calibration, laser interferometer testing, VMC/HMC geometric accuracy verification, and 5-axis volumetric error mapping for manufacturing units." />
+    <meta name="keywords" content="CNC calibration, VMC laser testing, HMC geometric inspection, 5 axis CNC calibration, ISO 230-2, Fanuc Siemens calibration, xacore.com" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link rel="canonical" href="https://xacore.com/" />
+
+    <!-- Open Graph / Social SEO -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://xacore.com/" />
+    <meta property="og:title" content="Hexacore Precision Technologies | CNC Machine Calibration" />
+    <meta property="og:description" content="Industrial CNC machine laser interferometer calibration, ballbar testing, and geometric accuracy inspection." />
+    <meta property="og:image" content="https://xacore.com/images/nl_cnc_machining.png" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://xacore.com/#organization",
+          "name": "Hexacore Precision Technologies",
+          "url": "https://xacore.com",
+          "logo": "https://xacore.com/images/hexacore.logo.png",
+          "description": "Provider of CNC machine tool calibration, laser measurement, VMC/HMC geometric accuracy inspection, and technical support.",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+91-44-4567-8900",
+            "contactType": "technical support",
+            "email": "info@hexacoreprecision.com"
+          }
+        }
+      ]
+    }
+    </script>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link
         href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800&amp;family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
@@ -29,10 +59,10 @@
             --line: #D8DEE6;
 
             /* Type scale */
-            --t-display: clamp(52px, 6vw, 78px);
-            --t-hero: clamp(38px, 4.5vw, 58px);
-            --t-h2: clamp(28px, 3vw, 40px);
-            --t-h3: clamp(20px, 2vw, 26px);
+            --t-display: clamp(38px, 6vw, 78px);
+            --t-hero: clamp(30px, 4.5vw, 58px);
+            --t-h2: clamp(24px, 3vw, 40px);
+            --t-h3: clamp(18px, 2vw, 26px);
             --t-h4: 16px;
             --t-body-lg: 16px;
             --t-body: 14.5px;
@@ -41,7 +71,7 @@
             --t-mono: 11px;
 
             /* Spacing rhythm */
-            --section-pad: clamp(60px, 8vw, 100px);
+            --section-pad: clamp(40px, 6vw, 100px);
         }
 
         * {
@@ -50,8 +80,79 @@
             padding: 0;
         }
 
+        html, body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         html {
             scroll-behavior: smooth;
+        }
+
+        img, svg, iframe, video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* ── Responsive Helper Classes ── */
+        .machines-ctrls-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .controllers-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .approach-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+
+        .reports-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .contact-page-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .contact-form-card {
+            background: var(--grey-l);
+            padding: 40px;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+        }
+
+        /* Responsive inline-section padding override */
+        .responsive-section {
+            padding: 64px clamp(16px, 4vw, 44px) !important;
+        }
+
+        .responsive-hero-section {
+            padding: clamp(48px, 6vw, 80px) clamp(16px, 4vw, 44px) clamp(40px, 5vw, 70px) !important;
         }
 
         body {
@@ -1713,11 +1814,19 @@
         /* ── Tablet breakpoint: 1100px ─────────────── */
         @media(max-width:1100px) {
 
+            .page {
+                margin: 0 auto;
+                box-shadow: none;
+            }
+
             .hero-grid,
             .about-grid,
             .contact-grid,
+            .contact-page-grid,
+            .machines-ctrls-grid,
             .news-wrap {
                 grid-template-columns: 1fr;
+                gap: 36px;
             }
 
             .highlights,
@@ -1727,11 +1836,11 @@
             .svc-grid,
             .support-grid,
             .footer-grid,
-            .news-cols {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
-            .nl-grid {
+            .news-cols,
+            .nl-grid,
+            .standards-grid,
+            .approach-grid,
+            .reports-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
 
@@ -1754,6 +1863,7 @@
 
             .mobile-nav {
                 display: flex;
+                width: 100%;
             }
 
             .site-header {
@@ -1779,9 +1889,13 @@
                 height: 52px;
             }
 
+            .logo:hover {
+                transform: none;
+            }
+
             /* Sections */
             .section {
-                padding: 48px 16px;
+                padding: 40px 16px;
             }
 
             .section-head {
@@ -1790,7 +1904,7 @@
 
             /* Hero */
             .hero {
-                padding: 56px 16px 48px;
+                padding: 48px 16px 40px;
             }
 
             .hero-btns {
@@ -1803,6 +1917,14 @@
                 justify-content: center;
             }
 
+            /* Spec chips in hero */
+            .spec-chip {
+                font-size: 9.5px;
+                padding: 4px 8px;
+            }
+            .spec-chip.s1 { top: 4px; left: 4px; }
+            .spec-chip.s2 { bottom: 4px; right: 4px; }
+
             /* Grids → single column */
             .highlights,
             .mv-grid,
@@ -1812,7 +1934,45 @@
             .support-grid,
             .footer-grid,
             .news-cols,
-            .nl-grid {
+            .nl-grid,
+            .standards-grid,
+            .approach-grid,
+            .reports-grid,
+            .contact-form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-form-card {
+                padding: 24px 16px;
+            }
+
+            /* Highlight items: stack border direction */
+            .highlight-item {
+                border-right: none;
+                border-bottom: 1px solid var(--line);
+            }
+            .highlight-item:last-child {
+                border-bottom: none;
+            }
+
+            /* Catalogue card */
+            .catalogue-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            /* Form rows */
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            /* CTA band heading */
+            .cta-band h2 {
+                font-size: clamp(22px, 5vw, 34px);
+            }
+
+            /* Approach grid steps */
+            .approach-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1931,7 +2091,13 @@
             }
         }
 
-        /* ── Very small screens: 380px ─────────────── */
+        /* ── Very small screens: 480px & 380px ─────── */
+        @media(max-width:480px) {
+            .controllers-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         @media(max-width:380px) {
 
             .logo {
@@ -2049,7 +2215,7 @@
         </header>
 
         <!-- 1. HERO SECTION (LIGHT THEME) -->
-        <section class="hero"
+        <section class="hero responsive-hero-section"
             style="background: linear-gradient(135deg, #FFFFFF 0%, #F4F6F9 60%, #E8EEF5 100%); padding: 80px 44px 70px; border-bottom: 1px solid var(--line);">
             <div class="hero-grid">
                 <div>
@@ -2238,7 +2404,7 @@
                 <div class="tag">Technology / Engineering Capabilities</div>
                 <h2 class="t-h2">Machines &amp; Controllers We Support</h2>
             </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+            <div class="machines-ctrls-grid">
                 <div>
                     <h3 style="margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--orange);">CNC
                         Machines</h3>
@@ -2284,7 +2450,7 @@
                 <div>
                     <h3 style="margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--orange);">CNC
                         Controllers</h3>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                    <div class="controllers-grid">
                         <div
                             style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
                             FANUC</div>
@@ -2324,7 +2490,7 @@
                     is carried out using appropriate technical methods and applicable machine-tool testing standards.
                 </p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <div class="standards-grid">
                 <div style="padding: 24px; background: var(--grey-l); border-top: 3px solid var(--navy);">
                     <h4 style="margin-bottom: 12px;">ISO 230 Series</h4>
                     <ul style="list-style: none; color: var(--steel);">
@@ -2411,7 +2577,7 @@
                 <div class="tag">How We Work</div>
                 <h2 class="t-h2">Our Approach</h2>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+            <div class="approach-grid">
                 <div
                     style="background: #fff; padding: 30px; border: 1px solid var(--line); border-top: 3px solid var(--navy);">
                     <div style="font-size: 32px; font-weight: 800; color: var(--orange); margin-bottom: 16px;">01</div>
@@ -2566,7 +2732,7 @@
             </nav>
         </header>
         <!-- SECTION 1: Types of Machines We Calibrate -->
-        <section style="background:#F4F6F9;padding:64px 44px;">
+        <section class="responsive-section" style="background:#F4F6F9;padding:64px 44px;">
             <div style="max-width:1280px;margin:0 auto;">
                 <!-- Section header -->
                 <div style="text-align:center;margin-bottom:48px;">
@@ -2755,7 +2921,7 @@
         </section>
 
         <!-- SECTION 2: CNC Controllers We Support -->
-        <section style="background:var(--navy);padding:48px 44px;margin-top:56px;">
+        <section class="responsive-section" style="background:var(--navy);padding:48px 44px;margin-top:56px;">
             <div style="max-width:1100px;margin:0 auto;text-align:center;">
                 <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;">
                     <div style="width:40px;height:2px;background:var(--orange);"></div>
@@ -2899,7 +3065,7 @@
                 <p class="section-lead">After measurement and analysis, we provide clear technical information that
                     helps customers understand the condition of their machine and decide what action is required.</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+            <div class="reports-grid">
                 <div style="background: #fff; padding: 24px; border: 1px solid var(--line);">
                     <h4 style="margin-bottom: 12px; font-size: 16px;">Measurement Results</h4>
                     <p style="color: var(--steel); font-size: 14px;">Detailed positioning accuracy, repeatability, and
@@ -2951,11 +3117,10 @@
                 <div class="tag">Get In Touch</div>
                 <h2 class="t-h2">Contact Hexacore Precision Technologies</h2>
             </div>
-            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px;">
+            <div class="contact-page-grid">
                 <!-- Contact Form -->
-                <div class="contact-form"
-                    style="background: var(--grey-l); padding: 40px; border: 1px solid var(--line); border-radius: 4px;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                <div class="contact-form contact-form-card">
+                    <div class="contact-form-row">
                         <div class="field"><label
                                 style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Name</label><input
                                 id="cf-name" placeholder="Your name"
@@ -2965,7 +3130,7 @@
                                 id="cf-company" placeholder="Company name"
                                 style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                    <div class="contact-form-row">
                         <div class="field"><label
                                 style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Phone</label><input
                                 id="cf-phone" placeholder="Phone number"
@@ -2975,7 +3140,7 @@
                                 id="cf-email" placeholder="Email address"
                                 style="width:100%; padding:12px; border:1px solid #ccc;" type="email" /></div>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                    <div class="contact-form-row">
                         <div class="field"><label
                                 style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine
                                 Type</label><input id="cf-mtype" placeholder="e.g. VMC, CNC Lathe"
@@ -2985,7 +3150,7 @@
                                 Make</label><input id="cf-mmake" placeholder="e.g. Haas, Mazak"
                                 style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                    <div class="contact-form-row">
                         <div class="field"><label
                                 style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine
                                 Model</label><input id="cf-mmodel" placeholder="Model number"
@@ -2995,7 +3160,7 @@
                                 id="cf-ctrl" placeholder="e.g. Fanuc, Siemens"
                                 style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
                     </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                    <div class="contact-form-row">
                         <div class="field">
                             <label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Service
                                 Required</label>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /backend/
+Disallow: /api/
+
+Sitemap: https://xacore.com/sitemap.xml
