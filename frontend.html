@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8"/>
-<title>Hexacore Precision Technologies — Precision Engineering &amp; Calibration</title>
-<meta content="Hexacore Precision Technologies delivers advanced laser calibration, machine tool alignment and CNC precision measurement services across industrial, automotive and aerospace sectors." name="description"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800&amp;family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
-<style>
+    <meta charset="utf-8" />
+    <title>Hexacore Precision Technologies — Precision Engineering &amp; Calibration</title>
+    <meta
+        content="Hexacore Precision Technologies delivers advanced laser calibration, machine tool alignment and CNC precision measurement services across industrial, automotive and aerospace sectors."
+        name="description" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;500;600;700;800&amp;family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <style>
         /* ── Dynamic Type Scale ────────────────────────── */
         :root {
             --navy: #0B1F3A;
@@ -25,22 +30,29 @@
 
             /* Type scale */
             --t-display: clamp(52px, 6vw, 78px);
-            --t-hero:    clamp(38px, 4.5vw, 58px);
-            --t-h2:      clamp(28px, 3vw, 40px);
-            --t-h3:      clamp(20px, 2vw, 26px);
-            --t-h4:      16px;
+            --t-hero: clamp(38px, 4.5vw, 58px);
+            --t-h2: clamp(28px, 3vw, 40px);
+            --t-h3: clamp(20px, 2vw, 26px);
+            --t-h4: 16px;
             --t-body-lg: 16px;
-            --t-body:    14.5px;
-            --t-sm:      13px;
-            --t-xs:      11.5px;
-            --t-mono:    11px;
+            --t-body: 14.5px;
+            --t-sm: 13px;
+            --t-xs: 11.5px;
+            --t-mono: 11px;
 
             /* Spacing rhythm */
             --section-pad: clamp(60px, 8vw, 100px);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        html { scroll-behavior: smooth; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Inter', sans-serif;
@@ -51,32 +63,116 @@
         }
 
         /* Heading hierarchy */
-        h1 { font-family: 'Inter', sans-serif; font-weight: 800; letter-spacing: -.01em; color: var(--navy); }
-        h2 { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: .01em; color: var(--navy); }
-        h3 { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: .01em; color: var(--navy); }
-        h4 { font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: .02em; color: var(--navy); }
+        h1 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            letter-spacing: -.01em;
+            color: var(--navy);
+        }
+
+        h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: .01em;
+            color: var(--navy);
+        }
+
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: .01em;
+            color: var(--navy);
+        }
+
+        h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: .02em;
+            color: var(--navy);
+        }
 
         /* Utility type classes */
-        .t-display  { font-size: var(--t-display); line-height: 1.0; }
-        .t-hero     { font-size: var(--t-hero);    line-height: 1.05; }
-        .t-h2       { font-size: var(--t-h2);      line-height: 1.15; }
-        .t-h3       { font-size: var(--t-h3);      line-height: 1.3; }
-        .t-body-lg  { font-size: var(--t-body-lg); line-height: 1.75; }
-        .t-body     { font-size: var(--t-body);    line-height: 1.7; }
-        .t-sm       { font-size: var(--t-sm);      line-height: 1.6; }
-        .t-xs       { font-size: var(--t-xs);      line-height: 1.5; }
-        .t-mono     { font-family: 'Inter', sans-serif; font-size: var(--t-mono); letter-spacing: .06em; }
+        .t-display {
+            font-size: var(--t-display);
+            line-height: 1.0;
+        }
+
+        .t-hero {
+            font-size: var(--t-hero);
+            line-height: 1.05;
+        }
+
+        .t-h2 {
+            font-size: var(--t-h2);
+            line-height: 1.15;
+        }
+
+        .t-h3 {
+            font-size: var(--t-h3);
+            line-height: 1.3;
+        }
+
+        .t-body-lg {
+            font-size: var(--t-body-lg);
+            line-height: 1.75;
+        }
+
+        .t-body {
+            font-size: var(--t-body);
+            line-height: 1.7;
+        }
+
+        .t-sm {
+            font-size: var(--t-sm);
+            line-height: 1.6;
+        }
+
+        .t-xs {
+            font-size: var(--t-xs);
+            line-height: 1.5;
+        }
+
+        .t-mono {
+            font-family: 'Inter', sans-serif;
+            font-size: var(--t-mono);
+            letter-spacing: .06em;
+        }
 
         /* Emphasis helpers */
-        .em-orange  { color: var(--orange); }
-        .em-bold    { font-weight: 700; }
-        .em-upper   { text-transform: uppercase; letter-spacing: .06em; }
-        .em-italic  { font-style: italic; }
+        .em-orange {
+            color: var(--orange);
+        }
 
-        .mono { font-family: 'Inter', sans-serif; }
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-        img { display: block; max-width: 100%; }
+        .em-bold {
+            font-weight: 700;
+        }
+
+        .em-upper {
+            text-transform: uppercase;
+            letter-spacing: .06em;
+        }
+
+        .em-italic {
+            font-style: italic;
+        }
+
+        .mono {
+            font-family: 'Inter', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
 
         /* ---------- PROTOTYPE TOOLBAR ---------- */
         .proto-bar {
@@ -166,6 +262,22 @@
             padding: 16px 44px;
             border-bottom: 2px solid var(--orange);
             position: relative;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+            display: block;
+            flex: none;
+            filter: drop-shadow(0 2px 10px rgba(244, 123, 32, 0.35));
+            transition: transform .3s cubic-bezier(.34, 1.56, .64, 1), filter .3s ease;
+            transform-origin: left center;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.2);
+            filter: drop-shadow(0 4px 20px rgba(244, 123, 32, 0.7));
         }
 
         .brand {
@@ -300,6 +412,21 @@
             overflow: hidden;
         }
 
+        .hero-art {
+            animation: slideArt 5s ease-in-out infinite alternate;
+        }
+
+        @keyframes slideArt {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(20px);
+            }
+        }
+
+
         .hero::before {
             content: "";
             position: absolute;
@@ -408,7 +535,7 @@
             font-weight: 600;
             letter-spacing: .04em;
             display: block;
-            color: rgba(255,255,255,.65);
+            color: rgba(255, 255, 255, .65);
             text-transform: uppercase;
             margin-bottom: 16px;
         }
@@ -548,8 +675,14 @@
             padding: var(--section-pad) 44px;
         }
 
-        .section.grey  { background: var(--grey-l); }
-        .section.navy  { background: var(--navy-dark); color: #fff; }
+        .section.grey {
+            background: var(--grey-l);
+        }
+
+        .section.navy {
+            background: var(--navy-dark);
+            color: #fff;
+        }
 
         .section-head {
             max-width: 680px;
@@ -576,7 +709,9 @@
             background: var(--orange);
         }
 
-        .section.navy .tag { color: var(--orange); }
+        .section.navy .tag {
+            color: var(--orange);
+        }
 
         .section-head h2 {
             font-size: var(--t-h2);
@@ -598,9 +733,17 @@
             font-weight: 600;
         }
 
-        .section.navy .section-head h2 { color: #fff; }
-        .section.navy .section-lead    { color: #AAB6C9; }
-        .section.navy .section-lead strong { color: #dce5f0; }
+        .section.navy .section-head h2 {
+            color: #fff;
+        }
+
+        .section.navy .section-lead {
+            color: #AAB6C9;
+        }
+
+        .section.navy .section-lead strong {
+            color: #dce5f0;
+        }
 
         /* about page */
         .about-grid {
@@ -726,11 +869,13 @@
         }
 
         .value-card:hover {
-            box-shadow: 0 8px 28px rgba(11,31,58,.1);
+            box-shadow: 0 8px 28px rgba(11, 31, 58, .1);
             transform: translateY(-2px);
         }
 
-        .value-card .h-hex { margin-bottom: 16px; }
+        .value-card .h-hex {
+            margin-bottom: 16px;
+        }
 
         .value-card h4 {
             font-size: 15px;
@@ -745,74 +890,245 @@
             line-height: 1.65;
         }
 
-        /* newsletter */
-        .news-wrap {
-            display: grid;
-            grid-template-columns: 1.3fr .9fr;
-            gap: 0;
+        /* newsletter — light professional theme */
+        .nl-section {
+            background: #F3F5F8;
+            position: relative;
+            overflow: hidden;
         }
 
-        .news-cols {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 26px;
-            padding-right: 50px;
+        .nl-header {
+            background: #fff;
+            border-bottom: 1px solid #E3E8EE;
+            padding: 60px 60px 48px;
+            text-align: center;
+            position: relative;
         }
 
-        .news-item {
-            border-top: 1px solid #24354f;
-            padding-top: 16px;
-        }
-
-        .news-item .date {
-            font-family: 'Inter', sans-serif;
-            color: var(--orange);
+        .nl-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
             font-size: 11px;
-            letter-spacing: .05em;
-        }
-
-        .news-item h4 {
-            color: #fff;
-            font-size: 15px;
-            margin: 8px 0 8px;
-            text-transform: none;
-            letter-spacing: 0;
-        }
-
-        .news-item p {
-            color: #93A1B8;
-            font-size: 12.5px;
-            line-height: 1.6;
-        }
-
-        .subscribe-box {
-            background: var(--navy-mid);
-            border: 1px solid #26385c;
-            padding: 34px;
-            align-self: start;
-        }
-
-        .subscribe-box h4 {
-            color: #fff;
-            font-size: 19px;
+            font-weight: 700;
+            letter-spacing: .18em;
             text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 18px;
+        }
+
+        .nl-eyebrow::before,
+        .nl-eyebrow::after {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 2px;
+            background: var(--orange);
+            border-radius: 2px;
+        }
+
+        .nl-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(32px, 4vw, 50px);
+            font-weight: 900;
+            color: var(--navy);
+            letter-spacing: -.02em;
+            line-height: 1.1;
+            margin-bottom: 16px;
+        }
+
+        .nl-title span {
+            color: var(--orange);
+        }
+
+        .nl-subtitle {
+            color: var(--steel);
+            font-size: 15.5px;
+            line-height: 1.75;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        .nl-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 24px;
+            padding: 48px 60px 56px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .nl-card-light {
+            background: #fff;
+            border: 1px solid #E3E8EE;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform .25s ease, box-shadow .25s ease;
+            cursor: default;
+        }
+
+        .nl-card-light:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 48px rgba(11,31,58,.12);
+        }
+
+        .nl-card-light .nl-img-wrap {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            flex: none;
+        }
+
+        .nl-card-light .nl-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s ease;
+            display: block;
+        }
+
+        .nl-card-light:hover .nl-img-wrap img {
+            transform: scale(1.06);
+        }
+
+        .nl-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--orange);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 3px;
+        }
+
+        .nl-card-body {
+            padding: 24px 24px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .nl-date {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--orange);
             margin-bottom: 10px;
         }
 
-        .subscribe-box p {
-            color: #A9B6CB;
+        .nl-card-light h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--navy);
+            line-height: 1.4;
+            margin-bottom: 12px;
+        }
+
+        .nl-card-light p {
+            color: var(--steel);
             font-size: 13px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        .sub-form {
-            display: flex;
-            gap: 0;
-        }
-
-        .sub-form input {
+            line-height: 1.75;
             flex: 1;
+        }
+
+        .nl-card-footer {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #E3E8EE;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nl-card-footer .author {
+            font-size: 11.5px;
+            color: #9BAABB;
+            font-weight: 500;
+        }
+
+        .nl-read-link {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: .05em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            transition: color .2s;
+        }
+
+        .nl-read-link:hover {
+            color: var(--orange);
+        }
+
+        .nl-cta-bar {
+            background: var(--navy);
+            margin: 0 60px 60px;
+            border-radius: 8px;
+            padding: 40px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nl-cta-bar::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--orange), var(--orange-dark));
+        }
+
+        .nl-cta-bar .cta-label {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--orange);
+            margin-bottom: 6px;
+        }
+
+        .nl-cta-bar h4 {
+            color: #fff;
+            font-size: 20px;
+            font-weight: 800;
+            margin: 0;
+            line-height: 1.35;
+        }
+
+        .nl-cta-btn {
+            background: var(--orange);
+            color: #fff;
+            padding: 14px 32px;
+            font-weight: 800;
+            font-size: 13px;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            cursor: pointer;
+            white-space: nowrap;
+            border-radius: 4px;
+            transition: background .2s, transform .2s;
+            display: inline-block;
+        }
+
+        .nl-cta-btn:hover {
+            background: var(--orange-dark);
+            transform: translateY(-2px);
+        }
             padding: 13px 14px;
             border: 1px solid #2c4066;
             background: #0d213f;
@@ -970,7 +1286,7 @@
         }
 
         .svc-card:hover {
-            box-shadow: 0 12px 32px rgba(11,31,58,.12);
+            box-shadow: 0 12px 32px rgba(11, 31, 58, .12);
             border-color: var(--orange);
         }
 
@@ -1339,15 +1655,82 @@
 
         .footer-bottom {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 20px 0;
             font-size: 11.5px;
             color: #5e6d88;
             flex-wrap: wrap;
-            gap: 10px;
+            gap: 6px;
+            text-align: center;
         }
 
+        /* ── Hamburger Menu ────────────────────────── */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            width: 40px;
+            height: 40px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px;
+            margin-left: auto;
+            flex: none;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: transform .3s, opacity .3s, width .3s;
+            transform-origin: center;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobile nav drawer */
+        .mobile-nav {
+            display: none;
+            flex-direction: column;
+            background: var(--navy-dark);
+            border-top: 1px solid rgba(244,123,32,.3);
+            padding: 0;
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height .35s ease, padding .35s ease;
+        }
+
+        .mobile-nav.open {
+            max-height: 400px;
+            padding: 8px 0 16px;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 14px 24px;
+            color: #C7D1E0;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .03em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,.05);
+            transition: background .15s, color .15s;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.current {
+            background: rgba(244,123,32,.1);
+            color: var(--orange);
+        }
+
+        /* ── Tablet breakpoint: 1100px ─────────────── */
         @media(max-width:1100px) {
 
             .hero-grid,
@@ -1368,655 +1751,1025 @@
                 grid-template-columns: repeat(2, 1fr);
             }
 
+            .nl-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .nl-cta-bar {
+                margin: 0 24px 40px;
+                padding: 28px 28px;
+            }
+
+            .nl-grid {
+                padding: 36px 24px 40px;
+            }
+
             .main-nav {
                 display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .mobile-nav {
+                display: flex;
+            }
+
+            .site-header {
+                flex-wrap: wrap;
+                padding: 12px 24px;
+            }
+
+            .brand {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* ── Mobile breakpoint: 640px ──────────────── */
+        @media(max-width:640px) {
+
+            /* Header */
+            .site-header {
+                padding: 10px 16px;
+            }
+
+            .logo {
+                height: 52px;
+            }
+
+            /* Sections */
+            .section {
+                padding: 48px 16px;
+            }
+
+            .section-head {
+                margin-bottom: 28px;
+            }
+
+            /* Hero */
+            .hero {
+                padding: 56px 16px 48px;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Grids → single column */
+            .highlights,
+            .mv-grid,
+            .values-grid,
+            .product-grid,
+            .svc-grid,
+            .support-grid,
+            .footer-grid,
+            .news-cols,
+            .nl-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Newsletter */
+            .nl-header {
+                padding: 40px 16px 32px;
+            }
+
+            .nl-grid {
+                padding: 24px 16px 32px;
+                gap: 16px;
+            }
+
+            .nl-cta-bar {
+                margin: 0 16px 40px;
+                padding: 24px 20px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nl-cta-bar h4 {
+                font-size: 16px;
+            }
+
+            .nl-cta-btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            /* About grid */
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Contact grid */
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Footer */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+
+            .site-footer {
+                padding: 40px 16px 0;
+            }
+
+            .footer-bottom {
+                font-size: 10.5px;
+                padding: 16px 0;
+            }
+
+            /* Highlight stat numbers */
+            .hl-num {
+                font-size: clamp(32px, 8vw, 52px);
+            }
+
+            /* Service cards */
+            .svc-card {
+                padding: 24px 20px;
+            }
+
+            /* Form */
+            .form-card {
+                padding: 24px 16px;
+            }
+
+            .sub-form {
+                flex-direction: column;
+            }
+
+            .sub-form input,
+            .sub-form button {
+                width: 100%;
+                border-radius: 4px;
+            }
+
+            /* Industry cards */
+            .ind-card {
+                font-size: 13px;
+                padding: 12px !important;
+            }
+
+            /* Info cards */
+            .info-card {
+                padding: 20px 16px;
+            }
+
+            /* CTA band */
+            .cta-band {
+                padding: 40px 16px;
+            }
+
+            /* Screen tag */
+            .screen-tag {
+                font-size: 10px;
+                padding: 6px 16px;
+            }
+
+            /* Proto bar */
+            .proto-bar {
+                padding: 8px 12px;
+                gap: 8px;
+            }
+
+            .proto-tabs {
+                gap: 4px;
+                flex-wrap: wrap;
+            }
+
+            .proto-tabs button {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+        }
+
+        /* ── Very small screens: 380px ─────────────── */
+        @media(max-width:380px) {
+
+            .logo {
+                height: 44px;
+            }
+
+            .nl-title {
+                font-size: 28px;
+            }
+
+            .proto-tabs button {
+                font-size: 9px;
+                padding: 3px 7px;
             }
         }
     </style>
 </head>
+
 <body>
-<div class="proto-bar">
-<span class="label">Hexacore Precision Technologies — UI Design</span>
-<div class="proto-tabs" id="tabs">
-<button class="active" data-p="1">01 · Home</button>
-<button data-p="2">02 · About &amp; Newsletter</button>
-<button data-p="3">03 · Products</button>
-<button data-p="4">04 · Services &amp; Support</button>
-<button data-p="5">05 · Contact</button>
-</div>
-</div>
-<!-- ============ REUSABLE ICON DEFS ============ -->
-<svg height="0" style="position:absolute" width="0">
-<defs>
-<g id="ic-target">
-<circle cx="12" cy="12" fill="none" r="9" stroke="#F47B20" stroke-width="1.6"></circle>
-<circle cx="12" cy="12" fill="none" r="4.5" stroke="#F47B20" stroke-width="1.6"></circle>
-<path d="M12 1v4M12 19v4M1 12h4M19 12h4" stroke="#F47B20" stroke-width="1.6"></path>
-</g>
-<g id="ic-badge">
-<path d="M12 2l2.7 1.6 3.1.2 1 3 2.4 2-1 3 1 3-2.4 2-1 3-3.1.2L12 22l-2.7-1.6-3.1-.2-1-3-2.4-2 1-3-1-3 2.4-2 1-3 3.1-.2z" fill="none" stroke="#F47B20" stroke-width="1.4"></path>
-<path d="M8.5 12.5l2.3 2.3 4.7-4.9" fill="none" stroke="#F47B20" stroke-width="1.6"></path>
-</g>
-<g id="ic-chip">
-<rect fill="none" height="12" rx="1" stroke="#F47B20" stroke-width="1.5" width="12" x="6" y="6"></rect>
-<path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3" stroke="#F47B20" stroke-width="1.5"></path>
-</g>
-<g id="ic-shield">
-<path d="M12 2l8 3v6c0 5-3.4 8.7-8 11-4.6-2.3-8-6-8-11V5z" fill="none" stroke="#F47B20" stroke-width="1.5"></path>
-<path d="M8.5 12l2.3 2.3L16 9" fill="none" stroke="#F47B20" stroke-width="1.6"></path>
-</g>
-<g id="ic-mail">
-<rect fill="none" height="14" rx="1.2" stroke="#F47B20" stroke-width="1.5" width="18" x="3" y="5"></rect>
-<path d="M4 6.5l8 6 8-6" fill="none" stroke="#F47B20" stroke-width="1.5"></path>
-</g>
-<g id="ic-phone">
-<path d="M6.5 3h3l1.5 4-2 1.5c1 2.3 2.7 4 5 5l1.5-2 4 1.5v3c0 1-1 2-2 2-7 0-13-6-13-13 0-1 1-2 2-2z" fill="none" stroke="#F47B20" stroke-width="1.4"></path>
-</g>
-<g id="ic-pin">
-<path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" fill="none" stroke="#F47B20" stroke-width="1.5"></path>
-<circle cx="12" cy="9.5" fill="none" r="2.6" stroke="#F47B20" stroke-width="1.5"></circle>
-</g>
-<g id="ic-globe">
-<circle cx="12" cy="12" fill="none" r="9" stroke="#F47B20" stroke-width="1.5"></circle>
-<path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z" fill="none" stroke="#F47B20" stroke-width="1.3"></path>
-</g>
-<g id="ic-gear">
-<path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" fill="none" stroke="#F47B20" stroke-width="1.5"></path>
-<path d="M12 2v3M12 19v3M4.2 4.2l2 2M17.8 17.8l2 2M2 12h3M19 12h3M4.2 19.8l2-2M17.8 6.2l2-2" stroke="#F47B20" stroke-width="1.5"></path>
-</g>
-<g id="ic-doc">
-<path d="M6 2h9l3 3v17H6z" fill="none" stroke="#F47B20" stroke-width="1.5"></path>
-<path d="M15 2v3h3M9 12h6M9 15.5h6M9 8.5h3" stroke="#F47B20" stroke-width="1.4"></path>
-</g>
-<g id="ic-caliper">
-<path d="M2 12h20M2 8v8M22 8v8M6 8v5M10 8v5M14 8v5M18 8v5" stroke="#F47B20" stroke-width="1.4"></path>
-</g>
-</defs>
-</svg>
-<!-- ======================================================= -->
-<!-- PAGE 1 — HOME -->
-<!-- ======================================================= -->
-<div class="page active" id="page1">
-<div class="screen-tag">hexacore.com / home</div>
-<header class="site-header">
-<div class="brand">
-<div class="hex-mark">HX</div>
-<div class="brand-text">
-<div class="name">HEXACORE</div>
-<div class="sub">Precision Technologies</div>
-</div>
-</div>
-<nav class="main-nav">
-<a class="current" onclick="showPage(1)">Home</a>
-<a onclick="showPage(2)">About Us</a>
-<a onclick="showPage(3)">Products</a>
-<a onclick="showPage(4)">Services &amp; Support</a>
-<a onclick="showPage(5)">Contact</a>
-</nav>
-<a class="nav-cta btn btn-orange" onclick="showPage(5)">GET IN TOUCH</a>
-</header>
-
-<!-- 1. HERO SECTION -->
-<section class="hero" style="background: radial-gradient(circle at 82% 20%, rgba(244, 123, 32, .18), transparent 45%), linear-gradient(180deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-mid) 100%);">
-<div class="hero-grid">
-<div>
-<h1 class="t-display" style="color: #fff; line-height: 1.1; margin-bottom: 20px;">
-                Precision Engineering for <span style="color: var(--orange);">Reliable Industrial Performance</span>
-</h1>
-<p class="lead" style="color: #B9C4D6; font-size: clamp(15px, 1.6vw, 17.5px); max-width: 580px; margin-bottom: 36px; line-height: 1.75;">
-                Hexacore Precision Technologies provides precision engineering, measurement, calibration and technical support solutions that help manufacturers improve machine accuracy, reliability and production performance.
-            </p>
-<div class="hero-btns">
-<a class="btn btn-orange" onclick="showPage(4)">Explore Our Services</a>
-<a class="btn btn-outline" onclick="showPage(5)">Talk to Our Engineers</a>
-</div>
-</div>
-<div class="hero-art">
-<img alt="Precision Measurement" src="images/spider_man.jpeg" style="width: 100%; border: 2px solid var(--orange); opacity: 0.8; filter: grayscale(100%); mix-blend-mode: luminosity; border-radius: 4px;"/>
-</div>
-</div>
-</section>
-<!-- 2. ABOUT US -->
-<section class="section grey">
-<div class="section-head">
-<div class="tag">About Hexacore Precision Technologies</div>
-<h2 class="t-h2">Experienced. Technical. Trustworthy.</h2>
-<p class="section-lead">
-            Hexacore Precision Technologies is focused on helping manufacturing companies maintain the accuracy, reliability and performance of their machines and production systems.
-        </p>
-</div>
-<div style="max-width: 800px; color: var(--steel); font-size: var(--t-body-lg); line-height: 1.8;">
-<p style="margin-bottom: 16px;">Our work combines engineering experience, precision measurement and practical technical support to identify machine performance issues and provide solutions that are suited to the application.</p>
-<p style="margin-bottom: 16px;">We work with a wide range of CNC machines and industrial equipment, supporting customers with calibration, machine health assessment, geometric accuracy checks and related technical services.</p>
-<p>Our approach is simple: understand the machine, measure accurately, identify the source of the problem and provide a practical solution that helps the customer maintain consistent production.</p>
-</div>
-</section>
-<!-- 3. PRODUCTS / CAPABILITIES -->
-<section class="section">
-<div class="section-head">
-<div class="tag">Products &amp; Technology</div>
-<h2 class="t-h2">Precision Measurement Equipment</h2>
-</div>
-<div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
-<p style="color: var(--steel);">Loading capabilities...</p>
-</div>
-</section>
-<!-- 4. SERVICES & SUPPORT -->
-<section class="section grey">
-<div class="section-head">
-<div class="tag">Services &amp; Technical Support</div>
-<h2 class="t-h2">From machine calibration to technical troubleshooting.</h2>
-<p class="section-lead">Our services are designed to help manufacturers maintain accuracy and keep production running reliably.</p>
-</div>
-<div class="svc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-<p style="color: var(--steel);">Loading services...</p>
-</div>
-</section>
-<!-- 5. INDUSTRIES WE SERVE -->
-<section class="section navy">
-<div class="section-head">
-<div class="tag">Industries</div>
-<h2 class="t-h2" style="color:#fff;">Supporting Precision Manufacturing Across Industries</h2>
-<p class="section-lead" style="color: #AAB6C9;">
-            Every manufacturing environment has different requirements. We work closely with our customers to understand their machines, processes and accuracy requirements before recommending the appropriate measurement or support solution.
-        </p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-<div class="ind-card" style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">Automotive</div>
-<div class="ind-card" style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">Aerospace</div>
-<div class="ind-card" style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">Heavy Engineering</div>
-<div class="ind-card" style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">Precision Manufacturing</div>
-<div class="ind-card" style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">Machine Tools</div>
-<div class="ind-card" style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">General Engineering</div>
-<div class="ind-card" style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">CNC Manufacturing</div>
-<div class="ind-card" style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">Industrial Production</div>
-</div>
-</section>
-<!-- 6. WHY CHOOSE HEXACORE -->
-<section class="section">
-<div class="section-head">
-<div class="tag">Why Hexacore</div>
-<h2 class="t-h2">Why Companies Choose Hexacore</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
-<div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
-<h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Engineering Expertise</h4>
-<p style="color: var(--steel); font-size: 15px;">Practical engineering knowledge backed by experience with CNC machines and precision measurement.</p>
-</div>
-<div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
-<h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Precision Measurement</h4>
-<p style="color: var(--steel); font-size: 15px;">Accurate measurement helps identify problems that may not be visible during normal machine operation.</p>
-</div>
-<div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
-<h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Practical Solutions</h4>
-<p style="color: var(--steel); font-size: 15px;">We focus on understanding the cause of an issue and recommending solutions that make sense for the machine and application.</p>
-</div>
-<div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
-<h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Detailed Reporting</h4>
-<p style="color: var(--steel); font-size: 15px;">Clear measurement results and technical observations help customers understand machine condition and plan corrective action.</p>
-</div>
-<div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
-<h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Multi-Platform Support</h4>
-<p style="color: var(--steel); font-size: 15px;">Experience across different machine types and CNC controller platforms.</p>
-</div>
-<div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
-<h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Responsive Technical Support</h4>
-<p style="color: var(--steel); font-size: 15px;">We aim to respond quickly and minimise disruption to your production activities.</p>
-</div>
-</div>
-</section>
-<!-- 7. MACHINES WE SUPPORT & CNC CONTROLLERS -->
-<section class="section grey">
-<div class="section-head">
-<div class="tag">Technology / Engineering Capabilities</div>
-<h2 class="t-h2">Machines &amp; Controllers We Support</h2>
-</div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
-<div>
-<h3 style="margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--orange);">CNC Machines</h3>
-<ul style="list-style: none; padding: 0;">
-<li style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;"><span style="color: var(--orange);">▸</span> CNC Turning Centres</li>
-<li style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;"><span style="color: var(--orange);">▸</span> Vertical Machining Centres (VMC)</li>
-<li style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;"><span style="color: var(--orange);">▸</span> Horizontal Machining Centres (HMC)</li>
-<li style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;"><span style="color: var(--orange);">▸</span> 5-Axis CNC Machines</li>
-<li style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;"><span style="color: var(--orange);">▸</span> Gantry / Plano Milling Machines</li>
-<li style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;"><span style="color: var(--orange);">▸</span> Double Column Machining Centres</li>
-<li style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;"><span style="color: var(--orange);">▸</span> CNC Grinding Machines</li>
-<li style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;"><span style="color: var(--orange);">▸</span> Boring Machines</li>
-<li style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;"><span style="color: var(--orange);">▸</span> EDM &amp; Special Purpose Machines</li>
-</ul>
-</div>
-<div>
-<h3 style="margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--orange);">CNC Controllers</h3>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-<div style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">FANUC</div>
-<div style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">SIEMENS / SINUMERIK</div>
-<div style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">HEIDENHAIN</div>
-<div style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">MITSUBISHI</div>
-<div style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">MAZATROL / MAZAK</div>
-<div style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">HAAS &amp; FAGOR</div>
-<div style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">SYNTEC &amp; DELTA</div>
-<div style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">HURCO / YASKAWA / BROTHER</div>
-</div>
-</div>
-</div>
-</section>
-<!-- 8. QUALITY & STANDARDS -->
-<section class="section">
-<div class="section-head">
-<div class="tag">Standards</div>
-<h2 class="t-h2">Quality, Accuracy &amp; Standards</h2>
-</div>
-<div style="max-width: 800px; margin-bottom: 40px;">
-<p style="font-size: 18px; color: var(--steel); line-height: 1.6;">Our measurement and calibration work is carried out using appropriate technical methods and applicable machine-tool testing standards.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-<div style="padding: 24px; background: var(--grey-l); border-top: 3px solid var(--navy);">
-<h4 style="margin-bottom: 12px;">ISO 230 Series</h4>
-<ul style="list-style: none; color: var(--steel);">
-<li>ISO 230-1</li><li>ISO 230-2</li><li>ISO 230-4</li>
-</ul>
-</div>
-<div style="padding: 24px; background: var(--grey-l); border-top: 3px solid var(--navy);">
-<h4 style="margin-bottom: 12px;">VDI Standards</h4>
-<ul style="list-style: none; color: var(--steel);">
-<li>VDI / VDG 3441</li><li>VDI 2617</li><li>VDI 2852</li>
-</ul>
-</div>
-<div style="padding: 24px; background: var(--grey-l); border-top: 3px solid var(--navy);">
-<h4 style="margin-bottom: 12px;">JIS Standards</h4>
-<ul style="list-style: none; color: var(--steel);">
-<li>JIS B 6201</li><li>JIS B 6330</li><li>JIS B 6190</li>
-</ul>
-</div>
-</div>
-</section>
-<!-- 10. CONTACT CTA -->
-<section class="section navy" style="text-align: center; padding: 100px 44px;">
-<h2 class="t-display" style="margin-bottom: 24px;">Let’s Talk About Your Machine.</h2>
-<p style="font-size: 18px; color: #AAB6C9; max-width: 600px; margin: 0 auto 40px; line-height: 1.6;">
-        Whether you are investigating an accuracy problem, planning preventive maintenance or looking for regular calibration support, our team can help you understand the next step.
-    </p>
-<div style="display: flex; justify-content: center; gap: 16px;">
-<a class="btn btn-orange" onclick="showPage(5)">Request a Service</a>
-<a class="btn btn-outline" onclick="showPage(5)">Talk to an Engineer</a>
-</div>
-</section>
-<footer class="site-footer" id="footer-1"></footer>
-</div>
-<!-- ======================================================= -->
-<!-- PAGE 2 — ABOUT US + NEWSLETTER -->
-<!-- ======================================================= -->
-<div class="page" id="page2">
-<div class="screen-tag">hexacore.com / about-us</div>
-<header class="site-header">
-<div class="brand">
-<div class="hex-mark">HX</div>
-<div class="brand-text">
-<div class="name">HEXACORE</div>
-<div class="sub">Precision Technologies</div>
-</div>
-</div>
-<nav class="main-nav">
-<a onclick="showPage(1)">Home</a>
-<a class="current" onclick="showPage(2)">About Us</a>
-<a onclick="showPage(3)">Products</a>
-<a onclick="showPage(4)">Services &amp; Support</a>
-<a onclick="showPage(5)">Contact</a>
-</nav>
-<a class="nav-cta btn btn-orange" onclick="showPage(5)">GET IN TOUCH</a>
-</header>
-<section class="section">
-<div class="section-head">
-<div class="tag">About Hexacore Precision Technologies</div>
-<h2 class="t-h2">Experienced. Technical. Trustworthy.</h2>
-</div>
-<div class="about-grid">
-<div class="about-copy">
-<p>Hexacore Precision Technologies is focused on helping manufacturing companies maintain the accuracy, reliability and performance of their machines and production systems.</p>
-<p>Our work combines engineering experience, precision measurement and practical technical support to identify machine performance issues and provide solutions that are suited to the application.</p>
-<p>We work with a wide range of CNC machines and industrial equipment, supporting customers with calibration, machine health assessment, geometric accuracy checks and related technical services.</p>
-<p>Our approach is simple: understand the machine, measure accurately, identify the source of the problem and provide a practical solution that helps the customer maintain consistent production.</p>
-</div>
-<div class="factory-art">
-<img src="images/spider_man.jpeg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; filter: grayscale(100%);"/>
-<div class="factory-caption">Precision Engineering Operations</div>
-</div>
-</div>
-</section>
-<section class="section grey">
-<div class="section-head">
-<div class="tag">How We Work</div>
-<h2 class="t-h2">Our Approach</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
-<div style="background: #fff; padding: 30px; border: 1px solid var(--line); border-top: 3px solid var(--navy);">
-<div style="font-size: 32px; font-weight: 800; color: var(--orange); margin-bottom: 16px;">01</div>
-<h4 style="margin-bottom: 12px; font-size: 18px;">Understand</h4>
-<p style="color: var(--steel); font-size: 15px;">We first understand the machine, application and performance requirements.</p>
-</div>
-<div style="background: #fff; padding: 30px; border: 1px solid var(--line); border-top: 3px solid var(--navy);">
-<div style="font-size: 32px; font-weight: 800; color: var(--orange); margin-bottom: 16px;">02</div>
-<h4 style="margin-bottom: 12px; font-size: 18px;">Measure</h4>
-<p style="color: var(--steel); font-size: 15px;">We use appropriate measurement and diagnostic methods to assess machine accuracy and condition.</p>
-</div>
-<div style="background: #fff; padding: 30px; border: 1px solid var(--line); border-top: 3px solid var(--navy);">
-<div style="font-size: 32px; font-weight: 800; color: var(--orange); margin-bottom: 16px;">03</div>
-<h4 style="margin-bottom: 12px; font-size: 18px;">Analyse</h4>
-<p style="color: var(--steel); font-size: 15px;">We study the results to identify geometric, positioning, rotary or machine-performance errors.</p>
-</div>
-<div style="background: #fff; padding: 30px; border: 1px solid var(--line); border-top: 3px solid var(--navy);">
-<div style="font-size: 32px; font-weight: 800; color: var(--orange); margin-bottom: 16px;">04</div>
-<h4 style="margin-bottom: 12px; font-size: 18px;">Improve</h4>
-<p style="color: var(--steel); font-size: 15px;">We provide corrective recommendations and support to help restore and maintain machine performance.</p>
-</div>
-</div>
-</section>
-
-<!-- ── OUR NEWSLETTER Section (Page 2) ── -->
-<section id="newsletter-section" style="background:#0a0f18;padding:0;position:relative;overflow:hidden;">
-
-  <!-- Engineering grid overlay -->
-  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(244,123,32,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(244,123,32,.04) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;"></div>
-
-  <!-- Top accent bar -->
-  <div style="height:4px;background:linear-gradient(90deg,#8B0000,#c0392b,#F47B20,#c0392b,#8B0000);"></div>
-
-  <!-- Header block -->
-  <div style="background:linear-gradient(135deg,#0d0d0d 0%,#1a0505 50%,#0d0d0d 100%);padding:72px 44px 56px;text-align:center;position:relative;">
-    <div style="position:absolute;left:50%;top:0;transform:translateX(-50%);width:2px;height:40px;background:linear-gradient(#c0392b,transparent);"></div>
-
-    <!-- Section label -->
-    <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:22px;">
-      <div style="width:40px;height:1px;background:#c0392b;"></div>
-      <span style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#c0392b;">Hexacore Precision Technologies</span>
-      <div style="width:40px;height:1px;background:#c0392b;"></div>
+    <div class="proto-bar">
+        <span class="label">Hexacore Precision Technologies — UI Design</span>
+        <div class="proto-tabs" id="tabs">
+            <button class="active" data-p="1">01 · Home</button>
+            <button data-p="2">02 · About &amp; Newsletter</button>
+            <button data-p="3">03 · Products</button>
+            <button data-p="4">04 · Services &amp; Support</button>
+            <button data-p="5">05 · Contact</button>
+        </div>
     </div>
+    <!-- ============ REUSABLE ICON DEFS ============ -->
+    <svg height="0" style="position:absolute" width="0">
+        <defs>
+            <g id="ic-target">
+                <circle cx="12" cy="12" fill="none" r="9" stroke="#F47B20" stroke-width="1.6"></circle>
+                <circle cx="12" cy="12" fill="none" r="4.5" stroke="#F47B20" stroke-width="1.6"></circle>
+                <path d="M12 1v4M12 19v4M1 12h4M19 12h4" stroke="#F47B20" stroke-width="1.6"></path>
+            </g>
+            <g id="ic-badge">
+                <path
+                    d="M12 2l2.7 1.6 3.1.2 1 3 2.4 2-1 3 1 3-2.4 2-1 3-3.1.2L12 22l-2.7-1.6-3.1-.2-1-3-2.4-2 1-3-1-3 2.4-2 1-3 3.1-.2z"
+                    fill="none" stroke="#F47B20" stroke-width="1.4"></path>
+                <path d="M8.5 12.5l2.3 2.3 4.7-4.9" fill="none" stroke="#F47B20" stroke-width="1.6"></path>
+            </g>
+            <g id="ic-chip">
+                <rect fill="none" height="12" rx="1" stroke="#F47B20" stroke-width="1.5" width="12" x="6" y="6"></rect>
+                <path d="M9 6V3M15 6V3M9 21v-3M15 21v-3M6 9H3M6 15H3M21 9h-3M21 15h-3" stroke="#F47B20"
+                    stroke-width="1.5"></path>
+            </g>
+            <g id="ic-shield">
+                <path d="M12 2l8 3v6c0 5-3.4 8.7-8 11-4.6-2.3-8-6-8-11V5z" fill="none" stroke="#F47B20"
+                    stroke-width="1.5"></path>
+                <path d="M8.5 12l2.3 2.3L16 9" fill="none" stroke="#F47B20" stroke-width="1.6"></path>
+            </g>
+            <g id="ic-mail">
+                <rect fill="none" height="14" rx="1.2" stroke="#F47B20" stroke-width="1.5" width="18" x="3" y="5">
+                </rect>
+                <path d="M4 6.5l8 6 8-6" fill="none" stroke="#F47B20" stroke-width="1.5"></path>
+            </g>
+            <g id="ic-phone">
+                <path d="M6.5 3h3l1.5 4-2 1.5c1 2.3 2.7 4 5 5l1.5-2 4 1.5v3c0 1-1 2-2 2-7 0-13-6-13-13 0-1 1-2 2-2z"
+                    fill="none" stroke="#F47B20" stroke-width="1.4"></path>
+            </g>
+            <g id="ic-pin">
+                <path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" fill="none" stroke="#F47B20"
+                    stroke-width="1.5"></path>
+                <circle cx="12" cy="9.5" fill="none" r="2.6" stroke="#F47B20" stroke-width="1.5"></circle>
+            </g>
+            <g id="ic-globe">
+                <circle cx="12" cy="12" fill="none" r="9" stroke="#F47B20" stroke-width="1.5"></circle>
+                <path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18z" fill="none" stroke="#F47B20"
+                    stroke-width="1.3"></path>
+            </g>
+            <g id="ic-gear">
+                <path d="M12 8.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7z" fill="none" stroke="#F47B20" stroke-width="1.5">
+                </path>
+                <path d="M12 2v3M12 19v3M4.2 4.2l2 2M17.8 17.8l2 2M2 12h3M19 12h3M4.2 19.8l2-2M17.8 6.2l2-2"
+                    stroke="#F47B20" stroke-width="1.5"></path>
+            </g>
+            <g id="ic-doc">
+                <path d="M6 2h9l3 3v17H6z" fill="none" stroke="#F47B20" stroke-width="1.5"></path>
+                <path d="M15 2v3h3M9 12h6M9 15.5h6M9 8.5h3" stroke="#F47B20" stroke-width="1.4"></path>
+            </g>
+            <g id="ic-caliper">
+                <path d="M2 12h20M2 8v8M22 8v8M6 8v5M10 8v5M14 8v5M18 8v5" stroke="#F47B20" stroke-width="1.4"></path>
+            </g>
+        </defs>
+    </svg>
+    <!-- ======================================================= -->
+    <!-- PAGE 1 — HOME -->
+    <!-- ======================================================= -->
+    <div class="page active" id="page1">
+        <div class="screen-tag">hexacore.com / home</div>
+        <header class="site-header">
+            <div class="brand">
+                <img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo"
+                    onclick="showPage(1)">
+                <nav class="main-nav">
+                    <a class="current" onclick="showPage(1)">Home</a>
+                    <a onclick="showPage(2)">About Us</a>
+                    <a onclick="showPage(3)">Products</a>
+                    <a onclick="showPage(4)">Services &amp; Support</a>
+                    <a onclick="showPage(5)">Contact</a>
+                </nav>
+                <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <a class="current" onclick="showPage(1);closeMobileNav()">Home</a>
+                <a onclick="showPage(2);closeMobileNav()">About Us</a>
+                <a onclick="showPage(3);closeMobileNav()">Products</a>
+                <a onclick="showPage(4);closeMobileNav()">Services &amp; Support</a>
+                <a onclick="showPage(5);closeMobileNav()">Contact</a>
+            </nav>
+        </header>
 
-    <!-- Main heading -->
-    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(42px,6vw,72px);font-weight:900;color:#fff;letter-spacing:-.01em;line-height:1;margin-bottom:20px;text-transform:uppercase;">
-      OUR <span style="color:#c0392b;-webkit-text-stroke:1px #c0392b;">NEWSLETTER</span>
-    </h2>
-
-    <!-- Subtitle -->
-    <p style="color:#8896a7;font-size:16px;line-height:1.75;max-width:600px;margin:0 auto 0;">
-      Stay informed with the latest updates from our precision calibration and CNC technology team.
-    </p>
-
-    <!-- Decorative hex -->
-    <div style="position:absolute;right:80px;top:50%;transform:translateY(-50%);width:120px;height:120px;background:rgba(192,57,43,.06);clip-path:polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0% 50%);display:none;" class="nl-hex-deco"></div>
-    <div style="position:absolute;left:80px;top:50%;transform:translateY(-50%);width:80px;height:80px;background:rgba(244,123,32,.05);clip-path:polygon(25% 3%,75% 3%,100% 50%,75% 97%,25% 97%,0% 50%);display:none;" class="nl-hex-deco"></div>
-  </div>
-
-  <!-- Cards grid -->
-  <div style="padding:0 44px 80px;max-width:1280px;margin:0 auto;">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2px;margin-top:-2px;">
-
-      <!-- CARD 1 — Company Update -->
-      <article class="nl-card" style="background:#0d1117;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;cursor:default;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(192,57,43,.25)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <!-- Red top stripe -->
-        <div style="height:3px;background:linear-gradient(90deg,#8B0000,#c0392b);flex:none;"></div>
-        <!-- Image -->
-        <div style="height:220px;overflow:hidden;flex:none;position:relative;">
-          <img src="images/nl_cnc_machining.png" alt="Latest Company Updates" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;display:block;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,17,23,.7) 0%,transparent 60%);"></div>
-          <!-- Category badge -->
-          <div style="position:absolute;top:14px;left:14px;background:#8B0000;color:#fff;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;">COMPANY UPDATE</div>
-        </div>
-        <!-- Content -->
-        <div style="padding:28px 28px 24px;flex:1;display:flex;flex-direction:column;">
-          <div style="font-size:11px;color:#c0392b;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;">August 2026</div>
-          <h3 style="font-family:'Inter',sans-serif;font-size:19px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:14px;">Hexacore Expands CNC Calibration Fleet with Next-Gen Laser Systems</h3>
-          <p style="color:#7a8899;font-size:13.5px;line-height:1.75;flex:1;">We have added two new Renishaw XL-80 laser interferometer systems to our calibration fleet, enabling faster volumetric accuracy measurement across 5-axis CNC machining centres and large-bed turning machines.</p>
-          <div style="margin-top:22px;padding-top:18px;border-top:1px solid #1a2030;display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-size:11.5px;color:#4a5e70;">Engineering Team</span>
-            <span class="nl-read-more" style="font-size:12px;font-weight:700;color:#c0392b;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:6px;cursor:pointer;transition:color .2s;" onmouseover="this.style.color='#F47B20'" onmouseout="this.style.color='#c0392b'">Read More <span style="font-size:14px;">→</span></span>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 2 — Calibration Insights -->
-      <article class="nl-card" style="background:#0d1117;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;cursor:default;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(192,57,43,.25)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <div style="height:3px;background:linear-gradient(90deg,#8B0000,#c0392b);flex:none;"></div>
-        <div style="height:220px;overflow:hidden;flex:none;position:relative;">
-          <img src="images/nl_laser_calibration.png" alt="CNC and Calibration Insights" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;display:block;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,17,23,.7) 0%,transparent 60%);"></div>
-          <div style="position:absolute;top:14px;left:14px;background:#8B0000;color:#fff;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;">CALIBRATION INSIGHTS</div>
-        </div>
-        <div style="padding:28px 28px 24px;flex:1;display:flex;flex-direction:column;">
-          <div style="font-size:11px;color:#c0392b;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;">July 2026</div>
-          <h3 style="font-family:'Inter',sans-serif;font-size:19px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:14px;">Why Geometric Accuracy Checks Are Critical for High-Tolerance CNC Work</h3>
-          <p style="color:#7a8899;font-size:13.5px;line-height:1.75;flex:1;">Thermal drift, spindle wear and axis misalignment silently degrade part accuracy over time. Our engineers explain how periodic geometric verification prevents costly scrap and maintains production consistency.</p>
-          <div style="margin-top:22px;padding-top:18px;border-top:1px solid #1a2030;display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-size:11.5px;color:#4a5e70;">Technical Insights</span>
-            <span class="nl-read-more" style="font-size:12px;font-weight:700;color:#c0392b;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:6px;cursor:pointer;transition:color .2s;" onmouseover="this.style.color='#F47B20'" onmouseout="this.style.color='#c0392b'">Read More <span style="font-size:14px;">→</span></span>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 3 — New Services & Technology -->
-      <article class="nl-card" style="background:#0d1117;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;cursor:default;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(192,57,43,.25)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <div style="height:3px;background:linear-gradient(90deg,#8B0000,#c0392b);flex:none;"></div>
-        <div style="height:220px;overflow:hidden;flex:none;position:relative;">
-          <img src="images/nl_cmm_measurement.png" alt="New Services and Technology" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;display:block;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,17,23,.7) 0%,transparent 60%);"></div>
-          <div style="position:absolute;top:14px;left:14px;background:#8B0000;color:#fff;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;">NEW SERVICES</div>
-        </div>
-        <div style="padding:28px 28px 24px;flex:1;display:flex;flex-direction:column;">
-          <div style="font-size:11px;color:#c0392b;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;">June 2026</div>
-          <h3 style="font-family:'Inter',sans-serif;font-size:19px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:14px;">Introducing CMM-Based Volumetric Error Mapping for Multi-Axis Machines</h3>
-          <p style="color:#7a8899;font-size:13.5px;line-height:1.75;flex:1;">Hexacore now offers full volumetric error compensation mapping using high-accuracy CMM data. This new service improves positional accuracy across all axes and is ideal for aerospace and precision tooling manufacturers.</p>
-          <div style="margin-top:22px;padding-top:18px;border-top:1px solid #1a2030;display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-size:11.5px;color:#4a5e70;">Service Launch</span>
-            <span class="nl-read-more" style="font-size:12px;font-weight:700;color:#c0392b;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:6px;cursor:pointer;transition:color .2s;" onmouseover="this.style.color='#F47B20'" onmouseout="this.style.color='#c0392b'">Read More <span style="font-size:14px;">→</span></span>
-          </div>
-        </div>
-      </article>
-
-      <!-- CARD 4 — Industry News & Achievements -->
-      <article class="nl-card" style="background:#0d1117;position:relative;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s;cursor:default;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 20px 50px rgba(192,57,43,.25)'" onmouseout="this.style.transform='translateY(0)';this.style.boxShadow='none'">
-        <div style="height:3px;background:linear-gradient(90deg,#F47B20,#c0392b);flex:none;"></div>
-        <div style="height:220px;overflow:hidden;flex:none;position:relative;">
-          <img src="images/nl_industry_team.png" alt="Industry News and Achievements" style="width:100%;height:100%;object-fit:cover;transition:transform .6s;display:block;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'">
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,17,23,.7) 0%,transparent 60%);"></div>
-          <div style="position:absolute;top:14px;left:14px;background:#D9660D;color:#fff;font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;">ACHIEVEMENTS</div>
-        </div>
-        <div style="padding:28px 28px 24px;flex:1;display:flex;flex-direction:column;">
-          <div style="font-size:11px;color:#F47B20;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;">May 2026</div>
-          <h3 style="font-family:'Inter',sans-serif;font-size:19px;font-weight:800;color:#fff;line-height:1.3;margin-bottom:14px;">Hexacore Completes 500th Successful CNC Machine Calibration Project</h3>
-          <p style="color:#7a8899;font-size:13.5px;line-height:1.75;flex:1;">We are proud to announce the completion of our 500th calibration project — a major 5-axis CNC machining centre for an automotive components manufacturer. Our team achieved sub-micron positioning accuracy across all axes.</p>
-          <div style="margin-top:22px;padding-top:18px;border-top:1px solid #1a2030;display:flex;align-items:center;justify-content:space-between;">
-            <span style="font-size:11.5px;color:#4a5e70;">Company Milestone</span>
-            <span class="nl-read-more" style="font-size:12px;font-weight:700;color:#F47B20;letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:6px;cursor:pointer;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#F47B20'">Read More <span style="font-size:14px;">→</span></span>
-          </div>
-        </div>
-      </article>
-
+        <!-- 1. HERO SECTION -->
+        <section class="hero"
+            style="background: radial-gradient(circle at 82% 20%, rgba(244, 123, 32, .18), transparent 45%), linear-gradient(180deg, var(--navy-dark) 0%, var(--navy) 60%, var(--navy-mid) 100%);">
+            <div class="hero-grid">
+                <div>
+                    <h1 class="t-display" style="color: #fff; line-height: 1.1; margin-bottom: 20px;">
+                        Precision Engineering for <span style="color: var(--orange);">Reliable Industrial
+                            Performance</span>
+                    </h1>
+                    <p class="lead"
+                        style="color: #B9C4D6; font-size: clamp(15px, 1.6vw, 17.5px); max-width: 580px; margin-bottom: 36px; line-height: 1.75;">
+                        Hexacore Precision Technologies provides precision engineering, measurement, calibration and
+                        technical support solutions that help manufacturers improve machine accuracy, reliability and
+                        production performance.
+                    </p>
+                    <div class="hero-btns">
+                        <a class="btn btn-orange" onclick="showPage(4)">Explore Our Services</a>
+                        <a class="btn btn-outline" onclick="showPage(5)">Talk to Our Engineers</a>
+                    </div>
+                </div>
+                <div class="hero-art">
+                    <img alt="Precision Measurement" src="images/spider_man.jpeg"
+                        style="width: 100%; border: 2px solid var(--orange); opacity: 0.8; filter: grayscale(100%); mix-blend-mode: luminosity; border-radius: 4px;" />
+                </div>
+            </div>
+        </section>
+        <!-- 2. ABOUT US -->
+        <section class="section grey">
+            <div class="section-head">
+                <div class="tag">About Hexacore Precision Technologies</div>
+                <h2 class="t-h2">Experienced. Technical. Trustworthy.</h2>
+                <p class="section-lead">
+                    Hexacore Precision Technologies is focused on helping manufacturing companies maintain the accuracy,
+                    reliability and performance of their machines and production systems.
+                </p>
+            </div>
+            <div style="max-width: 800px; color: var(--steel); font-size: var(--t-body-lg); line-height: 1.8;">
+                <p style="margin-bottom: 16px;">Our work combines engineering experience, precision measurement and
+                    practical technical support to identify machine performance issues and provide solutions that are
+                    suited to the application.</p>
+                <p style="margin-bottom: 16px;">We work with a wide range of CNC machines and industrial equipment,
+                    supporting customers with calibration, machine health assessment, geometric accuracy checks and
+                    related technical services.</p>
+                <p>Our approach is simple: understand the machine, measure accurately, identify the source of the
+                    problem and provide a practical solution that helps the customer maintain consistent production.</p>
+            </div>
+        </section>
+        <!-- 4. SERVICES & SUPPORT -->
+        <section class="section grey">
+            <div class="section-head">
+                <div class="tag">Services &amp; Technical Support</div>
+                <h2 class="t-h2">From machine calibration to technical troubleshooting.</h2>
+                <p class="section-lead">Our services are designed to help manufacturers maintain accuracy and keep
+                    production running reliably.</p>
+            </div>
+            <div class="svc-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <p style="color: var(--steel);">Loading services...</p>
+            </div>
+        </section>
+        <!-- 5. INDUSTRIES WE SERVE -->
+        <section class="section navy">
+            <div class="section-head">
+                <div class="tag">Industries</div>
+                <h2 class="t-h2" style="color:#fff;">Supporting Precision Manufacturing Across Industries</h2>
+                <p class="section-lead" style="color: #AAB6C9;">
+                    Every manufacturing environment has different requirements. We work closely with our customers to
+                    understand their machines, processes and accuracy requirements before recommending the appropriate
+                    measurement or support solution.
+                </p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+                <div class="ind-card"
+                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
+                    Automotive</div>
+                <div class="ind-card"
+                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
+                    Aerospace</div>
+                <div class="ind-card"
+                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
+                    Heavy Engineering</div>
+                <div class="ind-card"
+                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
+                    Precision Manufacturing</div>
+                <div class="ind-card"
+                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
+                    Machine Tools</div>
+                <div class="ind-card"
+                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
+                    General Engineering</div>
+                <div class="ind-card"
+                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">CNC
+                    Manufacturing</div>
+                <div class="ind-card"
+                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
+                    Industrial Production</div>
+            </div>
+        </section>
+        <!-- 6. WHY CHOOSE HEXACORE -->
+        <section class="section">
+            <div class="section-head">
+                <div class="tag">Why Hexacore</div>
+                <h2 class="t-h2">Why Companies Choose Hexacore</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+                <div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
+                    <h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Engineering Expertise
+                    </h4>
+                    <p style="color: var(--steel); font-size: 15px;">Practical engineering knowledge backed by
+                        experience with CNC machines and precision measurement.</p>
+                </div>
+                <div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
+                    <h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Precision Measurement
+                    </h4>
+                    <p style="color: var(--steel); font-size: 15px;">Accurate measurement helps identify problems that
+                        may not be visible during normal machine operation.</p>
+                </div>
+                <div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
+                    <h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Practical Solutions
+                    </h4>
+                    <p style="color: var(--steel); font-size: 15px;">We focus on understanding the cause of an issue and
+                        recommending solutions that make sense for the machine and application.</p>
+                </div>
+                <div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
+                    <h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Detailed Reporting</h4>
+                    <p style="color: var(--steel); font-size: 15px;">Clear measurement results and technical
+                        observations help customers understand machine condition and plan corrective action.</p>
+                </div>
+                <div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
+                    <h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Multi-Platform Support
+                    </h4>
+                    <p style="color: var(--steel); font-size: 15px;">Experience across different machine types and CNC
+                        controller platforms.</p>
+                </div>
+                <div style="padding: 24px; border: 1px solid var(--line); border-top: 3px solid var(--orange);">
+                    <h4 style="margin-bottom: 12px; font-size: 18px; text-transform: uppercase;">Responsive Technical
+                        Support</h4>
+                    <p style="color: var(--steel); font-size: 15px;">We aim to respond quickly and minimise disruption
+                        to your production activities.</p>
+                </div>
+            </div>
+        </section>
+        <!-- 7. MACHINES WE SUPPORT & CNC CONTROLLERS -->
+        <section class="section grey">
+            <div class="section-head">
+                <div class="tag">Technology / Engineering Capabilities</div>
+                <h2 class="t-h2">Machines &amp; Controllers We Support</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px;">
+                <div>
+                    <h3 style="margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--orange);">CNC
+                        Machines</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li
+                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--orange);">▸</span> CNC Turning Centres
+                        </li>
+                        <li
+                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--orange);">▸</span> Vertical Machining Centres (VMC)
+                        </li>
+                        <li
+                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--orange);">▸</span> Horizontal Machining Centres (HMC)
+                        </li>
+                        <li
+                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--orange);">▸</span> 5-Axis CNC Machines
+                        </li>
+                        <li
+                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--orange);">▸</span> Gantry / Plano Milling Machines
+                        </li>
+                        <li
+                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--orange);">▸</span> Double Column Machining Centres
+                        </li>
+                        <li
+                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--orange);">▸</span> CNC Grinding Machines
+                        </li>
+                        <li
+                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--orange);">▸</span> Boring Machines
+                        </li>
+                        <li
+                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
+                            <span style="color: var(--orange);">▸</span> EDM &amp; Special Purpose Machines
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--orange);">CNC
+                        Controllers</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                        <div
+                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
+                            FANUC</div>
+                        <div
+                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
+                            SIEMENS / SINUMERIK</div>
+                        <div
+                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
+                            HEIDENHAIN</div>
+                        <div
+                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
+                            MITSUBISHI</div>
+                        <div
+                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
+                            MAZATROL / MAZAK</div>
+                        <div
+                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
+                            HAAS &amp; FAGOR</div>
+                        <div
+                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
+                            SYNTEC &amp; DELTA</div>
+                        <div
+                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
+                            HURCO / YASKAWA / BROTHER</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- 8. QUALITY & STANDARDS -->
+        <section class="section">
+            <div class="section-head">
+                <div class="tag">Standards</div>
+                <h2 class="t-h2">Quality, Accuracy &amp; Standards</h2>
+            </div>
+            <div style="max-width: 800px; margin-bottom: 40px;">
+                <p style="font-size: 18px; color: var(--steel); line-height: 1.6;">Our measurement and calibration work
+                    is carried out using appropriate technical methods and applicable machine-tool testing standards.
+                </p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+                <div style="padding: 24px; background: var(--grey-l); border-top: 3px solid var(--navy);">
+                    <h4 style="margin-bottom: 12px;">ISO 230 Series</h4>
+                    <ul style="list-style: none; color: var(--steel);">
+                        <li>ISO 230-1</li>
+                        <li>ISO 230-2</li>
+                        <li>ISO 230-4</li>
+                    </ul>
+                </div>
+                <div style="padding: 24px; background: var(--grey-l); border-top: 3px solid var(--navy);">
+                    <h4 style="margin-bottom: 12px;">VDI Standards</h4>
+                    <ul style="list-style: none; color: var(--steel);">
+                        <li>VDI / VDG 3441</li>
+                        <li>VDI 2617</li>
+                        <li>VDI 2852</li>
+                    </ul>
+                </div>
+                <div style="padding: 24px; background: var(--grey-l); border-top: 3px solid var(--navy);">
+                    <h4 style="margin-bottom: 12px;">JIS Standards</h4>
+                    <ul style="list-style: none; color: var(--steel);">
+                        <li>JIS B 6201</li>
+                        <li>JIS B 6330</li>
+                        <li>JIS B 6190</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <footer class="site-footer" id="footer-1"></footer>
     </div>
+    <!-- ======================================================= -->
+    <!-- PAGE 2 — ABOUT US + NEWSLETTER -->
+    <!-- ======================================================= -->
+    <div class="page" id="page2">
+        <div class="screen-tag">hexacore.com / about-us</div>
+        <header class="site-header">
+            <div class="brand">
+                <img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo" onclick="showPage(1)">
+                <nav class="main-nav">
+                    <a onclick="showPage(1)">Home</a>
+                    <a class="current" onclick="showPage(2)">About Us</a>
+                    <a onclick="showPage(3)">Products</a>
+                    <a onclick="showPage(4)">Services &amp; Support</a>
+                    <a onclick="showPage(5)">Contact</a>
+                </nav>
+                <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <a onclick="showPage(1);closeMobileNav()">Home</a>
+                <a class="current" onclick="showPage(2);closeMobileNav()">About Us</a>
+                <a onclick="showPage(3);closeMobileNav()">Products</a>
+                <a onclick="showPage(4);closeMobileNav()">Services &amp; Support</a>
+                <a onclick="showPage(5);closeMobileNav()">Contact</a>
+            </nav>
+        </header>
+        <section class="section">
+            <div class="section-head">
+                <div class="tag">About Hexacore Precision Technologies</div>
+                <h2 class="t-h2">Experienced. Technical. Trustworthy.</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-copy">
+                    <p>Hexacore Precision Technologies is focused on helping manufacturing companies maintain the
+                        accuracy, reliability and performance of their machines and production systems.</p>
+                    <p>Our work combines engineering experience, precision measurement and practical technical support
+                        to identify machine performance issues and provide solutions that are suited to the application.
+                    </p>
+                    <p>We work with a wide range of CNC machines and industrial equipment, supporting customers with
+                        calibration, machine health assessment, geometric accuracy checks and related technical
+                        services.</p>
+                    <p>Our approach is simple: understand the machine, measure accurately, identify the source of the
+                        problem and provide a practical solution that helps the customer maintain consistent production.
+                    </p>
+                </div>
+                <div class="factory-art">
+                    <img src="images/spider_man.jpeg"
+                        style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; filter: grayscale(100%);" />
+                    <div class="factory-caption">Precision Engineering Operations</div>
+                </div>
+            </div>
+        </section>
+        <section class="section grey">
+            <div class="section-head">
+                <div class="tag">How We Work</div>
+                <h2 class="t-h2">Our Approach</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px;">
+                <div
+                    style="background: #fff; padding: 30px; border: 1px solid var(--line); border-top: 3px solid var(--navy);">
+                    <div style="font-size: 32px; font-weight: 800; color: var(--orange); margin-bottom: 16px;">01</div>
+                    <h4 style="margin-bottom: 12px; font-size: 18px;">Understand</h4>
+                    <p style="color: var(--steel); font-size: 15px;">We first understand the machine, application and
+                        performance requirements.</p>
+                </div>
+                <div
+                    style="background: #fff; padding: 30px; border: 1px solid var(--line); border-top: 3px solid var(--navy);">
+                    <div style="font-size: 32px; font-weight: 800; color: var(--orange); margin-bottom: 16px;">02</div>
+                    <h4 style="margin-bottom: 12px; font-size: 18px;">Measure</h4>
+                    <p style="color: var(--steel); font-size: 15px;">We use appropriate measurement and diagnostic
+                        methods to assess machine accuracy and condition.</p>
+                </div>
+                <div
+                    style="background: #fff; padding: 30px; border: 1px solid var(--line); border-top: 3px solid var(--navy);">
+                    <div style="font-size: 32px; font-weight: 800; color: var(--orange); margin-bottom: 16px;">03</div>
+                    <h4 style="margin-bottom: 12px; font-size: 18px;">Analyse</h4>
+                    <p style="color: var(--steel); font-size: 15px;">We study the results to identify geometric,
+                        positioning, rotary or machine-performance errors.</p>
+                </div>
+                <div
+                    style="background: #fff; padding: 30px; border: 1px solid var(--line); border-top: 3px solid var(--navy);">
+                    <div style="font-size: 32px; font-weight: 800; color: var(--orange); margin-bottom: 16px;">04</div>
+                    <h4 style="margin-bottom: 12px; font-size: 18px;">Improve</h4>
+                    <p style="color: var(--steel); font-size: 15px;">We provide corrective recommendations and support
+                        to help restore and maintain machine performance.</p>
+                </div>
+            </div>
+        </section>
 
-    <!-- Bottom CTA bar -->
-    <div style="margin-top:48px;background:linear-gradient(135deg,#1a0505,#110a00);border:1px solid #2a1515;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;">
-      <div>
-        <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c0392b;margin-bottom:6px;">Stay Informed</div>
-        <p style="color:#fff;font-size:16px;font-weight:700;margin:0;">Get our latest technical insights and project updates direct from our engineering team.</p>
-      </div>
-      <a onclick="showPage(5)" style="background:linear-gradient(135deg,#8B0000,#c0392b);color:#fff;padding:14px 30px;font-weight:800;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;border:none;display:inline-block;transition:opacity .2s;" onmouseover="this.style.opacity='.85'" onmouseout="this.style.opacity='1'">Contact Our Team →</a>
+        <!-- ── OUR NEWSLETTER Section (Page 2) ── -->
+        <section id="newsletter-section" class="nl-section">
+
+            <!-- Subtle grid watermark -->
+            <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(11,31,58,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(11,31,58,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;"></div>
+
+            <!-- Header -->
+            <div class="nl-header">
+                <div class="nl-eyebrow">Hexacore Precision Technologies</div>
+                <h2 class="nl-title">Our <span>Newsletter</span></h2>
+                <p class="nl-subtitle">Stay informed with the latest updates, technical insights and new services from our precision calibration and CNC engineering team.</p>
+            </div>
+
+            <!-- Cards grid -->
+            <div class="nl-grid">
+
+                <!-- CARD 1 -->
+                <article class="nl-card-light">
+                    <div class="nl-img-wrap">
+                        <img src="images/nl_cnc_machining.png" alt="Latest Company Updates">
+                        <span class="nl-badge">Company Update</span>
+                    </div>
+                    <div class="nl-card-body">
+                        <div class="nl-date">August 2026</div>
+                        <h3>Hexacore Expands CNC Calibration Fleet with Next-Gen Laser Systems</h3>
+                        <p>We have added two new Renishaw XL-80 laser interferometer systems to our calibration fleet, enabling faster volumetric accuracy measurement across 5-axis CNC machining centres.</p>
+                        <div class="nl-card-footer">
+                            <span class="author">Engineering Team</span>
+                            <span class="nl-read-link">Read More →</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD 2 -->
+                <article class="nl-card-light">
+                    <div class="nl-img-wrap">
+                        <img src="images/nl_laser_calibration.png" alt="Calibration Insights">
+                        <span class="nl-badge">Calibration Insights</span>
+                    </div>
+                    <div class="nl-card-body">
+                        <div class="nl-date">July 2026</div>
+                        <h3>Why Geometric Accuracy Checks Are Critical for High-Tolerance CNC Work</h3>
+                        <p>Thermal drift, spindle wear and axis misalignment silently degrade part accuracy over time. Our engineers explain how periodic geometric verification prevents costly scrap.</p>
+                        <div class="nl-card-footer">
+                            <span class="author">Technical Insights</span>
+                            <span class="nl-read-link">Read More →</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD 3 -->
+                <article class="nl-card-light">
+                    <div class="nl-img-wrap">
+                        <img src="images/nl_cmm_measurement.png" alt="New Services">
+                        <span class="nl-badge">New Services</span>
+                    </div>
+                    <div class="nl-card-body">
+                        <div class="nl-date">June 2026</div>
+                        <h3>Introducing CMM-Based Volumetric Error Mapping for Multi-Axis Machines</h3>
+                        <p>Hexacore now offers full volumetric error compensation mapping using high-accuracy CMM data, ideal for aerospace and precision tooling manufacturers.</p>
+                        <div class="nl-card-footer">
+                            <span class="author">Service Launch</span>
+                            <span class="nl-read-link">Read More →</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD 4 -->
+                <article class="nl-card-light">
+                    <div class="nl-img-wrap">
+                        <img src="images/nl_industry_team.png" alt="Achievements">
+                        <span class="nl-badge">Achievement</span>
+                    </div>
+                    <div class="nl-card-body">
+                        <div class="nl-date">May 2026</div>
+                        <h3>Hexacore Completes 500th Successful CNC Machine Calibration Project</h3>
+                        <p>We are proud to announce the completion of our 500th calibration project — achieving sub-micron positioning accuracy across all axes for an automotive components manufacturer.</p>
+                        <div class="nl-card-footer">
+                            <span class="author">Company Milestone</span>
+                            <span class="nl-read-link">Read More →</span>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+
+            <!-- Subscribe CTA bar -->
+            <div class="nl-cta-bar">
+                <div>
+                    <div class="cta-label">Stay Informed</div>
+                    <h4>Get our latest technical insights and project updates<br>direct from our engineering team.</h4>
+                </div>
+                    <span class="nl-cta-btn" onclick="showPage(5)">Contact Our Team →</span>
+            </div>
+
+        </section>
+
+        <footer class="site-footer" id="footer-2"></footer>
     </div>
-  </div>
-
-  <!-- Bottom accent bar -->
-  <div style="height:2px;background:linear-gradient(90deg,transparent,#8B0000,#c0392b,#8B0000,transparent);"></div>
-</section>
-
-<footer class="site-footer" id="footer-2"></footer>
-</div>
-<!-- ======================================================= -->
-<!-- PAGE 3 — PRODUCTS -->
-<!-- ======================================================= -->
-<div class="page" id="page3">
-<div class="screen-tag">hexacore.com / products</div>
-<header class="site-header">
-<div class="brand">
-<div class="hex-mark">HX</div>
-<div class="brand-text"><div class="name">HEXACORE</div><div class="sub">Precision Technologies</div></div>
-</div>
-<nav class="main-nav">
-<a onclick="showPage(1)">Home</a><a onclick="showPage(2)">About Us</a><a class="current" onclick="showPage(3)">Products</a><a onclick="showPage(4)">Services &amp; Support</a><a onclick="showPage(5)">Contact</a>
-</nav>
-<a class="nav-cta btn btn-orange" onclick="showPage(5)">GET IN TOUCH</a>
-</header>
-<section class="section">
-<div class="section-head">
-<div class="tag">Technology</div>
-<h2 class="t-h2">Products &amp; Technology</h2>
-<p class="section-lead">Precision measurement equipment, laser calibration technology, and CNC diagnostic solutions for industrial requirements.</p>
-</div>
-<div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-<p>Loading products...</p>
-</div>
-</section>
-<footer class="site-footer" id="footer-3"></footer>
-</div>
-<!-- ======================================================= -->
-<!-- PAGE 4 — SERVICES + SUPPORT -->
-<!-- ======================================================= -->
-<div class="page" id="page4">
-<div class="screen-tag">hexacore.com / services</div>
-<header class="site-header">
-<div class="brand">
-<div class="hex-mark">HX</div>
-<div class="brand-text"><div class="name">HEXACORE</div><div class="sub">Precision Technologies</div></div>
-</div>
-<nav class="main-nav">
-<a onclick="showPage(1)">Home</a><a onclick="showPage(2)">About Us</a><a onclick="showPage(3)">Products</a><a class="current" onclick="showPage(4)">Services &amp; Support</a><a onclick="showPage(5)">Contact</a>
-</nav>
-<a class="nav-cta btn btn-orange" onclick="showPage(5)">GET IN TOUCH</a>
-</header>
-<section class="section">
-<div class="section-head">
-<div class="tag">Calibration &amp; Diagnostics</div>
-<h2 class="t-h2">Services &amp; Technical Support</h2>
-<p class="section-lead">From machine calibration to technical troubleshooting, our services are designed to help manufacturers maintain accuracy and keep production running reliably.</p>
-</div>
-<div class="svc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-<p>Loading services...</p>
-</div>
-</section>
-<section class="section grey">
-<div class="section-head">
-<div class="tag">Reporting</div>
-<h2 class="t-h2">Clear Technical Reports. Better Decisions.</h2>
-<p class="section-lead">After measurement and analysis, we provide clear technical information that helps customers understand the condition of their machine and decide what action is required.</p>
-</div>
-<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-<div style="background: #fff; padding: 24px; border: 1px solid var(--line);">
-<h4 style="margin-bottom: 12px; font-size: 16px;">Measurement Results</h4>
-<p style="color: var(--steel); font-size: 14px;">Detailed positioning accuracy, repeatability, and geometric errors.</p>
-</div>
-<div style="background: #fff; padding: 24px; border: 1px solid var(--line);">
-<h4 style="margin-bottom: 12px; font-size: 16px;">Graphical Results</h4>
-<p style="color: var(--steel); font-size: 14px;">Visual representation of error analysis and rotary-axis results.</p>
-</div>
-<div style="background: #fff; padding: 24px; border: 1px solid var(--line);">
-<h4 style="margin-bottom: 12px; font-size: 16px;">Actionable Advice</h4>
-<p style="color: var(--steel); font-size: 14px;">Corrective recommendations and official calibration records.</p>
-</div>
-</div>
-</section>
-<footer class="site-footer" id="footer-4"></footer>
-</div>
-<!-- ======================================================= -->
-<!-- PAGE 5 — CONTACT -->
-<!-- ======================================================= -->
-<div class="page" id="page5">
-<div class="screen-tag">hexacore.com / contact</div>
-<header class="site-header">
-<div class="brand">
-<div class="hex-mark">HX</div>
-<div class="brand-text"><div class="name">HEXACORE</div><div class="sub">Precision Technologies</div></div>
-</div>
-<nav class="main-nav">
-<a onclick="showPage(1)">Home</a><a onclick="showPage(2)">About Us</a><a onclick="showPage(3)">Products</a><a onclick="showPage(4)">Services &amp; Support</a><a class="current" onclick="showPage(5)">Contact</a>
-</nav>
-</header>
-<section class="section">
-<div class="section-head">
-<div class="tag">Get In Touch</div>
-<h2 class="t-h2">Contact Hexacore Precision Technologies</h2>
-</div>
-<div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px;">
-<!-- Contact Form -->
-<div class="contact-form" style="background: var(--grey-l); padding: 40px; border: 1px solid var(--line); border-radius: 4px;">
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-<div class="field"><label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Name</label><input id="cf-name" placeholder="Your name" style="width:100%; padding:12px; border:1px solid #ccc;" type="text"/></div>
-<div class="field"><label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Company</label><input id="cf-company" placeholder="Company name" style="width:100%; padding:12px; border:1px solid #ccc;" type="text"/></div>
-</div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-<div class="field"><label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Phone</label><input id="cf-phone" placeholder="Phone number" style="width:100%; padding:12px; border:1px solid #ccc;" type="text"/></div>
-<div class="field"><label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Email</label><input id="cf-email" placeholder="Email address" style="width:100%; padding:12px; border:1px solid #ccc;" type="email"/></div>
-</div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-<div class="field"><label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine Type</label><input id="cf-mtype" placeholder="e.g. VMC, CNC Lathe" style="width:100%; padding:12px; border:1px solid #ccc;" type="text"/></div>
-<div class="field"><label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine Make</label><input id="cf-mmake" placeholder="e.g. Haas, Mazak" style="width:100%; padding:12px; border:1px solid #ccc;" type="text"/></div>
-</div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-<div class="field"><label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine Model</label><input id="cf-mmodel" placeholder="Model number" style="width:100%; padding:12px; border:1px solid #ccc;" type="text"/></div>
-<div class="field"><label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Controller</label><input id="cf-ctrl" placeholder="e.g. Fanuc, Siemens" style="width:100%; padding:12px; border:1px solid #ccc;" type="text"/></div>
-</div>
-<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-<div class="field">
-<label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Service Required</label>
-<select id="cf-service" style="width:100%; padding:12px; border:1px solid #ccc;">
-<option>Linear Laser Calibration</option>
-<option>Ballbar Test</option>
-<option>Rotary Axis Calibration</option>
-<option>Off-Axis Rotary Calibration</option>
-<option>Axis Straightness Testing</option>
-<option>Squareness Testing</option>
-<option>Machine Leveling</option>
-<option>Servo Tuning</option>
-<option>Software Troubleshooting</option>
-<option>Ballscrew Support</option>
-<option>Preventive Maintenance</option>
-<option>Other</option>
-</select>
-</div>
-<div class="field"><label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Location</label><input id="cf-location" placeholder="City, State" style="width:100%; padding:12px; border:1px solid #ccc;" type="text"/></div>
-</div>
-<div class="field" style="margin-bottom: 24px;">
-<label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Message</label>
-<textarea id="cf-message" placeholder="Provide any additional details..." style="width:100%; padding:12px; border:1px solid #ccc; height:120px;"></textarea>
-</div>
-<div id="cf-status" style="display:none; margin-bottom:16px; padding:12px; font-size:14px; border-radius:4px;"></div>
-<button class="btn btn-orange" id="cf-submit" onclick="submitContact()" style="border:none; width: 100%; justify-content: center; font-size: 15px; cursor: pointer;">Send Enquiry</button>
-</div>
-<!-- Contact Info -->
-<div>
-<div style="background: var(--navy); color: #fff; padding: 40px; border-radius: 4px;">
-<h3 style="color: var(--orange); margin-bottom: 24px; text-transform: uppercase;">Reach Us</h3>
-<div style="margin-bottom: 20px;">
-<strong style="display:block; margin-bottom:4px; font-size:13px; color:#AAB6C9;">Address</strong>
-                    Plot 14, Precision Industrial Park,<br/>Ambattur, Chennai – 600058
+    <!-- ======================================================= -->
+    <!-- PAGE 3 — PRODUCTS -->
+    <!-- ======================================================= -->
+    <div class="page" id="page3">
+        <div class="screen-tag">hexacore.com / products</div>
+        <header class="site-header">
+            <div class="brand">
+                <img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo" onclick="showPage(1)">
+                <nav class="main-nav">
+                    <a onclick="showPage(1)">Home</a>
+                    <a onclick="showPage(2)">About Us</a>
+                    <a class="current" onclick="showPage(3)">Products</a>
+                    <a onclick="showPage(4)">Services &amp; Support</a>
+                    <a onclick="showPage(5)">Contact</a>
+                </nav>
+                <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <a onclick="showPage(1);closeMobileNav()">Home</a>
+                <a onclick="showPage(2);closeMobileNav()">About Us</a>
+                <a class="current" onclick="showPage(3);closeMobileNav()">Products</a>
+                <a onclick="showPage(4);closeMobileNav()">Services &amp; Support</a>
+                <a onclick="showPage(5);closeMobileNav()">Contact</a>
+            </nav>
+        </header>
+        <section class="section">
+            <div class="section-head">
+                <div class="tag">Technology</div>
+                <h2 class="t-h2">Products &amp; Technology</h2>
+                <p class="section-lead">Precision measurement equipment, laser calibration technology, and CNC
+                    diagnostic solutions for industrial requirements.</p>
+            </div>
+            <div class="product-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <p>Loading products...</p>
+            </div>
+        </section>
+        <footer class="site-footer" id="footer-3"></footer>
+    </div>
+    <!-- ======================================================= -->
+    <!-- PAGE 4 — SERVICES + SUPPORT -->
+    <!-- ======================================================= -->
+    <div class="page" id="page4">
+        <div class="screen-tag">hexacore.com / services</div>
+        <header class="site-header">
+            <div class="brand">
+                <img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo" onclick="showPage(1)">
+                <nav class="main-nav">
+                    <a onclick="showPage(1)">Home</a>
+                    <a onclick="showPage(2)">About Us</a>
+                    <a onclick="showPage(3)">Products</a>
+                    <a class="current" onclick="showPage(4)">Services &amp; Support</a>
+                    <a onclick="showPage(5)">Contact</a>
+                </nav>
+                <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <a onclick="showPage(1);closeMobileNav()">Home</a>
+                <a onclick="showPage(2);closeMobileNav()">About Us</a>
+                <a onclick="showPage(3);closeMobileNav()">Products</a>
+                <a class="current" onclick="showPage(4);closeMobileNav()">Services &amp; Support</a>
+                <a onclick="showPage(5);closeMobileNav()">Contact</a>
+            </nav>
+        </header>
+        <section class="section">
+            <div class="section-head">
+                <div class="tag">Calibration &amp; Diagnostics</div>
+                <h2 class="t-h2">Services &amp; Technical Support</h2>
+                <p class="section-lead">From machine calibration to technical troubleshooting, our services are designed
+                    to help manufacturers maintain accuracy and keep production running reliably.</p>
+            </div>
+            <div class="svc-grid"
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <p>Loading services...</p>
+            </div>
+        </section>
+        <section class="section grey">
+            <div class="section-head">
+                <div class="tag">Reporting</div>
+                <h2 class="t-h2">Clear Technical Reports. Better Decisions.</h2>
+                <p class="section-lead">After measurement and analysis, we provide clear technical information that
+                    helps customers understand the condition of their machine and decide what action is required.</p>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+                <div style="background: #fff; padding: 24px; border: 1px solid var(--line);">
+                    <h4 style="margin-bottom: 12px; font-size: 16px;">Measurement Results</h4>
+                    <p style="color: var(--steel); font-size: 14px;">Detailed positioning accuracy, repeatability, and
+                        geometric errors.</p>
                 </div>
-<div style="margin-bottom: 20px;">
-<strong style="display:block; margin-bottom:4px; font-size:13px; color:#AAB6C9;">Phone</strong>
-                    +91 44 4567 8900
+                <div style="background: #fff; padding: 24px; border: 1px solid var(--line);">
+                    <h4 style="margin-bottom: 12px; font-size: 16px;">Graphical Results</h4>
+                    <p style="color: var(--steel); font-size: 14px;">Visual representation of error analysis and
+                        rotary-axis results.</p>
                 </div>
-<div style="margin-bottom: 20px;">
-<strong style="display:block; margin-bottom:4px; font-size:13px; color:#AAB6C9;">Email</strong>
-                    info@hexacoreprecision.com
+                <div style="background: #fff; padding: 24px; border: 1px solid var(--line);">
+                    <h4 style="margin-bottom: 12px; font-size: 16px;">Actionable Advice</h4>
+                    <p style="color: var(--steel); font-size: 14px;">Corrective recommendations and official calibration
+                        records.</p>
                 </div>
-</div>
-</div>
-</div>
-</section>
-<footer class="site-footer" id="footer-5"></footer>
-</div>
-<script>
+            </div>
+        </section>
+        <footer class="site-footer" id="footer-4"></footer>
+    </div>
+    <!-- ======================================================= -->
+    <!-- PAGE 5 — CONTACT -->
+    <!-- ======================================================= -->
+    <div class="page" id="page5">
+        <div class="screen-tag">hexacore.com / contact</div>
+        <header class="site-header">
+            <div class="brand">
+                <img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo" onclick="showPage(1)">
+                <nav class="main-nav">
+                    <a onclick="showPage(1)">Home</a>
+                    <a onclick="showPage(2)">About Us</a>
+                    <a onclick="showPage(3)">Products</a>
+                    <a onclick="showPage(4)">Services &amp; Support</a>
+                    <a class="current" onclick="showPage(5)">Contact</a>
+                </nav>
+                <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <a onclick="showPage(1);closeMobileNav()">Home</a>
+                <a onclick="showPage(2);closeMobileNav()">About Us</a>
+                <a onclick="showPage(3);closeMobileNav()">Products</a>
+                <a onclick="showPage(4);closeMobileNav()">Services &amp; Support</a>
+                <a class="current" onclick="showPage(5);closeMobileNav()">Contact</a>
+            </nav>
+        </header>
+        <section class="section">
+            <div class="section-head">
+                <div class="tag">Get In Touch</div>
+                <h2 class="t-h2">Contact Hexacore Precision Technologies</h2>
+            </div>
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px;">
+                <!-- Contact Form -->
+                <div class="contact-form"
+                    style="background: var(--grey-l); padding: 40px; border: 1px solid var(--line); border-radius: 4px;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="field"><label
+                                style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Name</label><input
+                                id="cf-name" placeholder="Your name"
+                                style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
+                        <div class="field"><label
+                                style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Company</label><input
+                                id="cf-company" placeholder="Company name"
+                                style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="field"><label
+                                style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Phone</label><input
+                                id="cf-phone" placeholder="Phone number"
+                                style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
+                        <div class="field"><label
+                                style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Email</label><input
+                                id="cf-email" placeholder="Email address"
+                                style="width:100%; padding:12px; border:1px solid #ccc;" type="email" /></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="field"><label
+                                style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine
+                                Type</label><input id="cf-mtype" placeholder="e.g. VMC, CNC Lathe"
+                                style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
+                        <div class="field"><label
+                                style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine
+                                Make</label><input id="cf-mmake" placeholder="e.g. Haas, Mazak"
+                                style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="field"><label
+                                style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine
+                                Model</label><input id="cf-mmodel" placeholder="Model number"
+                                style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
+                        <div class="field"><label
+                                style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Controller</label><input
+                                id="cf-ctrl" placeholder="e.g. Fanuc, Siemens"
+                                style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+                        <div class="field">
+                            <label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Service
+                                Required</label>
+                            <select id="cf-service" style="width:100%; padding:12px; border:1px solid #ccc;">
+                                <option>Linear Laser Calibration</option>
+                                <option>Ballbar Test</option>
+                                <option>Rotary Axis Calibration</option>
+                                <option>Off-Axis Rotary Calibration</option>
+                                <option>Axis Straightness Testing</option>
+                                <option>Squareness Testing</option>
+                                <option>Machine Leveling</option>
+                                <option>Servo Tuning</option>
+                                <option>Software Troubleshooting</option>
+                                <option>Ballscrew Support</option>
+                                <option>Preventive Maintenance</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                        <div class="field"><label
+                                style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Location</label><input
+                                id="cf-location" placeholder="City, State"
+                                style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
+                    </div>
+                    <div class="field" style="margin-bottom: 24px;">
+                        <label
+                            style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Message</label>
+                        <textarea id="cf-message" placeholder="Provide any additional details..."
+                            style="width:100%; padding:12px; border:1px solid #ccc; height:120px;"></textarea>
+                    </div>
+                    <div id="cf-status"
+                        style="display:none; margin-bottom:16px; padding:12px; font-size:14px; border-radius:4px;">
+                    </div>
+                    <button class="btn btn-orange" id="cf-submit" onclick="submitContact()"
+                        style="border:none; width: 100%; justify-content: center; font-size: 15px; cursor: pointer;">Send
+                        Enquiry</button>
+                </div>
+                <!-- Contact Info -->
+                <div>
+                    <div style="background: var(--navy); color: #fff; padding: 40px; border-radius: 4px;">
+                        <h3 style="color: var(--orange); margin-bottom: 24px; text-transform: uppercase;">Reach Us</h3>
+                        <div style="margin-bottom: 20px;">
+                            <strong
+                                style="display:block; margin-bottom:4px; font-size:13px; color:#AAB6C9;">Address</strong>
+                            Plot 14, Precision Industrial Park,<br />Ambattur, Chennai – 600058
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <strong
+                                style="display:block; margin-bottom:4px; font-size:13px; color:#AAB6C9;">Phone</strong>
+                            +91 44 4567 8900
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                            <strong
+                                style="display:block; margin-bottom:4px; font-size:13px; color:#AAB6C9;">Email</strong>
+                            info@hexacoreprecision.com
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="site-footer" id="footer-5"></footer>
+    </div>
+    <script>
         const footerHTML = `
 <div class="footer-grid">
   <div>
-    <div class="brand" style="margin-bottom:16px;"><div class="hex-mark">HX</div><div class="brand-text"><div class="name">HEXACORE</div><div class="sub">Precision Technologies</div></div></div>
+    <div style="margin-bottom:16px;"><img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" style="height:56px;width:auto;filter:drop-shadow(0 2px 8px rgba(244,123,32,0.3));"></div>
     <p>Precision Engineering. Reliable Performance.</p>
   </div>
   <div><h5>Quick Links</h5><ul>
@@ -2031,16 +2784,33 @@
   </ul></div>
 </div>
 <div class="footer-bottom">
-  <div>© 2026 Hexacore Precision Technologies. All rights reserved.</div>
-  <div>Precision Engineered. Reliable Performance.</div>
+  <div>© 2026 Hexacore Precision Technologies. All rights reserved. &nbsp;|&nbsp; Powered by <span style="color:var(--orange);font-weight:600;">Promote.X</span></div>
 </div>`;
         document.querySelectorAll('.site-footer').forEach(f => f.innerHTML = footerHTML);
 
         const tabs = document.querySelectorAll('.proto-tabs button');
+
+        // ── Hamburger menu ───────────────────────────
+        function toggleMobileNav(btn) {
+            btn.classList.toggle('open');
+            const nav = btn.closest('header').querySelector('.mobile-nav');
+            if (nav) nav.classList.toggle('open');
+        }
+
+        function closeMobileNav() {
+            document.querySelectorAll('.hamburger.open').forEach(btn => {
+                btn.classList.remove('open');
+            });
+            document.querySelectorAll('.mobile-nav.open').forEach(nav => {
+                nav.classList.remove('open');
+            });
+        }
+
         function showPage(n) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page' + n).classList.add('active');
             tabs.forEach(t => t.classList.toggle('active', t.dataset.p == n));
+            closeMobileNav();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         tabs.forEach(t => t.addEventListener('click', () => showPage(t.dataset.p)));
@@ -2051,7 +2821,7 @@
         // Load products dynamically
         async function loadProductsFromAPI() {
             try {
-                const res  = await fetch(API_BASE + '/api/products');
+                const res = await fetch(API_BASE + '/api/products');
                 const data = await res.json();
                 if (!Array.isArray(data) || !data.length) return;
                 const grids = document.querySelectorAll('.product-grid');
@@ -2080,7 +2850,7 @@
         // Load services dynamically
         async function loadServicesFromAPI() {
             try {
-                const res  = await fetch(API_BASE + '/api/services');
+                const res = await fetch(API_BASE + '/api/services');
                 const data = await res.json();
                 if (!Array.isArray(data) || !data.length) return;
                 const grids = document.querySelectorAll('.svc-grid');
@@ -2095,18 +2865,18 @@
         }
 
         // Contact form submission
-        
+
         async function submitContact() {
-            const btn  = document.getElementById('cf-submit');
+            const btn = document.getElementById('cf-submit');
             const stat = document.getElementById('cf-status');
-            
+
             // Gather base fields
             const name = document.getElementById('cf-name').value.trim();
             const company = document.getElementById('cf-company').value.trim();
             const phone = document.getElementById('cf-phone').value.trim();
             const email = document.getElementById('cf-email').value.trim();
             const serviceReq = document.getElementById('cf-service').value;
-            
+
             // Gather new extra fields
             const mType = document.getElementById('cf-mtype').value.trim();
             const mMake = document.getElementById('cf-mmake').value.trim();
@@ -2114,12 +2884,12 @@
             const ctrl = document.getElementById('cf-ctrl').value.trim();
             const loc = document.getElementById('cf-location').value.trim();
             const rawMsg = document.getElementById('cf-message').value.trim();
-            
+
             if (!name || !email) {
                 showStatus(stat, 'Please fill in your name and email.', '#ef4444');
                 return;
             }
-            
+
             // Concatenate extra fields into the message body so we don't break the DB schema
             let formattedMessage = rawMsg;
             formattedMessage += "\\n\\n--- Technical Details ---";
@@ -2129,7 +2899,7 @@
             if (ctrl) formattedMessage += "\\nController: " + ctrl;
             if (loc) formattedMessage += "\\nLocation: " + loc;
             if (serviceReq) formattedMessage += "\\nService Required: " + serviceReq;
-            
+
             const body = {
                 name: name,
                 company: company,
@@ -2138,15 +2908,15 @@
                 subject: serviceReq, // maps to subject in backend
                 message: formattedMessage
             };
-            
+
             btn.textContent = 'Sending...';
             btn.style.pointerEvents = 'none';
             try {
-                const res  = await fetch(API_BASE + '/api/contacts', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(body) });
+                const res = await fetch(API_BASE + '/api/contacts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
                 const data = await res.json();
                 if (res.ok) {
                     showStatus(stat, 'Thank you for contacting Hexacore Precision Technologies. Our team will review your requirement and get back to you shortly.', '#22c55e');
-                    ['cf-name','cf-company','cf-phone','cf-email','cf-mtype','cf-mmake','cf-mmodel','cf-ctrl','cf-location','cf-message'].forEach(id => {
+                    ['cf-name', 'cf-company', 'cf-phone', 'cf-email', 'cf-mtype', 'cf-mmake', 'cf-mmodel', 'cf-ctrl', 'cf-location', 'cf-message'].forEach(id => {
                         let el = document.getElementById(id);
                         if (el) el.value = '';
                     });
@@ -2164,14 +2934,14 @@
 
         // Newsletter subscription
         async function subscribeNewsletter() {
-            const btn  = document.getElementById('nl-btn');
+            const btn = document.getElementById('nl-btn');
             const stat = document.getElementById('nl-status');
             const email = document.getElementById('nl-email').value.trim();
             if (!email) return;
             btn.textContent = 'Subscribing...';
             btn.disabled = true;
             try {
-                const res  = await fetch(API_BASE + '/api/newsletter', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ email }) });
+                const res = await fetch(API_BASE + '/api/newsletter', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
                 const data = await res.json();
                 if (res.ok) {
                     stat.style.color = '#22c55e';
@@ -2190,15 +2960,15 @@
         }
 
         function showStatus(el, msg, color) {
-            el.style.display   = 'block';
+            el.style.display = 'block';
             el.style.background = color + '18';
-            el.style.border     = '1px solid ' + color + '44';
-            el.style.color      = color;
-            el.textContent      = msg;
+            el.style.border = '1px solid ' + color + '44';
+            el.style.color = color;
+            el.textContent = msg;
         }
 
         function escHtml(s) {
-            return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+            return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
         }
 
         // Fetch from API on load
@@ -2206,4 +2976,5 @@
         loadServicesFromAPI();
     </script>
 </body>
+
 </html>
