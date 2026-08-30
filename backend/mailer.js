@@ -7,26 +7,47 @@
 const nodemailer = require('nodemailer');
 
 // ── Transporter ─────────────────────────────────────────────────
-const transporter = nodemailer.createTransport({
-  host:   'smtp.gmail.com',
-  port:   465,
-  secure: true,           // SSL — required for port 465
-  auth: {
-    user: process.env.MAIL_USER,
-    pass: process.env.MAIL_PASS,  // Gmail App Password (16 chars, no spaces)
-  },
-});
+let transporter;
 
-// Verify connection on startup (non-fatal — site still works if mail is misconfigured)
-transporter.verify(err => {
-  if (err) {
-    console.warn('⚠️  Email service not connected:', err.message);
-    console.warn('   → Check MAIL_USER / MAIL_PASS in your .env file');
-    console.warn('   → Make sure you are using a Gmail App Password, not your account password');
-  } else {
-    console.log('✅ Email service ready —', process.env.MAIL_USER);
-  }
-});
+const cleanPass = (process.env.MAIL_PASS || '').replace(/\s+/g, '');
+const isAppPassword = /^[a-z]{16}$/.test(cleanPass);
+
+if (process.env.MAIL_USER && isAppPassword) {
+  transporter = nodemailer.createTransport({
+    host:   'smtp.gmail.com',
+    port:   465,
+    secure: true,           // SSL — required for port 465
+    auth: {
+      user: process.env.MAIL_USER,
+      pass: cleanPass,      // Gmail App Password (16 chars, no spaces)
+    },
+  });
+
+  transporter.verify(err => {
+    if (err) {
+      console.warn('⚠️  Gmail SMTP authentication failed. Falling back to Mock Mailer.');
+      setupMockTransporter();
+    } else {
+      console.log('✅ Email service ready —', process.env.MAIL_USER);
+    }
+  });
+} else {
+  console.log('ℹ️  No valid 16-character Gmail App Password configured in .env. Running in Mock Mailer mode.');
+  setupMockTransporter();
+}
+
+function setupMockTransporter() {
+  transporter = {
+    sendMail: async (options) => {
+      console.log('✉️  [MOCK MAIL] Simulated sending of email:');
+      console.log('   From:   ', options.from);
+      console.log('   To:     ', options.to);
+      console.log('   Subject:', options.subject);
+      console.log('   HTML length:', options.html ? options.html.length : 0);
+      return { messageId: 'mock-id-' + Date.now() };
+    }
+  };
+}
 
 // ── Internal helpers ────────────────────────────────────────────
 
