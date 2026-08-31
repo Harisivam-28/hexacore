@@ -1,5 +1,5 @@
 # ── git / version control ───────────────────────────────────────
-.env
+
 node_modules/
 *.db
 *.log
