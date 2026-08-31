@@ -14,12 +14,12 @@ const isAppPassword = /^[a-z]{16}$/.test(cleanPass);
 
 if (process.env.MAIL_USER && isAppPassword) {
   transporter = nodemailer.createTransport({
-    host:   'smtp.gmail.com',
-    port:   465,
+    host: 'smtp.gmail.com',
+    port: 465,
     secure: true,           // SSL — required for port 465
     auth: {
       user: process.env.MAIL_USER,
-      pass: cleanPass,      // Gmail App Password (16 chars, no spaces)
+      pass: process.env.MAIL_PASS,      // Gmail App Password (16 chars, no spaces)
     },
   });
 
@@ -155,10 +155,10 @@ async function sendContactNotification({ name, company, email, phone, subject, m
   `);
 
   return transporter.sendMail({
-    from:     `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
-    to:       process.env.COMPANY_EMAIL,
-    replyTo:  email,
-    subject:  `[Contact] ${subject || 'New Enquiry'} — ${name}`,
+    from: `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
+    to: process.env.COMPANY_EMAIL,
+    replyTo: email,
+    subject: `[Contact] ${subject || 'New Enquiry'} — ${name}`,
     html,
   });
 }
@@ -193,8 +193,8 @@ async function sendContactConfirmation({ name, email, subject, message }) {
   `);
 
   return transporter.sendMail({
-    from:    `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
-    to:      email,
+    from: `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
+    to: email,
     subject: `We received your message — Hexacore Precision Technologies`,
     html,
   });
@@ -244,8 +244,8 @@ async function sendQuoteNotification({ name, company, email, phone, subject, mes
   `);
 
   return transporter.sendMail({
-    from:    `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
-    to:      process.env.COMPANY_EMAIL,
+    from: `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
+    to: process.env.COMPANY_EMAIL,
     replyTo: email,
     subject: `[Quote] ${subject || 'New Request'} — ${company || name}`,
     html,
@@ -273,8 +273,8 @@ async function sendQuoteConfirmation({ name, email }) {
   `);
 
   return transporter.sendMail({
-    from:    `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
-    to:      email,
+    from: `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
+    to: email,
     subject: `Your quote request — Hexacore Precision Technologies`,
     html,
   });
