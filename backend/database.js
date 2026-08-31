@@ -107,11 +107,18 @@ async function init() {
   };
 
   // ── Seed Admin ─────────────────────────────────────────────────
-  const existing = db.queryOne('SELECT id FROM admins WHERE username = ?', ['admin']);
-  if (!existing) {
-    const hash = bcrypt.hashSync('hexacore2026', 10);
-    db.exec2('INSERT INTO admins (username, password) VALUES (?, ?)', ['admin', hash]);
-    console.log('✅ Default admin created — username: admin | password: hexacore2026');
+  const adminUser = process.env.ADMIN_USER || 'admin';
+  const adminPass = process.env.ADMIN_PASS || 'hexacore2026';
+  const hash = bcrypt.hashSync(adminPass, 10);
+
+  const adminCount = db.queryOne('SELECT COUNT(*) AS c FROM admins').c;
+  if (adminCount === 0) {
+    db.exec2('INSERT INTO admins (username, password) VALUES (?, ?)', [adminUser, hash]);
+    console.log(`✅ Default admin created — username: ${adminUser} | password: ${adminPass}`);
+  } else {
+    const firstAdminId = db.queryOne('SELECT id FROM admins LIMIT 1').id;
+    db.exec2('UPDATE admins SET username = ?, password = ? WHERE id = ?', [adminUser, hash, firstAdminId]);
+    console.log(`✅ Admin credentials synchronized — username: ${adminUser}`);
   }
 
   // ── Seed Products ──────────────────────────────────────────────

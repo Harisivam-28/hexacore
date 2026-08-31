@@ -39,7 +39,7 @@ new_footer = """
     <li><a onclick="showPage(4)">Laser Calibration</a></li><li><a onclick="showPage(4)">Ballbar Testing</a></li><li><a onclick="showPage(4)">Rotary Axis Calibration</a></li><li><a onclick="showPage(4)">Machine Diagnostics</a></li><li><a onclick="showPage(4)">Geometric Accuracy Testing</a></li><li><a onclick="showPage(4)">Preventive Maintenance</a></li>
   </ul></div>
   <div><h5>Contact</h5><ul>
-    <li>Plot 14, Precision Industrial Park, Chennai – 600058</li><li>+91 44 4567 8900</li><li>info@hexacoreprecision.com</li>
+    <li>No. 1190/1, FD 211, 4th Floor, HSR Layout, Sector 3, 22nd Cross Road, Bengaluru – 560102</li><li>+91 44 4567 8900</li><li>info@hexacoreprecision.com</li>
   </ul></div>
 </div>
 <div class="footer-bottom">

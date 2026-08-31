@@ -388,7 +388,7 @@
 <div id="" class="ico">
 <div id="" class="t">
   Address
-  Plot 14, Precision Industrial Park, Ambattur, Chennai – 6000...
+  No. 1190/1, FD 211, 4th Floor, HSR Layout, Sector 3, 22nd Cross Road, Bengaluru – 560102
 <div id="" class="info-row">
 <div id="" class="ico">
 <div id="" class="t">

@@ -468,7 +468,7 @@ page5.append(bs4.BeautifulSoup('''
                 <h3 style="color: var(--orange); margin-bottom: 24px; text-transform: uppercase;">Reach Us</h3>
                 <div style="margin-bottom: 20px;">
                     <strong style="display:block; margin-bottom:4px; font-size:13px; color:#AAB6C9;">Address</strong>
-                    Plot 14, Precision Industrial Park,<br>Ambattur, Chennai – 600058
+                    No. 1190/1, FD 211, 4th Floor,<br>HSR Layout, Sector 3, 22nd Cross Road,<br>Bengaluru – 560102
                 </div>
                 <div style="margin-bottom: 20px;">
                     <strong style="display:block; margin-bottom:4px; font-size:13px; color:#AAB6C9;">Phone</strong>
