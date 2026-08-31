@@ -15,7 +15,7 @@ const isAppPassword = /^[a-z]{16}$/.test(cleanPass);
 if (process.env.MAIL_USER && isAppPassword) {
   transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 465,
+    port: 587,
     secure: true,           // SSL — required for port 465
     auth: {
       user: process.env.MAIL_USER,
