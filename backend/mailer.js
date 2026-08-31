@@ -15,7 +15,7 @@ const isAppPassword = /^[a-z]{16}$/.test(cleanPass);
 if (process.env.MAIL_USER && isAppPassword) {
   transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
-    port: 587,
+    port: 465,
     secure: true,           // SSL — required for port 465
     auth: {
       user: process.env.MAIL_USER,
@@ -25,7 +25,8 @@ if (process.env.MAIL_USER && isAppPassword) {
 
   transporter.verify(err => {
     if (err) {
-      console.warn('⚠️  Gmail SMTP authentication failed. Falling back to Mock Mailer.');
+      console.warn('⚠️  Gmail SMTP authentication failed:', err.message);
+      console.warn('ℹ️  Falling back to Mock Mailer.');
       setupMockTransporter();
     } else {
       console.log('✅ Email service ready —', process.env.MAIL_USER);
