@@ -19,7 +19,7 @@ if (process.env.MAIL_USER && isAppPassword) {
     secure: true,           // SSL — required for port 465
     auth: {
       user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS,      // Gmail App Password (16 chars, no spaces)
+      pass: cleanPass,      // Gmail App Password (16 chars, no spaces)
     },
   });
 
