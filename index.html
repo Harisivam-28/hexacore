@@ -1480,6 +1480,57 @@
             letter-spacing: .06em;
         }
 
+        /* Industry cards with mild background images */
+        .ind-card {
+            position: relative;
+            border-left: 4px solid var(--orange);
+            padding: 28px 22px;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 6px;
+            overflow: hidden;
+            min-height: 130px;
+            display: flex;
+            align-items: flex-end;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+            cursor: default;
+        }
+
+        .ind-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(7, 18, 38, 0.58) 0%, rgba(15, 23, 42, 0.68) 100%);
+            transition: background 0.3s ease;
+            z-index: 1;
+        }
+
+        .ind-card:hover::before {
+            background: linear-gradient(135deg, rgba(7, 18, 38, 0.38) 0%, rgba(15, 23, 42, 0.52) 100%);
+        }
+
+        .ind-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.55);
+            border-left-color: #FF7D1A;
+        }
+
+        .ind-card span, .ind-card-text {
+            position: relative;
+            z-index: 2;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 1.35;
+            color: #FFFFFF;
+            letter-spacing: 0.3px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95);
+        }
+
         .divider-row {
             display: flex;
             align-items: center;
@@ -2456,30 +2507,30 @@
                 </p>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-                <div class="ind-card"
-                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
-                    Automotive</div>
-                <div class="ind-card"
-                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
-                    Aerospace</div>
-                <div class="ind-card"
-                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
-                    Heavy Engineering</div>
-                <div class="ind-card"
-                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
-                    Precision Manufacturing</div>
-                <div class="ind-card"
-                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
-                    Machine Tools</div>
-                <div class="ind-card"
-                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
-                    General Engineering</div>
-                <div class="ind-card"
-                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">CNC
-                    Manufacturing</div>
-                <div class="ind-card"
-                    style="border-left: 2px solid var(--orange); padding: 16px; background: rgba(255,255,255,0.05);">
-                    Industrial Production</div>
+                <div class="ind-card" style="background-image: url('images/industries/automotive.png');">
+                    <span class="ind-card-text">Automotive</span>
+                </div>
+                <div class="ind-card" style="background-image: url('images/industries/aerospace.png');">
+                    <span class="ind-card-text">Aerospace</span>
+                </div>
+                <div class="ind-card" style="background-image: url('images/industries/heavy_engineering.png');">
+                    <span class="ind-card-text">Heavy Engineering</span>
+                </div>
+                <div class="ind-card" style="background-image: url('images/industries/precision_manufacturing.png');">
+                    <span class="ind-card-text">Precision Manufacturing</span>
+                </div>
+                <div class="ind-card" style="background-image: url('images/industries/machine_tools.png');">
+                    <span class="ind-card-text">Machine Tools</span>
+                </div>
+                <div class="ind-card" style="background-image: url('images/industries/general_engineering.png');">
+                    <span class="ind-card-text">General Engineering</span>
+                </div>
+                <div class="ind-card" style="background-image: url('images/industries/cnc_manufacturing.png');">
+                    <span class="ind-card-text">CNC Manufacturing</span>
+                </div>
+                <div class="ind-card" style="background-image: url('images/industries/industrial_production.png');">
+                    <span class="ind-card-text">Industrial Production</span>
+                </div>
             </div>
         </section>
         <!-- 6. WHY CHOOSE HEXACORE -->
