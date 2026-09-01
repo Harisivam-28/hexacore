@@ -15,21 +15,21 @@ router.get('/all', requireAuth, (req, res) => {
 
 // POST /api/products — Admin
 router.post('/', requireAuth, (req, res) => {
-  const { name, category, description, tolerance } = req.body;
+  const { name, category, description, tolerance, image } = req.body;
   if (!name) return res.status(400).json({ error: 'Product name is required' });
   const result = getDb().exec2(
-    'INSERT INTO products (name, category, description, tolerance) VALUES (?, ?, ?, ?)',
-    [name, category || '', description || '', tolerance || '']
+    'INSERT INTO products (name, category, description, tolerance, image) VALUES (?, ?, ?, ?, ?)',
+    [name, category || '', description || '', tolerance || '', image || '']
   );
   res.status(201).json({ success: true, id: result.lastInsertRowid });
 });
 
 // PUT /api/products/:id — Admin
 router.put('/:id', requireAuth, (req, res) => {
-  const { name, category, description, tolerance, active } = req.body;
+  const { name, category, description, tolerance, image, active } = req.body;
   getDb().exec2(
-    'UPDATE products SET name=?, category=?, description=?, tolerance=?, active=? WHERE id=?',
-    [name, category, description, tolerance, active ?? 1, req.params.id]
+    'UPDATE products SET name=?, category=?, description=?, tolerance=?, image=?, active=? WHERE id=?',
+    [name, category, description, tolerance, image || '', active ?? 1, req.params.id]
   );
   res.json({ success: true });
 });

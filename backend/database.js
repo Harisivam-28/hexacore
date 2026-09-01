@@ -65,6 +65,7 @@ async function init() {
       category    TEXT,
       description TEXT,
       tolerance   TEXT,
+      image       TEXT,
       active      INTEGER DEFAULT 1,
       created_at  TEXT DEFAULT (datetime('now'))
     );
@@ -73,10 +74,23 @@ async function init() {
       number      TEXT,
       title       TEXT NOT NULL,
       description TEXT,
+      specs       TEXT,
+      image       TEXT,
       active      INTEGER DEFAULT 1,
       created_at  TEXT DEFAULT (datetime('now'))
     );
   `);
+
+  // Ensure image column exists in products
+  try {
+    db.exec('ALTER TABLE products ADD COLUMN image TEXT;');
+  } catch (e) {
+    // Column already exists
+  }
+
+  // Ensure specs & image columns exist in services
+  try { db.exec('ALTER TABLE services ADD COLUMN specs TEXT;'); } catch (e) {}
+  try { db.exec('ALTER TABLE services ADD COLUMN image TEXT;'); } catch (e) {}
 
   // ── Helpers ────────────────────────────────────────────────────
   // Return all rows from a SELECT as array of objects
@@ -122,44 +136,78 @@ async function init() {
   }
 
   // ── Seed Products ──────────────────────────────────────────────
-  const pc = db.queryOne('SELECT COUNT(*) AS c FROM products').c;
-  if (!pc) {
-    const seeds = [
-      ['Precision Measurement Equipment', 'Technology', 'Advanced metrology equipment for reliable performance diagnostics.', 'High Precision'],
-      ['Laser Measurement Technology', 'Technology', 'Laser interferometer systems for positioning accuracy verification.', 'Sub-micron'],
-      ['Machine Calibration Technology', 'Technology', 'Calibration tools to align and restore original machine tolerances.', 'ISO/VDI Standard'],
-      ['CNC Measurement Solutions', 'Technology', 'Integrated measurement systems for automated CNC quality control.', 'Dynamic'],
-      ['Machine Diagnostic Technology', 'Technology', 'Diagnostic systems identifying kinematic and geometric machine errors.', 'Advanced'],
-      ['Precision Engineering Solutions', 'Solutions', 'Custom engineering and technical support for complex machining challenges.', 'Custom Spec']
-    ];
-    seeds.forEach(([name, category, description, tolerance]) => {
-      db.exec2('INSERT INTO products (name, category, description, tolerance) VALUES (?, ?, ?, ?)', [name, category, description, tolerance]);
-    });
-    console.log('✅ Products seeded');
-  }
+  const pdfProducts = [
+    // PDF 1: Gauges & Fixtures
+    ['Plain Plug Gauge', 'Plain & Setting Gauges', 'Plain Plug Gauges to relevant I.S., B.S. and DIN standards based on customer requests from 5-100mm diameter. Specialized non-standard designs such as extra lengths, multiple diameters, air grooves, pilots, depth steps and relieved NO-GO ends.', 'IS:3455 (5-100mm)', 'images/products/plain_plug_gauge.png'],
+    ['OD Master', 'Plain & Setting Gauges', 'OD Master supplied as per Standard and Customer Design. Used in comparison measurement methods to set zero value on measuring instruments.', 'Custom / Standard', 'images/products/od_master.png'],
+    ['Master Setting Ring / Go-NoGo Ring Gauges', 'Plain & Setting Gauges', 'Setting Rings and plain Go/NoGo Rings according to I.S.3455-1971 gauging practice. Made of high grade En31 steel for high durability.', 'En31 (10-200mm)', 'images/products/master_setting_ring.png'],
+    ['Thread Gauges', 'Thread Gauges', 'Wide variety of precision thread plug and ring gauges suitable for popularly used thread forms including Metric and Unified pitch standards.', 'Metric / Unified', 'images/products/thread_gauges.png'],
+    ['Width Gauge', 'Special Gauges', 'KeyWay Width Gauges widely used in automobile industry for checking groove width according to IS design or custom drawings.', 'Range: 3.00-100.0mm', 'images/products/width_gauge.png'],
+    ['Fixed Snap Gauge', 'Snap Gauges', 'Used for checking outer diameters, flange widths, and groove diameters. Made of subzero treated steel with 60±2HRC hardness.', 'IS:3455 (60±2HRC)', 'images/products/fixed_snap_gauge.png'],
+    ['Knurling Height Master', 'Height Masters', 'Cylindrical height master (Dia 30.000mm Knurled & Black oxidized) used to set height gauges and dial gauges to exact dimensions with close tolerances.', 'Range: 10-150mm', 'images/products/knurling_height_master.png'],
+    ['Plate / Paddle Gauge', 'Plain & Setting Gauges', 'Lightweight plate/paddle gauge designed to check internal diameters from 80mm to 500mm, reducing weight and cost over complete disc gauges.', 'Range: 80-500mm ID', 'images/products/plate_paddle_gauge.png'],
+    ['Air Snap Gauge', 'Air Gauges', 'Precision air snap gauge with hardened rectangular steel body and carbide resting pads on V-surface. Two-jetted design for shaft size, taper & ovality measurement.', 'Range: 25-100mm', 'images/products/air_snap_gauge.png'],
+    ['Air Plug Gauge', 'Air Gauges', 'Self-cleaning air plug gauge for internal bore measurement. Two-jetted design for checking size, taper and ovality in through or blind bores.', 'Range: 5-100mm', 'images/products/air_plug_gauge.png'],
+    ['Flush Pin Gauge', 'Depth Gauges', 'Flush Pin / Step Pin Gauge for GO/NOGO depth evaluation of holes, counterbores, and step depths with ground precision tolerance steps.', 'GO/NOGO Step Depth', 'images/products/flush_pin_gauge.png'],
+    ['PCD Gauge', 'Fixtures & Gauges', 'Pitch Circle Diameter checking gauge for accurate measurement of bolt circle diameters in flanges, wheels, and gears for automotive and aerospace components.', 'High Precision PCD', 'images/products/pcd_gauge.png'],
+    ['Receiving / Relation Gauge', 'Fixtures & Gauges', 'Custom relation/receiving gauge used for contour and size inspection of male parts without requiring a coordinate measuring system (CMM).', 'Custom Inspection Fixture', 'images/products/receiving_relation_gauge.png'],
+    
+    // PDF 2: Air Units & Precision Equipment
+    ['Single Channel Air Electronic Unit', 'Air Electronic Units', 'Single Channel Air Electronic Unit with 1/2" Auto Drain Filters, Digital Piezo Transducer, 6-character tri-color LED display, program storage for 10-16 programs, USB & online SPC.', 'Res: 0.0001mm / 0.1 thou', 'images/products/air_electronic_unit_single.png'],
+    ['Multi-Channel Air Electronic Unit', 'Air Electronic Units', 'Two to Eight Channel Air Electronic Unit for static or dynamic measurements (Max, Min, Avg, TIR) with ovality key, auto-correction, USB data logging and SPC connectivity.', '2 to 8 Channel (0.0001mm)', 'images/products/air_electronic_unit_multi.png'],
+    ['Air Electronic Column Unit', 'Air Electronic Units', 'Air Electronic Column Unit featuring a high-visibility Tri-Color LED Bar Indicator and 6-character display, operating 0.80 to 2.0mm air jets with wrong master calibration alerts.', 'Tri-Color Bar Display', 'images/products/air_electronic_column_unit.png'],
+    ['Special Filter (SS Air Dryer)', 'Air Accessories', 'Stainless Steel Air Dryer with Auto Drain Filter. Protects pneumatic metrology units from moisture and nano-particles to increase durability in harsh environments.', 'SS Auto Drain Filter', 'images/products/special_filter.png'],
+    ['SPC Air Unit (S-Touch)', 'Air Electronic Units', 'Touchscreen SPC Air Unit with 7" TFT display (800x480 resolution), Piezo sensors, 2/4/8 outputs, real-time clock, SD RAM, and USB data logging.', '7" Touchscreen (800x480)', 'images/products/spc_air_unit.png'],
+    ['2D & CMM Probes', 'Probes & Styli', 'High precision 2D and CMM styli, star probes, and pencil probes engineered for high repeatability in dimensional inspection and scanning.', 'Sub-micron Repeatability', 'images/products/cmm_probes.png'],
+    ['Vision Measuring System', 'Metrology Equipment', 'Optical 2D Vision Measuring System (ATQ METRO STD 3020) for high-accuracy non-contact measurement of micro-components, circuit boards, and precision parts.', 'STD 3020 Optical', 'images/products/vision_measuring_system.png'],
+    ['2D Height Gauges', 'Metrology Equipment', 'Precision 1D/2D vertical height gauges (Trimos V Series - V3, V4, V5, V6) with motorized displacement, air cushion support, and high accuracy linear encoders.', 'Trimos V Series', 'images/products/height_gauge_2d.png'],
+    ['Coordinate Measuring Machine (CMM)', 'Metrology Equipment', 'High accuracy 3D Coordinate Measuring Machine (Global S / Bridge CMM) with multisensor probing for complex 3D surface and geometric dimensioning & tolerancing (GD&T).', '3D GD&T Inspection', 'images/products/cmm_machine.png']
+  ];
 
-  // ── Seed Services ──────────────────────────────────────────────
-  const sc = db.queryOne('SELECT COUNT(*) AS c FROM services').c;
-  if (!sc) {
-    const svcs = [
-      ['SVC / 01', 'Linear Laser Calibration', 'Precision measurement of machine-axis positioning accuracy using laser interferometer technology.'],
-      ['SVC / 02', 'Machine Health Diagnosis / Ballbar Testing', 'Assessment of CNC machine performance through circular interpolation testing and analysis.'],
-      ['SVC / 03', 'Rotary Axis Calibration', 'Measurement and calibration of rotary-axis positioning and indexing accuracy.'],
-      ['SVC / 04', 'Off-Axis Rotary Calibration', 'Evaluation of rotary-axis errors when operating away from the rotational centre line.'],
-      ['SVC / 05', 'Axis Straightness Testing', 'Measurement of linear deviations along the machine travel to identify geometric inaccuracies.'],
-      ['SVC / 06', 'Squareness Testing', 'Verification of perpendicularity between machine axes to maintain geometric accuracy.'],
-      ['SVC / 07', 'Machine Leveling & Relocation', 'Machine leveling, alignment and relocation support to help maintain geometric performance.'],
-      ['SVC / 08', 'Axis Servo Tuning', 'Technical assessment and tuning support for servo-related machine performance issues.'],
-      ['SVC / 09', 'LM Guideway Parallelism Checking', 'Inspection of guideway alignment and parallelism to identify potential geometric errors.'],
-      ['SVC / 10', 'Software Troubleshooting', 'Technical support for machine-control and software-related issues affecting machine performance.'],
-      ['SVC / 11', 'Ballscrew Replacement Support', 'Technical support for ballscrew replacement, alignment and related machine accuracy requirements.'],
-      ['SVC / 12', 'Preventive Maintenance', 'Planned maintenance and periodic calibration support designed to reduce unexpected machine problems and downtime.']
-    ];
-    svcs.forEach(([number, title, description]) => {
-      db.exec2('INSERT INTO services (number, title, description) VALUES (?, ?, ?)', [number, title, description]);
-    });
-    console.log('✅ Services seeded');
-  }
+  // Remove old generic seed products if present
+  db.exec2("DELETE FROM products WHERE name IN ('Precision Measurement Equipment', 'Laser Measurement Technology', 'Machine Calibration Technology', 'CNC Measurement Solutions', 'Machine Diagnostic Technology', 'Precision Engineering Solutions')");
+
+  // Sync products: insert missing products or update existing ones
+  pdfProducts.forEach(([name, category, description, tolerance, image]) => {
+    const existing = db.queryOne('SELECT id FROM products WHERE name = ?', [name]);
+    if (existing) {
+      db.exec2('UPDATE products SET category=?, description=?, tolerance=?, image=?, active=1 WHERE id=?', [category, description, tolerance, image, existing.id]);
+    } else {
+      db.exec2('INSERT INTO products (name, category, description, tolerance, image, active) VALUES (?, ?, ?, ?, ?, 1)', [name, category, description, tolerance, image]);
+    }
+  });
+  console.log('✅ PDF Products synchronized with database');
+
+  // ── Seed Services (Brochure Services) ─────────────────────────
+  const brochureServices = [
+    ['SVC / 01', 'Linear Laser Calibration', 'Ensures precise positioning accuracy of machine axes using laser interferometer systems.', 'Accuracy up to 0.005 ppm, positioning & repeatability analysis, pitch error compensation, ISO 230-2 compliant.', 'images/services/linear_laser_calibration.png'],
+    ['SVC / 02', 'Machine Health Diagnose (Ballbar Test)', 'Evaluates overall CNC performance by analyzing circular interpolation errors.', 'Detects backlash, servo mismatch, cyclic errors; 360° and 220° tests; quick diagnostic within minutes; ISO 230-4 standard.', 'images/services/machine_health_diagnose.png'],
+    ['SVC / 03', 'Rotary Axis Calibration', 'Calibrates rotary axes for accurate angular positioning and indexing.', 'Angular accuracy up to +1 arc-sec, indexing error mapping, encoder verification, improves 4th/5th axis performance.', 'images/services/rotary_axis_calibration.png'],
+    ['SVC / 04', 'Off-Axis Rotary Calibration', 'Measures rotary axis errors when positioned away from the center line.', 'Eccentricity and tilt error analysis, volumetric compensation support, critical for multi-axis machining accuracy.', 'images/services/off_axis_rotary_calibration.png'],
+    ['SVC / 05', 'Axis Straightness Testing', 'Checks linear deviations in axis movement along travel length.', 'Measurement in horizontal & vertical planes, micron-level accuracy, laser-based or electronic levels, ISO 230-1.', 'images/services/axis_straightness_testing.png'],
+    ['SVC / 06', 'Squareness Testing', 'Verifies perpendicularity between machine axes for geometric precision.', 'Laser or granite square methods, angular error measurement in microns/meter, improves part geometry accuracy.', 'images/services/squareness_testing.png'],
+    ['SVC / 07', 'Preventive Maintenance Contract', 'Scheduled maintenance to ensure consistent machine performance and reliability.', 'Periodic calibration check, lubrication inspection, alignment verification, customized service intervals, downtime reduction.', 'images/services/preventive_maintenance_contract.png']
+  ];
+
+  // Clean up any old services that don't match the 7 brochure service titles
+  const validTitles = brochureServices.map(s => s[1]);
+  const existingServices = db.query('SELECT id, title FROM services');
+  existingServices.forEach(s => {
+    if (!validTitles.includes(s.title)) {
+      db.exec2('DELETE FROM services WHERE id = ?', [s.id]);
+    }
+  });
+
+  // Sync services: insert or update
+  brochureServices.forEach(([number, title, description, specs, image]) => {
+    const existing = db.queryOne('SELECT id FROM services WHERE title = ?', [title]);
+    if (existing) {
+      db.exec2('UPDATE services SET number=?, description=?, specs=?, image=?, active=1 WHERE id=?', [number, description, specs, image, existing.id]);
+    } else {
+      db.exec2('INSERT INTO services (number, title, description, specs, image, active) VALUES (?, ?, ?, ?, ?, 1)', [number, title, description, specs, image]);
+    }
+  });
+  console.log('✅ Brochure Services synchronized with database');
 
   console.log('✅ Database ready');
   return db;

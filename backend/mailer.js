@@ -1,39 +1,45 @@
 /**
  * mailer.js — Hexacore Precision Technologies
- * Nodemailer transporter using Gmail SMTP.
- * Credentials are loaded from .env — never hard-coded.
+ * Nodemailer transporter supporting Hostinger / Custom Domain SMTP.
+ * Credentials and server settings are loaded from .env.
  */
 
 const nodemailer = require('nodemailer');
 
-// ── Transporter ─────────────────────────────────────────────────
+// ── Transporter Setup ───────────────────────────────────────────
 let transporter;
 
-const cleanPass = (process.env.MAIL_PASS || '').replace(/\s+/g, '');
-const isAppPassword = /^[a-z]{16}$/.test(cleanPass);
+const mailHost = process.env.MAIL_HOST || 'smtp.hostinger.com';
+const mailPort = parseInt(process.env.MAIL_PORT || '465', 10);
+const mailSecure = process.env.MAIL_SECURE !== undefined ? (process.env.MAIL_SECURE === 'true') : (mailPort === 465);
+const mailUser = process.env.MAIL_USER || '';
+const mailPass = process.env.MAIL_PASS || '';
 
-if (process.env.MAIL_USER && isAppPassword) {
+if (mailUser && mailPass) {
   transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    port: 465,
-    secure: true,           // SSL — required for port 465
+    host: mailHost,
+    port: mailPort,
+    secure: mailSecure, // true for port 465 (SSL), false for port 587 (TLS/STARTTLS)
     auth: {
-      user: process.env.MAIL_USER,
-      pass: cleanPass,      // Gmail App Password (16 chars, no spaces)
+      user: mailUser,
+      pass: mailPass,
     },
+    // Optional timeout settings for reliable delivery
+    connectionTimeout: 10000,
+    greetingTimeout: 10000,
   });
 
   transporter.verify(err => {
     if (err) {
-      console.warn('⚠️  Gmail SMTP authentication failed:', err.message);
-      console.warn('ℹ️  Falling back to Mock Mailer.');
+      console.warn(`⚠️  SMTP authentication failed for [${mailHost}:${mailPort}]:`, err.message);
+      console.warn('ℹ️  Falling back to Mock Mailer mode.');
       setupMockTransporter();
     } else {
-      console.log('✅ Email service ready —', process.env.MAIL_USER);
+      console.log(`✅ Email service ready — Connected to ${mailHost} as ${mailUser}`);
     }
   });
 } else {
-  console.log('ℹ️  No valid 16-character Gmail App Password configured in .env. Running in Mock Mailer mode.');
+  console.log('ℹ️  No MAIL_USER and MAIL_PASS configured in .env. Running in Mock Mailer mode.');
   setupMockTransporter();
 }
 

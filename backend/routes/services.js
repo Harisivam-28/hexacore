@@ -15,21 +15,21 @@ router.get('/all', requireAuth, (req, res) => {
 
 // POST /api/services — Admin
 router.post('/', requireAuth, (req, res) => {
-  const { number, title, description } = req.body;
+  const { number, title, description, specs, image } = req.body;
   if (!title) return res.status(400).json({ error: 'Service title is required' });
   const result = getDb().exec2(
-    'INSERT INTO services (number, title, description) VALUES (?, ?, ?)',
-    [number || '', title, description || '']
+    'INSERT INTO services (number, title, description, specs, image) VALUES (?, ?, ?, ?, ?)',
+    [number || '', title, description || '', specs || '', image || '']
   );
   res.status(201).json({ success: true, id: result.lastInsertRowid });
 });
 
 // PUT /api/services/:id — Admin
 router.put('/:id', requireAuth, (req, res) => {
-  const { number, title, description, active } = req.body;
+  const { number, title, description, specs, image, active } = req.body;
   getDb().exec2(
-    'UPDATE services SET number=?, title=?, description=?, active=? WHERE id=?',
-    [number, title, description, active ?? 1, req.params.id]
+    'UPDATE services SET number=?, title=?, description=?, specs=?, image=?, active=? WHERE id=?',
+    [number, title, description, specs || '', image || '', active ?? 1, req.params.id]
   );
   res.json({ success: true });
 });

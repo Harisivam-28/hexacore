@@ -351,8 +351,8 @@
           <button class="btn-action btn-add" onclick="openProductModal()">+ Add Product</button>
         </div>
         <table>
-          <thead><tr><th>#</th><th>Name</th><th>Category</th><th>Tolerance</th><th>Description</th><th>Active</th><th>Actions</th></tr></thead>
-          <tbody id="products-body"><tr><td colspan="7" class="empty-state">Loading...</td></tr></tbody>
+          <thead><tr><th>#</th><th>Image</th><th>Name</th><th>Category</th><th>Tolerance</th><th>Description</th><th>Active</th><th>Actions</th></tr></thead>
+          <tbody id="products-body"><tr><td colspan="8" class="empty-state">Loading...</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -365,8 +365,8 @@
           <button class="btn-action btn-add" onclick="openServiceModal()">+ Add Service</button>
         </div>
         <table>
-          <thead><tr><th>#</th><th>Code</th><th>Title</th><th>Description</th><th>Active</th><th>Actions</th></tr></thead>
-          <tbody id="services-body"><tr><td colspan="6" class="empty-state">Loading...</td></tr></tbody>
+          <thead><tr><th>#</th><th>Image</th><th>Code</th><th>Title</th><th>Specs / Attributes</th><th>Description</th><th>Active</th><th>Actions</th></tr></thead>
+          <tbody id="services-body"><tr><td colspan="8" class="empty-state">Loading...</td></tr></tbody>
         </table>
       </div>
     </div>
@@ -385,6 +385,8 @@
     <input class="f-input" id="product-cat" placeholder="e.g. CNC Precision Component">
     <label class="f-label">Tolerance / Spec</label>
     <input class="f-input" id="product-tol" placeholder="e.g. ±0.005mm">
+    <label class="f-label">Image Path</label>
+    <input class="f-input" id="product-img" placeholder="e.g. images/products/plain_plug_gauge.png">
     <label class="f-label">Description</label>
     <input class="f-input" id="product-desc" placeholder="Short description...">
     <label class="f-label">Active</label>
@@ -402,9 +404,13 @@
     <h3 id="service-modal-title">Add Service</h3>
     <input type="hidden" id="service-id">
     <label class="f-label">Service Code</label>
-    <input class="f-input" id="service-number" placeholder="e.g. SVC / 07">
+    <input class="f-input" id="service-number" placeholder="e.g. SVC / 01">
     <label class="f-label">Service Title *</label>
-    <input class="f-input" id="service-title" placeholder="e.g. Laser Calibration">
+    <input class="f-input" id="service-title" placeholder="e.g. Linear Laser Calibration">
+    <label class="f-label">Specs / Attributes</label>
+    <input class="f-input" id="service-specs" placeholder="e.g. Accuracy up to 0.005 ppm, ISO 230-2 compliant">
+    <label class="f-label">Image Path</label>
+    <input class="f-input" id="service-img" placeholder="e.g. images/services/linear_laser_calibration.png">
     <label class="f-label">Description</label>
     <input class="f-input" id="service-desc" placeholder="Short description...">
     <label class="f-label">Active</label>
@@ -710,10 +716,11 @@
   async function loadProducts() {
     const rows = await authFetch('/api/products/all').then(r => r.json());
     const tb = document.getElementById('products-body');
-    if (!rows.length) { tb.innerHTML = `<tr><td colspan="7"><div class="empty-state">No products yet.</div></td></tr>`; return; }
+    if (!rows.length) { tb.innerHTML = `<tr><td colspan="8"><div class="empty-state">No products yet.</div></td></tr>`; return; }
     tb.innerHTML = rows.map(r => `
       <tr>
         <td class="mono">#${r.id}</td>
+        <td>${r.image ? `<img src="../${esc(r.image)}" alt="${esc(r.name)}" style="width:48px;height:36px;object-fit:contain;background:#fff;border-radius:4px;border:1px solid var(--border);">` : '<span style="color:var(--muted);font-size:11px;">No image</span>'}</td>
         <td><strong style="color:var(--title)">${esc(r.name)}</strong></td>
         <td style="font-size:12px;">${esc(r.category)}</td>
         <td class="mono" style="color:var(--orange);font-size:11.5px;">${esc(r.tolerance)}</td>
@@ -737,11 +744,12 @@
         document.getElementById('product-name').value   = p.name;
         document.getElementById('product-cat').value    = p.category;
         document.getElementById('product-tol').value    = p.tolerance;
+        document.getElementById('product-img').value    = p.image || '';
         document.getElementById('product-desc').value   = p.description;
         document.getElementById('product-active').value = p.active;
       });
     } else {
-      ['product-name','product-cat','product-tol','product-desc'].forEach(id => document.getElementById(id).value = '');
+      ['product-name','product-cat','product-tol','product-img','product-desc'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('product-active').value = '1';
     }
     document.getElementById('product-modal').classList.add('open');
@@ -753,6 +761,7 @@
       name:        document.getElementById('product-name').value.trim(),
       category:    document.getElementById('product-cat').value.trim(),
       tolerance:   document.getElementById('product-tol').value.trim(),
+      image:       document.getElementById('product-img').value.trim(),
       description: document.getElementById('product-desc').value.trim(),
       active:      parseInt(document.getElementById('product-active').value),
     };
@@ -775,13 +784,15 @@
   async function loadServices() {
     const rows = await authFetch('/api/services/all').then(r => r.json());
     const tb = document.getElementById('services-body');
-    if (!rows.length) { tb.innerHTML = `<tr><td colspan="6"><div class="empty-state">No services yet.</div></td></tr>`; return; }
+    if (!rows.length) { tb.innerHTML = `<tr><td colspan="8"><div class="empty-state">No services yet.</div></td></tr>`; return; }
     tb.innerHTML = rows.map(r => `
       <tr>
         <td class="mono">#${r.id}</td>
+        <td>${r.image ? `<img src="/${r.image}" style="width:48px;height:36px;object-fit:cover;border-radius:4px;border:1px solid var(--border);" onerror="this.style.display='none'">` : '<span style="color:var(--muted)">No img</span>'}</td>
         <td class="mono" style="color:var(--orange);font-size:11px;">${esc(r.number)}</td>
         <td><strong style="color:var(--title)">${esc(r.title)}</strong></td>
-        <td style="font-size:12px;max-width:260px;">${esc(r.description)}</td>
+        <td style="font-size:11px;color:var(--orange);max-width:200px;">${esc(r.specs || '—')}</td>
+        <td style="font-size:12px;max-width:240px;">${esc(r.description)}</td>
         <td><span class="badge-status ${r.active ? 'badge-done' : 'badge-read'}">${r.active ? 'Active' : 'Hidden'}</span></td>
         <td>
           <button class="btn-action btn-mark" onclick="openServiceModal(${r.id})">Edit</button>
@@ -797,13 +808,15 @@
       authFetch('/api/services/all').then(r => r.json()).then(rows => {
         const s = rows.find(x => x.id === id);
         if (!s) return;
-        document.getElementById('service-number').value = s.number;
-        document.getElementById('service-title').value  = s.title;
-        document.getElementById('service-desc').value   = s.description;
+        document.getElementById('service-number').value = s.number || '';
+        document.getElementById('service-title').value  = s.title || '';
+        document.getElementById('service-specs').value  = s.specs || '';
+        document.getElementById('service-img').value    = s.image || '';
+        document.getElementById('service-desc').value   = s.description || '';
         document.getElementById('service-active').value = s.active;
       });
     } else {
-      ['service-number','service-title','service-desc'].forEach(id => document.getElementById(id).value = '');
+      ['service-number','service-title','service-specs','service-img','service-desc'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('service-active').value = '1';
     }
     document.getElementById('service-modal').classList.add('open');
@@ -814,6 +827,8 @@
     const body = {
       number:      document.getElementById('service-number').value.trim(),
       title:       document.getElementById('service-title').value.trim(),
+      specs:       document.getElementById('service-specs').value.trim(),
+      image:       document.getElementById('service-img').value.trim(),
       description: document.getElementById('service-desc').value.trim(),
       active:      parseInt(document.getElementById('service-active').value),
     };
