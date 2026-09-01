@@ -56,7 +56,7 @@ homepage_content = '''
             </div>
         </div>
         <div class="hero-art">
-            <img src="images/spider_man.jpeg" style="width: 100%; border: 2px solid var(--orange); opacity: 0.8; filter: grayscale(100%); mix-blend-mode: luminosity; border-radius: 4px;" alt="Precision Measurement">
+            <img src="images/nl_cnc_machining.png" style="width: 100%; border: 2px solid var(--orange); filter: contrast(1.05) brightness(1.02); border-radius: 4px;" alt="Precision Measurement">
         </div>
     </div>
 </section>
@@ -275,7 +275,7 @@ page2.append(bs4.BeautifulSoup('''
             <p>Our approach is simple: understand the machine, measure accurately, identify the source of the problem and provide a practical solution that helps the customer maintain consistent production.</p>
         </div>
         <div class="factory-art">
-            <img src="images/spider_man.jpeg" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8; filter: grayscale(100%);">
+            <img src="images/nl_cnc_machining.png" style="width: 100%; height: 100%; object-fit: cover; filter: contrast(1.05) brightness(1.02); border-radius: 4px;">
             <div class="factory-caption">Precision Engineering Operations</div>
         </div>
     </div>
