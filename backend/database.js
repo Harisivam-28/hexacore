@@ -1,7 +1,7 @@
 const initSqlJs = require('sql.js');
-const bcrypt    = require('bcryptjs');
-const fs        = require('fs');
-const path      = require('path');
+const bcrypt = require('bcryptjs');
+const fs = require('fs');
+const path = require('path');
 
 const DB_PATH = path.join(__dirname, 'hexacore.db');
 
@@ -89,8 +89,8 @@ async function init() {
   }
 
   // Ensure specs & image columns exist in services
-  try { db.exec('ALTER TABLE services ADD COLUMN specs TEXT;'); } catch (e) {}
-  try { db.exec('ALTER TABLE services ADD COLUMN image TEXT;'); } catch (e) {}
+  try { db.exec('ALTER TABLE services ADD COLUMN specs TEXT;'); } catch (e) { }
+  try { db.exec('ALTER TABLE services ADD COLUMN image TEXT;'); } catch (e) { }
 
   // ── Helpers ────────────────────────────────────────────────────
   // Return all rows from a SELECT as array of objects
@@ -108,7 +108,7 @@ async function init() {
     const stmt = db.prepare(sql);
     stmt.run(params);
     stmt.free();
-    const rowid   = db.exec('SELECT last_insert_rowid() AS r')[0]?.values[0][0];
+    const rowid = db.exec('SELECT last_insert_rowid() AS r')[0]?.values[0][0];
     const changes = db.exec('SELECT changes() AS c')[0]?.values[0][0];
     db.save();
     return { lastInsertRowid: rowid, changes };
@@ -121,7 +121,7 @@ async function init() {
   };
 
   // ── Seed Admin ─────────────────────────────────────────────────
-  const adminUser = process.env.ADMIN_USER || 'admin';
+  const adminUser = process.env.ADMIN_USER || 'hexacoreprecision';
   const adminPass = process.env.ADMIN_PASS || 'hexacore2026';
   const hash = bcrypt.hashSync(adminPass, 10);
 
@@ -151,7 +151,7 @@ async function init() {
     ['Flush Pin Gauge', 'Depth Gauges', 'Flush Pin / Step Pin Gauge for GO/NOGO depth evaluation of holes, counterbores, and step depths with ground precision tolerance steps.', 'GO/NOGO Step Depth', 'images/products/flush_pin_gauge.png'],
     ['PCD Gauge', 'Fixtures & Gauges', 'Pitch Circle Diameter checking gauge for accurate measurement of bolt circle diameters in flanges, wheels, and gears for automotive and aerospace components.', 'High Precision PCD', 'images/products/pcd_gauge.png'],
     ['Receiving / Relation Gauge', 'Fixtures & Gauges', 'Custom relation/receiving gauge used for contour and size inspection of male parts without requiring a coordinate measuring system (CMM).', 'Custom Inspection Fixture', 'images/products/receiving_relation_gauge.png'],
-    
+
     // PDF 2: Air Units & Precision Equipment
     ['Single Channel Air Electronic Unit', 'Air Electronic Units', 'Single Channel Air Electronic Unit with 1/2" Auto Drain Filters, Digital Piezo Transducer, 6-character tri-color LED display, program storage for 10-16 programs, USB & online SPC.', 'Res: 0.0001mm / 0.1 thou', 'images/products/air_electronic_unit_single.png'],
     ['Multi-Channel Air Electronic Unit', 'Air Electronic Units', 'Two to Eight Channel Air Electronic Unit for static or dynamic measurements (Max, Min, Avg, TIR) with ovality key, auto-correction, USB data logging and SPC connectivity.', '2 to 8 Channel (0.0001mm)', 'images/products/air_electronic_unit_multi.png'],

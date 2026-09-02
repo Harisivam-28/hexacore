@@ -278,61 +278,6 @@
             max-width: 100%;
         }
 
-        /* ---------- PROTOTYPE TOOLBAR ---------- */
-        .proto-bar {
-            position: sticky;
-            top: 0;
-            z-index: 999;
-            background: #1a1f27;
-            color: #cfd6e0;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            padding: 10px 22px;
-            font-family: 'Inter', sans-serif;
-            font-size: 12.5px;
-            flex-wrap: wrap;
-        }
-
-        .proto-bar .label {
-            font-weight: 600;
-            color: #8993a3;
-            letter-spacing: .04em;
-            text-transform: uppercase;
-            font-size: 11px;
-            margin-right: 6px;
-        }
-
-        .proto-tabs {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
-        .proto-tabs button {
-            background: transparent;
-            border: 1px solid #3a4150;
-            color: #aab3c2;
-            padding: 7px 14px;
-            border-radius: 3px;
-            font-size: 12.5px;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            transition: .15s;
-        }
-
-        .proto-tabs button:hover {
-            border-color: var(--orange);
-            color: #fff;
-        }
-
-        .proto-tabs button.active {
-            background: var(--orange);
-            border-color: var(--orange);
-            color: #1a1f27;
-            font-weight: 700;
-        }
 
         /* ---------- PAGE WRAPPER ---------- */
         .page {
@@ -2212,21 +2157,6 @@
                 padding: 6px 16px;
             }
 
-            /* Proto bar */
-            .proto-bar {
-                padding: 8px 12px;
-                gap: 8px;
-            }
-
-            .proto-tabs {
-                gap: 4px;
-                flex-wrap: wrap;
-            }
-
-            .proto-tabs button {
-                font-size: 10px;
-                padding: 4px 10px;
-            }
         }
 
         /* ── Very small screens: 480px & 380px ─────── */
@@ -2246,25 +2176,12 @@
                 font-size: 28px;
             }
 
-            .proto-tabs button {
-                font-size: 9px;
-                padding: 3px 7px;
-            }
         }
     </style>
 </head>
 
 <body>
-    <div class="proto-bar">
-        <span class="label">Hexacore Precision Technologies — UI Design</span>
-        <div class="proto-tabs" id="tabs">
-            <button class="active" data-p="1">01 · Home</button>
-            <button data-p="2">02 · About &amp; Newsletter</button>
-            <button data-p="3">03 · Products</button>
-            <button data-p="4">04 · Services &amp; Support</button>
-            <button data-p="5">05 · Contact</button>
-        </div>
-    </div>
+
     <!-- ============ REUSABLE ICON DEFS ============ -->
     <svg height="0" style="position:absolute" width="0">
         <defs>
@@ -3547,15 +3464,12 @@
             });
         }
 
-        const tabs = document.querySelectorAll('.proto-tabs button');
         function showPage(n) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById('page' + n).classList.add('active');
-            tabs.forEach(t => t.classList.toggle('active', t.dataset.p == n));
             closeMobileNav();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-        tabs.forEach(t => t.addEventListener('click', () => showPage(t.dataset.p)));
 
         // ── API Integration ─────────────────────────────────────────────
         const API_BASE = window.location.port === '3000' ? '' : 'http://localhost:3000';
