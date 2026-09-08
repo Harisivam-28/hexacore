@@ -1228,58 +1228,73 @@
         .product-card {
             background: #fff;
             border: 1px solid var(--line);
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            transition: transform .25s ease, box-shadow .25s ease;
+            transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .3s ease, border-color .3s ease;
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
         .product-card:hover {
-            box-shadow: 0 12px 32px rgba(11, 31, 58, .12);
-            transform: translateY(-4px);
+            border-color: rgba(244, 123, 32, 0.4);
+            box-shadow: 0 14px 36px rgba(11, 31, 58, 0.12);
+            transform: translateY(-5px);
         }
 
         .product-img {
             height: 220px;
-            background: radial-gradient(circle at center, #ffffff 60%, #f8fafc 100%);
+            background: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 14px;
+            padding: 28px 18px 16px;
             position: relative;
             overflow: hidden;
             border-bottom: 1px solid #eef2f6;
         }
 
         .product-img img {
-            max-width: 92%;
-            max-height: 92%;
+            max-width: 90%;
+            max-height: 88%;
+            width: auto;
+            height: auto;
             object-fit: contain;
             image-rendering: -webkit-optimize-contrast;
             image-rendering: crisp-edges;
-            filter: contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11, 31, 58, 0.08));
-            transition: transform .35s ease, filter .35s ease;
+            filter: drop-shadow(0 4px 12px rgba(11, 31, 58, 0.08));
+            transition: transform .35s cubic-bezier(0.16, 1, 0.3, 1), filter .35s ease;
             backface-visibility: hidden;
             transform: translateZ(0);
         }
 
         .product-card:hover .product-img img {
-            transform: scale(1.08) translateZ(0);
-            filter: contrast(1.08) brightness(1.04) drop-shadow(0 6px 16px rgba(244, 123, 32, 0.2));
+            transform: scale(1.06) translateY(-2px) translateZ(0);
+            filter: drop-shadow(0 10px 22px rgba(244, 123, 32, 0.22));
         }
 
         .product-tol {
             position: absolute;
             top: 10px;
             left: 10px;
-            background: rgba(7, 21, 39, .75);
+            z-index: 10;
+            background: rgba(11, 31, 58, 0.90);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             color: var(--orange);
             font-family: 'Inter', sans-serif;
-            font-size: 9.5px;
-            padding: 3px 7px;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 9px;
+            border-radius: 5px;
             letter-spacing: .03em;
             border: 1px solid rgba(244, 123, 32, .4);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
+            pointer-events: none;
+            max-width: 82%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .product-body {
@@ -2337,79 +2352,68 @@
                 </div>
             </div>
         </section>
-        <!-- 4. SERVICES & SUPPORT -->
-        <section class="section grey">
-            <div class="section-head">
-                <div class="tag">Services &amp; Technical Support</div>
-                <h2 class="t-h2">From machine calibration to technical troubleshooting.</h2>
-                <p class="section-lead">Our services are designed to help manufacturers maintain accuracy and keep
-                    production running reliably.</p>
-            </div>
-            <div class="svc-grid"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/linear_laser_calibration.png" alt="Linear Laser Calibration"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 01</span>
-                        <h4>Linear Laser Calibration</h4>
-                        <p>Ensures precise positioning accuracy of machine axes using laser interferometer systems.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Accuracy up to 0.005 ppm, positioning &amp; repeatability analysis, pitch error compensation, ISO 230-2 compliant.</div>
+        <!-- 4. SERVICES & TECHNICAL SUPPORT DIVISIONS (HOMEPAGE) -->
+        <section class="section grey responsive-section" style="padding:64px 44px;">
+            <div style="max-width:1280px;margin:0 auto;">
+                <div class="section-head" style="margin-bottom:48px;text-align:center;">
+                    <div class="tag">Services &amp; Technical Support</div>
+                    <h2 class="t-h2">Precision Metrology &amp; Machine Services</h2>
+                    <p class="section-lead" style="max-width:720px;margin:0 auto;">From sub-micron CNC machine laser calibration and CMM volumetric error compensation to certified gauge calibration and automated probe installation.</p>
+                </div>
+
+                <!-- 3 Service Division Cards -->
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-bottom:40px;">
+                    
+                    <!-- Division 1: Machine Services -->
+                    <div style="background:#fff;border-radius:10px;padding:32px 28px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(11,31,58,0.06);transition:all .3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.16)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.06)';this.style.borderColor='#E2E8F0'">
+                        <div style="width:48px;height:48px;background:rgba(244,123,32,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--orange);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <span style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Division 01</span>
+                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin:8px 0 12px;">Machine Services &amp; Calibration</h3>
+                        <p style="color:var(--steel);font-size:14px;line-height:1.65;margin-bottom:20px;">Linear laser interferometry, rotary axis indexing, straightness &amp; squareness testing, ballbar circularity diagnostics, and complete CNC machine bed re-leveling &amp; geometric overhauls.</p>
+                        <a onclick="showPage(4)" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">View Machine Services →</a>
+                    </div>
+
+                    <!-- Division 2: CMM Services -->
+                    <div style="background:#fff;border-radius:10px;padding:32px 28px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(11,31,58,0.06);transition:all .3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.16)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.06)';this.style.borderColor='#E2E8F0'">
+                        <div style="width:48px;height:48px;background:rgba(11,31,58,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--navy);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
+                        <span style="font-size:11px;font-weight:800;color:var(--navy);letter-spacing:1px;text-transform:uppercase;">Division 02</span>
+                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin:8px 0 12px;">CMM Services &amp; Error Mapping</h3>
+                        <p style="color:var(--steel);font-size:14px;line-height:1.65;margin-bottom:20px;">Full 21-parameter 3D CMM volumetric error compensation, touch-trigger &amp; star probe stylus qualification, air-cushion relocation leveling, and 3D GD&amp;T contract part inspection.</p>
+                        <a onclick="showPage(4)" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">View CMM Services →</a>
+                    </div>
+
+                    <!-- Division 3: Metrology Instruments -->
+                    <div style="background:#fff;border-radius:10px;padding:32px 28px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(11,31,58,0.06);transition:all .3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.16)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.06)';this.style.borderColor='#E2E8F0'">
+                        <div style="width:48px;height:48px;background:rgba(44,110,138,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#2C6E8A;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <span style="font-size:11px;font-weight:800;color:#2C6E8A;letter-spacing:1px;text-transform:uppercase;">Division 03</span>
+                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin:8px 0 12px;">Metrology Instruments Services &amp; Calibration</h3>
+                        <p style="color:var(--steel);font-size:14px;line-height:1.65;margin-bottom:20px;">NABL-traceable calibration for plain/thread plug &amp; ring gauges, air electronic column units, motorized 2D height masters, and 2D optical vision measuring systems.</p>
+                        <a onclick="showPage(4)" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">View Instrument Calibration →</a>
                     </div>
                 </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/machine_health_diagnose.png" alt="Machine Health Diagnose (Ballbar Test)"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 02</span>
-                        <h4>Machine Health Diagnose (Ballbar Test)</h4>
-                        <p>Evaluates overall CNC performance by analyzing circular interpolation errors.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Detects backlash, servo mismatch, cyclic errors; 360° and 220° tests; quick diagnostic within minutes; ISO 230-4 standard.</div>
+
+                <!-- SPECIAL PROBE INSTALLATION TEASER BANNER (HOMEPAGE) -->
+                <div style="background:linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);border-radius:12px;padding:36px 40px;color:#fff;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;box-shadow:0 8px 30px rgba(11,31,58,0.2);border:1px solid rgba(244,123,32,0.3);">
+                    <div>
+                        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(244,123,32,0.18);color:var(--orange);border:1px solid rgba(244,123,32,0.4);padding:4px 14px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">
+                            <span>✨ SPECIALIZED CAPABILITY TEASER</span>
+                        </div>
+                        <h3 style="font-family:'Inter',sans-serif;font-size:clamp(20px,2.5vw,26px);font-weight:900;color:#fff;margin:0 0 10px;">On-Machine Probe System Installation &amp; Retrofits</h3>
+                        <p style="color:#C7D1E0;font-size:14.5px;max-width:780px;margin:0;line-height:1.65;">
+                            Looking to automate part setup and tool measurement? Hexacore provides turnkey <strong>On-Machine Touch Probe &amp; Tool Setter Installation</strong>, optical/radio receiver setup, macro programming, and <strong>CMM Star Probe Stylus Qualification</strong> for Renishaw &amp; Hexagon systems.
+                        </p>
+                    </div>
+                    <div>
+                        <button onclick="showPage(5)" class="btn btn-orange" style="white-space:nowrap;padding:14px 28px;font-size:13.5px;font-weight:800;letter-spacing:0.5px;border-radius:6px;cursor:pointer;">Inquire For Probe Installation →</button>
                     </div>
                 </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/rotary_axis_calibration.png" alt="Rotary Axis Calibration"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 03</span>
-                        <h4>Rotary Axis Calibration</h4>
-                        <p>Calibrates rotary axes for accurate angular positioning and indexing.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Angular accuracy up to +1 arc-sec, indexing error mapping, encoder verification, improves 4th/5th axis performance.</div>
-                    </div>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/off_axis_rotary_calibration.png" alt="Off-Axis Rotary Calibration"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 04</span>
-                        <h4>Off-Axis Rotary Calibration</h4>
-                        <p>Measures rotary axis errors when positioned away from the center line.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Eccentricity and tilt error analysis, volumetric compensation support, critical for multi-axis machining accuracy.</div>
-                    </div>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/axis_straightness_testing.png" alt="Axis Straightness Testing"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 05</span>
-                        <h4>Axis Straightness Testing</h4>
-                        <p>Checks linear deviations in axis movement along travel length.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Measurement in horizontal &amp; vertical planes, micron-level accuracy, laser-based or electronic levels, ISO 230-1.</div>
-                    </div>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/squareness_testing.png" alt="Squareness Testing"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 06</span>
-                        <h4>Squareness Testing</h4>
-                        <p>Verifies perpendicularity between machine axes for geometric precision.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Laser or granite square methods, angular error measurement in microns/meter, improves part geometry accuracy.</div>
-                    </div>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/preventive_maintenance_contract.png" alt="Preventive Maintenance Contract"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 07</span>
-                        <h4>Preventive Maintenance Contract</h4>
-                        <p>Scheduled maintenance to ensure consistent machine performance and reliability.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Periodic calibration check, lubrication inspection, alignment verification, customized service intervals, downtime reduction.</div>
-                    </div>
-                </div>
+
             </div>
         </section>
         <!-- 5. INDUSTRIES WE SERVE -->
@@ -2668,6 +2672,76 @@
                 </div>
             </div>
         </section>
+
+        <!-- ── OUR SERVICES & SPECIAL PROBE TEASER SECTION (Page 2) ── -->
+        <section class="responsive-section" style="background:#F8FAFC;padding:64px 44px;border-top:1px solid #E2E8F0;border-bottom:1px solid #E2E8F0;">
+            <div style="max-width:1280px;margin:0 auto;">
+                <div style="text-align:center;margin-bottom:48px;">
+                    <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:14px;">
+                        <div style="width:36px;height:2px;background:var(--orange);"></div>
+                        <span style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);">Core Technical Offerings</span>
+                        <div style="width:36px;height:2px;background:var(--orange);"></div>
+                    </div>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:900;color:var(--navy);margin:0 0 12px;line-height:1.15;">End-to-End Precision Services</h2>
+                    <p style="color:var(--steel);font-size:15px;max-width:680px;margin:0 auto;line-height:1.7;">From sub-micron CNC machine alignment and CMM volumetric error mapping to certified metrology instrument calibration and on-machine probe system installation.</p>
+                </div>
+
+                <!-- 3 Main Service Division Cards -->
+                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-bottom:48px;">
+                    
+                    <!-- Card 1: Machine Services -->
+                    <div style="background:#fff;border-radius:10px;padding:32px 28px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(11,31,58,0.06);transition:all .3s ease;position:relative;overflow:hidden;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.16)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.06)';this.style.borderColor='#E2E8F0'">
+                        <div style="width:48px;height:48px;background:rgba(244,123,32,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--orange);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                        </div>
+                        <span style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Division 01</span>
+                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin:8px 0 12px;">Machine Services &amp; Calibration</h3>
+                        <p style="color:var(--steel);font-size:14px;line-height:1.65;margin-bottom:20px;">Sub-micron Renishaw laser alignment, ballbar circularity diagnostics, axis straightness/squareness testing, and complete CNC machine bed re-leveling &amp; mechanical overhauls.</p>
+                        <a onclick="showPage(4)" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">Explore Machine Services →</a>
+                    </div>
+
+                    <!-- Card 2: CMM Services -->
+                    <div style="background:#fff;border-radius:10px;padding:32px 28px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(11,31,58,0.06);transition:all .3s ease;position:relative;overflow:hidden;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.16)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.06)';this.style.borderColor='#E2E8F0'">
+                        <div style="width:48px;height:48px;background:rgba(11,31,58,0.08);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--navy);">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                        </div>
+                        <span style="font-size:11px;font-weight:800;color:var(--navy);letter-spacing:1px;text-transform:uppercase;">Division 02</span>
+                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin:8px 0 12px;">CMM Services &amp; Error Mapping</h3>
+                        <p style="color:var(--steel);font-size:14px;line-height:1.65;margin-bottom:20px;">Comprehensive 21-parameter CMM volumetric error mapping, granite square alignment, air-cushion relocation re-verification, and 3D GD&amp;T contract part inspection.</p>
+                        <a onclick="showPage(4)" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">Explore CMM Services →</a>
+                    </div>
+
+                    <!-- Card 3: Metrology Instruments -->
+                    <div style="background:#fff;border-radius:10px;padding:32px 28px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(11,31,58,0.06);transition:all .3s ease;position:relative;overflow:hidden;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.16)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.06)';this.style.borderColor='#E2E8F0'">
+                        <div style="width:48px;height:48px;background:rgba(44,110,138,0.1);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:#2C6E8A;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        </div>
+                        <span style="font-size:11px;font-weight:800;color:#2C6E8A;letter-spacing:1px;text-transform:uppercase;">Division 03</span>
+                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:var(--navy);margin:8px 0 12px;">Metrology Instruments &amp; Calibration</h3>
+                        <p style="color:var(--steel);font-size:14px;line-height:1.65;margin-bottom:20px;">NABL-traceable calibration for plain/thread plug &amp; ring gauges, air electronic column units, motorized 2D height masters, and 2D optical vision measuring systems.</p>
+                        <a onclick="showPage(4)" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">Explore Instrument Services →</a>
+                    </div>
+                </div>
+
+                <!-- SPECIAL PROBE INSTALLATION TEASER BANNER -->
+                <div style="background:linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);border-radius:12px;padding:36px 40px;color:#fff;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;box-shadow:0 8px 30px rgba(11,31,58,0.2);border:1px solid rgba(244,123,32,0.3);">
+                    <div>
+                        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(244,123,32,0.18);color:var(--orange);border:1px solid rgba(244,123,32,0.4);padding:4px 14px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">
+                            <span>✨ SPECIALIZED CAPABILITY TEASER</span>
+                        </div>
+                        <h3 style="font-family:'Inter',sans-serif;font-size:clamp(20px,2.5vw,26px);font-weight:900;color:#fff;margin:0 0 10px;">On-Machine Probe System Installation &amp; Retrofits</h3>
+                        <p style="color:#C7D1E0;font-size:14.5px;max-width:780px;margin:0;line-height:1.65;">
+                            Looking to automate part setup and tool measurement? Hexacore provides turnkey <strong>On-Machine Touch Probe &amp; Tool Setter Installation</strong>, optical/radio receiver setup, macro programming, and <strong>CMM Star Probe Stylus Qualification</strong> for Renishaw &amp; Hexagon systems.
+                        </p>
+                    </div>
+                    <div>
+                        <button onclick="showPage(5)" class="btn btn-orange" style="white-space:nowrap;padding:14px 28px;font-size:13.5px;font-weight:800;letter-spacing:0.5px;border-radius:6px;cursor:pointer;">Inquire For Probe Installation →</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <!-- ── OUR NEWSLETTER Section (Page 2) ── -->
         <section id="newsletter-section" class="nl-section">
 
@@ -2847,225 +2921,446 @@
             </div>
         </section>
 
-        <!-- SECTION 1: Types of Machines We Calibrate -->
-        <section class="responsive-section" style="background:#F4F6F9;padding:64px 44px;">
+        <footer class="site-footer" id="footer-3"></footer>
+    </div>
+    <!-- ======================================================= -->
+    <!-- PAGE 4 — SERVICES + SUPPORT -->
+    <!-- ======================================================= -->
+    <div class="page" id="page4">
+        <div class="screen-tag">hexacore.com / services</div>
+        <header class="site-header">
+            <div class="brand">
+                <img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo" onclick="showPage(1)">
+                <nav class="main-nav">
+                    <a onclick="showPage(1)">Home</a>
+                    <a onclick="showPage(2)">About Us</a>
+                    <a onclick="showPage(3)">Products</a>
+                    <a class="current" onclick="showPage(4)">Services &amp; Support</a>
+                    <a onclick="showPage(5)">Contact</a>
+                </nav>
+                <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+            <nav class="mobile-nav">
+                <a onclick="showPage(1);closeMobileNav()">Home</a>
+                <a onclick="showPage(2);closeMobileNav()">About Us</a>
+                <a onclick="showPage(3);closeMobileNav()">Products</a>
+                <a class="current" onclick="showPage(4);closeMobileNav()">Services &amp; Support</a>
+                <a onclick="showPage(5);closeMobileNav()">Contact</a>
+            </nav>
+        </header>
+
+        <!-- SERVICES HERO BANNER & SECTION TABS -->
+        <section class="section" style="background:linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);padding:56px 44px;color:#fff;text-align:center;">
+            <div style="max-width:1100px;margin:0 auto;">
+                <div class="tag" style="background:rgba(244,123,32,0.15);color:var(--orange);border:1px solid rgba(244,123,32,0.3);display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">Metrology &amp; Machine Services</div>
+                <h2 style="font-family:'Inter',sans-serif;font-size:clamp(28px,3.8vw,42px);font-weight:900;color:#fff;margin:0 0 16px;line-height:1.15;">Services &amp; Technical Support Divisions</h2>
+                <p style="color:#B9C4D6;font-size:16px;max-width:720px;margin:0 auto 32px;line-height:1.7;">From sub-micron CNC laser alignment to volumetric CMM error compensation and instrument calibration, explore our 4 dedicated service divisions.</p>
+                
+                <!-- Quick Navigation Tabs -->
+                <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px;">
+                    <a href="#sec-machine-calibration" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">📐 1. Machine Calibration</a>
+                    <a href="#sec-machine-service" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">🛠️ 2. Machine Service</a>
+                    <a href="#sec-cmm-services" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">🔬 3. CMM Services</a>
+                    <a href="#sec-quality-instruments" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">📏 4. Quality Instruments Services &amp; Calibration</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: MACHINE CALIBRATION SECTION -->
+        <section id="sec-machine-calibration" class="responsive-section" style="background:#fff;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
             <div style="max-width:1280px;margin:0 auto;">
-                <!-- Section header -->
-                <div style="text-align:center;margin-bottom:48px;">
-                    <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:14px;">
-                        <div style="width:36px;height:2px;background:var(--orange);"></div>
-                        <span style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);">Our Capabilities</span>
-                        <div style="width:36px;height:2px;background:var(--orange);"></div>
+                <div style="margin-bottom:36px;">
+                    <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
+                        <span style="background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;">SECTION 01</span>
+                        <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Laser Alignment &amp; Geometry</span>
                     </div>
-                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:900;color:var(--navy);margin:0 0 12px;line-height:1.15;">Types of Machines We Calibrate</h2>
-                    <p style="color:var(--steel);font-size:15px;max-width:560px;margin:0 auto;line-height:1.7;">We service all major CNC machine types in precision manufacturing — from turning centres to complex 5-axis systems.</p>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">Machine Calibration Section</h2>
+                    <p style="color:var(--steel);font-size:15px;max-width:760px;margin:0;line-height:1.65;">High-precision linear laser interferometry, rotary axis indexing calibration, straightness, and squareness testing compliant with ISO 230-2 standards.</p>
                 </div>
 
-                <!-- 12 product cards -->
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;">
-
-                    <!-- Card 1 — CNC Turning -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_lathe.png" alt="CNC Turning Center Lathe" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
-                        </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">CNC Turning Centers</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">(Lathes)</div>
+                <div id="svc-grid-calibration" class="svc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; margin-bottom: 56px;">
+                    <div class="svc-card">
+                        <div class="svc-img-wrap"><img src="images/services/linear_laser_calibration.png" alt="Linear Laser Calibration"></div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 01</span>
+                            <h4>Linear Laser Calibration</h4>
+                            <p>Ensures precise positioning accuracy of machine axes using laser interferometer systems.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Accuracy up to 0.005 ppm, positioning &amp; repeatability analysis, pitch error compensation, ISO 230-2 compliant.</div>
                         </div>
                     </div>
-
-                    <!-- Card 2 — VMC -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_vmc.png" alt="Vertical Machining Center" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
-                        </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">Vertical Machining Centers</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">(VMC)</div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap"><img src="images/services/rotary_axis_calibration.png" alt="Rotary Axis Calibration"></div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 02</span>
+                            <h4>Rotary Axis Calibration</h4>
+                            <p>Calibrates rotary axes for accurate angular positioning and indexing.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Angular accuracy up to ±1 arc-sec, indexing error mapping, encoder verification, improves 4th/5th axis performance.</div>
                         </div>
                     </div>
-
-                    <!-- Card 3 — HMC -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_hmc.png" alt="Horizontal Machining Center" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
-                        </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">Horizontal Machining Centers</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">(HMC)</div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap"><img src="images/services/off_axis_rotary_calibration.png" alt="Off-Axis Rotary Calibration"></div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 03</span>
+                            <h4>Off-Axis Rotary Calibration</h4>
+                            <p>Measures rotary axis errors when positioned away from the center line.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Eccentricity and tilt error analysis, volumetric compensation support, critical for multi-axis machining accuracy.</div>
                         </div>
                     </div>
-
-                    <!-- Card 4 — 5-Axis -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_5axis.png" alt="5-Axis CNC Machine" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
-                        </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">5-Axis CNC Machines</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">Multi-axis simultaneous</div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap"><img src="images/services/axis_straightness_testing.png" alt="Axis Straightness Testing"></div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 04</span>
+                            <h4>Axis Straightness Testing</h4>
+                            <p>Checks linear deviations in axis movement along travel length.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Measurement in horizontal &amp; vertical planes, micron-level accuracy, laser-based or electronic levels, ISO 230-1.</div>
                         </div>
                     </div>
-
-                    <!-- Card 5 — Gantry -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_gantry.png" alt="Gantry Plano Milling Machine" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
-                        </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">Gantry / Plano Milling</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">Machines</div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap"><img src="images/services/squareness_testing.png" alt="Squareness Testing"></div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 05</span>
+                            <h4>Squareness Testing</h4>
+                            <p>Verifies perpendicularity between machine axes for geometric precision.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Laser or granite square methods, angular error measurement in microns/meter, improves part geometry accuracy.</div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Card 6 — Double Column -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_double_column.png" alt="Double Column Machining Center" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
+                <!-- SUB-SECTION: Types of Machines We Calibrate -->
+                <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:40px 32px;margin-bottom:48px;">
+                    <div style="text-align:center;margin-bottom:36px;">
+                        <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:10px;">
+                            <div style="width:36px;height:2px;background:var(--orange);"></div>
+                            <span style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);">Our Capabilities</span>
+                            <div style="width:36px;height:2px;background:var(--orange);"></div>
                         </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">Double Column Machining</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">Centers</div>
-                        </div>
+                        <h3 style="font-family:'Inter',sans-serif;font-size:clamp(22px,2.8vw,30px);font-weight:900;color:var(--navy);margin:0 0 10px;">Types of Machines We Calibrate</h3>
+                        <p style="color:var(--steel);font-size:14px;max-width:560px;margin:0 auto;line-height:1.6;">We service all major CNC machine types in precision manufacturing — from turning centres to complex 5-axis systems.</p>
                     </div>
 
-                    <!-- Card 7 — CNC Grinding -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_grinding.png" alt="CNC Grinding Machines" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
+                    <!-- 12 Machine Cards Grid -->
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;">
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_lathe.png" alt="CNC Turning Center Lathe" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">CNC Turning Centers</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">(Lathes)</div>
+                            </div>
                         </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">CNC Grinding Machines</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">(Surface &amp; Cylindrical)</div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_vmc.png" alt="Vertical Machining Center" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">Vertical Machining Centers</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">(VMC)</div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_hmc.png" alt="Horizontal Machining Center" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">Horizontal Machining Centers</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">(HMC)</div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_5axis.png" alt="5-Axis CNC Machine" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">5-Axis CNC Machines</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">Multi-axis simultaneous</div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_gantry.png" alt="Gantry Plano Milling Machine" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">Gantry / Plano Milling</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">Machines</div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_double_column.png" alt="Double Column Machining Center" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">Double Column Machining</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">Centers</div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_grinding.png" alt="CNC Grinding Machines" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">CNC Grinding Machines</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">(Surface &amp; Cylindrical)</div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_boring.png" alt="Boring Machines" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">Boring Machines</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">(Horizontal &amp; Vertical)</div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_edm.png" alt="EDM Machines" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">EDM Machines</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">(Wire Cut &amp; Die Sinker)</div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_tool_grinding.png" alt="Tool &amp; Cutter Grinding Machines" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">Tool &amp; Cutter Grinding</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">Machines</div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_gear_hobbing.png" alt="Gear Hobbing / Gear Cutting Machines" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">Gear Hobbing / Gear Cutting</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">Machines</div>
+                            </div>
+                        </div>
+
+                        <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(11,31,58,.07);">
+                            <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
+                            <div style="height:190px;padding:14px;display:flex;align-items:center;justify-content:center;background:#fff;">
+                                <img src="images/machine_spm.png" alt="Special Purpose Machines (SPM)" style="max-width:90%;max-height:90%;object-fit:contain;">
+                            </div>
+                            <div style="padding:14px 18px 18px;border-top:1px solid #f0f2f5;">
+                                <div style="font-weight:800;color:var(--navy);font-size:14px;">Special Purpose Machines</div>
+                                <div style="color:var(--orange);font-size:12px;font-weight:700;">(SPM)</div>
+                            </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Card 8 — Boring Machines -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_boring.png" alt="Boring Machines" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
-                        </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">Boring Machines</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">(Horizontal &amp; Vertical)</div>
-                        </div>
+                <!-- SUB-SECTION: CNC Controllers We Support -->
+                <div style="background:var(--navy);border-radius:10px;padding:40px 32px;text-align:center;">
+                    <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:20px;">
+                        <div style="width:36px;height:2px;background:var(--orange);"></div>
+                        <h4 style="font-family:'Inter',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:.04em;text-transform:uppercase;margin:0;">CNC Controllers We Support</h4>
+                        <div style="width:36px;height:2px;background:var(--orange);"></div>
                     </div>
-
-                    <!-- Card 9 — EDM Machines -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_edm.png" alt="EDM Machines" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
-                        </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">EDM Machines</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">(Wire Cut &amp; Die Sinker)</div>
-                        </div>
+                    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0;line-height:2.2;">
+                        <span style="color:#F47B20;font-weight:700;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">FANUC</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">SIEMENS (SINUMERIK)</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">HEIDENHAIN</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">MITSUBISHI</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">MAZATROL (MAZAK)</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">HAAS</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">FAGOR</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">SYNTEC</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">DELTA</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">NUM</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">HURCO (WINMAX)</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">YASKAWA</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">BROTHER</span>
+                        <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">EXCETEK</span>
+                        <span style="color:#F47B20;font-weight:700;font-size:14px;padding:0 14px;">NTC</span>
                     </div>
-
-                    <!-- Card 10 — Tool & Cutter Grinding -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_tool_grinding.png" alt="Tool &amp; Cutter Grinding Machines" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
-                        </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">Tool &amp; Cutter Grinding</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">Machines</div>
-                        </div>
-                    </div>
-
-                    <!-- Card 11 — Gear Hobbing -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_gear_hobbing.png" alt="Gear Hobbing / Gear Cutting Machines" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
-                        </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">Gear Hobbing / Gear Cutting</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">Machines</div>
-                        </div>
-                    </div>
-
-                    <!-- Card 12 — Special Purpose Machines (SPM) -->
-                    <div style="background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 16px rgba(11,31,58,.09);transition:transform .25s,box-shadow .25s;"
-                        onmouseover="this.style.transform='translateY(-5px)';this.style.boxShadow='0 12px 40px rgba(244,123,32,.18)'"
-                        onmouseout="this.style.transform='';this.style.boxShadow='0 2px 16px rgba(11,31,58,.09)'">
-                        <div style="height:4px;background:linear-gradient(90deg,var(--orange),#f9a84d);"></div>
-                        <div style="height:200px;overflow:hidden;background:#fff;padding:16px;display:flex;align-items:center;justify-content:center;">
-                            <img src="images/machine_spm.png" alt="Special Purpose Machines (SPM)" style="max-width:90%;max-height:90%;object-fit:contain;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;filter:contrast(1.06) brightness(1.02) drop-shadow(0 4px 10px rgba(11,31,58,0.08));transition:transform .4s, filter .4s;backface-visibility:hidden;" onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform=''">
-                        </div>
-                        <div style="padding:16px 20px 20px;border-top:1px solid #f0f2f5;">
-                            <div style="font-weight:800;color:var(--navy);font-size:14px;line-height:1.3;margin-bottom:4px;">Special Purpose Machines</div>
-                            <div style="color:var(--orange);font-size:12px;font-weight:700;letter-spacing:.04em;">(SPM)</div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 2: CNC Controllers We Support -->
-        <section class="responsive-section" style="background:var(--navy);padding:48px 44px;margin-top:56px;">
-            <div style="max-width:1100px;margin:0 auto;text-align:center;">
-                <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:24px;">
-                    <div style="width:40px;height:2px;background:var(--orange);"></div>
-                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(18px,2.5vw,24px);font-weight:800;color:#fff;letter-spacing:.04em;text-transform:uppercase;margin:0;">CNC Controllers We Support</h2>
-                    <div style="width:40px;height:2px;background:var(--orange);"></div>
+        <!-- SECTION 2: MACHINE SERVICE SECTION -->
+        <section id="sec-machine-service" class="responsive-section" style="background:#F8FAFC;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
+            <div style="max-width:1280px;margin:0 auto;">
+                <div style="margin-bottom:36px;">
+                    <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
+                        <span style="background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;">SECTION 02</span>
+                        <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Diagnostics &amp; Maintenance</span>
+                    </div>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">Machine Service</h2>
+                    <p style="color:var(--steel);font-size:15px;max-width:760px;margin:0;line-height:1.65;">Comprehensive CNC diagnostics, circularity ballbar testing, preventive maintenance contracts (PMC), and complete machine geometric overhauls.</p>
                 </div>
-                <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0;line-height:2.2;">
-                    <span style="color:#F47B20;font-weight:700;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">FANUC</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">SIEMENS (SINUMERIK)</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">HEIDENHAIN</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">MITSUBISHI</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">MAZATROL (MAZAK)</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">HAAS</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">FAGOR</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">SYNTEC</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">DELTA</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">NUM</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">HURCO (WINMAX)</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">YASKAWA</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">BROTHER</span>
-                    <span style="color:#C7D1E0;font-weight:600;font-size:14px;padding:0 16px;border-right:1px solid rgba(255,255,255,.2);">EXCETEK</span>
-                    <span style="color:#F47B20;font-weight:700;font-size:14px;padding:0 16px;">NTC</span>
+
+                <div id="svc-grid-service" class="svc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px;">
+                    <div class="svc-card">
+                        <div class="svc-img-wrap"><img src="images/services/machine_health_diagnose.png" alt="Machine Health Diagnose (Ballbar Test)"></div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 06</span>
+                            <h4>Machine Health Diagnose (Ballbar Test)</h4>
+                            <p>Evaluates overall CNC performance by analyzing circular interpolation errors.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Detects backlash, servo mismatch, cyclic errors; 360° and 220° tests; quick diagnostic within minutes; ISO 230-4 standard.</div>
+                        </div>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap"><img src="images/services/preventive_maintenance_contract.png" alt="Preventive Maintenance Contract (PMC)"></div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 07</span>
+                            <h4>Preventive Maintenance Contract (PMC)</h4>
+                            <p>Scheduled maintenance to ensure consistent machine performance and reliability.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Periodic calibration check, lubrication inspection, alignment verification, customized service intervals, downtime reduction.</div>
+                        </div>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap"><img src="images/nl_cnc_machining.png" alt="CNC Geometric Overhaul &amp; Bed Realignment"></div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 08</span>
+                            <h4>CNC Geometric Overhaul &amp; Bed Realignment</h4>
+                            <p>Complete CNC machine bed re-leveling, guideway scraping, and ball screw preload correction.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Restores factory alignment tolerances, eliminates axis stick-slip, extends CNC service life.</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 3: Applicable Standards -->
-        <section class="section grey">
+        <!-- SECTION 3: CMM SERVICES SECTION -->
+        <section id="sec-cmm-services" class="responsive-section" style="background:#fff;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
+            <div style="max-width:1280px;margin:0 auto;">
+                <div style="margin-bottom:36px;">
+                    <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
+                        <span style="background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;">SECTION 03</span>
+                        <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">3D Inspection &amp; Calibration</span>
+                    </div>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">CMM Services</h2>
+                    <p style="color:var(--steel);font-size:15px;max-width:760px;margin:0;line-height:1.65;">Specialized Coordinate Measuring Machine (CMM) volumetric error mapping, multisensor probe calibration, air-cushion relocation leveling, and 3D GD&amp;T inspection.</p>
+                </div>
+
+                <div id="svc-grid-cmm" class="svc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px;">
+                    <div class="svc-card">
+                        <div class="svc-img-wrap" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;height:200px;">
+                            <img src="images/nl_cmm_measurement.png" alt="CMM Volumetric Error Compensation &amp; Mapping" style="object-fit:cover;width:100%;height:100%;border-radius:4px;">
+                        </div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 09</span>
+                            <h4>CMM Volumetric Error Compensation &amp; Mapping</h4>
+                            <p>Full 21-parameter geometric error mapping for 3D Coordinate Measuring Machines.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Sub-micron volumetric error compensation, laser vector mapping, granite square alignment, ISO 10360 compliance.</div>
+                        </div>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;height:200px;">
+                            <img src="images/cmm-probes.jpg" alt="CMM Probe &amp; Sensor Calibration" style="object-fit:contain;max-width:92%;max-height:92%;">
+                        </div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 10</span>
+                            <h4>CMM Probe &amp; Sensor Calibration</h4>
+                            <p>Calibration and stylus qualification for touch-trigger, star, and optical scanning probes.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Star probe geometry qualification, force calibration, stylus sphere diameter verification, sub-micron repeatability.</div>
+                        </div>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;height:200px;">
+                            <img src="images/cmm-machine.jpg" alt="CMM Relocation, Leveling &amp; Verification" style="object-fit:contain;max-width:92%;max-height:92%;">
+                        </div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 11</span>
+                            <h4>CMM Relocation, Leveling &amp; Verification</h4>
+                            <p>Turnkey CMM relocation, anti-vibration air cushion leveling, and post-move laser calibration.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Safe dismantling &amp; reinstallation, environmental vibration damping, ISO 10360 certification post-relocation.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: QUALITY INSTRUMENTS SERVICES & CALIBRATION SECTION -->
+        <section id="sec-quality-instruments" class="responsive-section" style="background:#F8FAFC;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
+            <div style="max-width:1280px;margin:0 auto;">
+                <div style="margin-bottom:36px;">
+                    <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
+                        <span style="background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;">SECTION 04</span>
+                        <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Metrology Standards &amp; Gauges</span>
+                    </div>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">Quality Instruments Services &amp; Calibration</h2>
+                    <p style="color:var(--steel);font-size:15px;max-width:760px;margin:0;line-height:1.65;">NABL-traceable calibration and certification for precision gauges, master setting rings, air electronic column units, height masters, and 2D vision measuring systems.</p>
+                </div>
+
+                <div id="svc-grid-instruments" class="svc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px;">
+                    <div class="svc-card">
+                        <div class="svc-img-wrap" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;height:200px;">
+                            <img src="images/products/plain_plug_gauge.png" alt="Gauges &amp; Setting Masters Calibration" style="object-fit:contain;max-width:92%;max-height:92%;">
+                        </div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 12</span>
+                            <h4>Gauges &amp; Setting Masters Calibration</h4>
+                            <p>NABL-traceable calibration of plain plug/ring gauges, thread gauges, fixed snap gauges, and setting rings.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>IS:3455 &amp; ISO standards compliance, master comparator reference measurement, micron-level accuracy certification.</div>
+                        </div>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;height:200px;">
+                            <img src="images/air-electronic-column.jpg" alt="Air Electronic Column Unit Calibration" style="object-fit:contain;max-width:92%;max-height:92%;">
+                        </div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 13</span>
+                            <h4>Air Electronic Column Unit Calibration</h4>
+                            <p>Pressure transducer calibration, tri-color bar display verification, and multi-channel air jet setup.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>0.0001mm resolution verification, auto-drain filter pressure testing, master jet calibration.</div>
+                        </div>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;height:200px;">
+                            <img src="images/2d-height-gauge.jpg" alt="2D Height Master &amp; Height Gauge Calibration" style="object-fit:contain;max-width:92%;max-height:92%;">
+                        </div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 14</span>
+                            <h4>2D Height Master &amp; Height Gauge Calibration</h4>
+                            <p>Vertical height master and motorized linear height gauge calibration.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Trimos &amp; Mitutoyo height master verification, linear scale encoder accuracy check, perpendicularity measurement.</div>
+                        </div>
+                    </div>
+                    <div class="svc-card">
+                        <div class="svc-img-wrap" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;height:200px;">
+                            <img src="images/vision-measuring-system.jpg" alt="Optical Vision Measuring System Calibration" style="object-fit:contain;max-width:92%;max-height:92%;">
+                        </div>
+                        <div class="svc-card-body">
+                            <span class="svc-num">SVC / 15</span>
+                            <h4>Optical Vision Measuring System Calibration</h4>
+                            <p>Optical grid distortion correction, magnification calibration, and lighting alignment for 2D vision systems.</p>
+                            <div class="svc-specs"><strong>Specs / Attributes</strong>Sub-pixel edge detection calibration, optical magnification verification, glass grid plate standard traceability.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- APPLICABLE STANDARDS -->
+        <section class="section grey" style="padding:64px 44px;">
             <div class="section-head">
                 <div class="tag">Quality &amp; Compliance</div>
                 <h2 class="t-h2">Applicable Standards <span style="color:var(--orange);">(Top References)</span></h2>
@@ -3133,131 +3428,25 @@
             </div>
         </section>
 
-        <footer class="site-footer" id="footer-3"></footer>
-    </div>
-    <!-- ======================================================= -->
-    <!-- PAGE 4 — SERVICES + SUPPORT -->
-    <!-- ======================================================= -->
-    <div class="page" id="page4">
-        <div class="screen-tag">hexacore.com / services</div>
-        <header class="site-header">
-            <div class="brand">
-                <img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo" onclick="showPage(1)">
-                <nav class="main-nav">
-                    <a onclick="showPage(1)">Home</a>
-                    <a onclick="showPage(2)">About Us</a>
-                    <a onclick="showPage(3)">Products</a>
-                    <a class="current" onclick="showPage(4)">Services &amp; Support</a>
-                    <a onclick="showPage(5)">Contact</a>
-                </nav>
-                <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-            <nav class="mobile-nav">
-                <a onclick="showPage(1);closeMobileNav()">Home</a>
-                <a onclick="showPage(2);closeMobileNav()">About Us</a>
-                <a onclick="showPage(3);closeMobileNav()">Products</a>
-                <a class="current" onclick="showPage(4);closeMobileNav()">Services &amp; Support</a>
-                <a onclick="showPage(5);closeMobileNav()">Contact</a>
-            </nav>
-        </header>
+        <!-- TECHNICAL REPORTING -->
         <section class="section">
-            <div class="section-head">
-                <div class="tag">Calibration &amp; Diagnostics</div>
-                <h2 class="t-h2">Services &amp; Technical Support</h2>
-                <p class="section-lead">From machine calibration to technical troubleshooting, our services are designed
-                    to help manufacturers maintain accuracy and keep production running reliably.</p>
-            </div>
-            <div class="svc-grid"
-                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/linear_laser_calibration.png" alt="Linear Laser Calibration"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 01</span>
-                        <h4>Linear Laser Calibration</h4>
-                        <p>Ensures precise positioning accuracy of machine axes using laser interferometer systems.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Accuracy up to 0.005 ppm, positioning &amp; repeatability analysis, pitch error compensation, ISO 230-2 compliant.</div>
-                    </div>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/machine_health_diagnose.png" alt="Machine Health Diagnose (Ballbar Test)"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 02</span>
-                        <h4>Machine Health Diagnose (Ballbar Test)</h4>
-                        <p>Evaluates overall CNC performance by analyzing circular interpolation errors.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Detects backlash, servo mismatch, cyclic errors; 360° and 220° tests; quick diagnostic within minutes; ISO 230-4 standard.</div>
-                    </div>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/rotary_axis_calibration.png" alt="Rotary Axis Calibration"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 03</span>
-                        <h4>Rotary Axis Calibration</h4>
-                        <p>Calibrates rotary axes for accurate angular positioning and indexing.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Angular accuracy up to +1 arc-sec, indexing error mapping, encoder verification, improves 4th/5th axis performance.</div>
-                    </div>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/off_axis_rotary_calibration.png" alt="Off-Axis Rotary Calibration"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 04</span>
-                        <h4>Off-Axis Rotary Calibration</h4>
-                        <p>Measures rotary axis errors when positioned away from the center line.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Eccentricity and tilt error analysis, volumetric compensation support, critical for multi-axis machining accuracy.</div>
-                    </div>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/axis_straightness_testing.png" alt="Axis Straightness Testing"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 05</span>
-                        <h4>Axis Straightness Testing</h4>
-                        <p>Checks linear deviations in axis movement along travel length.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Measurement in horizontal &amp; vertical planes, micron-level accuracy, laser-based or electronic levels, ISO 230-1.</div>
-                    </div>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/squareness_testing.png" alt="Squareness Testing"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 06</span>
-                        <h4>Squareness Testing</h4>
-                        <p>Verifies perpendicularity between machine axes for geometric precision.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Laser or granite square methods, angular error measurement in microns/meter, improves part geometry accuracy.</div>
-                    </div>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-img-wrap"><img src="images/services/preventive_maintenance_contract.png" alt="Preventive Maintenance Contract"></div>
-                    <div class="svc-card-body">
-                        <span class="svc-num">SVC / 07</span>
-                        <h4>Preventive Maintenance Contract</h4>
-                        <p>Scheduled maintenance to ensure consistent machine performance and reliability.</p>
-                        <div class="svc-specs"><strong>Specs / Attributes</strong>Periodic calibration check, lubrication inspection, alignment verification, customized service intervals, downtime reduction.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="section grey">
             <div class="section-head">
                 <div class="tag">Reporting</div>
                 <h2 class="t-h2">Clear Technical Reports. Better Decisions.</h2>
-                <p class="section-lead">After measurement and analysis, we provide clear technical information that
-                    helps customers understand the condition of their machine and decide what action is required.</p>
+                <p class="section-lead">After measurement and analysis, we provide clear technical information that helps customers understand the condition of their machine and decide what action is required.</p>
             </div>
             <div class="reports-grid">
                 <div style="background: #fff; padding: 24px; border: 1px solid var(--line);">
                     <h4 style="margin-bottom: 12px; font-size: 16px;">Measurement Results</h4>
-                    <p style="color: var(--steel); font-size: 14px;">Detailed positioning accuracy, repeatability, and
-                        geometric errors.</p>
+                    <p style="color: var(--steel); font-size: 14px;">Detailed positioning accuracy, repeatability, and geometric errors.</p>
                 </div>
                 <div style="background: #fff; padding: 24px; border: 1px solid var(--line);">
                     <h4 style="margin-bottom: 12px; font-size: 16px;">Graphical Results</h4>
-                    <p style="color: var(--steel); font-size: 14px;">Visual representation of error analysis and
-                        rotary-axis results.</p>
+                    <p style="color: var(--steel); font-size: 14px;">Visual representation of error analysis and rotary-axis results.</p>
                 </div>
                 <div style="background: #fff; padding: 24px; border: 1px solid var(--line);">
                     <h4 style="margin-bottom: 12px; font-size: 16px;">Actionable Advice</h4>
-                    <p style="color: var(--steel); font-size: 14px;">Corrective recommendations and official calibration
-                        records.</p>
+                    <p style="color: var(--steel); font-size: 14px;">Corrective recommendations and official calibration records.</p>
                 </div>
             </div>
         </section>
@@ -3498,41 +3687,41 @@
             } catch (e) { /* fall back to static content */ }
         }
 
-        // Load services dynamically
+        // Load services dynamically into the 4 classified sections
         async function loadServicesFromAPI() {
-            const fallbackServices = [
-                { number: 'SVC / 01', title: 'Linear Laser Calibration', description: 'Ensures precise positioning accuracy of machine axes using laser interferometer systems.', specs: 'Accuracy up to 0.005 ppm, positioning & repeatability analysis, pitch error compensation, ISO 230-2 compliant.', image: 'images/services/linear_laser_calibration.png' },
-                { number: 'SVC / 02', title: 'Machine Health Diagnose (Ballbar Test)', description: 'Evaluates overall CNC performance by analyzing circular interpolation errors.', specs: 'Detects backlash, servo mismatch, cyclic errors; 360° and 220° tests; quick diagnostic within minutes; ISO 230-4 standard.', image: 'images/services/machine_health_diagnose.png' },
-                { number: 'SVC / 03', title: 'Rotary Axis Calibration', description: 'Calibrates rotary axes for accurate angular positioning and indexing.', specs: 'Angular accuracy up to +1 arc-sec, indexing error mapping, encoder verification, improves 4th/5th axis performance.', image: 'images/services/rotary_axis_calibration.png' },
-                { number: 'SVC / 04', title: 'Off-Axis Rotary Calibration', description: 'Measures rotary axis errors when positioned away from the center line.', specs: 'Eccentricity and tilt error analysis, volumetric compensation support, critical for multi-axis machining accuracy.', image: 'images/services/off_axis_rotary_calibration.png' },
-                { number: 'SVC / 05', title: 'Axis Straightness Testing', description: 'Checks linear deviations in axis movement along travel length.', specs: 'Measurement in horizontal & vertical planes, micron-level accuracy, laser-based or electronic levels, ISO 230-1.', image: 'images/services/axis_straightness_testing.png' },
-                { number: 'SVC / 06', title: 'Squareness Testing', description: 'Verifies perpendicularity between machine axes for geometric precision.', specs: 'Laser or granite square methods, angular error measurement in microns/meter, improves part geometry accuracy.', image: 'images/services/squareness_testing.png' },
-                { number: 'SVC / 07', title: 'Preventive Maintenance Contract', description: 'Scheduled maintenance to ensure consistent machine performance and reliability.', specs: 'Periodic calibration check, lubrication inspection, alignment verification, customized service intervals, downtime reduction.', image: 'images/services/preventive_maintenance_contract.png' }
-            ];
-
-            let data = fallbackServices;
             try {
                 const res = await fetch(API_BASE + '/api/services');
-                if (res.ok) {
-                    const fetchedData = await res.json();
-                    if (Array.isArray(fetchedData) && fetchedData.length > 0) {
-                        data = fetchedData;
-                    }
-                }
-            } catch (e) { /* fallbackServices used */ }
+                if (!res.ok) return;
+                const data = await res.json();
+                if (!Array.isArray(data) || !data.length) return;
 
-            const grids = document.querySelectorAll('.svc-grid');
-            if (!grids.length) return;
-            grids.forEach(g => g.innerHTML = data.map(s => `
-            <div class="svc-card">
-                ${s.image ? `<div class="svc-img-wrap"><img src="${escHtml(s.image)}" alt="${escHtml(s.title)}" onerror="this.parentNode.style.display='none'"></div>` : ''}
-                <div class="svc-card-body">
-                    <span class="svc-num">${escHtml(s.number || '')}</span>
-                    <h4>${escHtml(s.title || '')}</h4>
-                    <p>${escHtml(s.description || '')}</p>
-                    ${s.specs ? `<div class="svc-specs"><strong>Specs / Attributes</strong>${escHtml(s.specs)}</div>` : ''}
-                </div>
-            </div>`).join(''));
+                const categoryMap = {
+                    'Machine Calibration': document.getElementById('svc-grid-calibration'),
+                    'Machine Service': document.getElementById('svc-grid-service'),
+                    'CMM Services': document.getElementById('svc-grid-cmm'),
+                    'Quality Instruments Services & Calibration': document.getElementById('svc-grid-instruments')
+                };
+
+                for (const [catName, container] of Object.entries(categoryMap)) {
+                    if (!container) continue;
+                    const catItems = data.filter(s => s.category === catName);
+                    if (!catItems.length) continue;
+                    container.innerHTML = catItems.map(s => {
+                        const isProductImg = s.image && (s.image.includes('cmm-probes') || s.image.includes('cmm-machine') || s.image.includes('plain_plug') || s.image.includes('air-electronic') || s.image.includes('2d-height') || s.image.includes('vision-measuring'));
+                        const imgStyle = isProductImg ? 'object-fit:contain;max-width:92%;max-height:92%;' : 'object-fit:cover;width:100%;height:100%;border-radius:4px;';
+                        return `
+                    <div class="svc-card">
+                        ${s.image ? `<div class="svc-img-wrap" style="background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;height:200px;"><img src="${escHtml(s.image)}" alt="${escHtml(s.title)}" style="${imgStyle}" onerror="this.parentNode.style.display='none'"></div>` : ''}
+                        <div class="svc-card-body">
+                            <span class="svc-num">${escHtml(s.number || '')}</span>
+                            <h4>${escHtml(s.title || '')}</h4>
+                            <p>${escHtml(s.description || '')}</p>
+                            ${s.specs ? `<div class="svc-specs"><strong>Specs / Attributes</strong>${escHtml(s.specs)}</div>` : ''}
+                        </div>
+                    </div>`;
+                    }).join('');
+                }
+            } catch (e) { /* use static pre-rendered cards */ }
         }
 
         // Contact form submission
