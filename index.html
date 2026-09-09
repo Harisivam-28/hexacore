@@ -3508,44 +3508,60 @@
                                 style="width:100%; padding:12px; border:1px solid #ccc;" type="email" /></div>
                     </div>
                     <div class="contact-form-row">
+                        <div class="field" style="grid-column: span 2;">
+                            <label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Product or Service Selection</label>
+                            <select id="cf-service" style="width:100%; padding:12px; border:1px solid #ccc;">
+                                <option value="">-- Select Product or Service --</option>
+                                <optgroup label="Services &amp; Calibration">
+                                    <option>Linear Laser Calibration</option>
+                                    <option>Rotary Axis Calibration</option>
+                                    <option>Off-Axis Rotary Calibration</option>
+                                    <option>Axis Straightness Testing</option>
+                                    <option>Squareness Testing</option>
+                                    <option>Machine Health Diagnose (Ballbar Test)</option>
+                                    <option>Preventive Maintenance Contract (PMC)</option>
+                                    <option>CNC Geometric Overhaul &amp; Bed Realignment</option>
+                                    <option>CMM Volumetric Error Compensation &amp; Mapping</option>
+                                    <option>CMM Relocation, Leveling &amp; Verification</option>
+                                    <option>Gauges &amp; Setting Masters Calibration</option>
+                                    <option>Other Service</option>
+                                </optgroup>
+                                <optgroup label="Products &amp; Equipment">
+                                    <option>Plain Plug Gauge</option>
+                                    <option>OD Master</option>
+                                    <option>Master Setting Ring / Go-NoGo Ring Gauges</option>
+                                    <option>Thread Gauges</option>
+                                    <option>Width Gauge</option>
+                                    <option>Fixed Snap Gauge</option>
+                                    <option>Knurling Height Master</option>
+                                    <option>Plate / Paddle Gauge</option>
+                                    <option>Air Snap Gauge</option>
+                                    <option>Air Plug Gauge</option>
+                                    <option>Flush Pin Gauge</option>
+                                    <option>PCD Gauge</option>
+                                    <option>Receiving / Relation Gauge</option>
+                                    <option>Single Channel Air Electronic Unit</option>
+                                    <option>Multi-Channel Air Electronic Unit</option>
+                                    <option>Other Product</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="contact-form-row">
                         <div class="field"><label
                                 style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine
                                 Type</label><input id="cf-mtype" placeholder="e.g. VMC, CNC Lathe"
                                 style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
                         <div class="field"><label
                                 style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine
-                                Make</label><input id="cf-mmake" placeholder="e.g. Haas, Mazak"
+                                Model</label><input id="cf-mmodel" placeholder="Model number"
                                 style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
                     </div>
                     <div class="contact-form-row">
-                        <div class="field"><label
-                                style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Machine
-                                Model</label><input id="cf-mmodel" placeholder="Model number"
-                                style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
                         <div class="field"><label
                                 style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Controller</label><input
                                 id="cf-ctrl" placeholder="e.g. Fanuc, Siemens"
                                 style="width:100%; padding:12px; border:1px solid #ccc;" type="text" /></div>
-                    </div>
-                    <div class="contact-form-row">
-                        <div class="field">
-                            <label style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Service
-                                Required</label>
-                            <select id="cf-service" style="width:100%; padding:12px; border:1px solid #ccc;">
-                                <option>Linear Laser Calibration</option>
-                                <option>Ballbar Test</option>
-                                <option>Rotary Axis Calibration</option>
-                                <option>Off-Axis Rotary Calibration</option>
-                                <option>Axis Straightness Testing</option>
-                                <option>Squareness Testing</option>
-                                <option>Machine Leveling</option>
-                                <option>Servo Tuning</option>
-                                <option>Software Troubleshooting</option>
-                                <option>Ballscrew Support</option>
-                                <option>Preventive Maintenance</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
                         <div class="field"><label
                                 style="display:block; margin-bottom:6px; font-weight:600; font-size:13px;">Location</label><input
                                 id="cf-location" placeholder="City, State"
@@ -3739,7 +3755,6 @@
 
             // Gather new extra fields
             const mType = document.getElementById('cf-mtype').value.trim();
-            const mMake = document.getElementById('cf-mmake').value.trim();
             const mModel = document.getElementById('cf-mmodel').value.trim();
             const ctrl = document.getElementById('cf-ctrl').value.trim();
             const loc = document.getElementById('cf-location').value.trim();
@@ -3752,20 +3767,19 @@
 
             // Concatenate extra fields into the message body so we don't break the DB schema
             let formattedMessage = rawMsg;
-            formattedMessage += "\\n\\n--- Technical Details ---";
-            if (mType) formattedMessage += "\\nMachine Type: " + mType;
-            if (mMake) formattedMessage += "\\nMachine Make: " + mMake;
-            if (mModel) formattedMessage += "\\nMachine Model: " + mModel;
-            if (ctrl) formattedMessage += "\\nController: " + ctrl;
-            if (loc) formattedMessage += "\\nLocation: " + loc;
-            if (serviceReq) formattedMessage += "\\nService Required: " + serviceReq;
+            formattedMessage += "\n\n--- Technical Details ---";
+            if (serviceReq) formattedMessage += "\nProduct / Service Selected: " + serviceReq;
+            if (mType) formattedMessage += "\nMachine Type: " + mType;
+            if (mModel) formattedMessage += "\nMachine Model: " + mModel;
+            if (ctrl) formattedMessage += "\nController: " + ctrl;
+            if (loc) formattedMessage += "\nLocation: " + loc;
 
             const body = {
                 name: name,
                 company: company,
                 email: email,
                 phone: phone,
-                subject: serviceReq, // maps to subject in backend
+                subject: serviceReq || 'General Inquiry', // maps to subject in backend
                 message: formattedMessage
             };
 
@@ -3776,7 +3790,7 @@
                 const data = await res.json();
                 if (res.ok) {
                     showStatus(stat, 'Thank you for contacting Hexacore Precision Technologies. Our team will review your requirement and get back to you shortly.', '#22c55e');
-                    ['cf-name', 'cf-company', 'cf-phone', 'cf-email', 'cf-mtype', 'cf-mmake', 'cf-mmodel', 'cf-ctrl', 'cf-location', 'cf-message'].forEach(id => {
+                    ['cf-name', 'cf-company', 'cf-phone', 'cf-email', 'cf-mtype', 'cf-mmodel', 'cf-ctrl', 'cf-service', 'cf-location', 'cf-message'].forEach(id => {
                         let el = document.getElementById(id);
                         if (el) el.value = '';
                     });
@@ -3835,7 +3849,7 @@
         function setupContactStatusClearListeners() {
             const inputs = [
                 'cf-name', 'cf-company', 'cf-phone', 'cf-email', 
-                'cf-mtype', 'cf-mmake', 'cf-mmodel', 'cf-ctrl', 
+                'cf-mtype', 'cf-mmodel', 'cf-ctrl', 
                 'cf-service', 'cf-location', 'cf-message'
             ];
             inputs.forEach(id => {
@@ -3867,9 +3881,57 @@
             }
         }
 
+        async function loadNewslettersFromAPI() {
+            try {
+                const res = await fetch(API_BASE + '/api/newsletter/public');
+                if (!res.ok) return;
+                const items = await res.json();
+                if (!Array.isArray(items) || items.length === 0) return;
+
+                const grid = document.querySelector('.nl-grid');
+                if (!grid) return;
+
+                const defaultImages = [
+                    'images/nl_cnc_machining.png',
+                    'images/nl_laser_calibration.png',
+                    'images/nl_cmm_measurement.png',
+                    'images/nl_industry_team.png'
+                ];
+
+                const cardsHtml = items.map((item, idx) => {
+                    const img = defaultImages[idx % defaultImages.length];
+                    const dateStr = item.created_at ? new Date(item.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : 'Recent Update';
+                    const badgeText = item.status === 'sent' ? 'Published' : 'Newsletter';
+                    
+                    return `
+                        <article class="nl-card-light">
+                            <div class="nl-img-wrap">
+                                <img src="${img}" alt="${escHtml(item.title)}">
+                                <span class="nl-badge">${badgeText}</span>
+                            </div>
+                            <div class="nl-card-body">
+                                <div class="nl-date">${dateStr}</div>
+                                <h3>${escHtml(item.title)}</h3>
+                                <p style="font-weight:700;color:var(--orange);margin-bottom:8px;font-size:14px;">${escHtml(item.subject)}</p>
+                                <p style="white-space:pre-line;">${escHtml(item.content)}</p>
+                                <div class="nl-card-footer">
+                                    <span class="author">Hexacore Engineering Team</span>
+                                </div>
+                            </div>
+                        </article>
+                    `;
+                }).join('');
+
+                grid.innerHTML = cardsHtml;
+            } catch (e) {
+                // keep pre-rendered fallback cards
+            }
+        }
+
         // Fetch from API on load
         loadProductsFromAPI();
         loadServicesFromAPI();
+        loadNewslettersFromAPI();
         setupContactStatusClearListeners();
     </script>
 </body>

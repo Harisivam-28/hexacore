@@ -287,6 +287,39 @@ async function sendQuoteConfirmation({ name, email }) {
   });
 }
 
+/**
+ * Send newsletter broadcast to all subscribers.
+ */
+async function sendNewsletterBroadcast({ title, subject, content, recipients }) {
+  if (!recipients || !recipients.length) return { sentCount: 0 };
+  const html = htmlShell(title || subject, `
+    <div class="badge">Hexacore Newsletter</div>
+    <div class="title">${escHtml(title || subject)}</div>
+    <div class="message-box" style="background:#ffffff;border-left:3px solid #F47B20;padding:20px;font-size:15px;line-height:1.7;">
+      ${content}
+    </div>
+    <p style="margin-top:24px;font-size:12px;color:#8296b0;">
+      You are receiving this email because you subscribed to Hexacore Precision Technologies updates.
+    </p>
+  `);
+
+  let count = 0;
+  for (const recipientEmail of recipients) {
+    try {
+      await transporter.sendMail({
+        from: `"${process.env.COMPANY_NAME || 'Hexacore Precision'}" <${process.env.MAIL_USER}>`,
+        to: recipientEmail,
+        subject: subject,
+        html: html,
+      });
+      count++;
+    } catch (err) {
+      console.error(`⚠️  Failed to send newsletter to ${recipientEmail}:`, err.message);
+    }
+  }
+  return { sentCount: count };
+}
+
 // ── Utility ─────────────────────────────────────────────────────
 function escHtml(s) {
   return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -297,4 +330,5 @@ module.exports = {
   sendContactConfirmation,
   sendQuoteNotification,
   sendQuoteConfirmation,
+  sendNewsletterBroadcast,
 };

@@ -328,16 +328,31 @@
 
     <!-- NEWSLETTER -->
     <div class="panel" id="panel-newsletter">
+      <!-- Newsletters / Broadcasts Card -->
+      <div class="table-wrap" style="margin-bottom: 24px;">
+        <div class="table-header">
+          <h3>Newsletters &amp; Email Broadcasts</h3>
+          <div style="display:flex;gap:8px;">
+            <button class="btn-action btn-add" onclick="openCreateNewsletterCampaignModal()">+ Create Newsletter</button>
+            <button class="btn-action" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border);" onclick="loadNewsletter()">↻ Refresh</button>
+          </div>
+        </div>
+        <table>
+          <thead><tr><th>#</th><th>Title</th><th>Subject</th><th>Status</th><th>Created On</th><th>Actions</th></tr></thead>
+          <tbody id="newsletter-campaigns-body"><tr><td colspan="6" class="empty-state">Loading...</td></tr></tbody>
+        </table>
+      </div>
+
+      <!-- Subscribers Card -->
       <div class="table-wrap">
         <div class="table-header">
           <h3>Newsletter Subscribers</h3>
           <div style="display:flex;gap:8px;">
             <button class="btn-action btn-add" onclick="openAddNewsletterModal()">+ Add Subscriber</button>
-            <button class="btn-action" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border);" onclick="loadNewsletter()">↻ Refresh</button>
           </div>
         </div>
         <table>
-          <thead><tr><th>#</th><th>Email</th><th>Subscribed On</th><th>Actions</th></tr></thead>
+          <thead><tr><th>#</th><th>Email Address</th><th>Subscribed On</th><th>Actions</th></tr></thead>
           <tbody id="newsletter-body"><tr><td colspan="4" class="empty-state">Loading...</td></tr></tbody>
         </table>
       </div>
@@ -422,6 +437,28 @@
   </div>
 </div>
 
+<!-- Newsletter Campaign Create/Edit Modal -->
+<div class="modal-overlay" id="newsletter-campaign-modal">
+  <div class="modal" style="max-width: 560px;">
+    <h3 id="newsletter-campaign-modal-title">Create Newsletter</h3>
+    <input type="hidden" id="newsletter-campaign-id">
+    <label class="f-label">Newsletter Title *</label>
+    <input class="f-input" id="newsletter-campaign-title" placeholder="e.g. Q3 Precision Metrology Updates">
+    
+    <label class="f-label">Email Subject Line *</label>
+    <input class="f-input" id="newsletter-campaign-subject" placeholder="e.g. Hexacore Precision Insights &amp; Service Updates">
+
+    <label class="f-label">Newsletter Content (Text or HTML) *</label>
+    <textarea class="f-input" id="newsletter-campaign-content" style="height:140px;font-family:inherit;line-height:1.5;resize:vertical;" placeholder="Write your newsletter update here..."></textarea>
+
+    <div id="newsletter-campaign-err" style="color:var(--red);font-size:12.5px;margin-top:-6px;margin-bottom:10px;display:none;"></div>
+    <div class="modal-actions">
+      <button class="btn-save" id="newsletter-campaign-save-btn" onclick="saveNewsletterCampaign()">Save Newsletter</button>
+      <button class="btn-cancel" onclick="closeModal('newsletter-campaign-modal')">Cancel</button>
+    </div>
+  </div>
+</div>
+
 <!-- Newsletter Edit Modal -->
 <div class="modal-overlay" id="newsletter-modal">
   <div class="modal">
@@ -486,13 +523,25 @@
   }
 
   // Check existing token
+  let tokenValid = false;
   if (TOKEN) {
-    document.getElementById('login-screen').style.display = 'none';
     try {
       const payload = JSON.parse(atob(TOKEN.split('.')[1]));
-      document.getElementById('admin-name').textContent = payload.username;
-    } catch {}
-    init();
+      if (payload.exp && payload.exp * 1000 > Date.now()) {
+        tokenValid = true;
+        document.getElementById('admin-name').textContent = payload.username || 'Admin';
+        document.getElementById('login-screen').style.display = 'none';
+        init();
+      }
+    } catch (e) {
+      tokenValid = false;
+    }
+  }
+
+  if (!tokenValid) {
+    TOKEN = '';
+    localStorage.removeItem('hx_token');
+    document.getElementById('login-screen').style.display = 'flex';
   }
 
   document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
@@ -529,21 +578,46 @@
   }
 
   async function authFetch(url, opts = {}) {
-    return fetch(url, { ...opts, headers: { ...(opts.headers || {}), 'Authorization': 'Bearer ' + TOKEN, 'Content-Type': 'application/json' } });
+    const res = await fetch(url, {
+      ...opts,
+      headers: {
+        ...(opts.headers || {}),
+        'Authorization': 'Bearer ' + TOKEN,
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (res.status === 401) {
+      TOKEN = '';
+      localStorage.removeItem('hx_token');
+      document.getElementById('login-screen').style.display = 'flex';
+      const err = document.getElementById('login-err');
+      if (err) {
+        err.textContent = 'Session expired or invalid token. Please log in again.';
+        err.style.display = 'block';
+      }
+      throw new Error('Invalid or expired token');
+    }
+
+    return res;
   }
 
   // ── Stats ────────────────────────────────────────────────────────
   async function loadStats() {
-    const [c, q, n, p] = await Promise.all([
-      authFetch('/api/contacts').then(r => r.json()),
-      authFetch('/api/quotes').then(r => r.json()),
-      authFetch('/api/newsletter').then(r => r.json()),
-      authFetch('/api/products/all').then(r => r.json()),
-    ]);
-    document.getElementById('stat-contacts').textContent   = Array.isArray(c) ? c.length : '—';
-    document.getElementById('stat-quotes').textContent     = Array.isArray(q) ? q.length : '—';
-    document.getElementById('stat-newsletter').textContent = Array.isArray(n) ? n.length : '—';
-    document.getElementById('stat-products').textContent   = Array.isArray(p) ? p.filter(x => x.active).length : '—';
+    try {
+      const [c, q, n, p] = await Promise.all([
+        authFetch('/api/contacts').then(r => r.json()),
+        authFetch('/api/quotes').then(r => r.json()),
+        authFetch('/api/newsletter').then(r => r.json()),
+        authFetch('/api/products/all').then(r => r.json()),
+      ]);
+      document.getElementById('stat-contacts').textContent   = Array.isArray(c) ? c.length : '—';
+      document.getElementById('stat-quotes').textContent     = Array.isArray(q) ? q.length : '—';
+      document.getElementById('stat-newsletter').textContent = Array.isArray(n) ? n.length : '—';
+      document.getElementById('stat-products').textContent   = Array.isArray(p) ? p.length : '—';
+    } catch (e) {
+      console.warn('Stats fetch interrupted (auth required):', e.message);
+    }
   }
 
   // ── Contacts ─────────────────────────────────────────────────────
@@ -612,23 +686,148 @@
 
   // ── Newsletter ───────────────────────────────────────────────────
   async function loadNewsletter() {
-    const rows = await authFetch('/api/newsletter').then(r => r.json());
-    const tb = document.getElementById('newsletter-body');
-    if (!rows.length) { tb.innerHTML = `<tr><td colspan="4"><div class="empty-state">No subscribers yet.</div></td></tr>`; return; }
-    tb.innerHTML = rows.map(r => `
-      <tr>
-        <td class="mono">#${r.id}</td>
-        <td><a href="mailto:${esc(r.email)}" style="color:var(--orange)">${esc(r.email)}</a></td>
-        <td class="mono" style="font-size:11px;">${fmtDate(r.subscribed_at)}</td>
-        <td>
-          <button class="btn-action btn-mark" onclick="openNewsletterModal(${r.id})">Edit</button>
-          <button class="btn-action btn-del" onclick="deleteSubscriber(${r.id})">Remove</button>
-        </td>
-      </tr>`).join('');
+    // 1. Load Newsletters / Campaigns
+    try {
+      const campaigns = await authFetch('/api/newsletter/campaigns').then(r => r.json());
+      const ctb = document.getElementById('newsletter-campaigns-body');
+      if (ctb) {
+        if (!campaigns || !campaigns.length) {
+          ctb.innerHTML = `<tr><td colspan="6"><div class="empty-state">No newsletters created yet. Click "+ Create Newsletter" to draft one.</div></td></tr>`;
+        } else {
+          ctb.innerHTML = campaigns.map(c => `
+            <tr>
+              <td class="mono">#${c.id}</td>
+              <td style="font-weight:600;color:var(--fg);">${esc(c.title)}</td>
+              <td>${esc(c.subject)}</td>
+              <td>
+                <span class="badge-status badge-${c.status === 'sent' ? 'done' : 'pending'}">${c.status === 'sent' ? 'Sent (' + fmtDate(c.sent_at) + ')' : 'Draft'}</span>
+              </td>
+              <td class="mono" style="font-size:11px;">${fmtDate(c.created_at)}</td>
+              <td>
+                <button class="btn-action btn-mark" onclick="openEditNewsletterCampaignModal(${c.id})">Edit</button>
+                <button class="btn-action btn-add" style="background:#22c55e18;color:#22c55e;border:1px solid #22c55e44;" onclick="sendNewsletterCampaign(${c.id})">Send Broadcast</button>
+                <button class="btn-action btn-del" onclick="deleteNewsletterCampaign(${c.id})">Delete</button>
+              </td>
+            </tr>`).join('');
+        }
+      }
+    } catch (e) { console.error('Error loading newsletter campaigns', e); }
+
+    // 2. Load Subscribers
+    try {
+      const rows = await authFetch('/api/newsletter').then(r => r.json());
+      const tb = document.getElementById('newsletter-body');
+      if (tb) {
+        if (!rows || !rows.length) {
+          tb.innerHTML = `<tr><td colspan="4"><div class="empty-state">No subscribers yet.</div></td></tr>`;
+        } else {
+          tb.innerHTML = rows.map(r => `
+            <tr>
+              <td class="mono">#${r.id}</td>
+              <td><a href="mailto:${esc(r.email)}" style="color:var(--orange)">${esc(r.email)}</a></td>
+              <td class="mono" style="font-size:11px;">${fmtDate(r.subscribed_at)}</td>
+              <td>
+                <button class="btn-action btn-mark" onclick="openNewsletterModal(${r.id})">Edit</button>
+                <button class="btn-action btn-del" onclick="deleteSubscriber(${r.id})">Remove</button>
+              </td>
+            </tr>`).join('');
+        }
+      }
+    } catch (e) { console.error('Error loading newsletter subscribers', e); }
+  }
+
+  function openCreateNewsletterCampaignModal() {
+    document.getElementById('newsletter-campaign-modal-title').textContent = 'Create Newsletter';
+    document.getElementById('newsletter-campaign-id').value = '';
+    document.getElementById('newsletter-campaign-title').value = '';
+    document.getElementById('newsletter-campaign-subject').value = '';
+    document.getElementById('newsletter-campaign-content').value = '';
+    const errEl = document.getElementById('newsletter-campaign-err');
+    if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+    document.getElementById('newsletter-campaign-save-btn').textContent = 'Save Newsletter';
+    document.getElementById('newsletter-campaign-save-btn').disabled = false;
+    document.getElementById('newsletter-campaign-modal').classList.add('open');
+  }
+
+  function openEditNewsletterCampaignModal(id) {
+    document.getElementById('newsletter-campaign-modal-title').textContent = 'Edit Newsletter';
+    document.getElementById('newsletter-campaign-id').value = id;
+    const errEl = document.getElementById('newsletter-campaign-err');
+    if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+    document.getElementById('newsletter-campaign-save-btn').textContent = 'Save Changes';
+    document.getElementById('newsletter-campaign-save-btn').disabled = false;
+
+    authFetch('/api/newsletter/campaigns').then(r => r.json()).then(rows => {
+      const c = rows.find(x => x.id == id);
+      if (c) {
+        document.getElementById('newsletter-campaign-title').value = c.title || '';
+        document.getElementById('newsletter-campaign-subject').value = c.subject || '';
+        document.getElementById('newsletter-campaign-content').value = c.content || '';
+      }
+    });
+    document.getElementById('newsletter-campaign-modal').classList.add('open');
+  }
+
+  async function saveNewsletterCampaign() {
+    const id      = document.getElementById('newsletter-campaign-id').value;
+    const title   = document.getElementById('newsletter-campaign-title').value.trim();
+    const subject = document.getElementById('newsletter-campaign-subject').value.trim();
+    const content = document.getElementById('newsletter-campaign-content').value.trim();
+    const errEl   = document.getElementById('newsletter-campaign-err');
+    const btn     = document.getElementById('newsletter-campaign-save-btn');
+
+    if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+    if (!title || !subject || !content) {
+      if (errEl) { errEl.textContent = 'Title, Subject, and Content are all required.'; errEl.style.display = 'block'; }
+      return;
+    }
+
+    btn.textContent = 'Saving…'; btn.disabled = true;
+    try {
+      const url = id ? `/api/newsletter/campaigns/${id}` : '/api/newsletter/campaigns';
+      const method = id ? 'PUT' : 'POST';
+      const res = await authFetch(url, { method, body: JSON.stringify({ title, subject, content }) });
+      const data = await res.json();
+      if (!res.ok) {
+        if (errEl) { errEl.textContent = data.error || 'Failed to save newsletter.'; errEl.style.display = 'block'; }
+        btn.textContent = 'Save Newsletter'; btn.disabled = false;
+        return;
+      }
+      closeModal('newsletter-campaign-modal');
+      loadNewsletter();
+    } catch (e) {
+      if (e.message !== 'Invalid or expired token') {
+        if (errEl) { errEl.textContent = e.message || 'Error saving newsletter. Please try again.'; errEl.style.display = 'block'; }
+      }
+      btn.textContent = 'Save Newsletter'; btn.disabled = false;
+    }
+  }
+
+  async function deleteNewsletterCampaign(id) {
+    if (!confirm('Delete this newsletter?')) return;
+    await authFetch(`/api/newsletter/campaigns/${id}`, { method: 'DELETE' });
+    loadNewsletter();
+  }
+
+  async function sendNewsletterCampaign(id) {
+    if (!confirm('Are you sure you want to broadcast this newsletter to ALL active subscribers?')) return;
+    try {
+      const res = await authFetch(`/api/newsletter/campaigns/${id}/send`, { method: 'POST' });
+      const data = await res.json();
+      if (res.ok) {
+        alert(data.message || 'Newsletter sent successfully!');
+        loadNewsletter();
+      } else {
+        alert(data.error || 'Failed to send newsletter broadcast.');
+      }
+    } catch (e) {
+      if (e.message !== 'Invalid or expired token') {
+        alert(e.message || 'Error sending broadcast.');
+      }
+    }
   }
 
   function openNewsletterModal(id) {
-    // Reset modal state
     document.getElementById('newsletter-id').value = id;
     document.getElementById('newsletter-email').value = '';
     const errEl = document.getElementById('newsletter-edit-err');
@@ -636,7 +835,6 @@
     document.getElementById('newsletter-save-btn').textContent = 'Save Changes';
     document.getElementById('newsletter-save-btn').disabled = false;
 
-    // Fetch subscribers and find by id (use == for type-safe comparison)
     authFetch('/api/newsletter').then(r => r.json()).then(rows => {
       const s = rows.find(x => x.id == id);
       if (s) document.getElementById('newsletter-email').value = s.email;
@@ -669,8 +867,9 @@
       closeModal('newsletter-modal');
       loadNewsletter();
     } catch (e) {
-      if (errEl) { errEl.textContent = 'Network error. Try again.'; errEl.style.display = 'block'; }
-      else alert('Network error');
+      if (e.message !== 'Invalid or expired token') {
+        if (errEl) { errEl.textContent = e.message || 'Error updating email.'; errEl.style.display = 'block'; }
+      }
       btn.textContent = 'Save Changes'; btn.disabled = false;
     }
   }
@@ -691,9 +890,8 @@
     if (!email) { errEl.textContent = 'Email is required.'; errEl.style.display = 'block'; return; }
     btn.textContent = 'Adding…'; btn.disabled = true;
     try {
-      const res  = await fetch('/api/newsletter', {
+      const res  = await authFetch('/api/newsletter', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
       });
       const data = await res.json();
@@ -701,7 +899,9 @@
       closeModal('newsletter-add-modal');
       loadNewsletter(); loadStats();
     } catch (e) {
-      errEl.textContent = 'Network error. Please try again.'; errEl.style.display = 'block';
+      if (e.message !== 'Invalid or expired token') {
+        errEl.textContent = e.message || 'Error adding subscriber.'; errEl.style.display = 'block';
+      }
       btn.textContent = 'Add Subscriber'; btn.disabled = false;
     }
   }

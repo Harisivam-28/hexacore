@@ -59,6 +59,15 @@ async function init() {
       email         TEXT NOT NULL UNIQUE,
       subscribed_at TEXT DEFAULT (datetime('now'))
     );
+    CREATE TABLE IF NOT EXISTS newsletters (
+      id          INTEGER PRIMARY KEY AUTOINCREMENT,
+      title       TEXT NOT NULL,
+      subject     TEXT NOT NULL,
+      content     TEXT NOT NULL,
+      status      TEXT DEFAULT 'draft',
+      sent_at     TEXT,
+      created_at  TEXT DEFAULT (datetime('now'))
+    );
     CREATE TABLE IF NOT EXISTS products (
       id          INTEGER PRIMARY KEY AUTOINCREMENT,
       name        TEXT NOT NULL,
@@ -114,6 +123,12 @@ async function init() {
   db.exec2 = function (sql, params = []) {
     db.run(sql, params);
     db.save();
+    let lastInsertRowid = null;
+    try {
+      const row = db.queryOne('SELECT last_insert_rowid() AS id');
+      if (row) lastInsertRowid = row.id;
+    } catch (e) {}
+    return { lastInsertRowid };
   };
 
   // ── Seed Admin Account ─────────────────────────────────────────
