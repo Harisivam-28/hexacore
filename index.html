@@ -167,6 +167,10 @@
         }
 
         /* Heading hierarchy */
+        h2, h3, h4, h5, h6 {
+            text-align: center;
+        }
+
         h1 {
             font-family: 'Inter', sans-serif;
             font-weight: 800;
@@ -717,7 +721,10 @@
 
         .section-head {
             max-width: 680px;
+            margin-left: auto;
+            margin-right: auto;
             margin-bottom: 52px;
+            text-align: center;
         }
 
         .tag {
@@ -734,10 +741,7 @@
         }
 
         .tag::before {
-            content: "";
-            width: 22px;
-            height: 2px;
-            background: var(--orange);
+            display: none;
         }
 
         .section.navy .tag {
@@ -749,6 +753,7 @@
             text-transform: uppercase;
             line-height: 1.12;
             margin-bottom: 16px;
+            text-align: center;
         }
 
         .section-head .section-lead {
@@ -756,6 +761,8 @@
             line-height: 1.75;
             color: var(--steel);
             max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         /* Inline emphasis inside section leads */
@@ -2678,12 +2685,57 @@
             <div style="max-width:1280px;margin:0 auto;">
                 <div style="text-align:center;margin-bottom:48px;">
                     <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:14px;">
-                        <div style="width:36px;height:2px;background:var(--orange);"></div>
                         <span style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);">Core Technical Offerings</span>
-                        <div style="width:36px;height:2px;background:var(--orange);"></div>
                     </div>
                     <h2 style="font-family:'Inter',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:900;color:var(--navy);margin:0 0 12px;line-height:1.15;">End-to-End Precision Services</h2>
                     <p style="color:var(--steel);font-size:15px;max-width:680px;margin:0 auto;line-height:1.7;">From sub-micron CNC machine alignment and CMM volumetric error mapping to certified metrology instrument calibration and on-machine probe system installation.</p>
+                <!-- ── KEY PRODUCT HIGHLIGHTS (Bullet Points Above Services) ── -->
+                <div style="background:#fff;border-radius:12px;padding:28px 32px;margin-bottom:36px;border:1px solid #E2E8F0;box-shadow:0 4px 20px rgba(11,31,58,0.05);">
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:20px;border-bottom:1px solid #EEF2F6;padding-bottom:14px;">
+                        <h3 style="font-family:'Inter',sans-serif;font-size:18px;font-weight:800;color:var(--navy);margin:0;display:flex;align-items:center;gap:10px;">
+                            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--orange);"></span>
+                            Precision Product Range &amp; Instruments
+                        </h3>
+                        <a onclick="showPage(3)" style="font-size:13px;font-weight:700;color:var(--orange);text-decoration:none;cursor:pointer;">Explore All 23 Products →</a>
+                    </div>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px 20px;">
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> Plain Plug Gauges &amp; OD Masters
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> Master Setting Rings &amp; Ring Gauges
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> Metric &amp; Unified Thread Gauges
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> Air Plug &amp; Air Snap Gauges
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> Single &amp; Multi-Channel Air Electronic Units
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> Fixed Snap &amp; KeyWay Width Gauges
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> Knurling Height Masters &amp; 2D Height Gauges
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> PCD &amp; Custom Receiving Relation Gauges
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> 3D Coordinate Measuring Machines (CMM)
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> 2D Vision Measuring Systems
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> 2D &amp; 3D CMM Probes &amp; Styli
+                        </div>
+                        <div style="display:flex;align-items:center;gap:10px;font-size:14px;font-weight:600;color:var(--navy);">
+                            <span style="color:var(--orange);font-weight:900;font-size:16px;">•</span> Stainless Steel Air Dryers &amp; Auto Filters
+                        </div>
+                    </div>
                 </div>
 
                 <!-- 3 Main Service Division Cards -->
@@ -2906,9 +2958,7 @@
             <div style="max-width:1280px;margin:0 auto;">
                 <div style="text-align:center;margin-bottom:48px;">
                     <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:14px;">
-                        <div style="width:36px;height:2px;background:var(--orange);"></div>
                         <span style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);">Product Catalog</span>
-                        <div style="width:36px;height:2px;background:var(--orange);"></div>
                     </div>
                     <h2 style="font-family:'Inter',sans-serif;font-size:clamp(26px,3.5vw,38px);font-weight:900;color:var(--navy);margin:0 0 12px;line-height:1.15;">Precision Gauges &amp; Metrology Products</h2>
                     <p style="color:var(--steel);font-size:15px;max-width:680px;margin:0 auto;line-height:1.7;">Explore our range of precision plain plug gauges, ring gauges, thread gauges, air electronic units, height masters, PCD gauges, and 3D CMM inspection equipment.</p>
@@ -3307,9 +3357,7 @@
                 <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:40px 32px;margin-bottom:48px;">
                     <div style="text-align:center;margin-bottom:36px;">
                         <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:10px;">
-                            <div style="width:36px;height:2px;background:var(--orange);"></div>
                             <span style="font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);">Our Capabilities</span>
-                            <div style="width:36px;height:2px;background:var(--orange);"></div>
                         </div>
                         <h3 style="font-family:'Inter',sans-serif;font-size:clamp(22px,2.8vw,30px);font-weight:900;color:var(--navy);margin:0 0 10px;">Types of Machines We Calibrate</h3>
                         <p style="color:var(--steel);font-size:14px;max-width:560px;margin:0 auto;line-height:1.6;">We service all major CNC machine types in precision manufacturing — from turning centres to complex 5-axis systems.</p>
@@ -3454,9 +3502,7 @@
                 <!-- SUB-SECTION: CNC Controllers We Support -->
                 <div style="background:var(--navy);border-radius:10px;padding:40px 32px;text-align:center;">
                     <div style="display:inline-flex;align-items:center;gap:12px;margin-bottom:20px;">
-                        <div style="width:36px;height:2px;background:var(--orange);"></div>
                         <h4 style="font-family:'Inter',sans-serif;font-size:18px;font-weight:800;color:#fff;letter-spacing:.04em;text-transform:uppercase;margin:0;">CNC Controllers We Support</h4>
-                        <div style="width:36px;height:2px;background:var(--orange);"></div>
                     </div>
                     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:10px 0;line-height:2.2;">
                         <span style="color:#F47B20;font-weight:700;font-size:14px;padding:0 14px;border-right:1px solid rgba(255,255,255,.2);">FANUC</span>
