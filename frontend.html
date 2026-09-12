@@ -1851,6 +1851,73 @@
             text-align: center;
         }
 
+        /* ── Slide-in Mobile Nav Drawer & Backdrop ─── */
+        .mobile-nav-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(7, 21, 39, 0.72);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0.35s ease;
+            z-index: 9998;
+        }
+
+        .mobile-nav-backdrop.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            max-width: 85vw;
+            height: 100vh;
+            background: linear-gradient(180deg, var(--navy-dark) 0%, var(--navy) 100%);
+            box-shadow: -10px 0 35px rgba(0,0,0,0.5);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            padding: 85px 24px 36px;
+            transform: translateX(100%);
+            transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow-y: auto;
+            border-left: 1px solid rgba(244,123,32,0.3);
+        }
+
+        .mobile-nav.open {
+            transform: translateX(0);
+        }
+
+        .mobile-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 16px;
+            color: #C7D1E0;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+            border-radius: 6px;
+            margin-bottom: 6px;
+            transition: background .2s, color .2s, transform .2s;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.current {
+            background: rgba(244,123,32,.18);
+            color: var(--orange);
+            transform: translateX(6px);
+        }
+
         /* ── Hamburger Menu ────────────────────────── */
         .hamburger {
             display: none;
@@ -1865,6 +1932,7 @@
             padding: 4px;
             margin-left: auto;
             flex: none;
+            z-index: 10001;
         }
 
         .hamburger span {
@@ -1873,47 +1941,250 @@
             height: 2px;
             background: #fff;
             border-radius: 2px;
-            transition: transform .3s, opacity .3s, width .3s;
+            transition: transform .3s, opacity .3s, width .3s, background-color .3s;
             transform-origin: center;
         }
 
-        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); background: var(--orange); }
         .hamburger.open span:nth-child(2) { opacity: 0; width: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); background: var(--orange); }
 
-        /* Mobile nav drawer */
-        .mobile-nav {
-            display: none;
-            flex-direction: column;
-            background: var(--navy-dark);
-            border-top: 1px solid rgba(244,123,32,.3);
-            padding: 0;
-            overflow: hidden;
-            max-height: 0;
-            transition: max-height .35s ease, padding .35s ease;
+        /* ── Hero Arrows CSS ─────────────────── */
+        .hero-prev-btn, .hero-next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(11, 31, 58, 0.7);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.35);
+            font-size: 24px;
+            line-height: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 12;
+            transition: background 0.2s, transform 0.2s, border-color 0.2s;
+            backdrop-filter: blur(4px);
         }
 
-        .mobile-nav.open {
-            max-height: 400px;
-            padding: 8px 0 16px;
+        .hero-prev-btn { left: 12px; }
+        .hero-next-btn { right: 12px; }
+
+        .hero-prev-btn:hover, .hero-next-btn:hover {
+            background: var(--orange);
+            border-color: var(--orange);
+            transform: translateY(-50%) scale(1.1);
         }
 
-        .mobile-nav a {
-            display: block;
-            padding: 14px 24px;
-            color: #C7D1E0;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: .03em;
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(255,255,255,.05);
-            transition: background .15s, color .15s;
+        /* ── Scroll Sliding Animations ──────────────── */
+        .slide-up {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .mobile-nav a:hover,
-        .mobile-nav a.current {
-            background: rgba(244,123,32,.1);
+        .slide-left {
+            opacity: 0;
+            transform: translateX(-35px);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide-right {
+            opacity: 0;
+            transform: translateX(35px);
+            transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.94);
+            transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .slide-up.active,
+        .slide-left.active,
+        .slide-right.active,
+        .scale-in.active {
+            opacity: 1;
+            transform: translateY(0) translateX(0) scale(1);
+        }
+
+        /* ── Home Product Overview Grid ── */
+        .home-product-overview-grid {
+            display: grid !important;
+            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+            gap: 14px;
+        }
+
+        .home-product-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+            background: var(--grey-l);
+            border-radius: 8px;
+            border: 1px solid #E2E8F0;
+            border-left: 4px solid var(--orange);
+            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            cursor: pointer;
+        }
+
+        .home-product-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(11,31,58,0.08);
+            background: #fff;
+        }
+
+        .home-product-item .arrow {
             color: var(--orange);
+            font-weight: bold;
+            font-size: 15px;
+            flex: none;
+        }
+
+        .home-product-item .label {
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 13.5px;
+            line-height: 1.25;
+            word-break: break-word;
+        }
+
+        /* ── Testimonials Section Styles ── */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 28px 24px;
+            border: 1px solid #E2E8F0;
+            border-top: 4px solid var(--orange);
+            box-shadow: 0 4px 16px rgba(11, 31, 58, 0.05);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(11, 31, 58, 0.12);
+            border-color: rgba(244, 123, 32, 0.4);
+        }
+
+        .testimonial-stars {
+            color: #F47B20;
+            font-size: 16px;
+            margin-bottom: 14px;
+            letter-spacing: 2px;
+        }
+
+        .testimonial-text {
+            color: var(--steel);
+            font-size: 14px;
+            line-height: 1.65;
+            font-style: italic;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .testimonial-user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-top: 1px solid #F0F2F5;
+            padding-top: 16px;
+        }
+
+        .testimonial-avatar {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--orange);
+            font-weight: 800;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--orange);
+            flex-shrink: 0;
+        }
+
+        .testimonial-info h4 {
+            font-size: 14.5px;
+            font-weight: 800;
+            color: var(--navy);
+            margin: 0 0 2px;
+        }
+
+        .testimonial-info p {
+            font-size: 12px;
+            color: var(--steel);
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        .testimonial-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 10.5px;
+            font-weight: 700;
+            color: #16a34a;
+            background: #dcfce7;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-top: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+            }
+            .testimonial-card {
+                padding: 12px 8px !important;
+                border-top-width: 3px !important;
+            }
+            .testimonial-stars {
+                font-size: 11px !important;
+                margin-bottom: 6px !important;
+                letter-spacing: 1px !important;
+            }
+            .testimonial-text {
+                font-size: 9.5px !important;
+                line-height: 1.35 !important;
+                margin-bottom: 10px !important;
+            }
+            .testimonial-user {
+                padding-top: 8px !important;
+                gap: 6px !important;
+            }
+            .testimonial-avatar {
+                width: 28px !important;
+                height: 28px !important;
+                font-size: 10px !important;
+                border-width: 1px !important;
+            }
+            .testimonial-info h4 {
+                font-size: 10.5px !important;
+            }
+            .testimonial-info p {
+                font-size: 8.5px !important;
+            }
+            .testimonial-badge {
+                font-size: 8px !important;
+                padding: 2px 4px !important;
+            }
         }
 
         /* ── Tablet breakpoint: 1100px ─────────────── */
@@ -1966,14 +2237,9 @@
                 display: flex;
             }
 
-            .mobile-nav {
-                display: flex;
-                width: 100%;
-            }
-
             .site-header {
-                flex-wrap: wrap;
-                padding: 12px 24px;
+                padding: 14px 24px;
+                position: relative;
             }
 
             .brand {
@@ -1982,8 +2248,8 @@
             }
         }
 
-        /* ── Mobile breakpoint: 640px ──────────────── */
-        @media(max-width:640px) {
+        /* ── Mobile breakpoint: 768px & 640px ──────────────── */
+        @media(max-width:768px) {
 
             /* Header */
             .site-header {
@@ -1991,7 +2257,7 @@
             }
 
             .logo {
-                height: 52px;
+                height: 48px;
             }
 
             .logo:hover {
@@ -2000,16 +2266,16 @@
 
             /* Sections */
             .section {
-                padding: 40px 16px;
+                padding: 36px 12px;
             }
 
             .section-head {
-                margin-bottom: 28px;
+                margin-bottom: 24px;
             }
 
             /* Hero */
             .hero {
-                padding: 48px 16px 40px;
+                padding: 40px 14px 32px;
             }
 
             .hero-btns {
@@ -2030,21 +2296,375 @@
             .spec-chip.s1 { top: 4px; left: 4px; }
             .spec-chip.s2 { bottom: 4px; right: 4px; }
 
-            /* Grids → single column */
+
+
+        /* ── Mobile breakpoint: 768px & 640px ──────────────── */
+        @media(max-width:768px) {
+
+            /* Header */
+            .site-header {
+                padding: 10px 16px;
+            }
+
+            .logo {
+                height: 48px;
+            }
+
+            .logo:hover {
+                transform: none;
+            }
+
+            /* Sections */
+            .section {
+                padding: 36px 12px;
+            }
+
+            .section-head {
+                margin-bottom: 24px;
+            }
+
+            /* Hero */
+            .hero {
+                padding: 40px 14px 32px;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Spec chips in hero */
+            .spec-chip {
+                font-size: 9.5px;
+                padding: 4px 8px;
+            }
+            .spec-chip.s1 { top: 4px; left: 4px; }
+            .spec-chip.s2 { bottom: 4px; right: 4px; }
+
+        /* ── Probe Teaser Banner ──────────────── */
+        .probe-teaser-banner {
+            background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);
+            border-radius: 12px;
+            padding: 36px 40px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 32px;
+            box-shadow: 0 8px 30px rgba(11,31,58,0.2);
+            border: 1px solid rgba(244,123,32,0.35);
+        }
+
+        .probe-teaser-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(244,123,32,0.18);
+            color: var(--orange);
+            border: 1px solid rgba(244,123,32,0.4);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .probe-teaser-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(20px, 2.5vw, 26px);
+            font-weight: 900;
+            color: #fff;
+            margin: 0 0 10px;
+            line-height: 1.25;
+        }
+
+        .probe-teaser-desc {
+            color: #C7D1E0;
+            font-size: 14.5px;
+            max-width: 780px;
+            margin: 0;
+            line-height: 1.65;
+        }
+
+        .probe-teaser-btn {
+            white-space: nowrap;
+            padding: 14px 28px;
+            font-size: 13.5px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: none;
+        }
+
+        /* ── Mobile breakpoint: 768px & 640px ──────────────── */
+        @media(max-width:768px) {
+
+            /* Header */
+            .site-header {
+                padding: 10px 16px;
+            }
+
+            .logo {
+                height: 48px;
+            }
+
+            .logo:hover {
+                transform: none;
+            }
+
+            /* Sections */
+            .section {
+                padding: 36px 12px;
+            }
+
+            .section-head {
+                margin-bottom: 24px;
+            }
+
+            /* Hero */
+            .hero {
+                padding: 40px 14px 32px;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            /* Spec chips in hero */
+            .spec-chip {
+                font-size: 9.5px;
+                padding: 4px 8px;
+            }
+            .spec-chip.s1 { top: 4px; left: 4px; }
+            .spec-chip.s2 { bottom: 4px; right: 4px; }
+
+            /* ── PROBE TEASER BANNER FLEX FIX ── */
+            .probe-teaser-banner {
+                display: flex !important;
+                flex-direction: column !important;
+                padding: 22px 16px !important;
+                gap: 16px !important;
+                align-items: stretch !important;
+                text-align: left !important;
+            }
+
+            .probe-teaser-title {
+                font-size: 18px !important;
+                line-height: 1.3 !important;
+            }
+
+            .probe-teaser-desc {
+                font-size: 12.5px !important;
+                line-height: 1.55 !important;
+            }
+
+            .probe-teaser-btn {
+                width: 100% !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                white-space: normal !important;
+                text-align: center !important;
+                padding: 12px 16px !important;
+                font-size: 12.5px !important;
+            }
+
+            /* ── HOME PRODUCT OVERVIEW → 3 COLUMNS ON MOBILE ── */
+            .home-product-overview-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+            }
+
+            .home-product-item {
+                padding: 10px 6px !important;
+                gap: 5px !important;
+                border-left-width: 3px !important;
+            }
+
+            .home-product-item .label {
+                font-size: 11px !important;
+                line-height: 1.2 !important;
+            }
+
+            .home-product-item .arrow {
+                font-size: 12px !important;
+            }
+
+            /* ── PRODUCT GRID → 3 COLUMNS ON MOBILE ── */
+            .product-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+            }
+
+            .product-card {
+                border-radius: 6px !important;
+                min-width: 0;
+            }
+
+            .product-img {
+                height: 105px !important;
+                padding: 8px 4px !important;
+            }
+
+            .product-img img {
+                max-width: 94% !important;
+                max-height: 92% !important;
+            }
+
+            .product-tol {
+                font-size: 7.5px !important;
+                padding: 2px 4px !important;
+                top: 4px !important;
+                left: 4px !important;
+                max-width: 90% !important;
+            }
+
+            .product-body {
+                padding: 8px 6px 10px !important;
+            }
+
+            .product-body .cat {
+                font-size: 8px !important;
+                margin-bottom: 3px !important;
+                letter-spacing: 0.02em !important;
+            }
+
+            .product-body h4 {
+                font-size: 11px !important;
+                line-height: 1.2 !important;
+                margin-bottom: 4px !important;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .product-body p {
+                font-size: 9.5px !important;
+                line-height: 1.3 !important;
+                margin-bottom: 6px !important;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .product-body .view-link {
+                font-size: 9.5px !important;
+                font-weight: 700 !important;
+            }
+
+            /* ── SERVICES GRID → 3 COLUMNS ON MOBILE ── */
+            .svc-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+            }
+
+            .svc-card {
+                padding: 10px 6px !important;
+                border-radius: 6px !important;
+                min-width: 0;
+            }
+
+            .svc-img-wrap {
+                height: 95px !important;
+                padding: 6px !important;
+            }
+
+            .svc-card h4 {
+                font-size: 11px !important;
+                line-height: 1.2 !important;
+                margin-bottom: 4px !important;
+                word-break: break-word;
+            }
+
+            .svc-card p {
+                font-size: 9.5px !important;
+                line-height: 1.3 !important;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .svc-specs {
+                padding: 8px 6px !important;
+                font-size: 9px !important;
+                line-height: 1.3 !important;
+                margin-top: 8px !important;
+                word-break: break-word;
+            }
+
+            .svc-num {
+                font-size: 10px !important;
+            }
+
+            /* ── HIGHLIGHTS & STANDARDS → 3 COLUMNS ── */
             .highlights,
+            .standards-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+            }
+
+            .highlight-item {
+                padding: 12px 6px !important;
+                border-right: 1px solid var(--line);
+                border-bottom: none;
+            }
+
+            .hl-num {
+                font-size: clamp(20px, 5.5vw, 32px) !important;
+            }
+
+            .hl-lbl {
+                font-size: 9.5px !important;
+                line-height: 1.2 !important;
+            }
+
             .mv-grid,
             .values-grid,
-            .product-grid,
-            .svc-grid,
             .support-grid,
-            .footer-grid,
             .news-cols,
             .nl-grid,
-            .standards-grid,
             .approach-grid,
-            .reports-grid,
-            .contact-form-row {
-                grid-template-columns: 1fr;
+            .reports-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 8px !important;
+            }
+
+            /* ── FOOTER GRID → 3 COLUMNS ALIGNED ON MOBILE ── */
+            .footer-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+                gap: 20px 12px !important;
+                align-items: start !important;
+                padding-bottom: 28px !important;
+            }
+
+            .footer-grid h5 {
+                margin-bottom: 10px !important;
+                font-size: 12px !important;
+            }
+
+            .footer-grid p,
+            .footer-grid li {
+                margin-bottom: 6px !important;
+                font-size: 11px !important;
+                line-height: 1.4 !important;
+                word-break: break-word;
             }
 
             .contact-form-card {
@@ -2348,6 +2968,9 @@
                                 </div>
                             </div>
                         </div>
+                        <!-- Navigation Arrows -->
+                        <button class="hero-prev-btn" onclick="prevHeroSlide()" aria-label="Previous Slide">‹</button>
+                        <button class="hero-next-btn" onclick="nextHeroSlide()" aria-label="Next Slide">›</button>
                         <!-- Navigation Dots -->
                         <div style="position:absolute; top:16px; right:16px; display:flex; gap:8px; z-index:10; background:rgba(11,31,58,0.6); padding:6px 12px; border-radius:20px; backdrop-filter:blur(4px);">
                             <span class="hero-dot active" onclick="setHeroSlide(0)" style="width:10px; height:10px; border-radius:50%; background:var(--orange); cursor:pointer; transition:transform 0.2s, background 0.2s; transform:scale(1.25);"></span>
@@ -2367,94 +2990,94 @@
                     <h2 class="t-h2">High-Precision Gauges, Metrology Equipment &amp; Systems</h2>
                     <p class="section-lead" style="max-width:720px; margin:0 auto;">Comprehensive range of precision gauges, air-electronic measurement units, probe systems, 2D height masters, and coordinate measuring machines.</p>
                 </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Plain Plug Gauge</span>
+                <div class="home-product-overview-grid">
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Plain Plug Gauge</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">OD Master</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">OD Master</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Master Setting Ring / Go-NoGo Ring Gauges</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Master Setting Ring / Go-NoGo Ring Gauges</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Thread Gauge</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Thread Gauge</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Width Gauge</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Width Gauge</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Fixed Snap Gauge</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Fixed Snap Gauge</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Knurling Height Master</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Knurling Height Master</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Plate / Paddle Gauge</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Plate / Paddle Gauge</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Air Snap Gauge</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Air Snap Gauge</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Air Plug Gauge</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Air Plug Gauge</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Flush Pin Gauge</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Flush Pin Gauge</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">PCD Gauge</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">PCD Gauge</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Receiving / Relation Gauge</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Receiving / Relation Gauge</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Single Channel Air Electronic Unit</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Single Channel Air Electronic Unit</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Multi Channel Air Electronic Unit</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Multi Channel Air Electronic Unit</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Air Electronic Column Unit</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Air Electronic Column Unit</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Special Filter (SS Air Dryer)</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Special Filter (SS Air Dryer)</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">SPC Air Unit (S-Touch)</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">SPC Air Unit (S-Touch)</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">2D &amp; CMM Probes</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">2D &amp; CMM Probes</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Vision Measuring System</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Vision Measuring System</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">2D Height Gauges</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">2D Height Gauges</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:12px; padding:16px 20px; background:var(--grey-l); border-radius:8px; border:1px solid #E2E8F0; border-left:4px solid var(--orange); transition:transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 16px rgba(11,31,58,0.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
-                        <span style="color:var(--orange); font-weight:bold; font-size:16px;">▸</span>
-                        <span style="font-weight:700; color:var(--navy); font-size:14.5px;">Coordinate Measuring Machine (CMM)</span>
+                    <div class="home-product-item" onclick="showPage(3)">
+                        <span class="arrow">▸</span>
+                        <span class="label">Coordinate Measuring Machine (CMM)</span>
                     </div>
                 </div>
             </div>
@@ -2507,18 +3130,18 @@
                 </div>
 
                 <!-- SPECIAL PROBE INSTALLATION TEASER BANNER (HOMEPAGE) -->
-                <div style="background:linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);border-radius:12px;padding:36px 40px;color:#fff;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center;box-shadow:0 8px 30px rgba(11,31,58,0.2);border:1px solid rgba(244,123,32,0.3);">
-                    <div>
-                        <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(244,123,32,0.18);color:var(--orange);border:1px solid rgba(244,123,32,0.4);padding:4px 14px;border-radius:20px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">
+                <div class="probe-teaser-banner">
+                    <div class="probe-teaser-content">
+                        <div class="probe-teaser-badge">
                             <span>✨ SPECIALIZED CAPABILITY TEASER</span>
                         </div>
-                        <h3 style="font-family:'Inter',sans-serif;font-size:clamp(20px,2.5vw,26px);font-weight:900;color:#fff;margin:0 0 10px;">On-Machine Probe System Installation &amp; Retrofits</h3>
-                        <p style="color:#C7D1E0;font-size:14.5px;max-width:780px;margin:0;line-height:1.65;">
+                        <h3 class="probe-teaser-title">On-Machine Probe System Installation &amp; Retrofits</h3>
+                        <p class="probe-teaser-desc">
                             Looking to automate part setup and tool measurement? Hexacore provides turnkey <strong>On-Machine Touch Probe &amp; Tool Setter Installation</strong>, optical/radio receiver setup, macro programming, and <strong>CMM Star Probe Stylus Qualification</strong> for Renishaw &amp; Hexagon systems.
                         </p>
                     </div>
-                    <div>
-                        <button onclick="showPage(5)" class="btn btn-orange" style="white-space:nowrap;padding:14px 28px;font-size:13.5px;font-weight:800;letter-spacing:0.5px;border-radius:6px;cursor:pointer;">Inquire For Probe Installation →</button>
+                    <div class="probe-teaser-action">
+                        <button onclick="showPage(5)" class="btn btn-orange probe-teaser-btn">Inquire For Probe Installation →</button>
                     </div>
                 </div>
 
@@ -2563,83 +3186,65 @@
             </div>
         </section>
 
-        <!-- 7. MACHINES WE SUPPORT & CNC CONTROLLERS -->
-        <section class="section grey">
-            <div class="section-head">
-                <div class="tag">Technology / Engineering Capabilities</div>
-                <h2 class="t-h2">Machines &amp; Controllers We Support</h2>
-            </div>
-            <div class="machines-ctrls-grid">
-                <div>
-                    <h3 style="margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--orange);">CNC
-                        Machines</h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
-                            <span style="color: var(--orange);">▸</span> CNC Turning Centres
-                        </li>
-                        <li
-                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
-                            <span style="color: var(--orange);">▸</span> Vertical Machining Centres (VMC)
-                        </li>
-                        <li
-                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
-                            <span style="color: var(--orange);">▸</span> Horizontal Machining Centres (HMC)
-                        </li>
-                        <li
-                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
-                            <span style="color: var(--orange);">▸</span> 5-Axis CNC Machines
-                        </li>
-                        <li
-                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
-                            <span style="color: var(--orange);">▸</span> Gantry / Plano Milling Machines
-                        </li>
-                        <li
-                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
-                            <span style="color: var(--orange);">▸</span> Double Column Machining Centres
-                        </li>
-                        <li
-                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
-                            <span style="color: var(--orange);">▸</span> CNC Grinding Machines
-                        </li>
-                        <li
-                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
-                            <span style="color: var(--orange);">▸</span> Boring Machines
-                        </li>
-                        <li
-                            style="margin-bottom: 8px; color: var(--steel); display: flex; align-items: center; gap: 8px;">
-                            <span style="color: var(--orange);">▸</span> EDM &amp; Special Purpose Machines
-                        </li>
-                    </ul>
+        <!-- 6. CLIENT TESTIMONIALS (HOMEPAGE LAST) -->
+        <section class="section grey responsive-section" style="padding:64px 44px;">
+            <div style="max-width:1280px; margin:0 auto;">
+                <div class="section-head" style="margin-bottom:44px; text-align:center;">
+                    <div class="tag">Client Testimonials</div>
+                    <h2 class="t-h2">What Our Engineering &amp; Manufacturing Partners Say</h2>
+                    <p class="section-lead" style="max-width:720px; margin:0 auto;">Trusted by leading CNC machine builders, aerospace component manufacturers, automotive tier-1 suppliers, and precision tool rooms across India.</p>
                 </div>
-                <div>
-                    <h3 style="margin-bottom: 24px; padding-bottom: 8px; border-bottom: 2px solid var(--orange);">CNC
-                        Controllers</h3>
-                    <div class="controllers-grid">
-                        <div
-                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
-                            FANUC</div>
-                        <div
-                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
-                            SIEMENS / SINUMERIK</div>
-                        <div
-                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
-                            HEIDENHAIN</div>
-                        <div
-                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
-                            MITSUBISHI</div>
-                        <div
-                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
-                            MAZATROL / MAZAK</div>
-                        <div
-                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
-                            HAAS &amp; FAGOR</div>
-                        <div
-                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
-                            SYNTEC &amp; DELTA</div>
-                        <div
-                            style="padding: 12px; background: #fff; border: 1px solid var(--line); font-size: 14px; font-weight: 600;">
-                            HURCO / YASKAWA / BROTHER</div>
+
+                <div class="testimonials-grid">
+                    <!-- Testimonial 1 -->
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-text">“Hexacore carried out sub-micron linear laser calibration and ballbar circularity diagnostics on our 5-axis machining center. The volumetric positioning accuracy improvement was immediate and reduced part rejections by 40%.”</p>
+                        </div>
+                        <div class="testimonial-user">
+                            <div class="testimonial-avatar">RK</div>
+                            <div class="testimonial-info">
+                                <h4>R. Kumar</h4>
+                                <p>Head of Quality Assurance</p>
+                                <p style="color:var(--orange);font-weight:600;">Precision Auto Components, Chennai</p>
+                                <span class="testimonial-badge">✓ Verified Partner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 2 -->
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-text">“Turnkey installation of Renishaw touch probe &amp; tool setter systems across our VMC line was executed with highest precision. Macro programming and operator training delivered by Hexacore were exceptional.”</p>
+                        </div>
+                        <div class="testimonial-user">
+                            <div class="testimonial-avatar">SM</div>
+                            <div class="testimonial-info">
+                                <h4>S. Murugan</h4>
+                                <p>General Manager - CNC Operations</p>
+                                <p style="color:var(--orange);font-weight:600;">Aerospace Machining Pvt Ltd, Bengaluru</p>
+                                <span class="testimonial-badge">✓ Verified Partner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div class="testimonial-card">
+                        <div>
+                            <div class="testimonial-stars">★★★★★</div>
+                            <p class="testimonial-text">“We rely on Hexacore for NABL-traceable gauge calibration and full 21-parameter CMM volumetric error mapping. Fast turnaround time, ISO compliant certification, and dependable technical support.”</p>
+                        </div>
+                        <div class="testimonial-user">
+                            <div class="testimonial-avatar">VP</div>
+                            <div class="testimonial-info">
+                                <h4>V. Parthiban</h4>
+                                <p>Plant Head - Manufacturing</p>
+                                <p style="color:var(--orange);font-weight:600;">Heavy Geartech Industries, Coimbatore</p>
+                                <span class="testimonial-badge">✓ Verified Partner</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3194,23 +3799,22 @@
                 
                 <!-- Quick Navigation Tabs -->
                 <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px;">
-                    <a href="#sec-machine-calibration" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">📐 1. Machine Calibration</a>
-                    <a href="#sec-machine-service" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">🛠️ 2. Machine Service</a>
-                    <a href="#sec-cmm-services" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">🔬 3. CMM Services</a>
-                    <a href="#sec-quality-instruments" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">📏 4. Quality Instruments Services &amp; Calibration</a>
+                    <a href="#sec-machine-calibration" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">📐 Machine Calibration</a>
+                    <a href="#sec-machine-service" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">🛠️ Machine Service</a>
+                    <a href="#sec-cmm-services" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">🔬 CMM Services</a>
+                    <a href="#sec-quality-instruments" style="background:rgba(255,255,255,0.08);color:#fff;border:1px solid rgba(255,255,255,0.18);padding:10px 20px;border-radius:30px;font-size:13px;font-weight:700;text-decoration:none;transition:all .2s;" onmouseover="this.style.background='var(--orange)';this.style.borderColor='var(--orange)'" onmouseout="this.style.background='rgba(255,255,255,0.08)';this.style.borderColor='rgba(255,255,255,0.18)'">📏 Quality Instruments Services &amp; Calibration</a>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 1: MACHINE CALIBRATION SECTION -->
+        <!-- MACHINE CALIBRATION -->
         <section id="sec-machine-calibration" class="responsive-section" style="background:#fff;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
             <div style="max-width:1280px;margin:0 auto;">
                 <div style="margin-bottom:36px;">
                     <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
-                        <span style="background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;">SECTION 01</span>
                         <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Laser Alignment &amp; Geometry</span>
                     </div>
-                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">Machine Calibration Section</h2>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">Machine Calibration</h2>
                     <p style="color:var(--steel);font-size:15px;max-width:760px;margin:0;line-height:1.65;">High-precision linear laser interferometry, rotary axis indexing calibration, straightness, and squareness testing compliant with ISO 230-2 standards.</p>
                 </div>
 
@@ -3434,12 +4038,11 @@
             </div>
         </section>
 
-        <!-- SECTION 2: MACHINE SERVICE SECTION -->
+        <!-- MACHINE SERVICE -->
         <section id="sec-machine-service" class="responsive-section" style="background:#F8FAFC;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
             <div style="max-width:1280px;margin:0 auto;">
                 <div style="margin-bottom:36px;">
                     <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
-                        <span style="background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;">SECTION 02</span>
                         <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Diagnostics &amp; Maintenance</span>
                     </div>
                     <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">Machine Service</h2>
@@ -3478,12 +4081,11 @@
             </div>
         </section>
 
-        <!-- SECTION 3: CMM SERVICES SECTION -->
+        <!-- CMM SERVICES -->
         <section id="sec-cmm-services" class="responsive-section" style="background:#fff;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
             <div style="max-width:1280px;margin:0 auto;">
                 <div style="margin-bottom:36px;">
                     <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
-                        <span style="background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;">SECTION 03</span>
                         <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">3D Inspection &amp; Calibration</span>
                     </div>
                     <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">CMM Services</h2>
@@ -3528,12 +4130,11 @@
             </div>
         </section>
 
-        <!-- SECTION 4: QUALITY INSTRUMENTS SERVICES & CALIBRATION SECTION -->
+        <!-- QUALITY INSTRUMENTS SERVICES & CALIBRATION -->
         <section id="sec-quality-instruments" class="responsive-section" style="background:#F8FAFC;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
             <div style="max-width:1280px;margin:0 auto;">
                 <div style="margin-bottom:36px;">
                     <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
-                        <span style="background:var(--navy);color:#fff;font-size:11px;font-weight:800;padding:4px 10px;border-radius:4px;letter-spacing:1px;text-transform:uppercase;">SECTION 04</span>
                         <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Metrology Standards &amp; Gauges</span>
                     </div>
                     <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">Quality Instruments Services &amp; Calibration</h2>
@@ -3839,27 +4440,37 @@
         const footerHTML = `
 <div class="footer-grid">
   <div>
-    <div style="margin-bottom:16px;"><img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" style="height:56px;width:auto;filter:drop-shadow(0 2px 8px rgba(244,123,32,0.3));"></div>
-    <p>Precision Engineering. Reliable Performance.</p>
+    <div style="margin-bottom:14px;"><img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" style="height:48px;width:auto;filter:drop-shadow(0 2px 8px rgba(244,123,32,0.3));"></div>
+    <p style="font-size:12px;line-height:1.5;">Precision Engineering.<br>Reliable Performance.</p>
   </div>
-  <div><h5>Quick Links</h5><ul>
-    <li><a onclick="showPage(1)">Home</a></li><li><a onclick="showPage(2)">About Us</a></li>
-    <li><a onclick="showPage(3)">Products</a></li><li><a onclick="showPage(4)">Services &amp; Support</a></li><li><a onclick="showPage(5)">Contact</a></li>
-  </ul></div>
-  <div><h5>Services</h5><ul>
-    <li><a onclick="showPage(4)">Laser Calibration</a></li><li><a onclick="showPage(4)">Ballbar Testing</a></li><li><a onclick="showPage(4)">Rotary Axis Calibration</a></li><li><a onclick="showPage(4)">Machine Diagnostics</a></li><li><a onclick="showPage(4)">Geometric Accuracy Testing</a></li><li><a onclick="showPage(4)">Preventive Maintenance</a></li>
-  </ul></div>
-  <div><h5>Contact</h5><ul>
-    <li>No. 1190/1, FD 211, 4th Floor, HSR Layout, Sector 3, 22nd Cross Road, Bengaluru – 560102</li><li>+91 44 4567 8900</li><li>info@hexacoreprecision.com</li>
-  </ul></div>
+  <div>
+    <h5>Quick Links</h5>
+    <ul>
+      <li><a onclick="showPage(1)">Home</a></li>
+      <li><a onclick="showPage(2)">About Us</a></li>
+      <li><a onclick="showPage(3)">Products</a></li>
+      <li><a onclick="showPage(4)">Services &amp; Support</a></li>
+      <li><a onclick="showPage(5)">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <h5>Contact</h5>
+    <ul>
+      <li>No. 1190/1, FD 211, 4th Floor, HSR Layout, Sector 3, Bengaluru – 560102</li>
+      <li>+91 44 4567 8900</li>
+      <li>info@hexacoreprecision.com</li>
+    </ul>
+  </div>
 </div>
 <div class="footer-bottom">
   <div>© 2026 Hexacore Precision Technologies. All rights reserved. &nbsp;|&nbsp; Powered by <a href="https://promotex.online" target="_blank" rel="noopener noreferrer" style="color:var(--orange);font-weight:600;text-decoration:none;border-bottom:1px solid transparent;transition:border-color 0.2s;" onmouseover="this.style.borderColor='var(--orange)'" onmouseout="this.style.borderColor='transparent'">Promote.X</a></div>
 </div>`;
         document.querySelectorAll('.site-footer').forEach(f => f.innerHTML = footerHTML);
 
-        // ── Hero Image Slider ────────────────────────
+        // ── Hero Image Slider & Touch Controls ────────────────────────
         let currentHeroSlide = 0;
+        let heroTimer = null;
+
         function setHeroSlide(idx) {
             currentHeroSlide = idx;
             const track = document.getElementById('heroSlidesTrack');
@@ -3878,32 +4489,99 @@
             });
         }
 
-        setInterval(() => {
-            currentHeroSlide = (currentHeroSlide + 1) % 4;
-            setHeroSlide(currentHeroSlide);
-        }, 4000);
+        function prevHeroSlide() {
+            setHeroSlide((currentHeroSlide - 1 + 4) % 4);
+            resetHeroTimer();
+        }
 
-        // ── Hamburger menu ───────────────────────────
+        function nextHeroSlide() {
+            setHeroSlide((currentHeroSlide + 1) % 4);
+            resetHeroTimer();
+        }
+
+        function resetHeroTimer() {
+            if (heroTimer) clearInterval(heroTimer);
+            heroTimer = setInterval(() => {
+                setHeroSlide((currentHeroSlide + 1) % 4);
+            }, 4500);
+        }
+        resetHeroTimer();
+
+        function initHeroSliderTouch() {
+            const track = document.getElementById('heroSlidesTrack');
+            if (!track) return;
+            let startX = 0;
+            let endX = 0;
+            track.addEventListener('touchstart', e => {
+                startX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            track.addEventListener('touchend', e => {
+                endX = e.changedTouches[0].screenX;
+                const diff = endX - startX;
+                if (Math.abs(diff) > 35) {
+                    if (diff < 0) nextHeroSlide();
+                    else prevHeroSlide();
+                }
+            }, { passive: true });
+        }
+
+        // ── Slide-in Mobile Drawer & Backdrop ─────────────────────────
         function toggleMobileNav(btn) {
-            btn.classList.toggle('open');
             const nav = btn.closest('header').querySelector('.mobile-nav');
-            if (nav) nav.classList.toggle('open');
+            let backdrop = document.getElementById('mobileNavBackdrop');
+            if (!backdrop) {
+                backdrop = document.createElement('div');
+                backdrop.id = 'mobileNavBackdrop';
+                backdrop.className = 'mobile-nav-backdrop';
+                backdrop.onclick = closeMobileNav;
+                document.body.appendChild(backdrop);
+            }
+
+            const isOpen = btn.classList.contains('open');
+            if (isOpen) {
+                closeMobileNav();
+            } else {
+                btn.classList.add('open');
+                if (nav) nav.classList.add('open');
+                setTimeout(() => backdrop.classList.add('active'), 10);
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         function closeMobileNav() {
-            document.querySelectorAll('.hamburger.open').forEach(btn => {
-                btn.classList.remove('open');
-            });
-            document.querySelectorAll('.mobile-nav.open').forEach(nav => {
-                nav.classList.remove('open');
-            });
+            document.querySelectorAll('.hamburger.open').forEach(btn => btn.classList.remove('open'));
+            document.querySelectorAll('.mobile-nav.open').forEach(nav => nav.classList.remove('open'));
+            const backdrop = document.getElementById('mobileNavBackdrop');
+            if (backdrop) backdrop.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // ── Scroll Animation Observer ──────────────────────────────────
+        function initScrollAnimations() {
+            const animElements = document.querySelectorAll('.slide-up, .slide-left, .slide-right, .scale-in');
+            if (!('IntersectionObserver' in window)) {
+                animElements.forEach(el => el.classList.add('active'));
+                return;
+            }
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+            animElements.forEach(el => observer.observe(el));
         }
 
         function showPage(n) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            document.getElementById('page' + n).classList.add('active');
+            const target = document.getElementById('page' + n);
+            if (target) target.classList.add('active');
             closeMobileNav();
             window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(initScrollAnimations, 80);
         }
 
         // ── API Integration ─────────────────────────────────────────────
@@ -4164,6 +4842,8 @@
         loadServicesFromAPI();
         loadNewslettersFromAPI();
         setupContactStatusClearListeners();
+        initHeroSliderTouch();
+        initScrollAnimations();
     </script>
 </body>
 
