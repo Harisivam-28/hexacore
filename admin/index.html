@@ -1072,5 +1072,89 @@
   // Enter key support for login
   // (login-pass Enter listener is registered above near init)
 </script>
+
+    <!-- ── WhatsApp Chat Widget ──────────────────────────── -->
+    <div id="wa-widget">
+        <div id="wa-popup" role="dialog" aria-label="WhatsApp Chat">
+            <div id="wa-popup-header">
+                <div id="wa-popup-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="28" height="28" fill="none">
+                        <path fill="#fff" d="M23.5 8.5A10.94 10.94 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.86.48 3.67 1.4 5.27L5.5 26.5l5.37-1.4A10.96 10.96 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5Zm-7.5 16.15a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.18.83.85-3.1-.22-.34A9.1 9.1 0 0 1 6.9 16a9.1 9.1 0 0 1 9.1-9.1 9.1 9.1 0 0 1 9.1 9.1 9.1 9.1 0 0 1-9.1 9.15Zm5-6.8c-.28-.14-1.64-.81-1.9-.9-.26-.1-.44-.14-.63.14-.18.28-.72.9-.88 1.08-.16.18-.33.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.47.14-.15.18-.26.28-.44.09-.18.05-.34-.02-.47-.07-.14-.63-1.52-.87-2.08-.23-.54-.46-.47-.63-.47h-.54c-.18 0-.47.07-.72.34-.24.26-.94.92-.94 2.24 0 1.32.96 2.6 1.1 2.78.14.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33Z"/>
+                    </svg>
+                </div>
+                <div id="wa-popup-info">
+                    <div id="wa-popup-name">Hexacore Precision Technologies</div>
+                    <div id="wa-popup-status"><span id="wa-dot"></span>Typically replies instantly</div>
+                </div>
+                <button id="wa-close-btn" aria-label="Close WhatsApp chat">&times;</button>
+            </div>
+            <div id="wa-popup-body">
+                <div id="wa-bubble">
+                    <p>👋 Hi there! Welcome to <strong>Hexacore Precision Technologies</strong>.</p>
+                    <p>We specialise in CNC calibration, laser interferometer testing &amp; VMC/HMC geometric accuracy verification.</p>
+                    <p>📍 <em><strong style="color:#075E54;">Hexacore Precision Technologies</strong><br>No. 1190/1, FD 211, 4th Floor,<br>HSR Layout, Sector 3, 22nd Cross Road,<br>Bengaluru – 560102</em></p>
+                    <p>How can we help you today?</p>
+                </div>
+            </div>
+            <div id="wa-popup-footer">
+                <a id="wa-start-chat"
+                   href="https://wa.me/914445678900?text=Hello%20Hexacore%20Precision%20Technologies%2C%20I%20would%20like%20to%20enquire%20about%20your%20services."
+                   target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none">
+                        <path fill="#fff" d="M23.5 8.5A10.94 10.94 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.86.48 3.67 1.4 5.27L5.5 26.5l5.37-1.4A10.96 10.96 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5Zm-7.5 16.15a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.18.83.85-3.1-.22-.34A9.1 9.1 0 0 1 6.9 16a9.1 9.1 0 0 1 9.1-9.1 9.1 9.1 0 0 1 9.1 9.1 9.1 9.1 0 0 1-9.1 9.15Zm5-6.8c-.28-.14-1.64-.81-1.9-.9-.26-.1-.44-.14-.63.14-.18.28-.72.9-.88 1.08-.16.18-.33.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.47.14-.15.18-.26.28-.44.09-.18.05-.34-.02-.47-.07-.14-.63-1.52-.87-2.08-.23-.54-.46-.47-.63-.47h-.54c-.18 0-.47.07-.72.34-.24.26-.94.92-.94 2.24 0 1.32.96 2.6 1.1 2.78.14.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33Z"/>
+                    </svg>
+                    Start Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+        <button id="whatsapp-float" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">
+            <svg id="wa-icon-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
+                <path fill="#fff" d="M23.5 8.5A10.94 10.94 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.86.48 3.67 1.4 5.27L5.5 26.5l5.37-1.4A10.96 10.96 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5Zm-7.5 16.15a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.18.83.85-3.1-.22-.34A9.1 9.1 0 0 1 6.9 16a9.1 9.1 0 0 1 9.1-9.1 9.1 9.1 0 0 1 9.1 9.1 9.1 9.1 0 0 1-9.1 9.15Zm5-6.8c-.28-.14-1.64-.81-1.9-.9-.26-.1-.44-.14-.63.14-.18.28-.72.9-.88 1.08-.16.18-.33.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.47.14-.15.18-.26.28-.44.09-.18.05-.34-.02-.47-.07-.14-.63-1.52-.87-2.08-.23-.54-.46-.47-.63-.47h-.54c-.18 0-.47.07-.72.34-.24.26-.94.92-.94 2.24 0 1.32.96 2.6 1.1 2.78.14.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33Z"/>
+            </svg>
+            <svg id="wa-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" style="display:none;">
+                <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/>
+            </svg>
+            <span id="wa-badge">1</span>
+        </button>
+    </div>
+    <style>
+        #wa-widget { position:fixed; bottom:24px; right:24px; z-index:9999; display:flex; flex-direction:column; align-items:flex-end; gap:14px; font-family:'Inter','Segoe UI',sans-serif; }
+        #whatsapp-float { width:62px; height:62px; border-radius:50%; background:linear-gradient(135deg,#25D366,#128C7E); border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 24px rgba(37,211,102,.5),0 2px 8px rgba(0,0,0,.2); transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s; animation:wa-bounce 3s ease-in-out infinite; position:relative; }
+        #whatsapp-float:hover { transform:scale(1.1); box-shadow:0 10px 36px rgba(37,211,102,.65),0 3px 12px rgba(0,0,0,.25); animation:none; }
+        #wa-badge { position:absolute; top:-4px; right:-4px; background:#FF4444; color:#fff; font-size:11px; font-weight:700; width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; border:2px solid #fff; animation:wa-ping 1.5s ease-in-out infinite; }
+        #wa-badge.hidden { display:none; }
+        #wa-popup { width:320px; border-radius:20px; overflow:hidden; box-shadow:0 20px 60px rgba(0,0,0,.25),0 4px 16px rgba(0,0,0,.15); transform:scale(.85) translateY(20px); transform-origin:bottom right; opacity:0; pointer-events:none; transition:transform .35s cubic-bezier(.34,1.4,.64,1),opacity .3s ease; }
+        #wa-popup.open { transform:scale(1) translateY(0); opacity:1; pointer-events:all; }
+        #wa-popup-header { background:linear-gradient(135deg,#075E54,#128C7E); padding:18px 16px; display:flex; align-items:center; gap:12px; }
+        #wa-popup-avatar { width:46px; height:46px; border-radius:50%; background:rgba(255,255,255,.2); display:flex; align-items:center; justify-content:center; flex-shrink:0; border:2px solid rgba(255,255,255,.35); }
+        #wa-popup-info { flex:1; min-width:0; }
+        #wa-popup-name { color:#fff; font-size:14px; font-weight:700; line-height:1.3; letter-spacing:.01em; }
+        #wa-popup-status { color:rgba(255,255,255,.8); font-size:11.5px; display:flex; align-items:center; gap:5px; margin-top:3px; }
+        #wa-dot { width:8px; height:8px; border-radius:50%; background:#4AFF82; display:inline-block; animation:wa-pulse 2s ease-in-out infinite; flex-shrink:0; }
+        #wa-close-btn { background:rgba(255,255,255,.15); border:none; color:#fff; width:28px; height:28px; border-radius:50%; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .2s; flex-shrink:0; }
+        #wa-close-btn:hover { background:rgba(255,255,255,.3); }
+        #wa-popup-body { background:#ECE5DD; padding:20px 16px; }
+        #wa-bubble { background:#fff; border-radius:0 14px 14px 14px; padding:14px 16px; font-size:13.5px; line-height:1.6; color:#2c3e50; box-shadow:0 2px 8px rgba(0,0,0,.1); position:relative; }
+        #wa-bubble::before { content:''; position:absolute; left:-8px; top:0; border:8px solid transparent; border-right-color:#fff; border-top-color:#fff; border-left:none; border-bottom:none; }
+        #wa-bubble p { margin:0 0 8px; } #wa-bubble p:last-child { margin-bottom:0; }
+        #wa-bubble strong { color:#075E54; } #wa-bubble em { font-style:normal; font-size:12.5px; color:#666; line-height:1.5; }
+        #wa-popup-footer { background:#F0F0F0; padding:14px 16px; }
+        #wa-start-chat { display:flex; align-items:center; justify-content:center; gap:10px; background:linear-gradient(135deg,#25D366,#128C7E); color:#fff; text-decoration:none; border-radius:50px; padding:12px 20px; font-size:14px; font-weight:600; letter-spacing:.02em; transition:transform .2s,box-shadow .2s; box-shadow:0 4px 16px rgba(37,211,102,.4); }
+        #wa-start-chat:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(37,211,102,.55); }
+        @keyframes wa-bounce { 0%,100%{transform:translateY(0)} 40%{transform:translateY(-9px)} 60%{transform:translateY(-4px)} }
+        @keyframes wa-ping { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.2);opacity:.75} }
+        @keyframes wa-pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+        @media(max-width:600px){ #wa-widget{bottom:16px;right:16px} #whatsapp-float{width:54px;height:54px} #wa-popup{width:calc(100vw - 32px)} }
+    </style>
+    <script>
+        (function() {
+            var fab=document.getElementById('whatsapp-float'),popup=document.getElementById('wa-popup'),closeBtn=document.getElementById('wa-close-btn'),badge=document.getElementById('wa-badge'),iconOpen=document.getElementById('wa-icon-open'),iconClose=document.getElementById('wa-icon-close');
+            function openPopup(){popup.classList.add('open');iconOpen.style.display='none';iconClose.style.display='block';badge.classList.add('hidden');fab.style.animation='none';}
+            function closePopup(){popup.classList.remove('open');iconOpen.style.display='block';iconClose.style.display='none';}
+            fab.addEventListener('click',function(){popup.classList.contains('open')?closePopup():openPopup();});
+            closeBtn.addEventListener('click',function(e){e.stopPropagation();closePopup();});
+            if(!sessionStorage.getItem('wa_opened')){setTimeout(function(){openPopup();sessionStorage.setItem('wa_opened','1');},4000);}
+        })();
+    </script>
 </body>
 </html>
