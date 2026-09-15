@@ -161,7 +161,7 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--charcoal);
-            background: #c9cfd6;
+            background: #ffffff;
             -webkit-font-smoothing: antialiased;
             line-height: 1.6;
         }
@@ -2987,6 +2987,16 @@
             }
         }
     
+        /* Force clean white background for page and sections */
+        body, .page, main, .section, .section.grey, .contact-form-card {
+            background: #ffffff !important;
+        }
+        .page {
+            box-shadow: none !important;
+            margin: 0 auto !important;
+        }
+
+    
         /* Optimize top section spacing below sticky header */
         main > section:first-of-type,
         main > .section:first-child,
@@ -3277,14 +3287,13 @@
         
 
 </head>
-
 <body>
-        <header class="site-header">
+    <header class="site-header">
         <div class="brand">
             <a href="index.html"><img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo"></a>
             <nav class="main-nav">
-                <a href="index.html" class="current">Home</a>
-                <a href="about.html" >About Us</a>
+                <a href="index.html" >Home</a>
+                <a href="about.html" class="current">About Us</a>
                 <a href="products.html" >Products</a>
                 <a href="services.html" >Service &amp; Support</a>
                 <a href="contact.html" >Contact</a>
@@ -3294,537 +3303,480 @@
             </button>
         </div>
         <nav class="mobile-nav">
-            <a href="index.html" class="current" onclick="closeMobileNav()">Home</a>
-            <a href="about.html"  onclick="closeMobileNav()">About Us</a>
+            <a href="index.html"  onclick="closeMobileNav()">Home</a>
+            <a href="about.html" class="current" onclick="closeMobileNav()">About Us</a>
             <a href="products.html"  onclick="closeMobileNav()">Products</a>
             <a href="services.html"  onclick="closeMobileNav()">Service &amp; Support</a>
             <a href="contact.html"  onclick="closeMobileNav()">Contact</a>
         </nav>
     </header>
-
 <main>
 
 
-        <!-- 1. HERO SECTION (LIGHT THEME) -->
-        <section class="hero responsive-hero-section"
-            style="background: linear-gradient(135deg, #FFFFFF 0%, #F4F6F9 60%, #E8EEF5 100%); padding: 80px 44px 70px; border-bottom: 1px solid var(--line);">
-            <div class="hero-grid">
-                <div>
-                    <h1 class="t-display" style="color: var(--navy); line-height: 1.1; margin-bottom: 20px;">
-                        Precision Engineering for <span style="color: var(--orange);">Reliable Industrial
-                            Performance</span>
-                    </h1>
-                    <p class="lead"
-                        style="color: var(--steel); font-size: clamp(15px, 1.6vw, 17.5px); max-width: 580px; margin-bottom: 36px; line-height: 1.75;">
-                        Hexacore Precision Technologies provides precision engineering, measurement, calibration and
-                        technical support solutions that help manufacturers improve machine accuracy, reliability and
-                        production performance.
+        <section class="section" style="padding-bottom: 36px;">
+            <div class="section-head">
+                <div class="tag">About Hexacore Precision Technologies</div>
+                <h2 class="t-h2">Experienced. Technical. Trustworthy.</h2>
+            </div>
+            <div class="about-grid" style="margin-bottom: 0;">
+                <div class="about-copy">
+                    <p>Hexacore Precision Technologies is focused on helping manufacturing companies maintain the
+                        accuracy, reliability and performance of their machines and production systems.</p>
+                    <p>Our work combines engineering experience, precision measurement and practical technical support
+                        to identify machine performance issues and provide solutions that are suited to the application.
                     </p>
-                    <div class="hero-btns">
-                        <a class="btn btn-orange" href="services.html">Explore Our Services</a>
-                        <a class="btn btn-navy" href="contact.html">Talk to Our Engineers</a>
-                    </div>
+                    <p>We work with a wide range of CNC machines and industrial equipment, supporting customers with
+                        calibration, machine health assessment, geometric accuracy checks and related technical
+                        services.</p>
+                    <p>Our approach is simple: understand the machine, measure accurately, identify the source of the
+                        problem and provide a practical solution that helps the customer maintain consistent production.
+                    </p>
                 </div>
-                <div class="hero-art">
-                    <div class="hero-slider" style="position:relative; width:100%; border-radius:12px; overflow:hidden; border:1px solid var(--line); box-shadow:0 16px 40px rgba(11,31,58,0.12); background:#fff;">
-                        <!-- Slides Wrapper -->
-                        <div class="hero-slides-track" id="heroSlidesTrack" style="display:flex; transition:transform 0.7s cubic-bezier(0.25, 1, 0.5, 1); width:100%;">
-                            <!-- Slide 1 – VMC Laser Calibration -->
-                            <div style="width:100%; flex:0 0 100%; position:relative;">
-                                <img src="images/home1.jpeg" alt="VMC Laser Calibration on Machine Table" style="width:100%; height:380px; object-fit:cover; object-position:center; display:block;">
-                                <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(11,31,58,0.92) 80%); padding:24px 24px 20px; color:#fff;">
-                                    <span style="background:var(--orange); color:#fff; font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:3px;">VMC Calibration</span>
-                                    <h4 style="font-size:16px; font-weight:800; margin:8px 0 0; color:#fff;">VMC Linear Axis Laser Calibration &amp; Error Mapping</h4>
-                                </div>
-                            </div>
-                            <!-- Slide 2 – Laser Interferometer Setup -->
-                            <div style="width:100%; flex:0 0 100%; position:relative;">
-                                <img src="images/home2.jpeg" alt="Precision Laser Calibration Setup" style="width:100%; height:380px; object-fit:cover; object-position:center; display:block;">
-                                <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(11,31,58,0.92) 80%); padding:24px 24px 20px; color:#fff;">
-                                    <span style="background:var(--orange); color:#fff; font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:3px;">Laser Interferometer</span>
-                                    <h4 style="font-size:16px; font-weight:800; margin:8px 0 0; color:#fff;">Precision Laser Interferometer Calibration Setup</h4>
-                                </div>
-                            </div>
-                            <!-- Slide 3 – CNC Lathe Ballbar Testing -->
-                            <div style="width:100%; flex:0 0 100%; position:relative;">
-                                <img src="images/home3.jpeg" alt="Ballbar Testing on CNC Lathe" style="width:100%; height:380px; object-fit:cover; object-position:center; display:block;">
-                                <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(11,31,58,0.92) 80%); padding:24px 24px 20px; color:#fff;">
-                                    <span style="background:var(--orange); color:#fff; font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:3px;">Ballbar Testing</span>
-                                    <h4 style="font-size:16px; font-weight:800; margin:8px 0 0; color:#fff;">CNC Lathe Geometric Accuracy &amp; Ballbar Testing</h4>
-                                </div>
-                            </div>
-                            <!-- Slide 4 – Spindle Verification -->
-                            <div style="width:100%; flex:0 0 100%; position:relative;">
-                                <img src="images/home4.jpeg" alt="Makino VMC Spindle Calibration with Ballbar" style="width:100%; height:380px; object-fit:cover; object-position:center; display:block;">
-                                <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(11,31,58,0.92) 80%); padding:24px 24px 20px; color:#fff;">
-                                    <span style="background:var(--orange); color:#fff; font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:3px;">Spindle Verification</span>
-                                    <h4 style="font-size:16px; font-weight:800; margin:8px 0 0; color:#fff;">Makino VMC Spindle &amp; Axis Squareness Verification</h4>
-                                </div>
+                <div class="factory-art">
+                    <img src="images/nl_cnc_machining.png" alt="Precision Engineering Operations"
+                        style="width: 100%; height: 100%; object-fit: cover; filter: brightness(1.02) contrast(1.05); border-radius: 6px;" />
+                    <div class="factory-caption">Precision Engineering Operations</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISSION & VISION SECTION -->
+        <section class="section responsive-section" style="background:#F8FAFC; padding:64px 44px; border-top:1px solid #E2E8F0; border-bottom:1px solid #E2E8F0;">
+            <div style="max-width:1280px; margin:0 auto;">
+                <div class="section-head" style="margin-bottom:40px; text-align:center;">
+                    <div class="tag">Our Purpose &amp; Direction</div>
+                    <h2 class="t-h2">Mission &amp; Vision</h2>
+                    <p class="section-lead" style="max-width:680px; margin:0 auto;">Driving excellence in industrial metrology and machine calibration through precision engineering, innovation, and technical integrity.</p>
+                </div>
+                
+                <div class="mission-vision-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); gap:28px;">
+                    <!-- OUR MISSION CARD -->
+                    <div class="mv-card" style="background:linear-gradient(145deg, #0B192C 0%, #1E293B 100%); border-radius:14px; padding:36px 32px; color:#fff; border:1px solid rgba(255,255,255,0.1); border-top:4px solid var(--orange); box-shadow:0 10px 30px rgba(11,25,44,0.15); transition:transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+                            <div style="width:48px; height:48px; background:rgba(255,107,0,0.15); border:1px solid rgba(255,107,0,0.3); border-radius:10px; display:flex; align-items:center; justify-content:center; color:var(--orange); font-size:22px; flex:none;">🎯</div>
+                            <div>
+                                <span style="font-size:11px; font-weight:700; color:var(--orange); letter-spacing:1.5px; text-transform:uppercase; display:block;">CORE PURPOSE</span>
+                                <h3 style="font-size:24px; font-weight:800; color:#FFFFFF; margin:2px 0 0; font-family:'Inter',sans-serif;">Our Mission</h3>
                             </div>
                         </div>
-                        <!-- Navigation Arrows -->
-                        <button class="hero-prev-btn" onclick="prevHeroSlide()" aria-label="Previous Slide">‹</button>
-                        <button class="hero-next-btn" onclick="nextHeroSlide()" aria-label="Next Slide">›</button>
-                        <!-- Navigation Dots -->
-                        <div style="position:absolute; top:16px; right:16px; display:flex; gap:8px; z-index:10; background:rgba(11,31,58,0.6); padding:6px 12px; border-radius:20px; backdrop-filter:blur(4px);">
-                            <span class="hero-dot active" onclick="setHeroSlide(0)" style="width:10px; height:10px; border-radius:50%; background:var(--orange); cursor:pointer; transition:transform 0.2s, background 0.2s; transform:scale(1.25);"></span>
-                            <span class="hero-dot" onclick="setHeroSlide(1)" style="width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:transform 0.2s, background 0.2s;"></span>
-                            <span class="hero-dot" onclick="setHeroSlide(2)" style="width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:transform 0.2s, background 0.2s;"></span>
-                            <span class="hero-dot" onclick="setHeroSlide(3)" style="width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:transform 0.2s, background 0.2s;"></span>
+                        <p style="color:#CBD5E1; font-size:15px; line-height:1.75; margin-bottom:24px;">
+                            To empower manufacturing industries by providing sub-micron laser calibration, advanced metrology diagnostics, and turnkey technical support that eliminate machine errors, optimize equipment efficiency, and guarantee zero-defect quality standards.
+                        </p>
+                        <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:18px; display:flex; flex-direction:column; gap:10px;">
+                            <div style="display:flex; align-items:center; gap:10px; color:#E2E8F0; font-size:13.5px;">
+                                <span style="color:var(--orange); font-weight:bold;">✓</span> Sub-Micron Positioning Accuracy
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px; color:#E2E8F0; font-size:13.5px;">
+                                <span style="color:var(--orange); font-weight:bold;">✓</span> ISO 230 &amp; NABL Traceable Calibration
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px; color:#E2E8F0; font-size:13.5px;">
+                                <span style="color:var(--orange); font-weight:bold;">✓</span> Minimizing Unplanned Machine Downtime
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- OUR VISION CARD -->
+                    <div class="mv-card" style="background:linear-gradient(145deg, #0B192C 0%, #1E293B 100%); border-radius:14px; padding:36px 32px; color:#fff; border:1px solid rgba(255,255,255,0.1); border-top:4px solid #38BDF8; box-shadow:0 10px 30px rgba(11,25,44,0.15); transition:transform 0.3s ease, box-shadow 0.3s ease;">
+                        <div style="display:flex; align-items:center; gap:14px; margin-bottom:20px;">
+                            <div style="width:48px; height:48px; background:rgba(56,189,248,0.15); border:1px solid rgba(56,189,248,0.3); border-radius:10px; display:flex; align-items:center; justify-content:center; color:#38BDF8; font-size:22px; flex:none;">👁️</div>
+                            <div>
+                                <span style="font-size:11px; font-weight:700; color:#38BDF8; letter-spacing:1.5px; text-transform:uppercase; display:block;">GLOBAL HORIZON</span>
+                                <h3 style="font-size:24px; font-weight:800; color:#FFFFFF; margin:2px 0 0; font-family:'Inter',sans-serif;">Our Vision</h3>
+                            </div>
+                        </div>
+                        <p style="color:#CBD5E1; font-size:15px; line-height:1.75; margin-bottom:24px;">
+                            To be recognized worldwide as the premiere authority in precision metrology, CNC laser calibration, and automated 3D CMM inspection systems, pioneering next-generation diagnostic technologies for smart manufacturing.
+                        </p>
+                        <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:18px; display:flex; flex-direction:column; gap:10px;">
+                            <div style="display:flex; align-items:center; gap:10px; color:#E2E8F0; font-size:13.5px;">
+                                <span style="color:#38BDF8; font-weight:bold;">✓</span> Global Benchmark in Industrial Metrology
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px; color:#E2E8F0; font-size:13.5px;">
+                                <span style="color:#38BDF8; font-weight:bold;">✓</span> Pioneering Next-Gen Laser Interferometry
+                            </div>
+                            <div style="display:flex; align-items:center; gap:10px; color:#E2E8F0; font-size:13.5px;">
+                                <span style="color:#38BDF8; font-weight:bold;">✓</span> Industry Partner in Smart Factory Automation
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+
+
+        <!-- ── OUR NEWSLETTER Section (Page 2) ── -->
+        <section id="newsletter-section" class="nl-section">
+
+            <!-- Subtle grid watermark -->
+            <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(11,31,58,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(11,31,58,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;"></div>
+
+            <!-- Header -->
+            <div class="nl-header">
+                <div class="nl-eyebrow">Hexacore Precision Technologies</div>
+                <h2 class="nl-title">Our <span>Newsletter</span></h2>
+                <p class="nl-subtitle">Stay informed with the latest updates, technical insights and new services from our precision calibration and CNC engineering team.</p>
+            </div>
+
+            <!-- Cards grid -->
+            <div class="nl-grid">
+                <!-- CARD 1 -->
+                <article class="nl-card-light">
+                    <div class="nl-img-wrap">
+                        <div class="nl-img-slider" style="animation-delay: 0s;">
+                            <img src="images/nl_gen_laser_testing.jpg" alt="Company Update - Renishaw XL-80 Laser Interferometer">
+                            <img src="images/nl_cnc_machining.png" alt="Company Update - CNC Machine Realignment">
+                            <img src="images/services/linear_laser_calibration.png" alt="Company Update - Axis Linear Positioning">
+                        </div>
+                        <span class="nl-badge">Company Update</span>
+                        <div class="nl-img-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                    </div>
+                    <div class="nl-card-body">
+                        <div class="nl-date">August 2026</div>
+                        <h3>Hexacore Expands CNC Calibration Fleet with Next-Gen Laser Systems</h3>
+                        <p>We have added two new Renishaw XL-80 laser interferometer systems to our calibration fleet, enabling faster volumetric accuracy measurement across 5-axis CNC machining centres.</p>
+                        <div class="nl-card-footer">
+                            <span class="author">Engineering Team</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD 2 -->
+                <article class="nl-card-light">
+                    <div class="nl-img-wrap">
+                        <div class="nl-img-slider" style="animation-delay: -3s;">
+                            <img src="images/nl_gen_rotary_calibration.jpg" alt="Calibration Insights - 5-Axis Rotary Axis Diagnostics">
+                            <img src="images/nl_laser_calibration.png" alt="Calibration Insights - Laser Testing Setup">
+                            <img src="images/services/rotary_axis_calibration.png" alt="Calibration Insights - XR20 Rotary Axis">
+                        </div>
+                        <span class="nl-badge">Calibration Insights</span>
+                        <div class="nl-img-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                    </div>
+                    <div class="nl-card-body">
+                        <div class="nl-date">July 2026</div>
+                        <h3>Why Geometric Accuracy Checks Are Critical for High-Tolerance CNC Work</h3>
+                        <p>Thermal drift, spindle wear and axis misalignment silently degrade part accuracy over time. Our engineers explain how periodic geometric verification prevents costly scrap.</p>
+                        <div class="nl-card-footer">
+                            <span class="author">Technical Insights</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD 3 -->
+                <article class="nl-card-light">
+                    <div class="nl-img-wrap">
+                        <div class="nl-img-slider" style="animation-delay: -6s;">
+                            <img src="images/nl_gen_cmm_inspection.jpg" alt="New Services - 3D CMM Volumetric Error Mapping">
+                            <img src="images/nl_cmm_measurement.png" alt="New Services - Coordinate Measuring System">
+                            <img src="images/services/machine_health_diagnose.png" alt="New Services - QC20-W Ballbar Circular Inspection">
+                        </div>
+                        <span class="nl-badge">New Services</span>
+                        <div class="nl-img-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                    </div>
+                    <div class="nl-card-body">
+                        <div class="nl-date">June 2026</div>
+                        <h3>Introducing CMM-Based Volumetric Error Mapping for Multi-Axis Machines</h3>
+                        <p>Hexacore now offers full volumetric error compensation mapping using high-accuracy CMM data, ideal for aerospace and precision tooling manufacturers.</p>
+                        <div class="nl-card-footer">
+                            <span class="author">Service Launch</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- CARD 4 -->
+                <article class="nl-card-light">
+                    <div class="nl-img-wrap">
+                        <div class="nl-img-slider" style="animation-delay: -9s;">
+                            <img src="images/nl_gen_precision_team.jpg" alt="Achievements - Metrology Engineering Team">
+                            <img src="images/nl_industry_team.png" alt="Achievements - 500th Project Milestone">
+                            <img src="images/industries/aerospace.png" alt="Achievements - High-Tolerance Aerospace Metrology">
+                        </div>
+                        <span class="nl-badge">Achievement</span>
+                        <div class="nl-img-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+                    </div>
+                    <div class="nl-card-body">
+                        <div class="nl-date">May 2026</div>
+                        <h3>Hexacore Completes 500th Successful CNC Machine Calibration Project</h3>
+                        <p>We are proud to announce the completion of our 500th calibration project — achieving sub-micron positioning accuracy across all axes for an automotive components manufacturer.</p>
+                        <div class="nl-card-footer">
+                            <span class="author">Company Milestone</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Subscribe CTA bar -->
+            <div class="nl-cta-bar">
+                <div>
+                    <div class="cta-label">Stay Informed</div>
+                    <h4>Get our latest technical insights and project updates<br>direct from our engineering team.</h4>
+                </div>
+                    <span class="nl-cta-btn" href="contact.html">Contact Our Team →</span>
+            </div>
+
+        </section>
+
         
-        <!-- PRODUCT PORTFOLIO 3-COLUMN PILL GRID WITH THUMBNAIL IMAGES (HOMEPAGE ABOVE SERVICES) -->
-        <section class="section responsive-section" style="background: #ffffff; padding: 64px 44px; border-bottom: 1px solid var(--line);">
+        <!-- FLOWCHART "OUR APPROACH" SECTION -->
+        <section class="section" style="background: #ffffff; padding: 64px 44px; border-top: 1px solid var(--line);">
             <div style="max-width: 1280px; margin: 0 auto;">
-                <div class="section-head" style="margin-bottom: 36px; text-align: center;">
-                    <div class="tag">Precision Product Range</div>
-                    <h2 class="t-h2">Products &amp; Precision Gauges</h2>
-                    <p class="section-lead" style="max-width: 760px; margin: 0 auto; color: var(--steel); font-size: 15px;">
-                        Hexacore manufactures and supplies NABL-traceable plain plug gauges, setting rings, thread gauges, air electronic columns, 2D height masters, and coordinate measuring machines.
+                <div class="section-head" style="margin-bottom: 40px; text-align: center;">
+                    <div class="tag">Engineering Workflow</div>
+                    <h2 class="t-h2">Our Approach &amp; Metrology Process</h2>
+                    <p class="section-lead" style="max-width: 720px; margin: 0 auto; color: var(--steel); font-size: 15px;">
+                        A systematic, step-by-step diagnostic and calibration workflow engineered to guarantee sub-micron precision for your CNC machines and CMM systems.
                     </p>
                 </div>
 
                 <style>
-                    .product-pill-grid {
-                        display: grid;
-                        grid-template-columns: repeat(3, 1fr);
-                        gap: 16px;
+                    .flowchart-wrapper {
+                        background: #ffffff;
+                        border: 1px solid var(--line);
+                        border-radius: 12px;
+                        padding: 36px 28px;
+                        box-shadow: 0 8px 30px rgba(7, 21, 39, 0.04);
                     }
-                    .product-pill-card {
-                        background: #F4F6F9;
-                        border: 1px solid #E3E8EE;
-                        border-left: 4px solid var(--orange);
-                        border-radius: 8px;
-                        padding: 12px 16px;
+                    .flowchart-start-badge {
+                        display: inline-flex;
+                        align-items: center;
+                        gap: 8px;
+                        background: rgba(244, 123, 32, 0.08);
+                        color: var(--orange-dark);
+                        font-size: 11px;
+                        font-weight: 700;
+                        letter-spacing: 1px;
+                        text-transform: uppercase;
+                        padding: 6px 14px;
+                        border-radius: 20px;
+                        margin-bottom: 24px;
+                        border: 1px solid rgba(244, 123, 32, 0.25);
+                    }
+                    .pulse-dot {
+                        width: 8px;
+                        height: 8px;
+                        background: var(--orange);
+                        border-radius: 50%;
+                        animation: flowPulse 2s infinite ease-in-out;
+                    }
+                    @keyframes flowPulse {
+                        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(244, 123, 32, 0.7); }
+                        70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(244, 123, 32, 0); }
+                        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(244, 123, 32, 0); }
+                    }
+                    .flowchart-container {
+                        display: flex;
+                        align-items: stretch;
+                        justify-content: space-between;
+                        gap: 8px;
+                    }
+                    .flow-node {
+                        flex: 1;
+                        background: #F8FAFC;
+                        border: 1.5px solid var(--grey-m);
+                        border-radius: 10px;
+                        padding: 22px 18px;
+                        display: flex;
+                        flex-direction: column;
+                        transition: all 0.3s ease;
+                        position: relative;
+                    }
+                    .flow-node:hover {
+                        border-color: var(--navy-soft);
+                        transform: translateY(-4px);
+                        box-shadow: 0 12px 28px rgba(11, 31, 58, 0.08);
+                        background: #ffffff;
+                    }
+                    .flow-node.active-node {
+                        border-color: var(--orange);
+                        background: #ffffff;
+                    }
+                    .node-header {
                         display: flex;
                         align-items: center;
-                        gap: 12px;
-                        transition: all 0.25s ease;
-                        cursor: pointer;
-                        text-decoration: none;
+                        justify-content: space-between;
+                        margin-bottom: 14px;
                     }
-                    .product-pill-card:hover {
-                        background: #ffffff;
-                        transform: translateY(-2px);
-                        box-shadow: 0 6px 18px rgba(11, 31, 58, 0.08);
-                        border-color: var(--orange);
-                    }
-                    .product-pill-arrow {
-                        color: var(--orange);
-                        font-size: 14px;
+                    .node-step {
+                        font-size: 26px;
                         font-weight: 800;
-                        flex-shrink: 0;
+                        color: var(--navy);
                     }
-                    .product-pill-img-box {
-                        width: 38px;
-                        height: 38px;
-                        background: #ffffff;
-                        border: 1px solid #E2E8F0;
-                        border-radius: 6px;
-                        padding: 2px;
+                    .node-icon {
+                        width: 36px;
+                        height: 36px;
+                        border-radius: 8px;
+                        background: rgba(11, 31, 58, 0.06);
+                        color: var(--navy);
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        flex-shrink: 0;
-                        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
                     }
-                    .product-pill-img-box img {
-                        max-width: 100%;
-                        max-height: 100%;
-                        object-fit: contain;
+                    .flow-node.active-node .node-icon {
+                        background: rgba(244, 123, 32, 0.12);
+                        color: var(--orange);
                     }
-                    .product-pill-name {
-                        font-family: 'Inter', sans-serif;
-                        font-size: 13.5px;
+                    .node-title {
+                        font-size: 17px;
                         font-weight: 700;
                         color: var(--navy);
-                        line-height: 1.35;
-                        margin: 0;
+                        margin-bottom: 8px;
+                    }
+                    .node-desc {
+                        font-size: 13.5px;
+                        color: var(--steel);
+                        line-height: 1.5;
+                        margin-bottom: 18px;
+                        flex-grow: 1;
+                    }
+                    .node-badge {
+                        display: inline-block;
+                        font-size: 10.5px;
+                        font-weight: 600;
+                        text-transform: uppercase;
+                        padding: 4px 10px;
+                        border-radius: 4px;
+                        background: var(--grey-m);
+                        color: var(--charcoal);
+                    }
+                    .node-badge.success {
+                        background: rgba(244, 123, 32, 0.12);
+                        color: var(--orange-dark);
+                        border: 1px solid rgba(244, 123, 32, 0.3);
+                    }
+                    .flow-arrow {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 32px;
+                        flex-shrink: 0;
+                    }
+                    .arrow-svg {
+                        width: 28px;
+                        height: 18px;
+                    }
+                    .flowchart-footer-loop {
+                        margin-top: 28px;
+                        padding-top: 20px;
+                        border-top: 1px dashed var(--line);
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                    .loop-badge {
+                        font-size: 12.5px;
+                        font-weight: 600;
+                        color: var(--steel);
+                        display: flex;
+                        align-items: center;
+                        gap: 8px;
+                        background: var(--grey-l);
+                        padding: 8px 18px;
+                        border-radius: 20px;
+                        border: 1px solid var(--line);
+                    }
+                    .loop-badge svg {
+                        color: var(--orange);
                     }
                     @media (max-width: 900px) {
-                        .product-pill-grid {
-                            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-                            gap: 6px !important;
+                        .flowchart-container {
+                            flex-direction: column;
+                            gap: 12px;
                         }
-                        .product-pill-card {
-                            padding: 8px 6px !important;
-                            gap: 6px !important;
-                            flex-direction: column !important;
-                            text-align: center !important;
-                            border-left-width: 3px !important;
-                            align-items: center !important;
-                        }
-                        .product-pill-arrow {
-                            display: none !important;
-                        }
-                        .product-pill-img-box {
-                            width: 32px !important;
-                            height: 32px !important;
-                        }
-                        .product-pill-name {
-                            font-size: 10.5px !important;
-                            line-height: 1.25 !important;
-                            word-break: break-word;
+                        .flow-arrow {
+                            transform: rotate(90deg);
+                            width: 100%;
+                            height: 28px;
+                            margin: -4px 0;
                         }
                     }
                 </style>
 
-                <div class="product-pill-grid">
-                    <!-- 1 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/plain_plug_gauge.png" alt="Plain Plug Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Plain Plug Gauge</h4>
-                    </div>
-                    <!-- 2 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/od_master.png" alt="OD Master" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">OD Master</h4>
-                    </div>
-                    <!-- 3 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/master_setting_ring.png" alt="Master Setting Ring / Go-NoGo Ring Gauges" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Master Setting Ring / Go-NoGo Ring Gauges</h4>
-                    </div>
-                    <!-- 4 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/thread_gauges.png" alt="Thread Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Thread Gauge</h4>
-                    </div>
-                    <!-- 5 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/width_gauge.png" alt="Width Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Width Gauge</h4>
-                    </div>
-                    <!-- 6 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/fixed_snap_gauge.png" alt="Fixed Snap Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Fixed Snap Gauge</h4>
-                    </div>
-                    <!-- 7 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/knurling_height_master.png" alt="Knurling Height Master" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Knurling Height Master</h4>
-                    </div>
-                    <!-- 8 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/plate_paddle_gauge.png" alt="Plate / Paddle Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Plate / Paddle Gauge</h4>
-                    </div>
-                    <!-- 9 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/air_snap_gauge.png" alt="Air Snap Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Air Snap Gauge</h4>
-                    </div>
-                    <!-- 10 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/air_plug_gauge.png" alt="Air Plug Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Air Plug Gauge</h4>
-                    </div>
-                    <!-- 11 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/flush_pin_gauge.png" alt="Flush Pin Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Flush Pin Gauge</h4>
-                    </div>
-                    <!-- 12 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/pcd_gauge.png" alt="PCD Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">PCD Gauge</h4>
-                    </div>
-                    <!-- 13 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/receiving_relation_gauge.png" alt="Receiving / Relation Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Receiving / Relation Gauge</h4>
-                    </div>
-                    <!-- 14 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/air_electronic_unit_single.png" alt="Single Channel Air Electronic Unit" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Single Channel Air Electronic Unit</h4>
-                    </div>
-                    <!-- 15 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/air_electronic_unit_multi.png" alt="Multi Channel Air Electronic Unit" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Multi Channel Air Electronic Unit</h4>
-                    </div>
-                    <!-- 16 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/air_electronic_column_unit.png" alt="Air Electronic Column Unit" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Air Electronic Column Unit</h4>
-                    </div>
-                    <!-- 17 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/special_filter.png" alt="Special Filter (SS Air Dryer)" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Special Filter (SS Air Dryer)</h4>
-                    </div>
-                    <!-- 18 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/spc_air_unit.png" alt="CMM Probes &amp; Styli" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">CMM Probes &amp; Styli</h4>
-                    </div>
-                    <!-- 19 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/cmm_probes.png" alt="2D &amp; CMM Probes" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">2D &amp; CMM Probes</h4>
-                    </div>
-                    <!-- 20 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/vision_measuring_system.png" alt="Vision Measuring System" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Vision Measuring System</h4>
-                    </div>
-                    <!-- 21 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/height_gauge_2d.png" alt="2D Height Gauges" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">2D Height Gauges</h4>
-                    </div>
-                    <!-- 22 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/cmm_machine.png" alt="Coordinate Measuring Machine (CMM)" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Coordinate Measuring Machine (CMM)</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-        <!-- 4. SERVICES & TECHNICAL SUPPORT DIVISIONS (HOMEPAGE) -->
-        <section class="section grey responsive-section" style="padding:64px 44px;">
-            <div style="max-width:1280px;margin:0 auto;">
-                <div class="section-head" style="margin-bottom:48px;text-align:center;">
-                    <div class="tag">Services &amp; Technical Support</div>
-                    <h2 class="t-h2">Precision Metrology &amp; Machine Services</h2>
-                    <p class="section-lead" style="max-width:720px;margin:0 auto;">From sub-micron CNC machine laser calibration and CMM volumetric error compensation to certified gauge calibration and automated probe installation.</p>
-                </div>
-
-                <!-- 3 Service Division Cards -->
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-bottom:40px;">
-                    
-                    <!-- Division 1: Machine Services -->
-                    <div style="background: linear-gradient(135deg, rgba(11,31,58,0.72) 0%, rgba(11,31,58,0.58) 100%), url('images/division1-machine-calibration.jpg') center/cover no-repeat;border-radius:10px;padding:32px 28px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 4px 20px rgba(11,31,58,0.15);transition:all .3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.25)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.15)';this.style.borderColor='rgba(255,255,255,0.1)'">
-                        <div style="width:48px;height:48px;background:rgba(244,123,32,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--orange);">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-                        </div>
-                        <span style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Division 01</span>
-                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:#fff;margin:8px 0 12px;">Machine Services &amp; Calibration</h3>
-                        <p style="color:rgba(255,255,255,0.8);font-size:14px;line-height:1.65;margin-bottom:20px;">Linear laser interferometry, rotary axis indexing, straightness &amp; squareness testing, ballbar circularity diagnostics, and complete CNC machine bed re-leveling &amp; geometric overhauls.</p>
-                        <a href="services.html" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">View Machine Services →</a>
+                <div class="flowchart-wrapper">
+                    <div style="text-align: center;">
+                        <span class="flowchart-start-badge">
+                            <span class="pulse-dot"></span> Start Metrology Workflow
+                        </span>
                     </div>
 
-                    <!-- Division 2: CMM Services -->
-                    <div style="background: linear-gradient(135deg, rgba(11,31,58,0.72) 0%, rgba(11,31,58,0.58) 100%), url('images/division2-cmm-services.jpg') center/cover no-repeat;border-radius:10px;padding:32px 28px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 4px 20px rgba(11,31,58,0.15);transition:all .3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.25)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.15)';this.style.borderColor='rgba(255,255,255,0.1)'">
-                        <div style="width:48px;height:48px;background:rgba(244,123,32,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--orange);">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
-                        </div>
-                        <span style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Division 02</span>
-                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:#fff;margin:8px 0 12px;">CMM Services &amp; Error Mapping</h3>
-                        <p style="color:rgba(255,255,255,0.8);font-size:14px;line-height:1.65;margin-bottom:20px;">Full 21-parameter 3D CMM volumetric error compensation, touch-trigger &amp; star probe stylus qualification, air-cushion relocation leveling, and 3D GD&amp;T contract part inspection.</p>
-                        <a href="services.html" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">View CMM Services →</a>
-                    </div>
-
-                    <!-- Division 3: Metrology Instruments -->
-                    <div style="background: linear-gradient(135deg, rgba(11,31,58,0.72) 0%, rgba(11,31,58,0.58) 100%), url('images/division3-metrology-instruments.jpg') center/cover no-repeat;border-radius:10px;padding:32px 28px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 4px 20px rgba(11,31,58,0.15);transition:all .3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.25)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.15)';this.style.borderColor='rgba(255,255,255,0.1)'">
-                        <div style="width:48px;height:48px;background:rgba(244,123,32,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--orange);">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                        </div>
-                        <span style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Division 03</span>
-                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:#fff;margin:8px 0 12px;">Metrology Instruments Services</h3>
-                        <p style="color:rgba(255,255,255,0.8);font-size:14px;line-height:1.65;margin-bottom:20px;">NABL-traceable services for plain/thread plug &amp; ring gauges, air electronic column units, motorized 2D height masters, and 2D optical vision measuring systems.</p>
-                        <a href="services.html" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">View Instrument Services →</a>
-                    </div>
-                </div>
-
-                <!-- SPECIAL PROBE INSTALLATION TEASER BANNER (HOMEPAGE) -->
-                <div class="probe-teaser-banner">
-                    <div class="probe-teaser-content">
-                        <div class="probe-teaser-badge">
-                            <span>✨ SPECIALIZED CAPABILITY TEASER</span>
-                        </div>
-                        <h3 class="probe-teaser-title">On-Machine Probe System Installation &amp; Retrofits</h3>
-                        <p class="probe-teaser-desc">
-                            Looking to automate part setup and tool measurement? Hexacore provides turnkey <strong>On-Machine Touch Probe &amp; Tool Setter Installation</strong>, optical/radio receiver setup, macro programming, and <strong>CMM Star Probe Stylus Qualification</strong> for Renishaw &amp; Hexagon systems.
-                        </p>
-                    </div>
-                    <div class="probe-teaser-action">
-                        <button href="contact.html" class="btn btn-orange probe-teaser-btn">Inquire For Probe Installation →</button>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-        <!-- 5. INDUSTRIES WE SERVE -->
-        <section class="section navy">
-            <div class="section-head">
-                <div class="tag">Industries</div>
-                <h2 class="t-h2" style="color:#fff;">Supporting Precision Manufacturing Across Industries</h2>
-                <p class="section-lead" style="color: #AAB6C9;">
-                    Every manufacturing environment has different requirements. We work closely with our customers to
-                    understand their machines, processes and accuracy requirements before recommending the appropriate
-                    measurement or support solution.
-                </p>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-                <div class="ind-card" style="background-image: url('images/industries/automotive.png');">
-                    <span class="ind-card-text">Automotive</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/aerospace.png');">
-                    <span class="ind-card-text">Aerospace</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/heavy_engineering.png');">
-                    <span class="ind-card-text">Heavy Engineering</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/precision_manufacturing.png');">
-                    <span class="ind-card-text">Precision Manufacturing</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/machine_tools.png');">
-                    <span class="ind-card-text">Machine Tools</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/general_engineering.png');">
-                    <span class="ind-card-text">General Engineering</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/cnc_manufacturing.png');">
-                    <span class="ind-card-text">CNC Manufacturing</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/industrial_production.png');">
-                    <span class="ind-card-text">Industrial Production</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- 6. CLIENT TESTIMONIALS (HOMEPAGE LAST) -->
-        <section class="section grey responsive-section" style="padding:64px 44px;">
-            <div style="max-width:1280px; margin:0 auto;">
-                <div class="section-head" style="margin-bottom:44px; text-align:center;">
-                    <div class="tag">Client Testimonials</div>
-                    <h2 class="t-h2">What Our Engineering &amp; Manufacturing Partners Say</h2>
-                    <p class="section-lead" style="max-width:720px; margin:0 auto;">Trusted by leading CNC machine builders, aerospace component manufacturers, automotive tier-1 suppliers, and precision tool rooms across India.</p>
-                </div>
-
-                <div class="testimonials-grid">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card">
-                        <div>
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-text">“Hexacore carried out sub-micron linear laser calibration and ballbar circularity diagnostics on our 5-axis machining center. The volumetric positioning accuracy improvement was immediate and reduced part rejections by 40%.”</p>
-                        </div>
-                        <div class="testimonial-user">
-                            <div class="testimonial-avatar">RK</div>
-                            <div class="testimonial-info">
-                                <h4>R. Kumar</h4>
-                                <p>Head of Quality Assurance</p>
-                                <p style="color:var(--orange);font-weight:600;">Precision Auto Components, Chennai</p>
-                                <span class="testimonial-badge">✓ Verified Partner</span>
+                    <div class="flowchart-container">
+                        <!-- Step 1 -->
+                        <div class="flow-node">
+                            <div class="node-header">
+                                <span class="node-step">01</span>
+                                <div class="node-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                </div>
                             </div>
+                            <h3 class="node-title">Understand</h3>
+                            <p class="node-desc">We first understand the machine, application specifications, tolerance limits, and operational performance requirements.</p>
+                            <div><span class="node-badge">Phase 01: Discovery</span></div>
+                        </div>
+
+                        <!-- Arrow 1 -->
+                        <div class="flow-arrow">
+                            <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="flow-node">
+                            <div class="node-header">
+                                <span class="node-step">02</span>
+                                <div class="node-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.3 15.3a2.4 2.4 0 0 1 0 3.4l-2.6 2.6a2.4 2.4 0 0 1-3.4 0L2.7 8.7a2.4 2.4 0 0 1 0-3.4l2.6-2.6a2.4 2.4 0 0 1 3.4 0l12.6 12.6z"/><line x1="14.5" y1="6.5" x2="17.5" y2="9.5"/></svg>
+                                </div>
+                            </div>
+                            <h3 class="node-title">Measure</h3>
+                            <p class="node-desc">We deploy laser interferometers, ballbars, electronic levels, and 3D CMM probing to acquire sub-micron accuracy data.</p>
+                            <div><span class="node-badge">Phase 02: Diagnostics</span></div>
+                        </div>
+
+                        <!-- Arrow 2 -->
+                        <div class="flow-arrow">
+                            <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="flow-node">
+                            <div class="node-header">
+                                <span class="node-step">03</span>
+                                <div class="node-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                                </div>
+                            </div>
+                            <h3 class="node-title">Analyse</h3>
+                            <p class="node-desc">We study positioning errors, backlash, thermal drift, and 21-parameter volumetric deviations to isolate root causes.</p>
+                            <div><span class="node-badge">Phase 03: Analytics</span></div>
+                        </div>
+
+                        <!-- Arrow 3 -->
+                        <div class="flow-arrow">
+                            <svg class="arrow-svg" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="flow-node active-node">
+                            <div class="node-header">
+                                <span class="node-step" style="color:var(--orange);">04</span>
+                                <div class="node-icon">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                </div>
+                            </div>
+                            <h3 class="node-title">Improve</h3>
+                            <p class="node-desc">We execute pitch compensation updates, bed leveling, and mechanical realignment, delivering certified NABL reports.</p>
+                            <div><span class="node-badge success">Phase 04: Optimization</span></div>
                         </div>
                     </div>
 
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card">
-                        <div>
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-text">“Turnkey installation of Renishaw touch probe &amp; tool setter systems across our VMC line was executed with highest precision. Macro programming and operator training delivered by Hexacore were exceptional.”</p>
-                        </div>
-                        <div class="testimonial-user">
-                            <div class="testimonial-avatar">SM</div>
-                            <div class="testimonial-info">
-                                <h4>S. Murugan</h4>
-                                <p>General Manager - CNC Operations</p>
-                                <p style="color:var(--orange);font-weight:600;">Aerospace Machining Pvt Ltd, Bengaluru</p>
-                                <span class="testimonial-badge">✓ Verified Partner</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-card">
-                        <div>
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-text">“We rely on Hexacore for NABL-traceable gauge calibration and full 21-parameter CMM volumetric error mapping. Fast turnaround time, ISO compliant certification, and dependable technical support.”</p>
-                        </div>
-                        <div class="testimonial-user">
-                            <div class="testimonial-avatar">VP</div>
-                            <div class="testimonial-info">
-                                <h4>V. Parthiban</h4>
-                                <p>Plant Head - Manufacturing</p>
-                                <p style="color:var(--orange);font-weight:600;">Heavy Geartech Industries, Coimbatore</p>
-                                <span class="testimonial-badge">✓ Verified Partner</span>
-                            </div>
+                    <div class="flowchart-footer-loop">
+                        <div class="loop-badge">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                            <span>Continuous Performance Verification &amp; Periodic Recalibration Loop</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+
 </main>
 <footer class="site-footer"></footer>
 
@@ -3840,6 +3792,7 @@
     <ul>
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Us</a></li>
+      <li><a href="newsletter.html">Newsletter</a></li>
       <li><a href="products.html">Products</a></li>
       <li><a href="services.html">Service &amp; Support</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -4599,38 +4552,19 @@
         }
 </script>
 <script>
-        // ── Individual Service Card Navigation & Instant Accordion ──
-        function toggleIndividualService(triggerElement, event) {
-            if (event && event.stopPropagation) event.stopPropagation();
-            if (!triggerElement) return;
-            const card = triggerElement.closest('.svc-card-expandable') || triggerElement.closest('.svc-card') || triggerElement;
+        // ── Individual Service Card Expand/Collapse ────────────────
+        function toggleIndividualService(cardElement) {
+            const card = cardElement.closest('.svc-card-expandable');
             if (!card) return;
-
             const drawer = card.querySelector('.svc-drawer-body');
-            const cardId = card.id || card.getAttribute('data-id');
+            const isActive = card.classList.contains('active');
 
-            if (drawer) {
-                const isActive = card.classList.contains('active');
-                
-                document.querySelectorAll('.svc-card-expandable.active').forEach(c => {
-                    if (c !== card) {
-                        c.classList.remove('active');
-                        const b = c.querySelector('.svc-drawer-body');
-                        if (b) b.style.maxHeight = null;
-                    }
-                });
-
-                if (isActive) {
-                    card.classList.remove('active');
-                    drawer.style.maxHeight = null;
-                } else {
-                    card.classList.add('active');
-                    drawer.style.maxHeight = (drawer.scrollHeight + 400) + 'px';
-                }
-            } else if (cardId) {
-                window.location.href = `service.html?id=${cardId}`;
+            if (isActive) {
+                card.classList.remove('active');
+                if (drawer) drawer.style.maxHeight = null;
             } else {
-                window.location.href = 'services.html';
+                card.classList.add('active');
+                if (drawer) drawer.style.maxHeight = drawer.scrollHeight + 100 + 'px';
             }
         }
 </script>
@@ -4654,3 +4588,4 @@
     </script>
 
 </html>
+

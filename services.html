@@ -3283,10 +3283,10 @@
         <div class="brand">
             <a href="index.html"><img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo"></a>
             <nav class="main-nav">
-                <a href="index.html" class="current">Home</a>
+                <a href="index.html" >Home</a>
                 <a href="about.html" >About Us</a>
                 <a href="products.html" >Products</a>
-                <a href="services.html" >Service &amp; Support</a>
+                <a href="services.html" class="current">Service &amp; Support</a>
                 <a href="contact.html" >Contact</a>
             </nav>
             <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
@@ -3294,10 +3294,10 @@
             </button>
         </div>
         <nav class="mobile-nav">
-            <a href="index.html" class="current" onclick="closeMobileNav()">Home</a>
+            <a href="index.html"  onclick="closeMobileNav()">Home</a>
             <a href="about.html"  onclick="closeMobileNav()">About Us</a>
             <a href="products.html"  onclick="closeMobileNav()">Products</a>
-            <a href="services.html"  onclick="closeMobileNav()">Service &amp; Support</a>
+            <a href="services.html" class="current" onclick="closeMobileNav()">Service &amp; Support</a>
             <a href="contact.html"  onclick="closeMobileNav()">Contact</a>
         </nav>
     </header>
@@ -3305,524 +3305,1038 @@
 <main>
 
 
-        <!-- 1. HERO SECTION (LIGHT THEME) -->
-        <section class="hero responsive-hero-section"
-            style="background: linear-gradient(135deg, #FFFFFF 0%, #F4F6F9 60%, #E8EEF5 100%); padding: 80px 44px 70px; border-bottom: 1px solid var(--line);">
-            <div class="hero-grid">
-                <div>
-                    <h1 class="t-display" style="color: var(--navy); line-height: 1.1; margin-bottom: 20px;">
-                        Precision Engineering for <span style="color: var(--orange);">Reliable Industrial
-                            Performance</span>
-                    </h1>
-                    <p class="lead"
-                        style="color: var(--steel); font-size: clamp(15px, 1.6vw, 17.5px); max-width: 580px; margin-bottom: 36px; line-height: 1.75;">
-                        Hexacore Precision Technologies provides precision engineering, measurement, calibration and
-                        technical support solutions that help manufacturers improve machine accuracy, reliability and
-                        production performance.
-                    </p>
-                    <div class="hero-btns">
-                        <a class="btn btn-orange" href="services.html">Explore Our Services</a>
-                        <a class="btn btn-navy" href="contact.html">Talk to Our Engineers</a>
+        <!-- SERVICES HERO BANNER -->
+        <section class="section" style="background:linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 100%);padding:56px 44px;color:#fff;text-align:center;">
+            <div style="max-width:1100px;margin:0 auto;">
+                <div class="tag" style="background:rgba(244,123,32,0.15);color:var(--orange);border:1px solid rgba(244,123,32,0.3);display:inline-block;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px;">Metrology &amp; Machine Services</div>
+                <h2 style="font-family:'Inter',sans-serif;font-size:clamp(28px,3.8vw,42px);font-weight:900;color:#fff;margin:0 0 16px;line-height:1.15;">Services &amp; Technical Support</h2>
+                <p style="color:#B9C4D6;font-size:16px;max-width:760px;margin:0 auto;line-height:1.7;">Click on any individual service below to view complete service specifications, calibrated machine types, compliance standards, and technical reporting details — all on this page.</p>
+            </div>
+        </section>
+
+        
+        <section class="responsive-section" style="background:#fff;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
+            <div style="max-width:1280px;margin:0 auto;">
+                <div style="margin-bottom:36px;">
+                    <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
+                        <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Laser Alignment & Geometry</span>
                     </div>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">Machine Calibration</h2>
+                    <p style="color:var(--steel);font-size:15px;max-width:760px;margin:0;line-height:1.65;">High-precision linear laser interferometry, rotary axis indexing calibration, straightness, and squareness testing compliant with ISO 230-2 standards.</p>
                 </div>
-                <div class="hero-art">
-                    <div class="hero-slider" style="position:relative; width:100%; border-radius:12px; overflow:hidden; border:1px solid var(--line); box-shadow:0 16px 40px rgba(11,31,58,0.12); background:#fff;">
-                        <!-- Slides Wrapper -->
-                        <div class="hero-slides-track" id="heroSlidesTrack" style="display:flex; transition:transform 0.7s cubic-bezier(0.25, 1, 0.5, 1); width:100%;">
-                            <!-- Slide 1 – VMC Laser Calibration -->
-                            <div style="width:100%; flex:0 0 100%; position:relative;">
-                                <img src="images/home1.jpeg" alt="VMC Laser Calibration on Machine Table" style="width:100%; height:380px; object-fit:cover; object-position:center; display:block;">
-                                <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(11,31,58,0.92) 80%); padding:24px 24px 20px; color:#fff;">
-                                    <span style="background:var(--orange); color:#fff; font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:3px;">VMC Calibration</span>
-                                    <h4 style="font-size:16px; font-weight:800; margin:8px 0 0; color:#fff;">VMC Linear Axis Laser Calibration &amp; Error Mapping</h4>
-                                </div>
+
+                <div class="svc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px;">
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-01">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/services/linear_laser_calibration.png" alt="Linear Laser Calibration" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
                             </div>
-                            <!-- Slide 2 – Laser Interferometer Setup -->
-                            <div style="width:100%; flex:0 0 100%; position:relative;">
-                                <img src="images/home2.jpeg" alt="Precision Laser Calibration Setup" style="width:100%; height:380px; object-fit:cover; object-position:center; display:block;">
-                                <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(11,31,58,0.92) 80%); padding:24px 24px 20px; color:#fff;">
-                                    <span style="background:var(--orange); color:#fff; font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:3px;">Laser Interferometer</span>
-                                    <h4 style="font-size:16px; font-weight:800; margin:8px 0 0; color:#fff;">Precision Laser Interferometer Calibration Setup</h4>
-                                </div>
-                            </div>
-                            <!-- Slide 3 – CNC Lathe Ballbar Testing -->
-                            <div style="width:100%; flex:0 0 100%; position:relative;">
-                                <img src="images/home3.jpeg" alt="Ballbar Testing on CNC Lathe" style="width:100%; height:380px; object-fit:cover; object-position:center; display:block;">
-                                <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(11,31,58,0.92) 80%); padding:24px 24px 20px; color:#fff;">
-                                    <span style="background:var(--orange); color:#fff; font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:3px;">Ballbar Testing</span>
-                                    <h4 style="font-size:16px; font-weight:800; margin:8px 0 0; color:#fff;">CNC Lathe Geometric Accuracy &amp; Ballbar Testing</h4>
-                                </div>
-                            </div>
-                            <!-- Slide 4 – Spindle Verification -->
-                            <div style="width:100%; flex:0 0 100%; position:relative;">
-                                <img src="images/home4.jpeg" alt="Makino VMC Spindle Calibration with Ballbar" style="width:100%; height:380px; object-fit:cover; object-position:center; display:block;">
-                                <div style="position:absolute; bottom:0; left:0; right:0; background:linear-gradient(transparent, rgba(11,31,58,0.92) 80%); padding:24px 24px 20px; color:#fff;">
-                                    <span style="background:var(--orange); color:#fff; font-size:10px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:3px;">Spindle Verification</span>
-                                    <h4 style="font-size:16px; font-weight:800; margin:8px 0 0; color:#fff;">Makino VMC Spindle &amp; Axis Squareness Verification</h4>
-                                </div>
+                            <h4>Linear Laser Calibration</h4>
+                            <p>Ensures sub-micron positioning accuracy of machine axes using laser interferometer systems.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
                             </div>
                         </div>
-                        <!-- Navigation Arrows -->
-                        <button class="hero-prev-btn" onclick="prevHeroSlide()" aria-label="Previous Slide">‹</button>
-                        <button class="hero-next-btn" onclick="nextHeroSlide()" aria-label="Next Slide">›</button>
-                        <!-- Navigation Dots -->
-                        <div style="position:absolute; top:16px; right:16px; display:flex; gap:8px; z-index:10; background:rgba(11,31,58,0.6); padding:6px 12px; border-radius:20px; backdrop-filter:blur(4px);">
-                            <span class="hero-dot active" onclick="setHeroSlide(0)" style="width:10px; height:10px; border-radius:50%; background:var(--orange); cursor:pointer; transition:transform 0.2s, background 0.2s; transform:scale(1.25);"></span>
-                            <span class="hero-dot" onclick="setHeroSlide(1)" style="width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:transform 0.2s, background 0.2s;"></span>
-                            <span class="hero-dot" onclick="setHeroSlide(2)" style="width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:transform 0.2s, background 0.2s;"></span>
-                            <span class="hero-dot" onclick="setHeroSlide(3)" style="width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.4); cursor:pointer; transition:transform 0.2s, background 0.2s;"></span>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">High-precision linear laser interferometry measures positioning error, backlash, systematic positioning deviation, and repeatability along linear axes. Automatically generates pitch error compensation data for CNC controllers.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">Vertical Machining Centers (VMC)</span><span class="svc-machine-tag">Horizontal Machining Centers (HMC)</span><span class="svc-machine-tag">CNC Turning Centers (Lathes)</span><span class="svc-machine-tag">5-Axis Machining Centers</span><span class="svc-machine-tag">Gantry & Plano Milling Machines</span><span class="svc-machine-tag">Double Column CNCs</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 230-2</strong> – Determination of positioning accuracy & repeatability of NC linear axes.</div><div class="svc-std-item"><strong>VDI/DGQ 3441</strong> – Statistical evaluation of operational and positioning accuracy of machine tools.</div><div class="svc-std-item"><strong>JIS B 6201</strong> – Test code for performance & geometric accuracy inspection of machine tools.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Generates pitch error compensation tables directly formatted for Fanuc, Siemens & Heidenhain CNC controllers. Provides positioning accuracy curves and repeatability bands to eliminate dimensional errors on machined parts.</p>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-16">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/cnc-laser-calibration.jpg" alt="Laser Calibration of CNC" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>Laser Calibration of CNC</h4>
+                            <p>High-precision laser interferometer & CNC machine positioning calibration system for multi-axis machine tools.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Comprehensive multi-axis CNC positioning calibration system using optical laser vectors. Analyzes thermal growth compensation, axis backlash dynamics, and multi-directional positioning accuracy.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">Multi-Axis Precision CNCs</span><span class="svc-machine-tag">PCB Drilling CNCs</span><span class="svc-machine-tag">Laser Cutting Machines</span><span class="svc-machine-tag">Optical Tool Grinding CNCs</span><span class="svc-machine-tag">Precision SPM Machines</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 230-2</strong> – Standard test code for axis positioning accuracy & repeatability.</div><div class="svc-std-item"><strong>ISO 230-4</strong> – Circular interpolation tests for multi-axis CNC machine tools.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Delivers baseline positioning accuracy certificates, dynamic axis lag profiles, and NABL-traceable reference documentation required for ISO 9001 quality audits.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-02">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/services/rotary_axis_calibration.png" alt="Rotary Axis Calibration" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>Rotary Axis Calibration</h4>
+                            <p>Calibrates rotary axes for accurate angular positioning and indexing.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Measures angular positioning accuracy up to ±1 arc-second using rotary laser calibrators and optical polygon encoders. Analyzes angular error, indexing repeatability, and rotational hysteresis on rotary tables.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">4th/5th Axis CNC Rotary Tables</span><span class="svc-machine-tag">Tilting Trunnion Tables</span><span class="svc-machine-tag">HMC Indexing Tables (B-Axis)</span><span class="svc-machine-tag">Swivel Milling Heads</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 230-2</strong> – Test code for angular positioning accuracy of rotary NC axes.</div><div class="svc-std-item"><strong>JIS B 6201</strong> – Rotary indexing accuracy and angular alignment methodology.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Produces 360° angular error polar charts and offset lookup tables to ensure exact indexing tolerances during 4th and 5th axis multi-sided machining.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-03">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/services/off_axis_rotary_calibration.png" alt="Off-Axis Rotary Calibration" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>Off-Axis Rotary Calibration</h4>
+                            <p>Measures rotary axis errors when positioned away from the center line.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Specialized measurement of rotary axis behavior off the physical center line. Evaluates eccentricity, tilt error motion, and pivot point offset errors critical for simultaneous 5-axis contouring.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">5-Axis Simultaneous Machining Centers</span><span class="svc-machine-tag">Swivel Head VMC/HMC</span><span class="svc-machine-tag">Trunnion Multi-Tasking CNCs</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 230-7</strong> – Geometric accuracy of axes of rotation (spindles & rotary tables).</div><div class="svc-std-item"><strong>VDI 2617</strong> – Accuracy of multi-axis rotary positioning systems.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Calculates pivot point center offsets and volumetric tilt vectors, allowing CNC controllers to update tool center point control (TCPC / RTCP) parameters.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-04">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/services/axis_straightness_testing.png" alt="Axis Straightness Testing" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>Axis Straightness Testing</h4>
+                            <p>Checks linear deviations in axis movement along travel length.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Measures straightness error in both horizontal (Ey) and vertical (Ez) planes along full axis travel using straightness laser optics and electronic precision levels. Identifies guideway wear and bed sag.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">Large Gantry Millers</span><span class="svc-machine-tag">Long Bed CNC Lathes</span><span class="svc-machine-tag">Double Column Machining Centers</span><span class="svc-machine-tag">Horizontal Boring Mills</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 230-1</strong> – Geometric accuracy of machine tools operating under no-load conditions.</div><div class="svc-std-item"><strong>JIS B 6330</strong> – Linear straightness and flatness inspection code.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Provides micron-level straightness deviation graphs along travel length, guiding mechanical wedge adjustments, gib tightening, and bed leveling.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-05">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/services/squareness_testing.png" alt="Squareness Testing" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>Squareness Testing</h4>
+                            <p>Verifies perpendicularity between machine axes for geometric precision.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Measures 90° squareness (out-of-squareness) between X-Y, Y-Z, and X-Z machine axes using laser square optics and precision granite square masters. Essential for true rectangular part geometry.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">Vertical Machining Centers (VMC)</span><span class="svc-machine-tag">Horizontal Machining Centers (HMC)</span><span class="svc-machine-tag">5-Axis Machining Centers</span><span class="svc-machine-tag">Precision CNC Grinders</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 230-1</strong> – Perpendicularity test code for machine tool motion axes.</div><div class="svc-std-item"><strong>VDI 2852</strong> – Machine tool geometric performance testing standards.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Quantifies squareness error in microns per meter (µm/m) and angular arc-seconds, giving clear instructions for mechanical shimming or software squareness compensation.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-06">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/services/machine_health_diagnose.png" alt="Machine Health Diagnose (Ballbar Test)" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>Machine Health Diagnose (Ballbar Test)</h4>
+                            <p>Evaluates overall CNC performance by analyzing circular interpolation errors.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Quick, highly effective circularity test using a telescoping magnetic ballbar. Analyzes circular contouring accuracy, backlash, reversal spikes, lateral play, and servo mismatch in under 15 minutes.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">CNC Turning Centers (Lathes)</span><span class="svc-machine-tag">Vertical Machining Centers (VMC)</span><span class="svc-machine-tag">Horizontal Machining Centers (HMC)</span><span class="svc-machine-tag">2-Axis CNC Machines</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 230-4</strong> – Circular tests for NC machine tools using ballbar systems.</div><div class="svc-std-item"><strong>BSI BS 3800</strong> – Methods for testing accuracy of machine tools.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Generates polar plot diagnostic charts detailing exact backlash (µm), servo mismatch (ms), and squareness error, enabling targeted mechanical repairs before major machine breakdown.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </section>
 
         
-        <!-- PRODUCT PORTFOLIO 3-COLUMN PILL GRID WITH THUMBNAIL IMAGES (HOMEPAGE ABOVE SERVICES) -->
-        <section class="section responsive-section" style="background: #ffffff; padding: 64px 44px; border-bottom: 1px solid var(--line);">
-            <div style="max-width: 1280px; margin: 0 auto;">
-                <div class="section-head" style="margin-bottom: 36px; text-align: center;">
-                    <div class="tag">Precision Product Range</div>
-                    <h2 class="t-h2">Products &amp; Precision Gauges</h2>
-                    <p class="section-lead" style="max-width: 760px; margin: 0 auto; color: var(--steel); font-size: 15px;">
-                        Hexacore manufactures and supplies NABL-traceable plain plug gauges, setting rings, thread gauges, air electronic columns, 2D height masters, and coordinate measuring machines.
-                    </p>
-                </div>
-
-                <style>
-                    .product-pill-grid {
-                        display: grid;
-                        grid-template-columns: repeat(3, 1fr);
-                        gap: 16px;
-                    }
-                    .product-pill-card {
-                        background: #F4F6F9;
-                        border: 1px solid #E3E8EE;
-                        border-left: 4px solid var(--orange);
-                        border-radius: 8px;
-                        padding: 12px 16px;
-                        display: flex;
-                        align-items: center;
-                        gap: 12px;
-                        transition: all 0.25s ease;
-                        cursor: pointer;
-                        text-decoration: none;
-                    }
-                    .product-pill-card:hover {
-                        background: #ffffff;
-                        transform: translateY(-2px);
-                        box-shadow: 0 6px 18px rgba(11, 31, 58, 0.08);
-                        border-color: var(--orange);
-                    }
-                    .product-pill-arrow {
-                        color: var(--orange);
-                        font-size: 14px;
-                        font-weight: 800;
-                        flex-shrink: 0;
-                    }
-                    .product-pill-img-box {
-                        width: 38px;
-                        height: 38px;
-                        background: #ffffff;
-                        border: 1px solid #E2E8F0;
-                        border-radius: 6px;
-                        padding: 2px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        flex-shrink: 0;
-                        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-                    }
-                    .product-pill-img-box img {
-                        max-width: 100%;
-                        max-height: 100%;
-                        object-fit: contain;
-                    }
-                    .product-pill-name {
-                        font-family: 'Inter', sans-serif;
-                        font-size: 13.5px;
-                        font-weight: 700;
-                        color: var(--navy);
-                        line-height: 1.35;
-                        margin: 0;
-                    }
-                    @media (max-width: 900px) {
-                        .product-pill-grid {
-                            grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-                            gap: 6px !important;
-                        }
-                        .product-pill-card {
-                            padding: 8px 6px !important;
-                            gap: 6px !important;
-                            flex-direction: column !important;
-                            text-align: center !important;
-                            border-left-width: 3px !important;
-                            align-items: center !important;
-                        }
-                        .product-pill-arrow {
-                            display: none !important;
-                        }
-                        .product-pill-img-box {
-                            width: 32px !important;
-                            height: 32px !important;
-                        }
-                        .product-pill-name {
-                            font-size: 10.5px !important;
-                            line-height: 1.25 !important;
-                            word-break: break-word;
-                        }
-                    }
-                </style>
-
-                <div class="product-pill-grid">
-                    <!-- 1 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/plain_plug_gauge.png" alt="Plain Plug Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Plain Plug Gauge</h4>
-                    </div>
-                    <!-- 2 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/od_master.png" alt="OD Master" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">OD Master</h4>
-                    </div>
-                    <!-- 3 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/master_setting_ring.png" alt="Master Setting Ring / Go-NoGo Ring Gauges" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Master Setting Ring / Go-NoGo Ring Gauges</h4>
-                    </div>
-                    <!-- 4 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/thread_gauges.png" alt="Thread Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Thread Gauge</h4>
-                    </div>
-                    <!-- 5 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/width_gauge.png" alt="Width Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Width Gauge</h4>
-                    </div>
-                    <!-- 6 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/fixed_snap_gauge.png" alt="Fixed Snap Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Fixed Snap Gauge</h4>
-                    </div>
-                    <!-- 7 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/knurling_height_master.png" alt="Knurling Height Master" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Knurling Height Master</h4>
-                    </div>
-                    <!-- 8 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/plate_paddle_gauge.png" alt="Plate / Paddle Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Plate / Paddle Gauge</h4>
-                    </div>
-                    <!-- 9 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/air_snap_gauge.png" alt="Air Snap Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Air Snap Gauge</h4>
-                    </div>
-                    <!-- 10 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/air_plug_gauge.png" alt="Air Plug Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Air Plug Gauge</h4>
-                    </div>
-                    <!-- 11 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/flush_pin_gauge.png" alt="Flush Pin Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Flush Pin Gauge</h4>
-                    </div>
-                    <!-- 12 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/pcd_gauge.png" alt="PCD Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">PCD Gauge</h4>
-                    </div>
-                    <!-- 13 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/receiving_relation_gauge.png" alt="Receiving / Relation Gauge" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Receiving / Relation Gauge</h4>
-                    </div>
-                    <!-- 14 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/air_electronic_unit_single.png" alt="Single Channel Air Electronic Unit" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Single Channel Air Electronic Unit</h4>
-                    </div>
-                    <!-- 15 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/air_electronic_unit_multi.png" alt="Multi Channel Air Electronic Unit" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Multi Channel Air Electronic Unit</h4>
-                    </div>
-                    <!-- 16 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/air_electronic_column_unit.png" alt="Air Electronic Column Unit" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Air Electronic Column Unit</h4>
-                    </div>
-                    <!-- 17 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/special_filter.png" alt="Special Filter (SS Air Dryer)" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Special Filter (SS Air Dryer)</h4>
-                    </div>
-                    <!-- 18 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/spc_air_unit.png" alt="CMM Probes &amp; Styli" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">CMM Probes &amp; Styli</h4>
-                    </div>
-                    <!-- 19 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/cmm_probes.png" alt="2D &amp; CMM Probes" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">2D &amp; CMM Probes</h4>
-                    </div>
-                    <!-- 20 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/vision_measuring_system.png" alt="Vision Measuring System" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Vision Measuring System</h4>
-                    </div>
-                    <!-- 21 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/height_gauge_2d.png" alt="2D Height Gauges" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">2D Height Gauges</h4>
-                    </div>
-                    <!-- 22 -->
-                    <div class="product-pill-card" href="products.html">
-                        <span class="product-pill-arrow">▸</span>
-                        <div class="product-pill-img-box">
-                            <img src="images/products/cmm_machine.png" alt="Coordinate Measuring Machine (CMM)" loading="lazy">
-                        </div>
-                        <h4 class="product-pill-name">Coordinate Measuring Machine (CMM)</h4>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-
-
-
-        <!-- 4. SERVICES & TECHNICAL SUPPORT DIVISIONS (HOMEPAGE) -->
-        <section class="section grey responsive-section" style="padding:64px 44px;">
+        <section class="responsive-section" style="background:#fff;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
             <div style="max-width:1280px;margin:0 auto;">
-                <div class="section-head" style="margin-bottom:48px;text-align:center;">
-                    <div class="tag">Services &amp; Technical Support</div>
-                    <h2 class="t-h2">Precision Metrology &amp; Machine Services</h2>
-                    <p class="section-lead" style="max-width:720px;margin:0 auto;">From sub-micron CNC machine laser calibration and CMM volumetric error compensation to certified gauge calibration and automated probe installation.</p>
+                <div style="margin-bottom:36px;">
+                    <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
+                        <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Diagnostics & Maintenance</span>
+                    </div>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">Machine Service</h2>
+                    <p style="color:var(--steel);font-size:15px;max-width:760px;margin:0;line-height:1.65;">Comprehensive CNC diagnostics, circularity ballbar testing, preventive maintenance contracts (PMC), and complete machine geometric overhauls.</p>
                 </div>
 
-                <!-- 3 Service Division Cards -->
-                <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:28px;margin-bottom:40px;">
-                    
-                    <!-- Division 1: Machine Services -->
-                    <div style="background: linear-gradient(135deg, rgba(11,31,58,0.72) 0%, rgba(11,31,58,0.58) 100%), url('images/division1-machine-calibration.jpg') center/cover no-repeat;border-radius:10px;padding:32px 28px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 4px 20px rgba(11,31,58,0.15);transition:all .3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.25)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.15)';this.style.borderColor='rgba(255,255,255,0.1)'">
-                        <div style="width:48px;height:48px;background:rgba(244,123,32,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--orange);">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                <div class="svc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px;">
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-07">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/services/preventive_maintenance_contract.png" alt="Preventive Maintenance Contract (PMC)" style="max-width:92%;max-height:92%;object-fit:contain;">
                         </div>
-                        <span style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Division 01</span>
-                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:#fff;margin:8px 0 12px;">Machine Services &amp; Calibration</h3>
-                        <p style="color:rgba(255,255,255,0.8);font-size:14px;line-height:1.65;margin-bottom:20px;">Linear laser interferometry, rotary axis indexing, straightness &amp; squareness testing, ballbar circularity diagnostics, and complete CNC machine bed re-leveling &amp; geometric overhauls.</p>
-                        <a href="services.html" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">View Machine Services →</a>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>Preventive Maintenance Contract (PMC)</h4>
+                            <p>Scheduled maintenance to ensure consistent machine performance and reliability.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Customized periodic maintenance agreement covering periodic alignment verification, lubrication system inspection, ball screw backlash check, CNC parameter backup, and filter replacement.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">Plant CNC Turning Centers</span><span class="svc-machine-tag">Milling CNCs</span><span class="svc-machine-tag">CNC Grinding Machines</span><span class="svc-machine-tag">Special Purpose Machines (SPM)</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>VDI 2852</strong> – Functional maintenance procedures and machine availability testing.</div><div class="svc-std-item"><strong>ISO 9001</strong> – Equipment preventive maintenance and measurement traceability requirements.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Provides structured annual maintenance logs, health trend charts, and proactive service recommendations to reduce un-planned factory downtime by up to 80%.</p>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Division 2: CMM Services -->
-                    <div style="background: linear-gradient(135deg, rgba(11,31,58,0.72) 0%, rgba(11,31,58,0.58) 100%), url('images/division2-cmm-services.jpg') center/cover no-repeat;border-radius:10px;padding:32px 28px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 4px 20px rgba(11,31,58,0.15);transition:all .3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.25)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.15)';this.style.borderColor='rgba(255,255,255,0.1)'">
-                        <div style="width:48px;height:48px;background:rgba(244,123,32,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--orange);">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-08">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/nl_cnc_machining.png" alt="CNC Geometric Overhaul & Bed Realignment" style="max-width:92%;max-height:92%;object-fit:contain;">
                         </div>
-                        <span style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Division 02</span>
-                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:#fff;margin:8px 0 12px;">CMM Services &amp; Error Mapping</h3>
-                        <p style="color:rgba(255,255,255,0.8);font-size:14px;line-height:1.65;margin-bottom:20px;">Full 21-parameter 3D CMM volumetric error compensation, touch-trigger &amp; star probe stylus qualification, air-cushion relocation leveling, and 3D GD&amp;T contract part inspection.</p>
-                        <a href="services.html" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">View CMM Services →</a>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>CNC Geometric Overhaul & Bed Realignment</h4>
+                            <p>Complete CNC machine bed re-leveling, guideway scraping, and ball screw preload correction.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Comprehensive mechanical restoration including foundation bed re-leveling, precision hand scraping of Turcite/guideways, ball screw bearing replacement, and spindle headstock re-alignment.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">Heavy Duty CNC Lathes</span><span class="svc-machine-tag">Gantry Plano Millers</span><span class="svc-machine-tag">Double Column Machining Centers</span><span class="svc-machine-tag">Horizontal Boring Mills</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 230-1</strong> – Factory alignment tolerances for rebuilt machine tools.</div><div class="svc-std-item"><strong>JIS B 6201</strong> – Re-leveling and geometric accuracy overhaul code.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Pre- and post-overhaul comparative inspection certificates documenting restored factory geometric tolerances, zero axis stick-slip, and extended CNC service life.</p>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Division 3: Metrology Instruments -->
-                    <div style="background: linear-gradient(135deg, rgba(11,31,58,0.72) 0%, rgba(11,31,58,0.58) 100%), url('images/division3-metrology-instruments.jpg') center/cover no-repeat;border-radius:10px;padding:32px 28px;border:1px solid rgba(255,255,255,0.1);box-shadow:0 4px 20px rgba(11,31,58,0.15);transition:all .3s ease;" onmouseover="this.style.transform='translateY(-6px)';this.style.boxShadow='0 12px 36px rgba(244,123,32,0.25)';this.style.borderColor='var(--orange)'" onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(11,31,58,0.15)';this.style.borderColor='rgba(255,255,255,0.1)'">
-                        <div style="width:48px;height:48px;background:rgba(244,123,32,0.25);border-radius:8px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;color:var(--orange);">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    <!-- SVC / 17: Software Troubleshooting -->
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-17">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/nl_cnc_machining.png" alt="Software Troubleshooting" style="max-width:92%;max-height:92%;object-fit:contain;">
                         </div>
-                        <span style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Division 03</span>
-                        <h3 style="font-family:'Inter',sans-serif;font-size:20px;font-weight:800;color:#fff;margin:8px 0 12px;">Metrology Instruments Services</h3>
-                        <p style="color:rgba(255,255,255,0.8);font-size:14px;line-height:1.65;margin-bottom:20px;">NABL-traceable services for plain/thread plug &amp; ring gauges, air electronic column units, motorized 2D height masters, and 2D optical vision measuring systems.</p>
-                        <a href="services.html" style="color:var(--orange);font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;">View Instrument Services →</a>
-                    </div>
-                </div>
-
-                <!-- SPECIAL PROBE INSTALLATION TEASER BANNER (HOMEPAGE) -->
-                <div class="probe-teaser-banner">
-                    <div class="probe-teaser-content">
-                        <div class="probe-teaser-badge">
-                            <span>✨ SPECIALIZED CAPABILITY TEASER</span>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to View Details →</span>
+                            </div>
+                            <h4>Software Troubleshooting</h4>
+                            <p>CNC controller software diagnostic, PLC logic troubleshooting, parameter recovery, and error clearing.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Service Details &amp; Specifications</span>
+                                <span class="chevron">→</span>
+                            </div>
                         </div>
-                        <h3 class="probe-teaser-title">On-Machine Probe System Installation &amp; Retrofits</h3>
-                        <p class="probe-teaser-desc">
-                            Looking to automate part setup and tool measurement? Hexacore provides turnkey <strong>On-Machine Touch Probe &amp; Tool Setter Installation</strong>, optical/radio receiver setup, macro programming, and <strong>CMM Star Probe Stylus Qualification</strong> for Renishaw &amp; Hexagon systems.
-                        </p>
                     </div>
-                    <div class="probe-teaser-action">
-                        <button href="contact.html" class="btn btn-orange probe-teaser-btn">Inquire For Probe Installation →</button>
-                    </div>
-                </div>
 
+                    <!-- SVC / 18: Ballscrew Replacement -->
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-18">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/division1-machine-calibration.jpg" alt="Ballscrew Replacement" style="max-width:92%;max-height:92%;object-fit:cover;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to View Details →</span>
+                            </div>
+                            <h4>Ballscrew Replacement</h4>
+                            <p>Precision CNC ballscrew replacement, support bearing assembly, end play removal, and preload adjustment.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Service Details &amp; Specifications</span>
+                                <span class="chevron">→</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SVC / 19: Machine Leveling & Relocation -->
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-19">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/nl_cnc_machining.png" alt="Machine Leveling & Relocation" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to View Details →</span>
+                            </div>
+                            <h4>Machine Leveling &amp; Relocation</h4>
+                            <p>Turnkey CNC machine plant relocation, anchor bolting, electronic level bed alignment, and geometric re-commissioning.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Service Details &amp; Specifications</span>
+                                <span class="chevron">→</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SVC / 20: Axis Servo Tuning -->
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-20">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/cnc-laser-calibration.jpg" alt="Axis Servo Tuning" style="max-width:92%;max-height:92%;object-fit:cover;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to View Details →</span>
+                            </div>
+                            <h4>Axis Servo Tuning</h4>
+                            <p>Dynamic servo motor &amp; drive gain optimization to eliminate quadrant spikes, backlash lag, and contouring errors.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Service Details &amp; Specifications</span>
+                                <span class="chevron">→</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SVC / 21: LM Guideway Parallelism Checking -->
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-21">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/services/axis_straightness_testing.png" alt="LM Guideway Parallelism Checking" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to View Details →</span>
+                            </div>
+                            <h4>LM Guideway Parallelism Checking</h4>
+                            <p>Linear motion guide rail parallelism, straightness, and rail elevation gap inspection.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Service Details &amp; Specifications</span>
+                                <span class="chevron">→</span>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </section>
-        <!-- 5. INDUSTRIES WE SERVE -->
-        <section class="section navy">
+
+        
+        <section class="responsive-section" style="background:#fff;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
+            <div style="max-width:1280px;margin:0 auto;">
+                <div style="margin-bottom:36px;">
+                    <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
+                        <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">3D Inspection & Calibration</span>
+                    </div>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">CMM Services</h2>
+                    <p style="color:var(--steel);font-size:15px;max-width:760px;margin:0;line-height:1.65;">Specialized Coordinate Measuring Machine (CMM) volumetric error mapping, multisensor probe calibration, air-cushion relocation leveling, and 3D GD&T inspection.</p>
+                </div>
+
+                <div class="svc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px;">
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-09">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/nl_cmm_measurement.png" alt="CMM Volumetric Error Compensation & Mapping" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>CMM Volumetric Error Compensation & Mapping</h4>
+                            <p>Full 21-parameter geometric error mapping for 3D Coordinate Measuring Machines.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Measures all 21 kinematic error components (linear, straightness, pitch, roll, yaw, squareness) across the CMM working volume. Creates 3D software error map files to achieve sub-micron volumetric measuring accuracy.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">Bridge-Type CMMs</span><span class="svc-machine-tag">Gantry-Type CMMs</span><span class="svc-machine-tag">Horizontal Arm CMMs</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 10360-2</strong> – CMM performance acceptance and reverification tests for length measurement.</div><div class="svc-std-item"><strong>VDI/VDE 2617</strong> – Accuracy of coordinate measuring machines and error compensation.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Produces 3D volumetric error map files loaded into CMM inspection software (PC-DMIS, Calypso, Modus) along with ISO 10360 length measurement uncertainty certificates.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-10">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/cmm-probes.jpg" alt="CMM Probe & Sensor Calibration" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>CMM Probe & Sensor Calibration</h4>
+                            <p>Calibration and stylus qualification for touch-trigger, star, and optical scanning probes.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Sub-micron calibration and stylus geometry qualification for touch-trigger, star stylus configurations, continuous scanning heads, and non-contact optical sensors on CMM systems.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">CMM Probe Heads (Renishaw PH10, SP25, TP20)</span><span class="svc-machine-tag">Articulated 3D Measuring Arms</span><span class="svc-machine-tag">Optical 3D Scanners</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 10360-5</strong> – Probing performance testing for CMM single & multiple stylus systems.</div><div class="svc-std-item"><strong>VDI/VDE 2617</strong> – Probing system accuracy and stylus sphere calibration.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Delivers stylus sphere diameter qualification certificates, probing repeatability reports (sub-micron probing error MPEP), and force calibration audit records.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-11">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/cmm-machine.jpg" alt="CMM Relocation, Leveling & Verification" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>CMM Relocation, Leveling & Verification</h4>
+                            <p>Turnkey CMM relocation, anti-vibration air cushion leveling, and post-move laser calibration.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">End-to-end relocation service: mechanical clamping, dismantling, transport, anti-vibration air-cushion foundation leveling, granite table alignment, and complete post-move laser re-calibration.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">Bridge CMMs</span><span class="svc-machine-tag">Gantry CMMs</span><span class="svc-machine-tag">Shop-Floor Inspection CMMs</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 10360-2</strong> – Post-relocation performance verification standard.</div><div class="svc-std-item"><strong>ISO 9001</strong> – Relocation safety and measurement uncertainty assurance.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Post-relocation ISO 10360 reverification certificate, environmental vibration dampening audit report, and NABL measurement calibration stickers.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="responsive-section" style="background:#fff;padding:64px 44px;border-bottom:1px solid #e2e8f0;">
+            <div style="max-width:1280px;margin:0 auto;">
+                <div style="margin-bottom:36px;">
+                    <div style="display:inline-flex;align-items:center;gap:10px;margin-bottom:8px;">
+                        <span style="font-size:12px;font-weight:700;color:var(--orange);letter-spacing:1px;text-transform:uppercase;">Metrology Standards & Gauges</span>
+                    </div>
+                    <h2 style="font-family:'Inter',sans-serif;font-size:clamp(24px,3vw,34px);font-weight:900;color:var(--navy);margin:0 0 10px;">Quality Instruments Services</h2>
+                    <p style="color:var(--steel);font-size:15px;max-width:760px;margin:0;line-height:1.65;">NABL-traceable calibration and certification for precision gauges, master setting rings, air electronic column units, height masters, and 2D vision measuring systems.</p>
+                </div>
+
+                <div class="svc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 26px;">
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-12">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/products/plain_plug_gauge.png" alt="Gauges & Setting Masters Calibration" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>Gauges & Setting Masters Calibration</h4>
+                            <p>NABL-traceable calibration of plain plug/ring gauges, thread gauges, fixed snap gauges, and setting rings.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">High-accuracy laboratory calibration of plain plug gauges, plain ring gauges, master setting rings, thread plug/ring gauges, and fixed snap gauges using master comparators.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">Master Gauge Comparators</span><span class="svc-machine-tag">Optical Thread Measuring Machines</span><span class="svc-machine-tag">Horizontal Measuring Benches</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>IS 3455</strong> – Tolerances for plain limit gauges and setting masters in precision engineering.</div><div class="svc-std-item"><strong>ISO 14253-1</strong> – Inspection by measurement of workpieces and measuring equipment.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">NABL-traceable calibration certificate detailing exact micron wear against nominal size, expanded measurement uncertainty, and recommended recalibration due date.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-13">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/air-electronic-column.jpg" alt="Air Electronic Column Unit Calibration" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>Air Electronic Column Unit Calibration</h4>
+                            <p>Pressure transducer calibration, tri-color bar display verification, and multi-channel air jet setup.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Pneumatic pressure transducer calibration, bar graph display verification, auto-drain filter pressure stability testing, and multi-channel air plug/snap jet setup.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">Single Channel Air Electronic Units</span><span class="svc-machine-tag">Multi-Channel Air Electronic Units</span><span class="svc-machine-tag">Air Snap & Air Plug Gauges</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 14253-1</strong> – Conformity assessment rules for measuring instruments.</div><div class="svc-std-item"><strong>IS 3455</strong> – Pneumatic gauging pressure standards.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Pneumatic linearity calibration curves (0.0001 mm resolution verification), wrong-master calibration alert test records, and auto-drain filter pressure stability reports.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-14">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/2d-height-gauge.jpg" alt="2D Height Master & Height Gauge Calibration" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>2D Height Master & Height Gauge Calibration</h4>
+                            <p>Vertical height master and motorized linear height gauge calibration.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Calibration of 2D linear height masters and motorized height gauges (Trimos, Mitutoyo, TESA). Verifies linear scale accuracy, perpendicularity, touch probe force, and squareness.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">2D Linear Height Gauges (Trimos / Mitutoyo)</span><span class="svc-machine-tag">Motorized Height Masters</span><span class="svc-machine-tag">Granite Surface Plates</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>JIS B 7517</strong> – Height gauges and linear measurement rules standard.</div><div class="svc-std-item"><strong>ISO 14253-1</strong> – Instrument calibration uncertainty evaluation.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Linear encoder accuracy error curves, column perpendicularity measurement charts, touch probe repeat accuracy report, and NABL calibration sticker.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="svc-card-expandable" onclick="toggleIndividualService(this)" style="cursor:pointer;" id="svc-15">
+                        <div class="svc-img-wrap" style="height:200px;overflow:hidden;background:#F8FAFC;display:flex;align-items:center;justify-content:center;padding:12px;">
+                            <img src="images/vision-measuring-system.jpg" alt="Optical Vision Measuring System Calibration" style="max-width:92%;max-height:92%;object-fit:contain;">
+                        </div>
+                        <div class="svc-card-top" onclick="toggleIndividualService(this)">
+                            <div class="svc-card-header-row">
+                                <span style="font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;">Click to Expand ▼</span>
+                            </div>
+                            <h4>Optical Vision Measuring System Calibration</h4>
+                            <p>Optical grid distortion correction, magnification calibration, and lighting alignment for 2D vision systems.</p>
+                            <div class="svc-expand-trigger">
+                                <span>View Full Details, Machines &amp; Standards</span>
+                                <span class="chevron">▼</span>
+                            </div>
+                        </div>
+                        <div class="svc-drawer-body">
+                            <div class="svc-drawer-content">
+
+                                <!-- 1. Service Details -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>01</span> 📋 Service Details &amp; Specifications</div>
+                                    <p style="font-size:13px;color:var(--steel);margin:0;line-height:1.55;">Sub-pixel edge detection calibration, optical distortion grid correction, stage X-Y linear scale calibration, and surface/contour lighting alignment for non-contact 2D vision systems.</p>
+                                </div>
+
+                                <!-- 2. Types of Calibrated Machines -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>02</span> ⚙️ Types of Calibrated Machines</div>
+                                    <div class="svc-machine-tag-grid">
+                                        <span class="svc-machine-tag">2D Optical Vision Measuring Systems (VMS)</span><span class="svc-machine-tag">Optical Profile Projectors</span><span class="svc-machine-tag">Video Measuring Microscopes</span>
+                                    </div>
+                                </div>
+
+                                <!-- 3. Applicable Standards to Refer -->
+                                <div class="svc-drawer-block">
+                                    <div class="svc-drawer-block-title"><span>03</span> 📜 Applicable Standards to Refer</div>
+                                    <div class="svc-std-list">
+                                        <div class="svc-std-item"><strong>ISO 10360-7</strong> – CMM performance tests equipped with imaging measuring systems.</div><div class="svc-std-item"><strong>JIS B 7517</strong> – Optical non-contact linear measurement code.</div>
+                                    </div>
+                                </div>
+
+                                <!-- 4. Importance of Technical Reports -->
+                                <div class="svc-drawer-block" style="background:#FFF7ED;border-color:#FED7AA;">
+                                    <div class="svc-drawer-block-title" style="color:#C2410C;"><span style="background:#C2410C;">04</span> 📊 Importance of Clear Technical Reports</div>
+                                    <p style="font-size:13px;color:#9A3412;margin:0;line-height:1.55;">Optical grid distortion calibration matrix, lens magnification verification report, sub-pixel edge measurement certificate, and stage X-Y axis scale calibration curves.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- APPLICABLE STANDARDS SUMMARY -->
+        <section class="section grey" style="padding:64px 44px;">
             <div class="section-head">
-                <div class="tag">Industries</div>
-                <h2 class="t-h2" style="color:#fff;">Supporting Precision Manufacturing Across Industries</h2>
-                <p class="section-lead" style="color: #AAB6C9;">
-                    Every manufacturing environment has different requirements. We work closely with our customers to
-                    understand their machines, processes and accuracy requirements before recommending the appropriate
-                    measurement or support solution.
-                </p>
+                <div class="tag">Quality &amp; Compliance</div>
+                <h2 class="t-h2">Applicable Standards <span style="color:var(--orange);">(Top References)</span></h2>
+                <p class="section-lead">Our calibration work is carried out in accordance with internationally recognised standards to ensure measurement traceability and technical credibility.</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
-                <div class="ind-card" style="background-image: url('images/industries/automotive.png');">
-                    <span class="ind-card-text">Automotive</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/aerospace.png');">
-                    <span class="ind-card-text">Aerospace</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/heavy_engineering.png');">
-                    <span class="ind-card-text">Heavy Engineering</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/precision_manufacturing.png');">
-                    <span class="ind-card-text">Precision Manufacturing</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/machine_tools.png');">
-                    <span class="ind-card-text">Machine Tools</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/general_engineering.png');">
-                    <span class="ind-card-text">General Engineering</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/cnc_manufacturing.png');">
-                    <span class="ind-card-text">CNC Manufacturing</span>
-                </div>
-                <div class="ind-card" style="background-image: url('images/industries/industrial_production.png');">
-                    <span class="ind-card-text">Industrial Production</span>
-                </div>
-            </div>
-        </section>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;max-width:1200px;margin:0 auto;">
 
-        <!-- 6. CLIENT TESTIMONIALS (HOMEPAGE LAST) -->
-        <section class="section grey responsive-section" style="padding:64px 44px;">
-            <div style="max-width:1280px; margin:0 auto;">
-                <div class="section-head" style="margin-bottom:44px; text-align:center;">
-                    <div class="tag">Client Testimonials</div>
-                    <h2 class="t-h2">What Our Engineering &amp; Manufacturing Partners Say</h2>
-                    <p class="section-lead" style="max-width:720px; margin:0 auto;">Trusted by leading CNC machine builders, aerospace component manufacturers, automotive tier-1 suppliers, and precision tool rooms across India.</p>
-                </div>
-
-                <div class="testimonials-grid">
-                    <!-- Testimonial 1 -->
-                    <div class="testimonial-card">
-                        <div>
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-text">“Hexacore carried out sub-micron linear laser calibration and ballbar circularity diagnostics on our 5-axis machining center. The volumetric positioning accuracy improvement was immediate and reduced part rejections by 40%.”</p>
+                <!-- ISO -->
+                <div style="background:#fff;border:1px solid var(--line);border-top:4px solid var(--orange);border-radius:6px;padding:28px 28px 24px;">
+                    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                        <div style="width:48px;height:48px;background:rgba(244,123,32,.12);border-radius:6px;display:flex;align-items:center;justify-content:center;flex:none;">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
                         </div>
-                        <div class="testimonial-user">
-                            <div class="testimonial-avatar">RK</div>
-                            <div class="testimonial-info">
-                                <h4>R. Kumar</h4>
-                                <p>Head of Quality Assurance</p>
-                                <p style="color:var(--orange);font-weight:600;">Precision Auto Components, Chennai</p>
-                                <span class="testimonial-badge">✓ Verified Partner</span>
-                            </div>
+                        <div>
+                            <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:2px;">Standard 01</div>
+                            <h4 style="font-weight:800;color:var(--navy);font-size:16px;margin:0;">ISO Standards</h4>
                         </div>
                     </div>
-
-                    <!-- Testimonial 2 -->
-                    <div class="testimonial-card">
-                        <div>
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-text">“Turnkey installation of Renishaw touch probe &amp; tool setter systems across our VMC line was executed with highest precision. Macro programming and operator training delivered by Hexacore were exceptional.”</p>
-                        </div>
-                        <div class="testimonial-user">
-                            <div class="testimonial-avatar">SM</div>
-                            <div class="testimonial-info">
-                                <h4>S. Murugan</h4>
-                                <p>General Manager - CNC Operations</p>
-                                <p style="color:var(--orange);font-weight:600;">Aerospace Machining Pvt Ltd, Bengaluru</p>
-                                <span class="testimonial-badge">✓ Verified Partner</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Testimonial 3 -->
-                    <div class="testimonial-card">
-                        <div>
-                            <div class="testimonial-stars">★★★★★</div>
-                            <p class="testimonial-text">“We rely on Hexacore for NABL-traceable gauge calibration and full 21-parameter CMM volumetric error mapping. Fast turnaround time, ISO compliant certification, and dependable technical support.”</p>
-                        </div>
-                        <div class="testimonial-user">
-                            <div class="testimonial-avatar">VP</div>
-                            <div class="testimonial-info">
-                                <h4>V. Parthiban</h4>
-                                <p>Plant Head - Manufacturing</p>
-                                <p style="color:var(--orange);font-weight:600;">Heavy Geartech Industries, Coimbatore</p>
-                                <span class="testimonial-badge">✓ Verified Partner</span>
-                            </div>
-                        </div>
-                    </div>
+                    <p style="color:var(--steel);font-size:13px;margin-bottom:4px;"><em style="color:var(--navy);font-style:normal;">International Organization for Standardization</em></p>
+                    <ul style="list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;">
+                        <li style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--steel);line-height:1.5;"><span style="color:var(--orange);font-weight:700;margin-top:1px;">→</span><span><strong style="color:var(--navy);">ISO 230 Series</strong> – Machine tool test code (Geometric &amp; positioning accuracy)</span></li>
+                        <li style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--steel);line-height:1.5;"><span style="color:var(--orange);font-weight:700;margin-top:1px;">→</span><span><strong style="color:var(--navy);">ISO 230-2</strong> – Positioning accuracy &amp; repeatability</span></li>
+                        <li style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--steel);line-height:1.5;"><span style="color:var(--orange);font-weight:700;margin-top:1px;">→</span><span><strong style="color:var(--navy);">ISO 230-4</strong> – Circular test (Ballbar analysis)</span></li>
+                    </ul>
                 </div>
+
+                <!-- VDI -->
+                <div style="background:#fff;border:1px solid var(--line);border-top:4px solid var(--navy);border-radius:6px;padding:28px 28px 24px;">
+                    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                        <div style="width:48px;height:48px;background:rgba(11,31,58,.08);border-radius:6px;display:flex;align-items:center;justify-content:center;flex:none;">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--navy)" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);margin-bottom:2px;">Standard 02</div>
+                            <h4 style="font-weight:800;color:var(--navy);font-size:16px;margin:0;">VDI Standards</h4>
+                        </div>
+                    </div>
+                    <p style="color:var(--steel);font-size:13px;margin-bottom:4px;"><em style="color:var(--navy);font-style:normal;">Verein Deutscher Ingenieure</em></p>
+                    <ul style="list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;">
+                        <li style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--steel);line-height:1.5;"><span style="color:var(--navy);font-weight:700;margin-top:1px;">→</span><span><strong style="color:var(--navy);">VDI/DGQ 3441</strong> – Statistical evaluation of machine tool accuracy</span></li>
+                        <li style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--steel);line-height:1.5;"><span style="color:var(--navy);font-weight:700;margin-top:1px;">→</span><span><strong style="color:var(--navy);">VDI 2617</strong> – Accuracy of coordinate measuring systems</span></li>
+                        <li style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--steel);line-height:1.5;"><span style="color:var(--navy);font-weight:700;margin-top:1px;">→</span><span><strong style="color:var(--navy);">VDI 2852</strong> – Machine tool performance testing</span></li>
+                    </ul>
+                </div>
+
+                <!-- JIS -->
+                <div style="background:#fff;border:1px solid var(--line);border-top:4px solid #2C6E8A;border-radius:6px;padding:28px 28px 24px;">
+                    <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px;">
+                        <div style="width:48px;height:48px;background:rgba(44,110,138,.1);border-radius:6px;display:flex;align-items:center;justify-content:center;flex:none;">
+                            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2C6E8A" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M12 8v8"/></svg>
+                        </div>
+                        <div>
+                            <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2C6E8A;margin-bottom:2px;">Standard 03</div>
+                            <h4 style="font-weight:800;color:var(--navy);font-size:16px;margin:0;">JIS Standards</h4>
+                        </div>
+                    </div>
+                    <p style="color:var(--steel);font-size:13px;margin-bottom:4px;"><em style="color:var(--navy);font-style:normal;">Japanese Industrial Standards</em></p>
+                    <ul style="list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;">
+                        <li style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--steel);line-height:1.5;"><span style="color:#2C6E8A;font-weight:700;margin-top:1px;">→</span><span><strong style="color:var(--navy);">JIS B 6201</strong> – Machine tool testing methods</span></li>
+                        <li style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--steel);line-height:1.5;"><span style="color:#2C6E8A;font-weight:700;margin-top:1px;">→</span><span><strong style="color:var(--navy);">JIS B 6330</strong> – Machining center accuracy inspection</span></li>
+                        <li style="display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--steel);line-height:1.5;"><span style="color:#2C6E8A;font-weight:700;margin-top:1px;">→</span><span><strong style="color:var(--navy);">JIS B 6190</strong> – Ballbar testing methodology</span></li>
+                    </ul>
+                </div>
+
             </div>
         </section>
 </main>
