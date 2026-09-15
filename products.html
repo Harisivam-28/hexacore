@@ -2674,49 +2674,52 @@
                         font-size: 12px !important;
                     }
 
-                    /* ── PRODUCT GRID → 3 COLUMNS ON MOBILE ── */
+                    /* ── PRODUCT GRID → 2 COLUMNS ON MOBILE (CLEAR READABLE DETAILS) ── */
                     .product-grid {
-                        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-                        gap: 8px !important;
+                        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                        gap: 12px !important;
                     }
 
                     .product-card {
-                        border-radius: 6px !important;
+                        border-radius: 8px !important;
                         min-width: 0;
+                        box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
                     }
 
                     .product-img {
-                        height: 105px !important;
-                        padding: 8px 4px !important;
+                        height: 125px !important;
+                        padding: 8px !important;
                     }
 
                     .product-img img {
-                        max-width: 94% !important;
-                        max-height: 92% !important;
+                        max-width: 96% !important;
+                        max-height: 94% !important;
                     }
 
                     .product-tol {
-                        font-size: 7.5px !important;
-                        padding: 2px 4px !important;
-                        top: 4px !important;
-                        left: 4px !important;
+                        font-size: 8.5px !important;
+                        padding: 3px 6px !important;
+                        top: 6px !important;
+                        left: 6px !important;
                         max-width: 90% !important;
                     }
 
                     .product-body {
-                        padding: 8px 6px 10px !important;
+                        padding: 10px 10px 12px !important;
                     }
 
                     .product-body .cat {
-                        font-size: 8px !important;
-                        margin-bottom: 3px !important;
+                        font-size: 9px !important;
+                        margin-bottom: 4px !important;
                         letter-spacing: 0.02em !important;
+                        font-weight: 700 !important;
                     }
 
                     .product-body h4 {
-                        font-size: 11px !important;
-                        line-height: 1.2 !important;
-                        margin-bottom: 4px !important;
+                        font-size: 13px !important;
+                        line-height: 1.25 !important;
+                        margin-bottom: 6px !important;
+                        font-weight: 800 !important;
                         display: -webkit-box;
                         -webkit-line-clamp: 2;
                         -webkit-box-orient: vertical;
@@ -2724,17 +2727,17 @@
                     }
 
                     .product-body p {
-                        font-size: 9.5px !important;
-                        line-height: 1.3 !important;
-                        margin-bottom: 6px !important;
-                        display: -webkit-box;
-                        -webkit-line-clamp: 2;
-                        -webkit-box-orient: vertical;
-                        overflow: hidden;
+                        font-size: 11.5px !important;
+                        line-height: 1.45 !important;
+                        color: #475569 !important;
+                        margin-bottom: 8px !important;
+                        display: block !important;
+                        -webkit-line-clamp: none !important;
+                        overflow: visible !important;
                     }
 
                     .product-body .view-link {
-                        font-size: 9.5px !important;
+                        font-size: 11.5px !important;
                         font-weight: 700 !important;
                     }
 
@@ -3002,8 +3005,8 @@
 
                 @media (max-width: 600px) {
                     .product-grid {
-                        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-                        gap: 8px !important;
+                        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                        gap: 12px !important;
                     }
                     .svc-grid {
                         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;

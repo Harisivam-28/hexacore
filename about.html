@@ -2588,49 +2588,52 @@
                 font-size: 12px !important;
             }
 
-            /* ── PRODUCT GRID → 3 COLUMNS ON MOBILE ── */
+            /* ── PRODUCT GRID → 2 COLUMNS ON MOBILE (CLEAR READABLE DETAILS) ── */
             .product-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-                gap: 8px !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 12px !important;
             }
 
             .product-card {
-                border-radius: 6px !important;
+                border-radius: 8px !important;
                 min-width: 0;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.04) !important;
             }
 
             .product-img {
-                height: 105px !important;
-                padding: 8px 4px !important;
+                height: 125px !important;
+                padding: 8px !important;
             }
 
             .product-img img {
-                max-width: 94% !important;
-                max-height: 92% !important;
+                max-width: 96% !important;
+                max-height: 94% !important;
             }
 
             .product-tol {
-                font-size: 7.5px !important;
-                padding: 2px 4px !important;
-                top: 4px !important;
-                left: 4px !important;
+                font-size: 8.5px !important;
+                padding: 3px 6px !important;
+                top: 6px !important;
+                left: 6px !important;
                 max-width: 90% !important;
             }
 
             .product-body {
-                padding: 8px 6px 10px !important;
+                padding: 10px 10px 12px !important;
             }
 
             .product-body .cat {
-                font-size: 8px !important;
-                margin-bottom: 3px !important;
+                font-size: 9px !important;
+                margin-bottom: 4px !important;
                 letter-spacing: 0.02em !important;
+                font-weight: 700 !important;
             }
 
             .product-body h4 {
-                font-size: 11px !important;
-                line-height: 1.2 !important;
-                margin-bottom: 4px !important;
+                font-size: 13px !important;
+                line-height: 1.25 !important;
+                margin-bottom: 6px !important;
+                font-weight: 800 !important;
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
@@ -2638,17 +2641,17 @@
             }
 
             .product-body p {
-                font-size: 9.5px !important;
-                line-height: 1.3 !important;
-                margin-bottom: 6px !important;
-                display: -webkit-box;
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
+                font-size: 11.5px !important;
+                line-height: 1.45 !important;
+                color: #475569 !important;
+                margin-bottom: 8px !important;
+                display: block !important;
+                -webkit-line-clamp: none !important;
+                overflow: visible !important;
             }
 
             .product-body .view-link {
-                font-size: 9.5px !important;
+                font-size: 11.5px !important;
                 font-weight: 700 !important;
             }
 
@@ -2915,8 +2918,8 @@
 
         @media (max-width: 600px) {
             .product-grid {
-                grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-                gap: 8px !important;
+                grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+                gap: 12px !important;
             }
             .svc-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -3518,13 +3521,13 @@
 
         
         <!-- FLOWCHART "OUR APPROACH" SECTION -->
-        <section class="section" style="background: #ffffff; padding: 64px 44px; border-top: 1px solid var(--line);">
+        <section class="section" style="background: #ffffff; padding: 36px 24px; border-top: 1px solid var(--line);">
             <div style="max-width: 1280px; margin: 0 auto;">
-                <div class="section-head" style="margin-bottom: 40px; text-align: center;">
-                    <div class="tag">Engineering Workflow</div>
-                    <h2 class="t-h2">Our Approach &amp; Metrology Process</h2>
-                    <p class="section-lead" style="max-width: 720px; margin: 0 auto; color: var(--steel); font-size: 15px;">
-                        A systematic, step-by-step diagnostic and calibration workflow engineered to guarantee sub-micron precision for your CNC machines and CMM systems.
+                <div class="section-head" style="margin-bottom: 20px; text-align: center;">
+                    <div class="tag" style="font-size: 10px; padding: 3px 10px; margin-bottom: 6px;">Engineering Workflow</div>
+                    <h2 class="t-h2" style="font-size: clamp(20px, 3vw, 26px); margin-bottom: 6px;">Our Approach &amp; Metrology Process</h2>
+                    <p class="section-lead" style="max-width: 640px; margin: 0 auto; color: var(--steel); font-size: 13.5px; line-height: 1.5;">
+                        A systematic diagnostic and calibration workflow engineered to guarantee sub-micron precision for your CNC machines and CMM systems.
                     </p>
                 </div>
 
@@ -3532,49 +3535,49 @@
                     .flowchart-wrapper {
                         background: #ffffff;
                         border: 1px solid var(--line);
-                        border-radius: 12px;
-                        padding: 36px 28px;
-                        box-shadow: 0 8px 30px rgba(7, 21, 39, 0.04);
+                        border-radius: 10px;
+                        padding: 20px 16px;
+                        box-shadow: 0 4px 18px rgba(7, 21, 39, 0.03);
                     }
                     .flowchart-start-badge {
                         display: inline-flex;
                         align-items: center;
-                        gap: 8px;
+                        gap: 6px;
                         background: rgba(244, 123, 32, 0.08);
                         color: var(--orange-dark);
-                        font-size: 11px;
+                        font-size: 10px;
                         font-weight: 700;
-                        letter-spacing: 1px;
+                        letter-spacing: 0.8px;
                         text-transform: uppercase;
-                        padding: 6px 14px;
-                        border-radius: 20px;
-                        margin-bottom: 24px;
+                        padding: 4px 10px;
+                        border-radius: 16px;
+                        margin-bottom: 14px;
                         border: 1px solid rgba(244, 123, 32, 0.25);
                     }
                     .pulse-dot {
-                        width: 8px;
-                        height: 8px;
+                        width: 6px;
+                        height: 6px;
                         background: var(--orange);
                         border-radius: 50%;
                         animation: flowPulse 2s infinite ease-in-out;
                     }
                     @keyframes flowPulse {
                         0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(244, 123, 32, 0.7); }
-                        70% { transform: scale(1.1); box-shadow: 0 0 0 6px rgba(244, 123, 32, 0); }
+                        70% { transform: scale(1.1); box-shadow: 0 0 0 5px rgba(244, 123, 32, 0); }
                         100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(244, 123, 32, 0); }
                     }
                     .flowchart-container {
                         display: flex;
                         align-items: stretch;
                         justify-content: space-between;
-                        gap: 8px;
+                        gap: 6px;
                     }
                     .flow-node {
                         flex: 1;
                         background: #F8FAFC;
                         border: 1.5px solid var(--grey-m);
-                        border-radius: 10px;
-                        padding: 22px 18px;
+                        border-radius: 8px;
+                        padding: 14px 12px;
                         display: flex;
                         flex-direction: column;
                         transition: all 0.3s ease;
@@ -3582,8 +3585,8 @@
                     }
                     .flow-node:hover {
                         border-color: var(--navy-soft);
-                        transform: translateY(-4px);
-                        box-shadow: 0 12px 28px rgba(11, 31, 58, 0.08);
+                        transform: translateY(-2px);
+                        box-shadow: 0 8px 18px rgba(11, 31, 58, 0.06);
                         background: #ffffff;
                     }
                     .flow-node.active-node {
@@ -3594,47 +3597,51 @@
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
-                        margin-bottom: 14px;
+                        margin-bottom: 8px;
                     }
                     .node-step {
-                        font-size: 26px;
+                        font-size: 18px;
                         font-weight: 800;
                         color: var(--navy);
                     }
                     .node-icon {
-                        width: 36px;
-                        height: 36px;
-                        border-radius: 8px;
+                        width: 28px;
+                        height: 28px;
+                        border-radius: 6px;
                         background: rgba(11, 31, 58, 0.06);
                         color: var(--navy);
                         display: flex;
                         align-items: center;
                         justify-content: center;
                     }
+                    .node-icon svg {
+                        width: 15px;
+                        height: 15px;
+                    }
                     .flow-node.active-node .node-icon {
                         background: rgba(244, 123, 32, 0.12);
                         color: var(--orange);
                     }
                     .node-title {
-                        font-size: 17px;
+                        font-size: 14px;
                         font-weight: 700;
                         color: var(--navy);
-                        margin-bottom: 8px;
+                        margin-bottom: 4px;
                     }
                     .node-desc {
-                        font-size: 13.5px;
+                        font-size: 12px;
                         color: var(--steel);
-                        line-height: 1.5;
-                        margin-bottom: 18px;
+                        line-height: 1.4;
+                        margin-bottom: 10px;
                         flex-grow: 1;
                     }
                     .node-badge {
                         display: inline-block;
-                        font-size: 10.5px;
+                        font-size: 9.5px;
                         font-weight: 600;
                         text-transform: uppercase;
-                        padding: 4px 10px;
-                        border-radius: 4px;
+                        padding: 3px 8px;
+                        border-radius: 3px;
                         background: var(--grey-m);
                         color: var(--charcoal);
                     }
@@ -3647,31 +3654,31 @@
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        width: 32px;
+                        width: 22px;
                         flex-shrink: 0;
                     }
                     .arrow-svg {
-                        width: 28px;
-                        height: 18px;
+                        width: 20px;
+                        height: 14px;
                     }
                     .flowchart-footer-loop {
-                        margin-top: 28px;
-                        padding-top: 20px;
+                        margin-top: 16px;
+                        padding-top: 12px;
                         border-top: 1px dashed var(--line);
                         display: flex;
                         align-items: center;
                         justify-content: center;
                     }
                     .loop-badge {
-                        font-size: 12.5px;
+                        font-size: 11.5px;
                         font-weight: 600;
                         color: var(--steel);
                         display: flex;
                         align-items: center;
-                        gap: 8px;
+                        gap: 6px;
                         background: var(--grey-l);
-                        padding: 8px 18px;
-                        border-radius: 20px;
+                        padding: 5px 14px;
+                        border-radius: 16px;
                         border: 1px solid var(--line);
                     }
                     .loop-badge svg {
@@ -3680,13 +3687,13 @@
                     @media (max-width: 900px) {
                         .flowchart-container {
                             flex-direction: column;
-                            gap: 12px;
+                            gap: 8px;
                         }
                         .flow-arrow {
                             transform: rotate(90deg);
                             width: 100%;
-                            height: 28px;
-                            margin: -4px 0;
+                            height: 20px;
+                            margin: -2px 0;
                         }
                     }
                 </style>
