@@ -4214,19 +4214,18 @@
         }
 </script>
 <script>
-        // ── Individual Service Card Expand/Collapse ────────────────
-        function toggleIndividualService(cardElement) {
-            const card = cardElement.closest('.svc-card-expandable');
+        // ── Individual Service Card Navigation (Redirect to Dedicated Service Page) ──
+        function toggleIndividualService(triggerElement, event) {
+            if (event && event.stopPropagation) event.stopPropagation();
+            if (!triggerElement) return;
+            const card = triggerElement.closest('.svc-card-expandable') || triggerElement.closest('.svc-card') || triggerElement;
             if (!card) return;
-            const drawer = card.querySelector('.svc-drawer-body');
-            const isActive = card.classList.contains('active');
 
-            if (isActive) {
-                card.classList.remove('active');
-                if (drawer) drawer.style.maxHeight = null;
+            const cardId = card.id || card.getAttribute('data-id');
+            if (cardId) {
+                window.location.href = `service.html?id=${cardId}`;
             } else {
-                card.classList.add('active');
-                if (drawer) drawer.style.maxHeight = drawer.scrollHeight + 100 + 'px';
+                window.location.href = 'services.html';
             }
         }
 </script>

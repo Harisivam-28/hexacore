@@ -5113,35 +5113,15 @@
         }
 </script>
 <script>
-        // ── Individual Service Card Navigation & Instant Accordion ──
+        // ── Individual Service Card Navigation (Redirect to Dedicated Service Page) ──
         function toggleIndividualService(triggerElement, event) {
             if (event && event.stopPropagation) event.stopPropagation();
             if (!triggerElement) return;
             const card = triggerElement.closest('.svc-card-expandable') || triggerElement.closest('.svc-card') || triggerElement;
             if (!card) return;
 
-            const drawer = card.querySelector('.svc-drawer-body');
             const cardId = card.id || card.getAttribute('data-id');
-
-            if (drawer) {
-                const isActive = card.classList.contains('active');
-                
-                document.querySelectorAll('.svc-card-expandable.active').forEach(c => {
-                    if (c !== card) {
-                        c.classList.remove('active');
-                        const b = c.querySelector('.svc-drawer-body');
-                        if (b) b.style.maxHeight = null;
-                    }
-                });
-
-                if (isActive) {
-                    card.classList.remove('active');
-                    drawer.style.maxHeight = null;
-                } else {
-                    card.classList.add('active');
-                    drawer.style.maxHeight = (drawer.scrollHeight + 400) + 'px';
-                }
-            } else if (cardId) {
+            if (cardId) {
                 window.location.href = `service.html?id=${cardId}`;
             } else {
                 window.location.href = 'services.html';
