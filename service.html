@@ -794,7 +794,7 @@
     <section class="service-hero">
         <div class="service-hero-content">
             <div class="service-code-badge" id="hero-badge">
-                <span>✨ SVC / 01</span> • <span id="hero-cat-name">MACHINE CALIBRATION</span>
+                <span id="hero-cat-name">✨ MACHINE CALIBRATION</span>
             </div>
             <h1 id="hero-title">Linear Laser Calibration</h1>
             <p id="hero-lead">Ensures sub-micron positioning accuracy of machine axes using laser interferometer systems.</p>
@@ -1263,7 +1263,7 @@
             document.getElementById('bc-title').textContent = data.title;
 
             // Hero
-            let badgeHTML = `<span>✨ ${data.code}</span> • <span>${data.category.toUpperCase()}</span>`;
+            let badgeHTML = `<span>✨ ${data.category.toUpperCase()}</span>`;
             if (data.category === 'Machine Calibration') {
                 badgeHTML += ` &nbsp;•&nbsp; <span style="background:rgba(255,255,255,0.15);padding:3px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.3);color:#FFEDD5;font-weight:700;">🤝 In Association with REDDOT Calibration Solution</span>`;
             } else if (data.category && (data.category.includes('Quality Instruments') || data.category.includes('Instruments'))) {
@@ -1277,7 +1277,7 @@
             const imgEl = document.getElementById('detail-img');
             imgEl.src = data.image;
             imgEl.alt = data.title;
-            document.getElementById('detail-img-caption').textContent = `${data.title} (${data.code})`;
+            document.getElementById('detail-img-caption').textContent = data.title;
 
             // Block 1: Details
             document.getElementById('detail-description').textContent = data.details;
@@ -1312,7 +1312,7 @@
             document.getElementById('detail-reports').textContent = data.reports;
 
             // Sidebar Quote Form Field
-            document.getElementById('sq-service').value = `${data.code}: ${data.title}`;
+            document.getElementById('sq-service').value = data.title;
 
             // Related Services
             renderRelatedServices(sid, data.category);
@@ -1335,7 +1335,7 @@
                 const item = SERVICES_DB[k];
                 return `
                     <a href="service.html?id=${item.id}" class="related-card">
-                        <div style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">${item.code} • ${item.category}</div>
+                        <div style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">${item.category}</div>
                         <h4>${item.title}</h4>
                         <p>${item.lead}</p>
                         <div class="view-link">View Service Details &amp; Specs →</div>
