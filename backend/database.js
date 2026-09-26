@@ -198,7 +198,6 @@ async function init() {
 
   // ── Seed Services (4 Classified Sections) ───────────────────────
   const brochureServices = [
-    ['SVC / 01', 'Linear Laser Calibration', 'Machine Calibration', 'Ensures precise positioning accuracy of machine axes using laser interferometer systems.', 'Accuracy up to 0.005 ppm, positioning & repeatability analysis, pitch error compensation, ISO 230-2 compliant.', 'images/services/linear_laser_calibration.png'],
     ['SVC / 16', 'Laser Calibration of CNC', 'Machine Calibration', 'High-precision laser interferometer & CNC machine positioning calibration system for multi-axis machine tools, lasers, and precision equipment.', 'Sub-micron / 0.005 ppm positioning & repeatability calibration for multi-axis CNC machines.', 'images/cnc-laser-calibration.jpg'],
     ['SVC / 02', 'Rotary Axis Calibration', 'Machine Calibration', 'Calibrates rotary axes for accurate angular positioning and indexing.', 'Angular accuracy up to +1 arc-sec, indexing error mapping, encoder verification, improves 4th/5th axis performance.', 'images/services/rotary_axis_calibration.png'],
     ['SVC / 03', 'Off-Axis Rotary Calibration', 'Machine Calibration', 'Measures rotary axis errors when positioned away from the center line.', 'Eccentricity and tilt error analysis, volumetric compensation support, critical for multi-axis machining accuracy.', 'images/services/off_axis_rotary_calibration.png'],
@@ -220,6 +219,8 @@ async function init() {
     ['SVC / 20', 'Axis Servo Tuning', 'Machine Service', 'Dynamic servo motor & drive gain optimization to eliminate quadrant spikes, backlash lag, and contouring errors.', 'Optimization of position loop gain, velocity loop gain, feedforward gain, and notch filter settings.', 'images/cnc-laser-calibration.jpg'],
     ['SVC / 21', 'LM Guideway Parallelism Checking', 'Machine Service', 'Linear motion guide rail parallelism, straightness, and rail elevation gap inspection.', 'High-precision measurement of linear motion guide rail parallelism and vertical height alignment using laser straightness optics.', 'images/services/axis_straightness_testing.png']
   ];
+
+  db.exec2("DELETE FROM services WHERE title = 'Linear Laser Calibration'");
 
   // Clean up any old services that don't match the 15 classified service titles
   const validTitles = brochureServices.map(s => s[1]);
