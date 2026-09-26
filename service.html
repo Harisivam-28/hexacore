@@ -982,6 +982,21 @@
     <!-- Service Details Renderer Script -->
     <script>
         // ── 16 Classified Services Database ─────────────────────
+        const machineTypes12 = [
+            "CNC Turning Centers (Lathes)",
+            "Vertical Machining Centers (VMC)",
+            "Horizontal Machining Centers (HMC)",
+            "5-Axis CNC Machines",
+            "Gantry / Plano Milling Machines",
+            "Double Column Machining Centers",
+            "CNC Grinding Machines (Surface & Cylindrical)",
+            "Boring Machines (Horizontal & Vertical)",
+            "EDM Machines (Wire Cut & Die Sinker)",
+            "Tool & Cutter Grinding Machines",
+            "Gear Hobbing / Gear Cutting Machines",
+            "Special Purpose Machines (SPM)"
+        ];
+
         const SERVICES_DB = {
             "svc-01": {
                 id: "svc-01",
@@ -991,7 +1006,7 @@
                 image: "images/services/linear_laser_calibration.png",
                 lead: "Ensures sub-micron positioning accuracy of machine axes using laser interferometer systems.",
                 details: "High-precision linear laser interferometry measures positioning error, backlash, systematic positioning deviation, and repeatability along linear axes. Automatically generates pitch error compensation data for CNC controllers.",
-                machines: ["Vertical Machining Centers (VMC)", "Horizontal Machining Centers (HMC)", "CNC Turning Centers (Lathes)", "5-Axis Machining Centers", "Gantry & Plano Milling Machines", "Double Column CNCs"],
+                machines: machineTypes12,
                 standards: ["ISO 230-2 – Determination of positioning accuracy & repeatability of NC linear axes.", "VDI/DGQ 3441 – Statistical evaluation of operational and positioning accuracy of machine tools.", "JIS B 6201 – Test code for performance & geometric accuracy inspection of machine tools."],
                 reports: "Generates pitch error compensation tables directly formatted for Fanuc, Siemens & Heidenhain CNC controllers. Provides positioning accuracy curves and repeatability bands to eliminate dimensional errors on machined parts."
             },
@@ -1003,7 +1018,7 @@
                 image: "images/cnc-laser-calibration.jpg",
                 lead: "High-precision laser interferometer & CNC machine positioning calibration system for multi-axis machine tools.",
                 details: "Comprehensive multi-axis CNC positioning calibration system using optical laser vectors. Analyzes thermal growth compensation, axis backlash dynamics, and multi-directional positioning accuracy.",
-                machines: ["Multi-Axis VMC & HMC", "High-Precision CNC Lathes", "Laser Cutting Machines", "Precision Toolroom Mills"],
+                machines: machineTypes12,
                 standards: ["ISO 230-2 – Standard test code for axis positioning accuracy & repeatability.", "ISO 230-4 – Circular interpolation tests for multi-axis CNC machine tools."],
                 reports: "Delivers baseline positioning accuracy certificates, dynamic axis lag profiles, and NABL-traceable reference documentation required for ISO 9001 quality audits."
             },
@@ -1015,7 +1030,7 @@
                 image: "images/services/rotary_axis_calibration.png",
                 lead: "Calibrates rotary axes for accurate angular positioning and indexing.",
                 details: "Measures angular positioning accuracy up to ±1 arc-second using rotary laser calibrators and optical polygon encoders. Analyzes angular error, indexing repeatability, and rotational hysteresis on rotary tables.",
-                machines: ["4th & 5th Axis Rotary Tables", "Tilting Trunnion Tables", "CNC Indexing Heads", "Rotary B-Axis Heads"],
+                machines: machineTypes12,
                 standards: ["ISO 230-2 – Test code for angular positioning accuracy of rotary NC axes.", "JIS B 6201 – Rotary indexing accuracy and angular alignment methodology."],
                 reports: "Produces 360° angular error polar charts and offset lookup tables to ensure exact indexing tolerances during 4th and 5th axis multi-sided machining."
             },
@@ -1027,7 +1042,7 @@
                 image: "images/services/off_axis_rotary_calibration.png",
                 lead: "Measures rotary axis errors when positioned away from the center line.",
                 details: "Specialized measurement of rotary axis behavior off the physical center line. Evaluates eccentricity, tilt error motion, and pivot point offset errors critical for simultaneous 5-axis contouring.",
-                machines: ["5-Axis Gantry Machines", "Swivel Head CNC Mills", "Large Turn-Mill Centers", "Horizontal Boring Mills"],
+                machines: machineTypes12,
                 standards: ["ISO 230-7 – Geometric accuracy of axes of rotation (spindles & rotary tables).", "VDI 2617 – Accuracy of multi-axis rotary positioning systems."],
                 reports: "Calculates pivot point center offsets and volumetric tilt vectors, allowing CNC controllers to update tool center point control (TCPC / RTCP) parameters."
             },
@@ -1039,7 +1054,7 @@
                 image: "images/services/axis_straightness_testing.png",
                 lead: "Checks linear deviations in axis movement along travel length.",
                 details: "Measures straightness error in horizontal and vertical planes along linear guide rails using straightness optics or electronic levels. Identifies guideway wear, bed sag, and rail misalignment.",
-                machines: ["Long-Bed CNC Lathes", "Gantry Milling Machines", "Horizontal Boring Machines", "Large Floor-Type CNCs"],
+                machines: machineTypes12,
                 standards: ["ISO 230-1 – Geometric accuracy of machines operating under no-load or quasi-static conditions.", "BS 4656 – Accuracy of machine tools and methods of test."],
                 reports: "Provides straightness deviation graphs (microns vs travel length) for both X/Y and Z axes to guide mechanical scraping, rail shimming, or bed re-leveling."
             },
@@ -1051,7 +1066,7 @@
                 image: "images/services/squareness_testing.png",
                 lead: "Verifies perpendicularity between machine axes for geometric precision.",
                 details: "Evaluates out-of-squareness errors between X, Y, and Z axes using optical square optics or precision granite squares. Ensures exact 90° geometric alignment across the full working envelope.",
-                machines: ["3-Axis & 5-Axis VMCs", "HMC Column Alignments", "Bridge Type CNCs", "Precision Surface Grinders"],
+                machines: machineTypes12,
                 standards: ["ISO 230-1 – Perpendicularity between linear motion axes.", "DIN 875 – Accuracy requirements for optical & granite reference squares."],
                 reports: "Quantifies angular squareness error in micrometers per meter (µm/m) and provides step-by-step mechanical shimming or column adjustment guides."
             },
@@ -1063,7 +1078,7 @@
                 image: "images/services/machine_health_diagnose.png",
                 lead: "Evaluates overall CNC performance by analyzing circular interpolation errors.",
                 details: "Rapid 360° wireless ballbar test detects servo mismatch, backlash, reversal spikes, lateral play, scale mismatch, and squareness errors in minutes without dismantling the machine.",
-                machines: ["VMC & HMC CNC Centers", "CNC Lathes & Turning Centers", "High-Speed Die Mould Mills", "Robotic Machining Cells"],
+                machines: machineTypes12,
                 standards: ["ISO 230-4 – Circular tests for numerical control machine tools.", "ASME B5.54 – Methods for performance evaluation of CNC machining centers."],
                 reports: "Renders complete circularity error polar plots, automated diagnosis breakdown list, and overall machine health score comparing before vs after tuning."
             },
@@ -1076,7 +1091,7 @@
                 image: "images/services/preventive_maintenance_contract.png",
                 lead: "Scheduled maintenance to ensure consistent machine performance and reliability.",
                 details: "Structured periodic preventive maintenance covering laser alignment, ballbar circularity check, spindle runout inspection, guide rail lubrication check, and CNC parameter backup.",
-                machines: ["Complete CNC Machine Fleets", "Automotive Production Lines", "Aerospace Machining Workshops"],
+                machines: machineTypes12,
                 standards: ["ISO 9001 – Preventive equipment maintenance standards.", "IATF 16949 – Automotive manufacturing quality management requirement."],
                 reports: "Comprehensive annual audit history logs, quarterly calibration certificates, and predictive maintenance alerts to prevent catastrophic spindle or drive breakdown."
             },
@@ -1088,7 +1103,7 @@
                 image: "images/nl_cnc_machining.png",
                 lead: "Complete CNC machine bed re-leveling, guideway scraping, and ball screw preload correction.",
                 details: "On-site mechanical overhaul restoring factory geometric tolerances. Includes precision bed re-leveling using electronic precision levels, hand scraping of turcite guideways, and ball screw support bearing adjustment.",
-                machines: ["Heavy Duty VMC/HMC", "Large Floor Boring Machines", "Multi-Axis Milling Centers", "Aging CNC Toolroom Machines"],
+                machines: machineTypes12,
                 standards: ["ISO 230-1 – Machine tool geometric accuracy verification.", "Manufacturer Factory Alignment Specifications (Fanuc, Mazak, Haas, DMG Mori)."],
                 reports: "Full before-and-after geometric alignment report certifying bed levelness, axis squareness, spindle taper runout, and axis backlash tolerances."
             },
@@ -1184,7 +1199,7 @@
                 image: "images/nl_cnc_machining.png",
                 lead: "CNC controller software diagnostic, PLC logic troubleshooting, parameter recovery, and error clearing.",
                 details: "Comprehensive diagnostic troubleshooting for CNC controller software (Fanuc, Siemens, Heidenhain, Mitsubishi). Resolves alarm codes, axis motion faults, PLC ladder logic errors, encoder communication glitches, and parameter corruption.",
-                machines: ["Fanuc CNC Controllers", "Siemens 840D / SINUMERIK", "Heidenhain TNC", "Mitsubishi M80 / M70", "Fagor & Mazatrol Controllers"],
+                machines: machineTypes12,
                 standards: ["ISO 230-1 – CNC controller error diagnostics.", "IEC 61131-3 – Programmable logic controller (PLC) programming standards."],
                 reports: "Delivers software fault diagnostic report, PLC ladder modification logs, backup parameter archives, and alarm clearance certificates."
             },
@@ -1196,7 +1211,7 @@
                 image: "images/division1-machine-calibration.jpg",
                 lead: "Precision CNC ballscrew replacement, support bearing assembly, end play removal, and preload adjustment.",
                 details: "On-site replacement of worn or damaged CNC linear axis ballscrews and support bearings. Precision alignment to guide rails, axial end play elimination, rotational torque check, and laser pitch error recalibration after assembly.",
-                machines: ["VMC X/Y/Z Axes", "HMC Linear Drives", "CNC Lathe Cross Slides", "High-Precision Milling Machines"],
+                machines: machineTypes12,
                 standards: ["ISO 3408-1 – Ball screws part 1: vocabulary and designation.", "ISO 3408-3 – Ball screws part 3: acceptance tests and tolerances."],
                 reports: "Provides axial runout certification, pre-and-post replacement backlash measurements, and post-assembly laser positioning calibration reports."
             },
@@ -1208,7 +1223,7 @@
                 image: "images/nl_cnc_machining.png",
                 lead: "Turnkey CNC machine plant relocation, anchor bolting, electronic level bed alignment, and geometric re-commissioning.",
                 details: "Complete turnkey CNC machine dismantling, plant relocation, foundation anchor bolting, and precision bed leveling using electronic precision levels (accuracy 0.001 mm/m). Restores bed twist-free baseline alignment.",
-                machines: ["VMC & HMC Machining Centers", "Heavy Duty CNC Lathes", "Gantry & Plano Mills", "5-Axis Machining Centers"],
+                machines: machineTypes12,
                 standards: ["ISO 230-1 – Machine bed levelness & twist inspection.", "DIN 877 – Precision spirit levels & electronic level standards."],
                 reports: "Bed levelness contour plot, axis twist verification certificates, and re-commissioning geometric alignment reports."
             },
@@ -1220,7 +1235,7 @@
                 image: "images/cnc-laser-calibration.jpg",
                 lead: "Dynamic servo motor & drive gain optimization to eliminate quadrant spikes, backlash lag, and contouring errors.",
                 details: "Optimization of CNC servo loop gain parameters (position loop gain, velocity loop gain, feedforward gain, and notch filter settings). Eliminates quadrant spikes, reduces dynamic contouring lag, and minimizes vibration during high-speed machining.",
-                machines: ["High-Speed Die & Mould VMCs", "5-Axis CNC Centers", "Precision Turning Centers", "High-Speed CNC Routers"],
+                machines: machineTypes12,
                 standards: ["ISO 230-4 – Dynamic circular interpolation & servo lag evaluation.", "IEEE 1415 – Motion control drive tuning standards."],
                 reports: "Renders pre and post tuning ballbar circularity plots, frequency response bode plots, and optimized controller parameter backup files."
             },
@@ -1232,7 +1247,7 @@
                 image: "images/services/axis_straightness_testing.png",
                 lead: "Linear motion guide rail parallelism, straightness, and rail elevation gap inspection.",
                 details: "High-precision measurement of linear motion (LM) guide rail parallelism and vertical height alignment using laser straightness optics, electronic levels, and dial indicators. Identifies guide rail wear, runner block play, and mounting surface distortions.",
-                machines: ["Linear Motion Guide Rail Axes", "VMC & HMC Linear Guide Systems", "CNC Milling Beds", "Robotic Linear Gantry Slides"],
+                machines: machineTypes12,
                 standards: ["ISO 230-1 – Parallelism and straightness of linear guide rails.", "JIS B 6201 – Guideway alignment test code."],
                 reports: "Rail parallelism deviation curves (µm vs travel length), runner block preload verification reports, and mounting rail shimming guide documents."
             }
