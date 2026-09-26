@@ -244,7 +244,7 @@
     </div>
     <div class="nav-item" onclick="showPanel('services')">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2 2M17.8 17.8l2 2M2 12h3M19 12h3M4.2 19.8l2-2M17.8 6.2l2-2"/></svg>
-      <span>Services</span>
+      <span>Analysis</span>
     </div>
   </div>
 
@@ -376,8 +376,8 @@
     <div class="panel" id="panel-services">
       <div class="table-wrap">
         <div class="table-header">
-          <h3>Services</h3>
-          <button class="btn-action btn-add" onclick="openServiceModal()">+ Add Service</button>
+          <h3>Analysis</h3>
+          <button class="btn-action btn-add" onclick="openServiceModal()">+ Add Analysis</button>
         </div>
         <table>
           <thead><tr><th>#</th><th>Image</th><th>Code</th><th>Title</th><th>Specs / Attributes</th><th>Description</th><th>Active</th><th>Actions</th></tr></thead>
@@ -416,7 +416,7 @@
 <!-- Service Modal -->
 <div class="modal-overlay" id="service-modal">
   <div class="modal">
-    <h3 id="service-modal-title">Add Service</h3>
+    <h3 id="service-modal-title">Add Analysis</h3>
     <input type="hidden" id="service-id">
     <label class="f-label">Service Code</label>
     <input class="f-input" id="service-number" placeholder="e.g. SVC / 01">
@@ -984,7 +984,7 @@
   async function loadServices() {
     const rows = await authFetch('/api/services/all').then(r => r.json());
     const tb = document.getElementById('services-body');
-    if (!rows.length) { tb.innerHTML = `<tr><td colspan="8"><div class="empty-state">No services yet.</div></td></tr>`; return; }
+    if (!rows.length) { tb.innerHTML = `<tr><td colspan="8"><div class="empty-state">No analysis records yet.</div></td></tr>`; return; }
     tb.innerHTML = rows.map(r => `
       <tr>
         <td class="mono">#${r.id}</td>
@@ -1003,7 +1003,7 @@
 
   function openServiceModal(id) {
     document.getElementById('service-id').value = id || '';
-    document.getElementById('service-modal-title').textContent = id ? 'Edit Service' : 'Add Service';
+    document.getElementById('service-modal-title').textContent = id ? 'Edit Analysis' : 'Add Analysis';
     if (id) {
       authFetch('/api/services/all').then(r => r.json()).then(rows => {
         const s = rows.find(x => x.id === id);

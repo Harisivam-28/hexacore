@@ -3298,7 +3298,7 @@
                 <a href="index.html" >Home</a>
                 <a href="about.html" class="current">About Us</a>
                 <a href="products.html" >Products</a>
-                <a href="services.html" >Service &amp; Support</a>
+                <a href="services.html" >Analysis &amp; Support</a>
                 <a href="contact.html" >Contact</a>
             </nav>
             <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
@@ -3309,7 +3309,7 @@
             <a href="index.html"  onclick="closeMobileNav()">Home</a>
             <a href="about.html" class="current" onclick="closeMobileNav()">About Us</a>
             <a href="products.html"  onclick="closeMobileNav()">Products</a>
-            <a href="services.html"  onclick="closeMobileNav()">Service &amp; Support</a>
+            <a href="services.html"  onclick="closeMobileNav()">Analysis &amp; Support</a>
             <a href="contact.html"  onclick="closeMobileNav()">Contact</a>
         </nav>
     </header>
@@ -3801,7 +3801,7 @@
       <li><a href="about.html">About Us</a></li>
       <li><a href="newsletter.html">Newsletter</a></li>
       <li><a href="products.html">Products</a></li>
-      <li><a href="services.html">Service &amp; Support</a></li>
+      <li><a href="services.html">Analysis &amp; Support</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </div>
@@ -3975,9 +3975,9 @@
 
                 const categoryMap = {
                     'Machine Calibration': document.getElementById('svc-grid-calibration'),
-                    'Machine Service': document.getElementById('svc-grid-service'),
-                    'CMM Services': document.getElementById('svc-grid-cmm'),
-                    'Quality Instruments Services': document.getElementById('svc-grid-instruments')
+                    'Machine Analysis': document.getElementById('svc-grid-service'),
+                    'CMM Analysis': document.getElementById('svc-grid-cmm'),
+                    'Quality Instruments Analysis': document.getElementById('svc-grid-instruments')
                 };
 
                 for (const [catName, container] of Object.entries(categoryMap)) {
@@ -4057,7 +4057,7 @@
             // Concatenate extra fields into the message body so we don't break the DB schema
             let formattedMessage = rawMsg;
             formattedMessage += "\n\n--- Technical Details ---";
-            if (serviceReq) formattedMessage += "\nProduct / Service Selected: " + serviceReq;
+            if (serviceReq) formattedMessage += "\nProduct / Analysis Selected: " + serviceReq;
             if (mType) formattedMessage += "\nMachine Type: " + mType;
             if (mModel) formattedMessage += "\nMachine Model: " + mModel;
             if (ctrl) formattedMessage += "\nController: " + ctrl;
