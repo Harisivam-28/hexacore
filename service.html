@@ -1266,6 +1266,8 @@
             let badgeHTML = `<span>✨ ${data.code}</span> • <span>${data.category.toUpperCase()}</span>`;
             if (data.category === 'Machine Calibration') {
                 badgeHTML += ` &nbsp;•&nbsp; <span style="background:rgba(255,255,255,0.15);padding:3px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.3);color:#FFEDD5;font-weight:700;">🤝 In Association with REDDOT Calibration Solution</span>`;
+            } else if (data.category && (data.category.includes('Quality Instruments') || data.category.includes('Instruments'))) {
+                badgeHTML += ` &nbsp;•&nbsp; <span style="background:rgba(255,255,255,0.15);padding:3px 10px;border-radius:12px;border:1px solid rgba(255,255,255,0.3);color:#FFEDD5;font-weight:700;">🤝 In Association with GMS Global Metrology Services</span>`;
             }
             document.getElementById('hero-badge').innerHTML = badgeHTML;
             document.getElementById('hero-title').textContent = data.title;
