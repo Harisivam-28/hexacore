@@ -174,15 +174,27 @@ async function init() {
 
   db.exec2("DELETE FROM products WHERE name IN ('Precision Measurement Equipment', 'Laser Measurement Technology', 'Machine Calibration Technology', 'CNC Measurement Solutions', 'Machine Diagnostic Technology', 'Precision Engineering Solutions', 'Laser Calibration of CNC', '2D & CMM Probes')");
 
+  const showcaseProductNames = [
+    'CMM Probes & Styli',
+    'Vision Measuring System',
+    'Coordinate Measuring Machine (CMM)'
+  ];
+
   pdfProducts.forEach(([name, category, description, tolerance, image]) => {
+    const isActive = showcaseProductNames.includes(name) ? 1 : 0;
     const existing = db.queryOne('SELECT id FROM products WHERE name = ?', [name]);
     if (existing) {
-      db.exec2('UPDATE products SET category=?, description=?, tolerance=?, image=?, active=1 WHERE id=?', [category, description, tolerance, image, existing.id]);
+      db.exec2('UPDATE products SET category=?, description=?, tolerance=?, image=?, active=? WHERE id=?', [category, description, tolerance, image, isActive, existing.id]);
     } else {
-      db.exec2('INSERT INTO products (name, category, description, tolerance, image, active) VALUES (?, ?, ?, ?, ?, 1)', [name, category, description, tolerance, image]);
+      db.exec2('INSERT INTO products (name, category, description, tolerance, image, active) VALUES (?, ?, ?, ?, ?, ?)', [name, category, description, tolerance, image, isActive]);
     }
   });
-  console.log('✅ PDF Products synchronized with database');
+
+  // Ensure database active flags strictly match the showcase list
+  db.exec2("UPDATE products SET active = 0 WHERE name NOT IN ('CMM Probes & Styli', 'Vision Measuring System', 'Coordinate Measuring Machine (CMM)')");
+  db.exec2("UPDATE products SET active = 1 WHERE name IN ('CMM Probes & Styli', 'Vision Measuring System', 'Coordinate Measuring Machine (CMM)')");
+
+  console.log('✅ Showcase Products (3 Active Products) synchronized with database');
 
   // ── Seed Services (4 Classified Sections) ───────────────────────
   const brochureServices = [
