@@ -1498,6 +1498,79 @@
             letter-spacing: .06em;
         }
 
+        
+        /* ── Mobile Industry Cards Slide Animation ── */
+        .ind-grid-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .ind-grid-track {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .ind-slider-dots {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .ind-grid-wrap {
+                overflow: hidden;
+            }
+
+            .ind-grid-track {
+                display: flex !important;
+                flex-direction: row !important;
+                flex-wrap: nowrap !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                scroll-behavior: smooth !important;
+                gap: 14px !important;
+                padding: 10px 4px 18px 4px !important;
+                -webkit-overflow-scrolling: touch !important;
+                scrollbar-width: none !important;
+            }
+
+            .ind-grid-track::-webkit-scrollbar {
+                display: none !important;
+            }
+
+            .ind-grid-track .ind-card {
+                flex: 0 0 78% !important;
+                min-width: 220px !important;
+                max-width: 280px !important;
+                scroll-snap-align: center !important;
+                min-height: 140px !important;
+                border-radius: 10px !important;
+                border-left: 4px solid var(--orange) !important;
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45) !important;
+            }
+
+            .ind-slider-dots {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 8px !important;
+                margin-top: 14px !important;
+            }
+
+            .ind-slider-dot {
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.25);
+                transition: all 0.3s ease;
+            }
+
+            .ind-slider-dot.active {
+                width: 22px;
+                border-radius: 4px;
+                background: var(--orange);
+            }
+        }
+
         /* Industry cards with mild background images */
         .ind-card {
             position: relative;
@@ -3585,7 +3658,8 @@
                     measurement or support solution.
                 </p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+            <div class="ind-grid-wrap">
+                <div class="ind-grid-track">
                 <div class="ind-card" style="background-image: url('images/industries/automotive.png');">
                     <span class="ind-card-text">Automotive</span>
                 </div>
@@ -3610,6 +3684,8 @@
                 <div class="ind-card" style="background-image: url('images/industries/industrial_production.png');">
                     <span class="ind-card-text">Industrial Production</span>
                 </div>
+            </div>
+                <div class="ind-slider-dots"></div>
             </div>
         </section>
 
@@ -4640,6 +4716,82 @@
                 window.location.href = 'services.html';
             }
         }
+</script>
+<script>
+
+    // ── Mobile Slide Animation for Industry Cards ──
+    (function initIndustriesMobileSlider() {
+        const track = document.querySelector('.ind-grid-track');
+        const dotsContainer = document.querySelector('.ind-slider-dots');
+        if (!track) return;
+
+        const cards = track.querySelectorAll('.ind-card');
+        if (!cards.length) return;
+
+        if (dotsContainer && !dotsContainer.children.length) {
+            cards.forEach((_, idx) => {
+                const dot = document.createElement('div');
+                dot.className = 'ind-slider-dot' + (idx === 0 ? ' active' : '');
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        let currentIndex = 0;
+        let autoSlideInterval = null;
+        let isUserInteracting = false;
+        let interactTimeout = null;
+
+        function updateDots(index) {
+            if (!dotsContainer) return;
+            const dots = dotsContainer.querySelectorAll('.ind-slider-dot');
+            dots.forEach((dot, i) => {
+                if (i === index) dot.classList.add('active');
+                else dot.classList.remove('active');
+            });
+        }
+
+        function slideNext() {
+            if (window.innerWidth > 768 || isUserInteracting) return;
+            currentIndex = (currentIndex + 1) % cards.length;
+            const card = cards[currentIndex];
+            if (card) {
+                const scrollLeftPos = card.offsetLeft - (track.clientWidth - card.clientWidth) / 2;
+                track.scrollTo({ left: scrollLeftPos, behavior: 'smooth' });
+                updateDots(currentIndex);
+            }
+        }
+
+        function startAutoSlide() {
+            if (autoSlideInterval) clearInterval(autoSlideInterval);
+            autoSlideInterval = setInterval(slideNext, 3000);
+        }
+
+        function handleUserInteraction() {
+            isUserInteracting = true;
+            if (interactTimeout) clearTimeout(interactTimeout);
+            interactTimeout = setTimeout(() => {
+                isUserInteracting = false;
+            }, 4000);
+        }
+
+        track.addEventListener('scroll', () => {
+            if (window.innerWidth <= 768) {
+                handleUserInteraction();
+                const scrollCenter = track.scrollLeft + track.clientWidth / 2;
+                cards.forEach((card, idx) => {
+                    const cardCenter = card.offsetLeft + card.clientWidth / 2;
+                    if (Math.abs(scrollCenter - cardCenter) < card.clientWidth / 2) {
+                        currentIndex = idx;
+                        updateDots(currentIndex);
+                    }
+                });
+            }
+        }, { passive: true });
+
+        track.addEventListener('touchstart', handleUserInteraction, { passive: true });
+        startAutoSlide();
+    })();
+
 </script>
 </body>
 
