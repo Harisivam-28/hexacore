@@ -1,0 +1,22 @@
+{
+  "cleanUrls": true,
+  "redirects": [
+    { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/frontend.html", "destination": "/", "permanent": true },
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/services.html", "destination": "/services", "permanent": true },
+    { "source": "/service.html", "destination": "/service", "permanent": true },
+    { "source": "/products.html", "destination": "/products", "permanent": true },
+    { "source": "/product.html", "destination": "/products", "permanent": true },
+    { "source": "/contact.html", "destination": "/contact", "permanent": true },
+    { "source": "/newsletter.html", "destination": "/about#newsletter-section", "permanent": true },
+    { "source": "/quote.html", "destination": "/contact", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/services", "destination": "/services.html" },
+    { "source": "/service", "destination": "/service.html" },
+    { "source": "/products", "destination": "/products.html" },
+    { "source": "/contact", "destination": "/contact.html" }
+  ]
+}

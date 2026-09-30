@@ -1,0 +1,16 @@
+/index.html    /         301!
+/frontend.html /         301!
+/about.html    /about    301!
+/services.html /services 301!
+/service.html  /service  301!
+/products.html /products 301!
+/product.html  /products 301!
+/contact.html  /contact  301!
+/newsletter.html /about#newsletter-section 301!
+/quote.html    /contact  301!
+
+/about         /about.html    200
+/services      /services.html 200
+/service       /service.html  200
+/products      /products.html 200
+/contact       /contact.html  200

@@ -7,7 +7,7 @@
     <meta name="description"
         content="Precision CNC machine calibration, laser interferometer testing, CMM volumetric error mapping, and metrology services by Hexacore Precision Technologies." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <link rel="canonical" href="https://xacore.com/services.html" />
+    <link rel="canonical" href="https://hexacoreprecision.com/services" />
 
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="images/favicon_square.png" />
@@ -756,33 +756,33 @@
     <!-- Header Navigation -->
     <header class="site-header">
         <div class="brand">
-            <a href="index.html"><img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo"></a>
+            <a href="/"><img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies" class="logo"></a>
             <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="products.html">Products</a>
-                <a href="services.html" class="current">Analyse &amp; Support</a>
-                <a href="contact.html">Contact</a>
+                <a href="/">Home</a>
+                <a href="/about">About Us</a>
+                <a href="/products">Products</a>
+                <a href="/services" class="current">Analyse &amp; Support</a>
+                <a href="/contact">Contact</a>
             </nav>
             <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
         <nav class="mobile-nav">
-            <a href="index.html" onclick="closeMobileNav()">Home</a>
-            <a href="about.html" onclick="closeMobileNav()">About Us</a>
-            <a href="products.html" onclick="closeMobileNav()">Products</a>
-            <a href="services.html" class="current" onclick="closeMobileNav()">Analyse &amp; Support</a>
-            <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+            <a href="/" onclick="closeMobileNav()">Home</a>
+            <a href="/about" onclick="closeMobileNav()">About Us</a>
+            <a href="/products" onclick="closeMobileNav()">Products</a>
+            <a href="/services" class="current" onclick="closeMobileNav()">Analyse &amp; Support</a>
+            <a href="/contact" onclick="closeMobileNav()">Contact</a>
         </nav>
     </header>
 
     <!-- Breadcrumb Bar -->
     <div class="breadcrumb-bar">
         <div class="breadcrumb-container">
-            <a href="index.html">Home</a>
+            <a href="/">Home</a>
             <span class="breadcrumb-separator">/</span>
-            <a href="services.html">Analyse &amp; Support</a>
+            <a href="/services">Analyse &amp; Support</a>
             <span class="breadcrumb-separator">/</span>
             <span id="bc-category">Machine Calibration</span>
             <span class="breadcrumb-separator">/</span>
@@ -953,20 +953,20 @@
             <div>
                 <h5>Quick Links</h5>
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="products.html">Products Catalog</a></li>
-                    <li><a href="services.html">Analyse &amp; Support</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About Us</a></li>
+                    <li><a href="/products">Products Catalog</a></li>
+                    <li><a href="/services">Analyse &amp; Support</a></li>
+                    <li><a href="/contact">Contact Us</a></li>
                 </ul>
             </div>
             <div>
                 <h5>Service Divisions</h5>
                 <ul>
-                    <li><a href="services.html">Machine Calibration</a></li>
-                    <li><a href="services.html">Machine Analyse</a></li>
-                    <li><a href="services.html">CMM Analyse</a></li>
-                    <li><a href="services.html">Quality Instruments Analyse</a></li>
+                    <li><a href="/services">Machine Calibration</a></li>
+                    <li><a href="/services">Machine Analyse</a></li>
+                    <li><a href="/services">CMM Analyse</a></li>
+                    <li><a href="/services">Quality Instruments Analyse</a></li>
                 </ul>
             </div>
             <div>
@@ -1351,7 +1351,7 @@
             grid.innerHTML = relatedKeys.map(k => {
                 const item = SERVICES_DB[k];
                 return `
-                    <a href="service.html?id=${item.id}" class="related-card">
+                    <a href="/service?id=${item.id}" class="related-card">
                         <div style="font-size:11px;font-weight:800;color:var(--orange);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">${item.category}</div>
                         <h4>${item.title}</h4>
                         <p>${item.lead}</p>

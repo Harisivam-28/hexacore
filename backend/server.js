@@ -12,9 +12,26 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// ── Static Files ──────────────────────────────────────────────
-app.use(express.static(path.join(__dirname, '..')));
-app.use('/admin', express.static(path.join(__dirname, '..', 'admin')));
+// ── 301 Permanent Redirects for legacy .html URLs ──────────────
+app.get(['/index.html', '/frontend.html'], (req, res) => res.redirect(301, '/'));
+app.get('/about.html', (req, res) => res.redirect(301, '/about'));
+app.get('/services.html', (req, res) => res.redirect(301, '/services'));
+app.get('/service.html', (req, res) => {
+  const query = req.url.includes('?') ? req.url.substring(req.url.indexOf('?')) : '';
+  res.redirect(301, '/service' + query);
+});
+app.get(['/products.html', '/product.html'], (req, res) => res.redirect(301, '/products'));
+app.get('/contact.html', (req, res) => res.redirect(301, '/contact'));
+app.get('/newsletter.html', (req, res) => res.redirect(301, '/about#newsletter-section'));
+app.get('/quote.html', (req, res) => res.redirect(301, '/contact'));
+
+// ── Clean Page Routes ─────────────────────────────────────────
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '..', 'index.html')));
+app.get('/about', (req, res) => res.sendFile(path.join(__dirname, '..', 'about.html')));
+app.get('/services', (req, res) => res.sendFile(path.join(__dirname, '..', 'services.html')));
+app.get('/service', (req, res) => res.sendFile(path.join(__dirname, '..', 'service.html')));
+app.get('/products', (req, res) => res.sendFile(path.join(__dirname, '..', 'products.html')));
+app.get('/contact', (req, res) => res.sendFile(path.join(__dirname, '..', 'contact.html')));
 
 // ── API Routes ─────────────────────────────────────────────────
 app.use('/api/login',      require('./routes/auth'));
@@ -27,10 +44,9 @@ app.use('/api/services',   require('./routes/services'));
 // ── Health Check ───────────────────────────────────────────────
 app.get('/api/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
 
-// ── Root ───────────────────────────────────────────────────────
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '..', 'frontend.html'));
-});
+// ── Static Files ──────────────────────────────────────────────
+app.use('/admin', express.static(path.join(__dirname, '..', 'admin')));
+app.use(express.static(path.join(__dirname, '..')));
 
 // ── Boot ───────────────────────────────────────────────────────
 const PORT = process.env.PORT || 3000;

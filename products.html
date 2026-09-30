@@ -9,7 +9,7 @@
     <meta name="keywords"
         content="CNC calibration, VMC laser testing, HMC geometric inspection, 5 axis CNC calibration, ISO 230-2, Fanuc Siemens calibration, xacore.com" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <link rel="canonical" href="https://xacore.com/" />
+    <link rel="canonical" href="https://hexacoreprecision.com/" />
 
     <!-- Open Graph / Social SEO -->
     <meta property="og:type" content="website" />
@@ -3412,25 +3412,25 @@
 <body>
     <header class="site-header">
         <div class="brand">
-            <a href="index.html"><img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies"
+            <a href="/"><img src="images/hexacore.logo.png" alt="Hexacore Precision Technologies"
                     class="logo"></a>
             <nav class="main-nav">
-                <a href="index.html">Home</a>
-                <a href="about.html">About Us</a>
-                <a href="products.html" class="current">Products</a>
-                <a href="services.html">Analyse &amp; Support</a>
-                <a href="contact.html">Contact</a>
+                <a href="/">Home</a>
+                <a href="/about">About Us</a>
+                <a href="/products" class="current">Products</a>
+                <a href="/services">Analyse &amp; Support</a>
+                <a href="/contact">Contact</a>
             </nav>
             <button class="hamburger" onclick="toggleMobileNav(this)" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
         <nav class="mobile-nav">
-            <a href="index.html" onclick="closeMobileNav()">Home</a>
-            <a href="about.html" onclick="closeMobileNav()">About Us</a>
-            <a href="products.html" class="current" onclick="closeMobileNav()">Products</a>
-            <a href="services.html" onclick="closeMobileNav()">Analyse &amp; Support</a>
-            <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+            <a href="/" onclick="closeMobileNav()">Home</a>
+            <a href="/about" onclick="closeMobileNav()">About Us</a>
+            <a href="/products" class="current" onclick="closeMobileNav()">Products</a>
+            <a href="/services" onclick="closeMobileNav()">Analyse &amp; Support</a>
+            <a href="/contact" onclick="closeMobileNav()">Contact</a>
         </nav>
     </header>
 
@@ -3464,7 +3464,7 @@
                             <div class="cat">Probes &amp; Styli</div>
                             <h4>CMM Probes &amp; Styli</h4>
                             <p>High precision 2D and CMM styli, star probes, extension rods, and ruby ball styli engineered for high repeatability in dimensional inspection and scanning.</p>
-                            <a class="view-link" href="contact.html">Request Quote →</a>
+                            <a class="view-link" href="/contact">Request Quote →</a>
                         </div>
                     </div>
 
@@ -3479,7 +3479,7 @@
                             <h4>Vision Measuring System</h4>
                             <p>Optical 2D Vision Measuring System (ATQ METRO STD 3020) for high-accuracy non-contact
                                 measurement of micro-components, circuit boards, and precision parts.</p>
-                            <a class="view-link" href="contact.html">Request Quote →</a>
+                            <a class="view-link" href="/contact">Request Quote →</a>
                         </div>
                     </div>
 
@@ -3494,7 +3494,7 @@
                             <h4>Coordinate Measuring Machine (CMM)</h4>
                             <p>High accuracy 3D Coordinate Measuring Machine (Global S / Bridge CMM) with multisensor
                                 probing for complex 3D surface and geometric dimensioning & tolerancing (GD&T).</p>
-                            <a class="view-link" href="contact.html">Request Quote →</a>
+                            <a class="view-link" href="/contact">Request Quote →</a>
                         </div>
                     </div>
                 </div>
@@ -3512,11 +3512,11 @@
   <div>
     <h5>Quick Links</h5>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Us</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="services.html">Analyse &amp; Support</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About Us</a></li>
+      <li><a href="/products">Products</a></li>
+      <li><a href="/services">Analyse &amp; Support</a></li>
+      <li><a href="/contact">Contact</a></li>
     </ul>
   </div>
   <div>
@@ -4430,9 +4430,9 @@
 
             const cardId = card.id || card.getAttribute('data-id');
             if (cardId) {
-                window.location.href = `service.html?id=${cardId}`;
+                window.location.href = `/service?id=${cardId}`;
             } else {
-                window.location.href = 'services.html';
+                window.location.href = '/services';
             }
         }
     </script>
@@ -4450,7 +4450,7 @@
         document.querySelectorAll('.mobile-nav.open').forEach(nav => nav.classList.remove('open'));
     }
     function showPage(n) {
-        const pages = { 1: 'index.html', 2: 'about.html', 3: 'products.html', 4: 'services.html', 5: 'contact.html', 7: 'newsletter.html' };
+        const pages = { 1: '/', 2: '/about', 3: '/products', 4: '/services', 5: '/contact', 7: '/about#newsletter-section' };
         if (pages[n]) window.location.href = pages[n];
     }
 </script>
