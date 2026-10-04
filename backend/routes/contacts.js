@@ -9,18 +9,28 @@ const {
 
 // POST /api/contacts — Public: submit contact form
 router.post('/', async (req, res) => {
-  const { name, company, email, phone, subject, message } = req.body;
+  const { name, company, email, phone, subject, message, service_required, machine_type } = req.body;
   if (!name || !email) return res.status(400).json({ error: 'Name and email are required' });
+
+  const finalSubject = subject || service_required || 'General Enquiry';
+  const finalMessage = message || (machine_type ? `Machine Type: ${machine_type}` : '');
 
   // 1. Save to database
   const db = getDb();
   const result = db.exec2(
     'INSERT INTO contacts (name, company, email, phone, subject, message) VALUES (?, ?, ?, ?, ?, ?)',
-    [name, company || '', email, phone || '', subject || '', message || '']
+    [name, company || '', email, phone || '', finalSubject, finalMessage]
   );
 
   // 2. Send emails (non-blocking — don't fail the response if mail fails)
-  const payload = { name, company, email, phone, subject, message };
+  const payload = {
+    name,
+    company: company || '',
+    email,
+    phone: phone || '',
+    subject: finalSubject,
+    message: finalMessage
+  };
 
   Promise.allSettled([
     sendContactNotification(payload),

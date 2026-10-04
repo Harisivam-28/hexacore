@@ -1361,6 +1361,10 @@
             }).join('');
         }
 
+        const API_BASE = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname === '' || window.location.protocol === 'file:') && window.location.port !== '3000'
+            ? 'http://localhost:3000'
+            : '';
+
         // ── Form Submission ──────────────────────────────────────
         async function submitServiceQuote(e) {
             e.preventDefault();
@@ -1373,13 +1377,12 @@
                 company: document.getElementById('sq-company').value,
                 phone: document.getElementById('sq-phone').value,
                 email: document.getElementById('sq-email').value,
-                service_required: document.getElementById('sq-service').value,
-                machine_type: document.getElementById('sq-details').value,
-                message: document.getElementById('sq-message').value
+                subject: document.getElementById('sq-service').value || 'Service Quote Request',
+                message: `Service Required: ${document.getElementById('sq-service').value}\nMachine Details: ${document.getElementById('sq-details').value}\nAdditional Notes: ${document.getElementById('sq-message').value}`
             };
 
             try {
-                const res = await fetch('/api/contacts', {
+                const res = await fetch(API_BASE + '/api/contacts', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
@@ -1394,9 +1397,8 @@
                     statusEl.textContent = '❌ ' + (result.error || 'Failed to submit quote request.');
                 }
             } catch (err) {
-                statusEl.style.color = '#10B981';
-                statusEl.textContent = '✅ Quote request submitted! Our engineers will call you shortly.';
-                document.getElementById('service-quote-form').reset();
+                statusEl.style.color = '#EF4444';
+                statusEl.textContent = '❌ Failed to send request. Please try again or call us directly.';
             }
         }
 
