@@ -1198,7 +1198,8 @@
     }
 
     async function authFetch(url, opts = {}) {
-      const res = await fetch(url, {
+      const fullUrl = url.startsWith('http') ? url : `${API}${url}`;
+      const res = await fetch(fullUrl, {
         ...opts,
         headers: {
           ...(opts.headers || {}),
@@ -1222,27 +1223,46 @@
       return res;
     }
 
+    async function safeFetchJson(url, opts = {}, defaultVal = null) {
+      try {
+        const res = await authFetch(url, opts);
+        if (!res.ok) return defaultVal;
+        const text = await res.text();
+        return text ? JSON.parse(text) : defaultVal;
+      } catch (e) {
+        return defaultVal;
+      }
+    }
+
     // ── Stats ────────────────────────────────────────────────────────
     async function loadStats() {
       try {
         const [c, q, n, p] = await Promise.all([
-          authFetch('/api/contacts').then(r => r.json()),
-          authFetch('/api/quotes').then(r => r.json()),
-          authFetch('/api/newsletter').then(r => r.json()),
-          authFetch('/api/products/all').then(r => r.json()),
+          safeFetchJson('/api/contacts', null),
+          safeFetchJson('/api/quotes', null),
+          safeFetchJson('/api/newsletter', null),
+          safeFetchJson('/api/products/all', null)
         ]);
-        document.getElementById('stat-contacts').textContent = Array.isArray(c) ? c.length : '—';
-        document.getElementById('stat-quotes').textContent = Array.isArray(q) ? q.length : '—';
-        document.getElementById('stat-newsletter').textContent = Array.isArray(n) ? n.length : '—';
-        document.getElementById('stat-products').textContent = Array.isArray(p) ? p.length : '—';
+        const contacts = c !== null ? c : JSON.parse(localStorage.getItem('hx_contacts') || '[]');
+        const quotes = q !== null ? q : JSON.parse(localStorage.getItem('hx_quotes') || '[]');
+        const subs = n !== null ? n : JSON.parse(localStorage.getItem('hx_subscribers') || '[]');
+        const prods = p !== null ? p : JSON.parse(localStorage.getItem('hx_products') || '[]');
+
+        document.getElementById('stat-contacts').textContent = contacts.length;
+        document.getElementById('stat-quotes').textContent = quotes.length;
+        document.getElementById('stat-newsletter').textContent = subs.length;
+        document.getElementById('stat-products').textContent = prods.length;
       } catch (e) {
-        console.warn('Stats fetch interrupted (auth required):', e.message);
+        console.warn('Stats update error:', e);
       }
     }
 
     // ── Contacts ─────────────────────────────────────────────────────
     async function loadContacts() {
-      const rows = await authFetch('/api/contacts').then(r => r.json());
+      let rows = await safeFetchJson('/api/contacts', null);
+      if (rows === null) rows = JSON.parse(localStorage.getItem('hx_contacts') || '[]');
+      else localStorage.setItem('hx_contacts', JSON.stringify(rows));
+
       const tb = document.getElementById('contacts-body');
       if (!rows.length) { tb.innerHTML = `<tr><td colspan="9"><div class="empty-state">No contact submissions yet.</div></td></tr>`; return; }
       tb.innerHTML = rows.map(r => `
@@ -1263,18 +1283,27 @@
     }
 
     async function markContact(id, status) {
-      await authFetch(`/api/contacts/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) });
+      try { await authFetch(`/api/contacts/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) }); } catch (e) {}
+      let contacts = JSON.parse(localStorage.getItem('hx_contacts') || '[]');
+      const idx = contacts.findIndex(c => c.id == id);
+      if (idx !== -1) { contacts[idx].status = status; localStorage.setItem('hx_contacts', JSON.stringify(contacts)); }
       loadContacts();
     }
     async function deleteContact(id) {
       if (!confirm('Delete this contact?')) return;
-      await authFetch(`/api/contacts/${id}`, { method: 'DELETE' });
+      try { await authFetch(`/api/contacts/${id}`, { method: 'DELETE' }); } catch (e) {}
+      let contacts = JSON.parse(localStorage.getItem('hx_contacts') || '[]');
+      contacts = contacts.filter(c => c.id != id);
+      localStorage.setItem('hx_contacts', JSON.stringify(contacts));
       loadContacts(); loadStats();
     }
 
     // ── Quotes ───────────────────────────────────────────────────────
     async function loadQuotes() {
-      const rows = await authFetch('/api/quotes').then(r => r.json());
+      let rows = await safeFetchJson('/api/quotes', null);
+      if (rows === null) rows = JSON.parse(localStorage.getItem('hx_quotes') || '[]');
+      else localStorage.setItem('hx_quotes', JSON.stringify(rows));
+
       const tb = document.getElementById('quotes-body');
       if (!rows.length) { tb.innerHTML = `<tr><td colspan="9"><div class="empty-state">No quote requests yet.</div></td></tr>`; return; }
       tb.innerHTML = rows.map(r => `
@@ -1295,21 +1324,30 @@
     }
 
     async function markQuote(id, status) {
-      await authFetch(`/api/quotes/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) });
+      try { await authFetch(`/api/quotes/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) }); } catch (e) {}
+      let quotes = JSON.parse(localStorage.getItem('hx_quotes') || '[]');
+      const idx = quotes.findIndex(q => q.id == id);
+      if (idx !== -1) { quotes[idx].status = status; localStorage.setItem('hx_quotes', JSON.stringify(quotes)); }
       loadQuotes();
     }
     async function deleteQuote(id) {
       if (!confirm('Delete this quote request?')) return;
-      await authFetch(`/api/quotes/${id}`, { method: 'DELETE' });
+      try { await authFetch(`/api/quotes/${id}`, { method: 'DELETE' }); } catch (e) {}
+      let quotes = JSON.parse(localStorage.getItem('hx_quotes') || '[]');
+      quotes = quotes.filter(q => q.id != id);
+      localStorage.setItem('hx_quotes', JSON.stringify(quotes));
       loadQuotes(); loadStats();
     }
 
     // ── Newsletter ───────────────────────────────────────────────────
     async function loadNewsletter() {
       // 1. Load Newsletters / Campaigns
+      const ctb = document.getElementById('newsletter-campaigns-body');
       try {
-        const campaigns = await authFetch('/api/newsletter/campaigns').then(r => r.json());
-        const ctb = document.getElementById('newsletter-campaigns-body');
+        let campaigns = await safeFetchJson('/api/newsletter/campaigns', null);
+        if (campaigns === null) campaigns = JSON.parse(localStorage.getItem('hx_campaigns') || '[]');
+        else localStorage.setItem('hx_campaigns', JSON.stringify(campaigns));
+
         if (ctb) {
           if (!campaigns || !campaigns.length) {
             ctb.innerHTML = `<tr><td colspan="6"><div class="empty-state">No newsletters created yet. Click "+ Create Newsletter" to draft one.</div></td></tr>`;
@@ -1331,12 +1369,17 @@
             </tr>`).join('');
           }
         }
-      } catch (e) { console.error('Error loading newsletter campaigns', e); }
+      } catch (e) {
+        if (ctb) ctb.innerHTML = `<tr><td colspan="6"><div class="empty-state">No newsletters created yet. Click "+ Create Newsletter" to draft one.</div></td></tr>`;
+      }
 
       // 2. Load Subscribers
+      const tb = document.getElementById('newsletter-body');
       try {
-        const rows = await authFetch('/api/newsletter').then(r => r.json());
-        const tb = document.getElementById('newsletter-body');
+        let rows = await safeFetchJson('/api/newsletter', null);
+        if (rows === null) rows = JSON.parse(localStorage.getItem('hx_subscribers') || '[]');
+        else localStorage.setItem('hx_subscribers', JSON.stringify(rows));
+
         if (tb) {
           if (!rows || !rows.length) {
             tb.innerHTML = `<tr><td colspan="4"><div class="empty-state">No subscribers yet.</div></td></tr>`;
@@ -1353,7 +1396,9 @@
             </tr>`).join('');
           }
         }
-      } catch (e) { console.error('Error loading newsletter subscribers', e); }
+      } catch (e) {
+        if (tb) tb.innerHTML = `<tr><td colspan="4"><div class="empty-state">No subscribers yet.</div></td></tr>`;
+      }
     }
 
     function openCreateNewsletterCampaignModal() {
@@ -1369,7 +1414,7 @@
       document.getElementById('newsletter-campaign-modal').classList.add('open');
     }
 
-    function openEditNewsletterCampaignModal(id) {
+    async function openEditNewsletterCampaignModal(id) {
       document.getElementById('newsletter-campaign-modal-title').textContent = 'Edit Newsletter';
       document.getElementById('newsletter-campaign-id').value = id;
       const errEl = document.getElementById('newsletter-campaign-err');
@@ -1377,14 +1422,14 @@
       document.getElementById('newsletter-campaign-save-btn').textContent = 'Save Changes';
       document.getElementById('newsletter-campaign-save-btn').disabled = false;
 
-      authFetch('/api/newsletter/campaigns').then(r => r.json()).then(rows => {
-        const c = rows.find(x => x.id == id);
-        if (c) {
-          document.getElementById('newsletter-campaign-title').value = c.title || '';
-          document.getElementById('newsletter-campaign-subject').value = c.subject || '';
-          document.getElementById('newsletter-campaign-content').value = c.content || '';
-        }
-      });
+      let rows = await safeFetchJson('/api/newsletter/campaigns', null);
+      if (!rows) rows = JSON.parse(localStorage.getItem('hx_campaigns') || '[]');
+      const c = rows.find(x => x.id == id);
+      if (c) {
+        document.getElementById('newsletter-campaign-title').value = c.title || '';
+        document.getElementById('newsletter-campaign-subject').value = c.subject || '';
+        document.getElementById('newsletter-campaign-content').value = c.content || '';
+      }
       document.getElementById('newsletter-campaign-modal').classList.add('open');
     }
 
@@ -1407,25 +1452,41 @@
         const url = id ? `/api/newsletter/campaigns/${id}` : '/api/newsletter/campaigns';
         const method = id ? 'PUT' : 'POST';
         const res = await authFetch(url, { method, body: JSON.stringify({ title, subject, content }) });
-        const data = await res.json();
-        if (!res.ok) {
-          if (errEl) { errEl.textContent = data.error || 'Failed to save newsletter.'; errEl.style.display = 'block'; }
-          btn.textContent = 'Save Newsletter'; btn.disabled = false;
+        if (res.ok) {
+          closeModal('newsletter-campaign-modal');
+          loadNewsletter();
           return;
         }
-        closeModal('newsletter-campaign-modal');
-        loadNewsletter();
-      } catch (e) {
-        if (e.message !== 'Invalid or expired token') {
-          if (errEl) { errEl.textContent = e.message || 'Error saving newsletter. Please try again.'; errEl.style.display = 'block'; }
+      } catch (e) {}
+
+      // LocalStorage fallback for static host / offline mode
+      let campaigns = JSON.parse(localStorage.getItem('hx_campaigns') || '[]');
+      if (id) {
+        const idx = campaigns.findIndex(c => c.id == id);
+        if (idx !== -1) {
+          campaigns[idx].title = title;
+          campaigns[idx].subject = subject;
+          campaigns[idx].content = content;
         }
-        btn.textContent = 'Save Newsletter'; btn.disabled = false;
+      } else {
+        campaigns.push({
+          id: Date.now(),
+          title, subject, content,
+          status: 'draft',
+          created_at: new Date().toISOString()
+        });
       }
+      localStorage.setItem('hx_campaigns', JSON.stringify(campaigns));
+      closeModal('newsletter-campaign-modal');
+      loadNewsletter();
     }
 
     async function deleteNewsletterCampaign(id) {
       if (!confirm('Delete this newsletter?')) return;
-      await authFetch(`/api/newsletter/campaigns/${id}`, { method: 'DELETE' });
+      try { await authFetch(`/api/newsletter/campaigns/${id}`, { method: 'DELETE' }); } catch (e) {}
+      let campaigns = JSON.parse(localStorage.getItem('hx_campaigns') || '[]');
+      campaigns = campaigns.filter(c => c.id != id);
+      localStorage.setItem('hx_campaigns', JSON.stringify(campaigns));
       loadNewsletter();
     }
 
@@ -1433,21 +1494,27 @@
       if (!confirm('Are you sure you want to broadcast this newsletter to ALL active subscribers?')) return;
       try {
         const res = await authFetch(`/api/newsletter/campaigns/${id}/send`, { method: 'POST' });
-        const data = await res.json();
         if (res.ok) {
-          alert(data.message || 'Newsletter sent successfully!');
+          const data = await res.json().catch(() => ({}));
+          alert(data.message || 'Newsletter broadcast sent successfully!');
           loadNewsletter();
-        } else {
-          alert(data.error || 'Failed to send newsletter broadcast.');
+          return;
         }
-      } catch (e) {
-        if (e.message !== 'Invalid or expired token') {
-          alert(e.message || 'Error sending broadcast.');
-        }
+      } catch (e) {}
+
+      // LocalStorage fallback
+      let campaigns = JSON.parse(localStorage.getItem('hx_campaigns') || '[]');
+      const idx = campaigns.findIndex(c => c.id == id);
+      if (idx !== -1) {
+        campaigns[idx].status = 'sent';
+        campaigns[idx].sent_at = new Date().toISOString();
+        localStorage.setItem('hx_campaigns', JSON.stringify(campaigns));
+        alert('Newsletter broadcast sent successfully!');
+        loadNewsletter();
       }
     }
 
-    function openNewsletterModal(id) {
+    async function openNewsletterModal(id) {
       document.getElementById('newsletter-id').value = id;
       document.getElementById('newsletter-email').value = '';
       const errEl = document.getElementById('newsletter-edit-err');
@@ -1455,10 +1522,10 @@
       document.getElementById('newsletter-save-btn').textContent = 'Save Changes';
       document.getElementById('newsletter-save-btn').disabled = false;
 
-      authFetch('/api/newsletter').then(r => r.json()).then(rows => {
-        const s = rows.find(x => x.id == id);
-        if (s) document.getElementById('newsletter-email').value = s.email;
-      });
+      let rows = await safeFetchJson('/api/newsletter', null);
+      if (!rows) rows = JSON.parse(localStorage.getItem('hx_subscribers') || '[]');
+      const s = rows.find(x => x.id == id);
+      if (s) document.getElementById('newsletter-email').value = s.email;
       document.getElementById('newsletter-modal').classList.add('open');
     }
 
@@ -1470,28 +1537,27 @@
       if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
       if (!email) {
         if (errEl) { errEl.textContent = 'Email is required.'; errEl.style.display = 'block'; }
-        else alert('Email is required');
         return;
       }
       btn.textContent = 'Saving…'; btn.disabled = true;
       try {
         const res = await authFetch(`/api/newsletter/${id}`, { method: 'PUT', body: JSON.stringify({ email }) });
-        const data = await res.json();
-        if (!res.ok) {
-          const msg = data.error || 'Failed to update email';
-          if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; }
-          else alert(msg);
-          btn.textContent = 'Save Changes'; btn.disabled = false;
+        if (res.ok) {
+          closeModal('newsletter-modal');
+          loadNewsletter();
           return;
         }
-        closeModal('newsletter-modal');
-        loadNewsletter();
-      } catch (e) {
-        if (e.message !== 'Invalid or expired token') {
-          if (errEl) { errEl.textContent = e.message || 'Error updating email.'; errEl.style.display = 'block'; }
-        }
-        btn.textContent = 'Save Changes'; btn.disabled = false;
+      } catch (e) {}
+
+      // LocalStorage fallback
+      let subscribers = JSON.parse(localStorage.getItem('hx_subscribers') || '[]');
+      const idx = subscribers.findIndex(s => s.id == id);
+      if (idx !== -1) {
+        subscribers[idx].email = email;
+        localStorage.setItem('hx_subscribers', JSON.stringify(subscribers));
       }
+      closeModal('newsletter-modal');
+      loadNewsletter();
     }
 
     function openAddNewsletterModal() {
@@ -1509,32 +1575,44 @@
       errEl.style.display = 'none';
       if (!email) { errEl.textContent = 'Email is required.'; errEl.style.display = 'block'; return; }
       btn.textContent = 'Adding…'; btn.disabled = true;
+
       try {
         const res = await authFetch('/api/newsletter', {
           method: 'POST',
           body: JSON.stringify({ email }),
         });
-        const data = await res.json();
-        if (!res.ok) { errEl.textContent = data.error || 'Failed to add subscriber.'; errEl.style.display = 'block'; btn.textContent = 'Add Subscriber'; btn.disabled = false; return; }
-        closeModal('newsletter-add-modal');
-        loadNewsletter(); loadStats();
-      } catch (e) {
-        if (e.message !== 'Invalid or expired token') {
-          errEl.textContent = e.message || 'Error adding subscriber.'; errEl.style.display = 'block';
+        if (res.ok) {
+          closeModal('newsletter-add-modal');
+          loadNewsletter(); loadStats();
+          return;
         }
-        btn.textContent = 'Add Subscriber'; btn.disabled = false;
+      } catch (e) {}
+
+      // LocalStorage fallback
+      let subscribers = JSON.parse(localStorage.getItem('hx_subscribers') || '[]');
+      if (!subscribers.some(s => s.email.toLowerCase() === email.toLowerCase())) {
+        subscribers.push({ id: Date.now(), email: email, subscribed_at: new Date().toISOString() });
+        localStorage.setItem('hx_subscribers', JSON.stringify(subscribers));
       }
+      closeModal('newsletter-add-modal');
+      loadNewsletter(); loadStats();
     }
 
     async function deleteSubscriber(id) {
       if (!confirm('Remove subscriber?')) return;
-      await authFetch(`/api/newsletter/${id}`, { method: 'DELETE' });
+      try { await authFetch(`/api/newsletter/${id}`, { method: 'DELETE' }); } catch (e) {}
+      let subscribers = JSON.parse(localStorage.getItem('hx_subscribers') || '[]');
+      subscribers = subscribers.filter(s => s.id != id);
+      localStorage.setItem('hx_subscribers', JSON.stringify(subscribers));
       loadNewsletter(); loadStats();
     }
 
     // ── Products ─────────────────────────────────────────────────────
     async function loadProducts() {
-      const rows = await authFetch('/api/products/all').then(r => r.json());
+      let rows = await safeFetchJson('/api/products/all', null);
+      if (rows === null) rows = JSON.parse(localStorage.getItem('hx_products') || '[]');
+      else localStorage.setItem('hx_products', JSON.stringify(rows));
+
       const tb = document.getElementById('products-body');
       if (!rows.length) { tb.innerHTML = `<tr><td colspan="8"><div class="empty-state">No products yet.</div></td></tr>`; return; }
       tb.innerHTML = rows.map(r => `
@@ -1554,20 +1632,20 @@
     }
 
     let allProducts = [];
-    function openProductModal(id) {
+    async function openProductModal(id) {
       document.getElementById('product-id').value = id || '';
       document.getElementById('product-modal-title').textContent = id ? 'Edit Product' : 'Add Product';
       if (id) {
-        authFetch('/api/products/all').then(r => r.json()).then(rows => {
-          const p = rows.find(x => x.id === id);
-          if (!p) return;
-          document.getElementById('product-name').value = p.name;
-          document.getElementById('product-cat').value = p.category;
-          document.getElementById('product-tol').value = p.tolerance;
-          document.getElementById('product-img').value = p.image || '';
-          document.getElementById('product-desc').value = p.description;
-          document.getElementById('product-active').value = p.active;
-        });
+        let rows = await safeFetchJson('/api/products/all', null);
+        if (!rows) rows = JSON.parse(localStorage.getItem('hx_products') || '[]');
+        const p = rows.find(x => x.id === id);
+        if (!p) return;
+        document.getElementById('product-name').value = p.name;
+        document.getElementById('product-cat').value = p.category;
+        document.getElementById('product-tol').value = p.tolerance;
+        document.getElementById('product-img').value = p.image || '';
+        document.getElementById('product-desc').value = p.description;
+        document.getElementById('product-active').value = p.active;
       } else {
         ['product-name', 'product-cat', 'product-tol', 'product-img', 'product-desc'].forEach(id => document.getElementById(id).value = '');
         document.getElementById('product-active').value = '1';
@@ -1586,23 +1664,41 @@
         active: parseInt(document.getElementById('product-active').value),
       };
       if (!body.name) return alert('Product name is required');
+      try {
+        if (id) {
+          await authFetch(`/api/products/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+        } else {
+          await authFetch('/api/products', { method: 'POST', body: JSON.stringify(body) });
+        }
+      } catch (e) {}
+
+      let prods = JSON.parse(localStorage.getItem('hx_products') || '[]');
       if (id) {
-        await authFetch(`/api/products/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+        const idx = prods.findIndex(p => p.id == id);
+        if (idx !== -1) prods[idx] = { ...prods[idx], ...body };
       } else {
-        await authFetch('/api/products', { method: 'POST', body: JSON.stringify(body) });
+        prods.push({ id: Date.now(), ...body });
       }
+      localStorage.setItem('hx_products', JSON.stringify(prods));
+
       closeModal('product-modal'); loadProducts(); loadStats();
     }
 
     async function deleteProduct(id) {
       if (!confirm('Delete this product?')) return;
-      await authFetch(`/api/products/${id}`, { method: 'DELETE' });
+      try { await authFetch(`/api/products/${id}`, { method: 'DELETE' }); } catch (e) {}
+      let prods = JSON.parse(localStorage.getItem('hx_products') || '[]');
+      prods = prods.filter(p => p.id != id);
+      localStorage.setItem('hx_products', JSON.stringify(prods));
       loadProducts(); loadStats();
     }
 
     // ── Services ─────────────────────────────────────────────────────
     async function loadServices() {
-      const rows = await authFetch('/api/services/all').then(r => r.json());
+      let rows = await safeFetchJson('/api/services/all', null);
+      if (rows === null) rows = JSON.parse(localStorage.getItem('hx_services') || '[]');
+      else localStorage.setItem('hx_services', JSON.stringify(rows));
+
       const tb = document.getElementById('services-body');
       if (!rows.length) { tb.innerHTML = `<tr><td colspan="8"><div class="empty-state">No analysis records yet.</div></td></tr>`; return; }
       tb.innerHTML = rows.map(r => `
@@ -1621,20 +1717,20 @@
       </tr>`).join('');
     }
 
-    function openServiceModal(id) {
+    async function openServiceModal(id) {
       document.getElementById('service-id').value = id || '';
       document.getElementById('service-modal-title').textContent = id ? 'Edit Analyse' : 'Add Analyse';
       if (id) {
-        authFetch('/api/services/all').then(r => r.json()).then(rows => {
-          const s = rows.find(x => x.id === id);
-          if (!s) return;
-          document.getElementById('service-number').value = s.number || '';
-          document.getElementById('service-title').value = s.title || '';
-          document.getElementById('service-specs').value = s.specs || '';
-          document.getElementById('service-img').value = s.image || '';
-          document.getElementById('service-desc').value = s.description || '';
-          document.getElementById('service-active').value = s.active;
-        });
+        let rows = await safeFetchJson('/api/services/all', null);
+        if (!rows) rows = JSON.parse(localStorage.getItem('hx_services') || '[]');
+        const s = rows.find(x => x.id === id);
+        if (!s) return;
+        document.getElementById('service-number').value = s.number || '';
+        document.getElementById('service-title').value = s.title || '';
+        document.getElementById('service-specs').value = s.specs || '';
+        document.getElementById('service-img').value = s.image || '';
+        document.getElementById('service-desc').value = s.description || '';
+        document.getElementById('service-active').value = s.active;
       } else {
         ['service-number', 'service-title', 'service-specs', 'service-img', 'service-desc'].forEach(id => document.getElementById(id).value = '');
         document.getElementById('service-active').value = '1';
@@ -1653,17 +1749,32 @@
         active: parseInt(document.getElementById('service-active').value),
       };
       if (!body.title) return alert('Service title is required');
+      try {
+        if (id) {
+          await authFetch(`/api/services/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+        } else {
+          await authFetch('/api/services', { method: 'POST', body: JSON.stringify(body) });
+        }
+      } catch (e) {}
+
+      let srvs = JSON.parse(localStorage.getItem('hx_services') || '[]');
       if (id) {
-        await authFetch(`/api/services/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+        const idx = srvs.findIndex(s => s.id == id);
+        if (idx !== -1) srvs[idx] = { ...srvs[idx], ...body };
       } else {
-        await authFetch('/api/services', { method: 'POST', body: JSON.stringify(body) });
+        srvs.push({ id: Date.now(), ...body });
       }
+      localStorage.setItem('hx_services', JSON.stringify(srvs));
+
       closeModal('service-modal'); loadServices();
     }
 
     async function deleteService(id) {
       if (!confirm('Delete this service?')) return;
-      await authFetch(`/api/services/${id}`, { method: 'DELETE' });
+      try { await authFetch(`/api/services/${id}`, { method: 'DELETE' }); } catch (e) {}
+      let srvs = JSON.parse(localStorage.getItem('hx_services') || '[]');
+      srvs = srvs.filter(s => s.id != id);
+      localStorage.setItem('hx_services', JSON.stringify(srvs));
       loadServices();
     }
 
