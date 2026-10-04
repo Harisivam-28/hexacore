@@ -2,7 +2,8 @@
     RewriteEngine On
     RewriteBase /
 
-    # Native Hostinger API Endpoints (Contact form, Quote request, Health check)
+    # Native Hostinger API Endpoints (Contact form, Quote request, Health check, Admin Login)
+    RewriteRule ^api/login/?$ api/login.php [L,QSA]
     RewriteRule ^api/contacts/?$ api/contacts.php [L,QSA]
     RewriteRule ^api/quotes/?$ api/quotes.php [L,QSA]
     RewriteRule ^api/health/?$ api/health.php [L,QSA]
