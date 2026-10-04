@@ -2,10 +2,10 @@
     RewriteEngine On
     RewriteBase /
 
-    # Proxy /api requests to local Node.js process if running on port 3000
-    <IfModule mod_proxy.c>
-        RewriteRule ^api/(.*)$ http://127.0.0.1:3000/api/$1 [P,L]
-    </IfModule>
+    # Native Hostinger API Endpoints (Contact form, Quote request, Health check)
+    RewriteRule ^api/contacts/?$ api/contacts.php [L,QSA]
+    RewriteRule ^api/quotes/?$ api/quotes.php [L,QSA]
+    RewriteRule ^api/health/?$ api/health.php [L,QSA]
 
     # Redirect /index.html and /frontend.html to /
     RewriteCond %{THE_REQUEST} \s/+(index|frontend)\.html[\s?] [NC]
