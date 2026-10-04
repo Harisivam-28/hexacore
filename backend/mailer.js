@@ -4,16 +4,35 @@
  * Credentials and server settings are loaded from .env.
  */
 
+const path = require('path');
+const dotenv = require('dotenv');
 const nodemailer = require('nodemailer');
+
+// Ensure root .env is loaded whenever mailer.js is loaded
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 // ── Transporter Setup ───────────────────────────────────────────
 let transporter;
 
-const mailHost = process.env.MAIL_HOST || 'smtp.hostinger.com';
-const mailPort = parseInt(process.env.MAIL_PORT || '465', 10);
+const mailHost   = process.env.MAIL_HOST || 'smtp.hostinger.com';
+const mailPort   = parseInt(process.env.MAIL_PORT || '465', 10);
 const mailSecure = process.env.MAIL_SECURE !== undefined ? (process.env.MAIL_SECURE === 'true') : (mailPort === 465);
-const mailUser = process.env.MAIL_USER || '';
-const mailPass = process.env.MAIL_PASS || '';
+const mailUser   = process.env.MAIL_USER || '';
+const mailPass   = process.env.MAIL_PASS || '';
+
+function getCompanyName() {
+  return process.env.COMPANY_NAME || 'Hexacore Precision Technologies';
+}
+
+function getCompanyEmail() {
+  return process.env.COMPANY_EMAIL || process.env.MAIL_USER || 'info@hexacoreprecision.com';
+}
+
+function getFromAddress() {
+  const user = process.env.MAIL_USER || getCompanyEmail();
+  const name = getCompanyName();
+  return `"${name}" <${user}>`;
+}
 
 if (mailUser && mailPass) {
   transporter = nodemailer.createTransport({
@@ -24,9 +43,12 @@ if (mailUser && mailPass) {
       user: mailUser,
       pass: mailPass,
     },
-    // Optional timeout settings for reliable delivery
+    tls: {
+      rejectUnauthorized: false,
+    },
     connectionTimeout: 10000,
     greetingTimeout: 10000,
+    socketTimeout: 15000,
   });
 
   transporter.verify(err => {
@@ -54,6 +76,11 @@ function setupMockTransporter() {
       return { messageId: 'mock-id-' + Date.now() };
     }
   };
+}
+
+function getTransporter() {
+  if (!transporter) setupMockTransporter();
+  return transporter;
 }
 
 // ── Internal helpers ────────────────────────────────────────────
@@ -108,7 +135,7 @@ function htmlShell(title, body) {
       ${body}
     </div>
     <div class="footer">
-      <p>Hexacore Precision Technologies &nbsp;|&nbsp; <a href="mailto:${process.env.COMPANY_EMAIL}">${process.env.COMPANY_EMAIL}</a></p>
+      <p>Hexacore Precision Technologies &nbsp;|&nbsp; <a href="mailto:${getCompanyEmail()}">${getCompanyEmail()}</a></p>
       <p style="margin-top:6px;">This is an automated notification. Do not reply to this email directly.</p>
     </div>
   </div>
@@ -161,9 +188,9 @@ async function sendContactNotification({ name, company, email, phone, subject, m
     </p>
   `);
 
-  return transporter.sendMail({
-    from: `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
-    to: process.env.COMPANY_EMAIL,
+  return getTransporter().sendMail({
+    from: getFromAddress(),
+    to: getCompanyEmail(),
     replyTo: email,
     subject: `[Contact] ${subject || 'New Enquiry'} — ${name}`,
     html,
@@ -176,7 +203,7 @@ async function sendContactNotification({ name, company, email, phone, subject, m
 async function sendContactConfirmation({ name, email, subject, message }) {
   const html = htmlShell('We received your message', `
     <div class="badge">Message Received</div>
-    <div class="title">Thank You, ${escHtml(name.split(' ')[0])}</div>
+    <div class="title">Thank You, ${escHtml((name || '').split(' ')[0])}</div>
 
     <p style="font-size:15px;line-height:1.7;color:#2e3f56;margin-bottom:20px;">
       We've received your enquiry and one of our engineers will review it shortly.
@@ -195,16 +222,21 @@ async function sendContactConfirmation({ name, email, subject, message }) {
 
     <p style="margin-top:24px;font-size:13px;color:#5b6b7f;">
       If this is urgent, you can also reach us directly at
-      <a href="mailto:${process.env.COMPANY_EMAIL}" style="color:#F47B20">${process.env.COMPANY_EMAIL}</a>.
+      <a href="mailto:${getCompanyEmail()}" style="color:#F47B20">${getCompanyEmail()}</a>.
     </p>
   `);
 
-  return transporter.sendMail({
-    from: `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
-    to: email,
-    subject: `We received your message — Hexacore Precision Technologies`,
-    html,
-  });
+  try {
+    return await getTransporter().sendMail({
+      from: getFromAddress(),
+      to: email,
+      subject: `We received your message — ${getCompanyName()}`,
+      html,
+    });
+  } catch (err) {
+    console.warn(`⚠️ Could not deliver auto-reply confirmation to ${email}:`, err.message);
+    return { error: err.message, status: 'failed_auto_reply' };
+  }
 }
 
 /**
@@ -250,9 +282,9 @@ async function sendQuoteNotification({ name, company, email, phone, subject, mes
     </p>
   `);
 
-  return transporter.sendMail({
-    from: `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
-    to: process.env.COMPANY_EMAIL,
+  return getTransporter().sendMail({
+    from: getFromAddress(),
+    to: getCompanyEmail(),
     replyTo: email,
     subject: `[Quote] ${subject || 'New Request'} — ${company || name}`,
     html,
@@ -265,7 +297,7 @@ async function sendQuoteNotification({ name, company, email, phone, subject, mes
 async function sendQuoteConfirmation({ name, email }) {
   const html = htmlShell('Quote request received', `
     <div class="badge">Quote Request Received</div>
-    <div class="title">We'll Be In Touch, ${escHtml(name.split(' ')[0])}</div>
+    <div class="title">We'll Be In Touch, ${escHtml((name || '').split(' ')[0])}</div>
 
     <p style="font-size:15px;line-height:1.7;color:#2e3f56;margin-bottom:20px;">
       Your quote request has been logged and assigned to our engineering team.
@@ -275,16 +307,21 @@ async function sendQuoteConfirmation({ name, email }) {
 
     <p style="font-size:13px;line-height:1.7;color:#5b6b7f;">
       For faster turnaround, you're welcome to send drawings or CAD files directly to
-      <a href="mailto:${process.env.COMPANY_EMAIL}" style="color:#F47B20">${process.env.COMPANY_EMAIL}</a>.
+      <a href="mailto:${getCompanyEmail()}" style="color:#F47B20">${getCompanyEmail()}</a>.
     </p>
   `);
 
-  return transporter.sendMail({
-    from: `"${process.env.COMPANY_NAME}" <${process.env.MAIL_USER}>`,
-    to: email,
-    subject: `Your quote request — Hexacore Precision Technologies`,
-    html,
-  });
+  try {
+    return await getTransporter().sendMail({
+      from: getFromAddress(),
+      to: email,
+      subject: `Your quote request — ${getCompanyName()}`,
+      html,
+    });
+  } catch (err) {
+    console.warn(`⚠️ Could not deliver quote auto-reply confirmation to ${email}:`, err.message);
+    return { error: err.message, status: 'failed_auto_reply' };
+  }
 }
 
 /**
@@ -306,8 +343,8 @@ async function sendNewsletterBroadcast({ title, subject, content, recipients }) 
   let count = 0;
   for (const recipientEmail of recipients) {
     try {
-      await transporter.sendMail({
-        from: `"${process.env.COMPANY_NAME || 'Hexacore Precision'}" <${process.env.MAIL_USER}>`,
+      await getTransporter().sendMail({
+        from: getFromAddress(),
         to: recipientEmail,
         subject: subject,
         html: html,
@@ -332,3 +369,4 @@ module.exports = {
   sendQuoteConfirmation,
   sendNewsletterBroadcast,
 };
+
