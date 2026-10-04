@@ -1,631 +1,1208 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Admin — Hexacore Precision Technologies</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@700;800&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Barlow+Semi+Condensed:wght@700;800&family=IBM+Plex+Mono:wght@500&display=swap"
+    rel="stylesheet">
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon_square.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
   <style>
     :root {
-      --navy:#0B1F3A; --navy-dark:#071527; --navy-mid:#12294c;
-      --orange:#F47B20; --orange-dark:#D9660D;
-      --bg:#f4f6f9; --surface:#ffffff; --surface2:#f1f5f9;
-      --border:#e2e8f0; --text:#334155; --muted:#64748b;
-      --green:#16a34a; --red:#dc2626; --yellow:#ca8a04;
-      --title:#0f172a;
+      --navy: #0B1F3A;
+      --navy-dark: #071527;
+      --navy-mid: #12294c;
+      --orange: #F47B20;
+      --orange-dark: #D9660D;
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --surface2: #f1f5f9;
+      --border: #e2e8f0;
+      --text: #334155;
+      --muted: #64748b;
+      --green: #16a34a;
+      --red: #dc2626;
+      --yellow: #ca8a04;
+      --title: #0f172a;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; display: flex; overflow-x: hidden; }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      overflow-x: hidden;
+    }
 
     /* ── Login Screen ── */
     #login-screen {
-      position: fixed; inset: 0; background: var(--bg);
-      display: flex; align-items: center; justify-content: center; z-index: 999;
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
     }
+
     .login-card {
-      background: var(--surface); border: 1px solid var(--border);
-      padding: 48px 44px; width: 100%; max-width: 380px; margin: 16px; border-top: 3px solid var(--orange);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 48px 44px;
+      width: 100%;
+      max-width: 380px;
+      margin: 16px;
+      border-top: 3px solid var(--orange);
     }
-    .login-card .logo { display: flex; align-items: center; gap: 12px; margin-bottom: 32px; }
+
+    .login-card .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
     .hex-icon {
-      width: 38px; height: 38px;
+      width: 38px;
+      height: 38px;
       background: linear-gradient(145deg, var(--orange), var(--orange-dark));
       clip-path: polygon(25% 3%, 75% 3%, 100% 50%, 75% 97%, 25% 97%, 0% 50%);
-      display: flex; align-items: center; justify-content: center;
-      font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 800;
-      color: var(--navy-dark); font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-weight: 800;
+      color: var(--navy-dark);
+      font-size: 16px;
     }
-    .login-card .logo-text { font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 800; color: var(--title); font-size: 18px; }
-    .login-card .logo-sub  { font-size: 10px; color: var(--muted); letter-spacing:.1em; text-transform:uppercase; margin-top:2px; }
-    .login-card h2 { font-size: 22px; color: var(--title); margin-bottom: 6px; font-family: 'Barlow Semi Condensed', sans-serif; }
-    .login-card p  { font-size: 13px; color: var(--muted); margin-bottom: 28px; }
-    .f-label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing:.06em; color: var(--muted); margin-bottom: 7px; }
+
+    .login-card .logo-text {
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-weight: 800;
+      color: var(--title);
+      font-size: 18px;
+    }
+
+    .login-card .logo-sub {
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .login-card h2 {
+      font-size: 22px;
+      color: var(--title);
+      margin-bottom: 6px;
+      font-family: 'Barlow Semi Condensed', sans-serif;
+    }
+
+    .login-card p {
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .f-label {
+      display: block;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+
     .f-input {
-      width: 100%; padding: 11px 14px; background: var(--surface); border: 1px solid var(--border);
-      color: var(--title); font-size: 14px; font-family: 'Inter', sans-serif; margin-bottom: 16px;
-      outline: none; transition: border .15s;
+      width: 100%;
+      padding: 11px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--title);
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      margin-bottom: 16px;
+      outline: none;
+      transition: border .15s;
     }
-    .f-input:focus { border-color: var(--orange); }
+
+    .f-input:focus {
+      border-color: var(--orange);
+    }
+
     .btn-login {
-      width: 100%; padding: 13px; background: var(--orange); color: #fff;
-      border: none; font-weight: 700; font-size: 14px; text-transform: uppercase;
-      letter-spacing: .04em; cursor: pointer; transition: .15s;
+      width: 100%;
+      padding: 13px;
+      background: var(--orange);
+      color: #fff;
+      border: none;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: .15s;
     }
-    .btn-login:hover { background: var(--orange-dark); }
-    .login-err { color: var(--red); font-size: 12.5px; margin-top: 12px; display: none; }
+
+    .btn-login:hover {
+      background: var(--orange-dark);
+    }
+
+    .login-err {
+      color: var(--red);
+      font-size: 12.5px;
+      margin-top: 12px;
+      display: none;
+    }
 
     /* ── Sidebar ── */
     .sidebar {
-      width: 240px; flex: none; background: var(--surface);
-      border-right: 1px solid var(--border); display: flex; flex-direction: column;
-      position: sticky; top: 0; height: 100vh; overflow-y: auto;
+      width: 240px;
+      flex: none;
+      background: var(--surface);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
     }
+
     .sidebar-brand {
-      padding: 24px 20px; border-bottom: 1px solid var(--border);
-      display: flex; align-items: center; gap: 10px;
+      padding: 24px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-    .sidebar-brand .name { font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 800; color: var(--title); font-size: 17px; }
-    .sidebar-brand .sub  { font-size: 9.5px; color: var(--muted); letter-spacing:.1em; text-transform: uppercase; }
-    .nav-section { padding: 18px 0 8px; }
-    .nav-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); padding: 0 20px; margin-bottom: 6px; }
+
+    .sidebar-brand .name {
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-weight: 800;
+      color: var(--title);
+      font-size: 17px;
+    }
+
+    .sidebar-brand .sub {
+      font-size: 9.5px;
+      color: var(--muted);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .nav-section {
+      padding: 18px 0 8px;
+    }
+
+    .nav-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--muted);
+      padding: 0 20px;
+      margin-bottom: 6px;
+    }
+
     .nav-item {
-      display: flex; align-items: center; gap: 10px; padding: 10px 20px;
-      color: var(--muted); font-size: 13.5px; font-weight: 500; cursor: pointer;
-      border-left: 3px solid transparent; transition: .15s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 20px;
+      color: var(--muted);
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: .15s;
     }
-    .nav-item:hover { color: var(--title); background: var(--surface2); }
-    .nav-item.active { color: var(--orange); border-left-color: var(--orange); background: rgba(244,123,32,.07); }
-    .nav-item svg { width: 16px; height: 16px; flex: none; }
+
+    .nav-item:hover {
+      color: var(--title);
+      background: var(--surface2);
+    }
+
+    .nav-item.active {
+      color: var(--orange);
+      border-left-color: var(--orange);
+      background: rgba(244, 123, 32, .07);
+    }
+
+    .nav-item svg {
+      width: 16px;
+      height: 16px;
+      flex: none;
+    }
+
     .sidebar-footer {
-      margin-top: auto; padding: 18px 20px; border-top: 1px solid var(--border);
-      font-size: 12px; color: var(--muted);
+      margin-top: auto;
+      padding: 18px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 12px;
+      color: var(--muted);
     }
+
     .btn-logout {
-      width: 100%; padding: 9px; background: transparent; border: 1px solid var(--border);
-      color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing:.04em;
-      cursor: pointer; margin-top: 10px; transition: .15s;
+      width: 100%;
+      padding: 9px;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: .15s;
     }
-    .btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+    .btn-logout:hover {
+      border-color: var(--red);
+      color: var(--red);
+    }
 
     /* ── Main Content ── */
-    .main { flex: 1; overflow-x: hidden; }
-    .topbar {
-      background: var(--surface); border-bottom: 1px solid var(--border);
-      padding: 16px 32px; display: flex; align-items: center; justify-content: space-between;
-      position: sticky; top: 0; z-index: 10;
+    .main {
+      flex: 1;
+      overflow-x: hidden;
     }
-    .topbar h1 { font-family: 'Barlow Semi Condensed', sans-serif; font-size: 22px; color: var(--title); text-transform: uppercase; }
-    .topbar .badge { background: rgba(244,123,32,.15); color: var(--orange); font-size: 11px; font-family: 'IBM Plex Mono', monospace; padding: 4px 10px; letter-spacing:.05em; }
 
-    .content { padding: 32px; }
+    .topbar {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar h1 {
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-size: 22px;
+      color: var(--title);
+      text-transform: uppercase;
+    }
+
+    .topbar .badge {
+      background: rgba(244, 123, 32, .15);
+      color: var(--orange);
+      font-size: 11px;
+      font-family: 'IBM Plex Mono', monospace;
+      padding: 4px 10px;
+      letter-spacing: .05em;
+    }
+
+    .content {
+      padding: 32px;
+    }
 
     /* ── Stat Cards ── */
-    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 32px; }
-    .stat-card {
-      background: var(--surface); border: 1px solid var(--border);
-      border-top: 3px solid var(--orange); padding: 22px 24px;
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 32px;
     }
-    .stat-card .label { font-size: 11px; text-transform: uppercase; letter-spacing:.08em; color: var(--muted); margin-bottom: 10px; }
-    .stat-card .value { font-family: 'Barlow Semi Condensed', sans-serif; font-size: 36px; color: var(--title); font-weight: 800; }
-    .stat-card .sub   { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--orange);
+      padding: 22px 24px;
+    }
+
+    .stat-card .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .stat-card .value {
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-size: 36px;
+      color: var(--title);
+      font-weight: 800;
+    }
+
+    .stat-card .sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
 
     /* ── Tabs / Panels ── */
-    .panel { display: none; }
-    .panel.active { display: block; }
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
 
     /* ── Table ── */
-    .table-wrap { background: var(--surface); border: 1px solid var(--border); overflow-x: auto; }
-    .table-header { padding: 20px 24px 14px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border); }
-    .table-header h3 { font-family: 'Barlow Semi Condensed', sans-serif; font-size: 18px; color: var(--title); text-transform: uppercase; }
-    table { width: 100%; border-collapse: collapse; }
-    thead th { background: var(--surface2); color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing:.06em; padding: 10px 18px; text-align: left; border-bottom: 1px solid var(--border); }
-    tbody tr { border-bottom: 1px solid var(--border); transition: background .12s; }
-    tbody tr:hover { background: var(--surface2); }
-    tbody td { padding: 12px 18px; font-size: 13px; color: var(--text); vertical-align: middle; }
-    .mono { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; }
+    .table-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      overflow-x: auto;
+    }
+
+    .table-header {
+      padding: 20px 24px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .table-header h3 {
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-size: 18px;
+      color: var(--title);
+      text-transform: uppercase;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead th {
+      background: var(--surface2);
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      padding: 10px 18px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid var(--border);
+      transition: background .12s;
+    }
+
+    tbody tr:hover {
+      background: var(--surface2);
+    }
+
+    tbody td {
+      padding: 12px 18px;
+      font-size: 13px;
+      color: var(--text);
+      vertical-align: middle;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11.5px;
+    }
 
     /* Status badges */
     .badge-status {
-      display: inline-block; padding: 3px 10px; border-radius: 2px;
-      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing:.04em;
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 2px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .04em;
     }
-    .badge-new     { background: rgba(34,197,94,.15);   color: var(--green); }
-    .badge-pending { background: rgba(245,158,11,.15);   color: var(--yellow); }
-    .badge-read    { background: rgba(107,127,158,.15);  color: var(--muted); }
-    .badge-done    { background: rgba(34,197,94,.15);   color: var(--green); }
+
+    .badge-new {
+      background: rgba(34, 197, 94, .15);
+      color: var(--green);
+    }
+
+    .badge-pending {
+      background: rgba(245, 158, 11, .15);
+      color: var(--yellow);
+    }
+
+    .badge-read {
+      background: rgba(107, 127, 158, .15);
+      color: var(--muted);
+    }
+
+    .badge-done {
+      background: rgba(34, 197, 94, .15);
+      color: var(--green);
+    }
 
     /* Action buttons */
     .btn-action {
-      padding: 5px 12px; font-size: 11px; font-weight: 700; text-transform: uppercase;
-      letter-spacing:.03em; cursor: pointer; border: none; border-radius: 2px; margin-right: 4px;
+      padding: 5px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      cursor: pointer;
+      border: none;
+      border-radius: 2px;
+      margin-right: 4px;
     }
-    .btn-mark { background: rgba(34,197,94,.15); color: var(--green); }
-    .btn-del  { background: rgba(239,68,68,.15);  color: var(--red); }
-    .btn-add  { background: var(--orange); color: #fff; padding: 9px 18px; font-size: 12px; }
+
+    .btn-mark {
+      background: rgba(34, 197, 94, .15);
+      color: var(--green);
+    }
+
+    .btn-del {
+      background: rgba(239, 68, 68, .15);
+      color: var(--red);
+    }
+
+    .btn-add {
+      background: var(--orange);
+      color: #fff;
+      padding: 9px 18px;
+      font-size: 12px;
+    }
 
     /* Modal */
     .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,.7);
-      display: none; align-items: center; justify-content: center; z-index: 100;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .7);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
     }
-    .modal-overlay.open { display: flex; }
-    .modal {
-      background: var(--surface); border: 1px solid var(--border); border-top: 3px solid var(--orange);
-      padding: 36px; width: 500px; max-width: 95vw; max-height: 90vh; overflow-y: auto;
-    }
-    .modal h3 { font-family: 'Barlow Semi Condensed', sans-serif; font-size: 20px; color: var(--title); text-transform: uppercase; margin-bottom: 22px; }
-    .modal .f-input { margin-bottom: 14px; }
-    .modal-actions { display: flex; gap: 10px; margin-top: 8px; }
-    .btn-save { background: var(--orange); color: #fff; padding: 11px 22px; font-weight:700; font-size:13px; text-transform:uppercase; border:none; cursor:pointer; }
-    .btn-cancel { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 11px 18px; font-size:13px; cursor:pointer; }
 
-    .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); font-size: 14px; }
-    .empty-state svg { width: 40px; height: 40px; margin: 0 auto 14px; opacity: .4; display: block; }
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--orange);
+      padding: 36px;
+      width: 500px;
+      max-width: 95vw;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal h3 {
+      font-family: 'Barlow Semi Condensed', sans-serif;
+      font-size: 20px;
+      color: var(--title);
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .modal .f-input {
+      margin-bottom: 14px;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .btn-save {
+      background: var(--orange);
+      color: #fff;
+      padding: 11px 22px;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-cancel {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 11px 18px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .empty-state svg {
+      width: 40px;
+      height: 40px;
+      margin: 0 auto 14px;
+      opacity: .4;
+      display: block;
+    }
 
     @media(max-width: 900px) {
-      .sidebar { width: 64px; }
-      .sidebar-logo-img { content: url('../images/hexacore_icon.png'); height: 36px !important; }
-      .sidebar .nav-label, .sidebar .nav-item span, .sidebar-brand .brand-text-wrap,
-      .sidebar-footer .admin-name, .btn-logout { display: none; }
-      .nav-item { justify-content: center; padding: 14px; }
-      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .sidebar {
+        width: 64px;
+      }
+
+      .sidebar-logo-img {
+        content: url('../images/hexacore_icon.png');
+        height: 36px !important;
+      }
+
+      .sidebar .nav-label,
+      .sidebar .nav-item span,
+      .sidebar-brand .brand-text-wrap,
+      .sidebar-footer .admin-name,
+      .btn-logout {
+        display: none;
+      }
+
+      .nav-item {
+        justify-content: center;
+        padding: 14px;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media(max-width: 600px) {
-      .login-card { padding: 32px 20px; }
-      .topbar { padding: 12px 16px; }
-      .topbar h1 { font-size: 18px; }
-      .content { padding: 16px 12px; }
-      .stats-grid { grid-template-columns: 1fr; gap: 12px; }
-      .modal { padding: 24px 16px; width: 94vw; }
-      .table-header { flex-direction: column; align-items: flex-start; gap: 10px; }
-      table th, table td { padding: 8px 10px; font-size: 12px; }
+      .login-card {
+        padding: 32px 20px;
+      }
+
+      .topbar {
+        padding: 12px 16px;
+      }
+
+      .topbar h1 {
+        font-size: 18px;
+      }
+
+      .content {
+        padding: 16px 12px;
+      }
+
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .modal {
+        padding: 24px 16px;
+        width: 94vw;
+      }
+
+      .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      table th,
+      table td {
+        padding: 8px 10px;
+        font-size: 12px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<!-- ── Login Screen ── -->
-<div id="login-screen">
-  <div class="login-card">
-    <div class="logo" style="margin-bottom: 24px; justify-content: center;">
-      <img src="../images/hexacore_logo_badge.png" alt="Hexacore Precision Technologies" style="height: 64px; width: auto; max-width: 100%; filter: drop-shadow(0 4px 12px rgba(11,31,58,0.15));">
-    </div>
-    <h2>Welcome Back</h2>
-    <p>Sign in to manage your website content.</p>
-    <label class="f-label">Username</label>
-    <input class="f-input" id="login-user" type="text" placeholder="admin" autocomplete="username">
-    <label class="f-label">Password</label>
-    <input class="f-input" id="login-pass" type="password" placeholder="••••••••••" autocomplete="current-password">
-    <button class="btn-login" onclick="doLogin()">Sign In →</button>
-    <div class="login-err" id="login-err">Invalid username or password.</div>
-  </div>
-</div>
-
-<!-- ── App Shell ── -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-brand" style="display: flex; align-items: center; justify-content: center; padding: 16px 14px; border-bottom: 1px solid var(--border); cursor: pointer;" onclick="window.location.href='../'">
-    <img src="../images/hexacore_logo_badge.png" alt="Hexacore" class="sidebar-logo-img" style="height: 48px; width: auto; max-width: 100%; object-fit: contain;">
-  </div>
-
-  <div class="nav-section">
-    <div class="nav-label">Overview</div>
-    <div class="nav-item active" onclick="showPanel('dashboard')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-      <span>Dashboard</span>
-    </div>
-  </div>
-
-  <div class="nav-section">
-    <div class="nav-label">Enquiries</div>
-    <div class="nav-item" onclick="showPanel('contacts')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M4 6.5l8 6 8-6"/></svg>
-      <span>Contact Forms</span>
-    </div>
-    <div class="nav-item" onclick="showPanel('quotes')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2h9l3 3v17H6z"/><path d="M15 2v3h3M9 12h6M9 15.5h6M9 8.5h3"/></svg>
-      <span>Quote Requests</span>
-    </div>
-    <div class="nav-item" onclick="showPanel('newsletter')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v16H4z"/><path d="M4 8l8 5 8-5"/></svg>
-      <span>Newsletter</span>
-    </div>
-  </div>
-
-  <div class="nav-section">
-    <div class="nav-label">Content</div>
-    <div class="nav-item" onclick="showPanel('products')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l8 3v6c0 5-3.4 8.7-8 11-4.6-2.3-8-6-8-11V5z"/></svg>
-      <span>Products</span>
-    </div>
-    <div class="nav-item" onclick="showPanel('services')">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2 2M17.8 17.8l2 2M2 12h3M19 12h3M4.2 19.8l2-2M17.8 6.2l2-2"/></svg>
-      <span>Analyse</span>
-    </div>
-  </div>
-
-  <div class="sidebar-footer">
-    <div class="admin-name" id="admin-name" style="font-size:12px;margin-bottom:6px;color:var(--title);"></div>
-    <button class="btn-logout" onclick="logout()">Sign Out</button>
-  </div>
-</aside>
-
-<!-- ── Main ── -->
-<div class="main">
-  <div class="topbar">
-    <h1 id="panel-title">Dashboard</h1>
-    <span class="badge" id="panel-time"></span>
-  </div>
-
-  <div class="content">
-
-    <!-- DASHBOARD -->
-    <div class="panel active" id="panel-dashboard">
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="label">Contact Forms</div>
-          <div class="value" id="stat-contacts">—</div>
-          <div class="sub">Total submissions</div>
-        </div>
-        <div class="stat-card">
-          <div class="label">Quote Requests</div>
-          <div class="value" id="stat-quotes">—</div>
-          <div class="sub">Total requests</div>
-        </div>
-        <div class="stat-card">
-          <div class="label">Subscribers</div>
-          <div class="value" id="stat-newsletter">—</div>
-          <div class="sub">Newsletter list</div>
-        </div>
-        <div class="stat-card">
-          <div class="label">Products</div>
-          <div class="value" id="stat-products">—</div>
-          <div class="sub">Active listings</div>
-        </div>
+  <!-- ── Login Screen ── -->
+  <div id="login-screen">
+    <div class="login-card">
+      <div class="logo" style="margin-bottom: 24px; justify-content: center;">
+        <img src="../images/hexacore_logo_badge.png" alt="Hexacore Precision Technologies"
+          style="height: 64px; width: auto; max-width: 100%; filter: drop-shadow(0 4px 12px rgba(11,31,58,0.15));">
       </div>
-      <div style="background:var(--surface);border:1px solid var(--border);padding:28px 26px;">
-        <h3 style="font-family:'Barlow Semi Condensed',sans-serif;font-size:18px;color:var(--title);text-transform:uppercase;margin-bottom:14px;">Quick Links</h3>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="/" target="_blank" style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 18px;font-size:13px;text-decoration:none;">🌐 View Website</a>
-          <button class="btn-action btn-add" onclick="showPanel('contacts')">View Contacts</button>
-          <button class="btn-action btn-add" onclick="showPanel('quotes')">View Quotes</button>
-          <button class="btn-action btn-add" onclick="showPanel('products')">Manage Products</button>
-        </div>
+      <h2>Welcome Back</h2>
+      <p>Sign in to manage your website content.</p>
+      <label class="f-label">Username</label>
+      <input class="f-input" id="login-user" type="text" placeholder="admin" autocomplete="username">
+      <label class="f-label">Password</label>
+      <input class="f-input" id="login-pass" type="password" placeholder="••••••••••" autocomplete="current-password">
+      <button class="btn-login" onclick="doLogin()">Sign In →</button>
+      <div class="login-err" id="login-err">Invalid username or password.</div>
+    </div>
+  </div>
+
+  <!-- ── App Shell ── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand"
+      style="display: flex; align-items: center; justify-content: center; padding: 16px 14px; border-bottom: 1px solid var(--border); cursor: pointer;"
+      onclick="window.location.href='../'">
+      <img src="../images/hexacore_logo_badge.png" alt="Hexacore" class="sidebar-logo-img"
+        style="height: 48px; width: auto; max-width: 100%; object-fit: contain;">
+    </div>
+
+    <div class="nav-section">
+      <div class="nav-label">Overview</div>
+      <div class="nav-item active" onclick="showPanel('dashboard')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="3" width="7" height="7" />
+          <rect x="14" y="3" width="7" height="7" />
+          <rect x="14" y="14" width="7" height="7" />
+          <rect x="3" y="14" width="7" height="7" />
+        </svg>
+        <span>Dashboard</span>
       </div>
     </div>
 
-    <!-- CONTACTS -->
-    <div class="panel" id="panel-contacts">
-      <div class="table-wrap">
-        <div class="table-header">
-          <h3>Contact Form Submissions</h3>
-          <button class="btn-action btn-add" onclick="loadContacts()">↻ Refresh</button>
-        </div>
-        <table id="contacts-table">
-          <thead><tr><th>#</th><th>Name</th><th>Company</th><th>Email</th><th>Subject</th><th>Message</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
-          <tbody id="contacts-body"><tr><td colspan="9" class="empty-state">Loading...</td></tr></tbody>
-        </table>
+    <div class="nav-section">
+      <div class="nav-label">Enquiries</div>
+      <div class="nav-item" onclick="showPanel('contacts')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <rect x="3" y="5" width="18" height="14" rx="1" />
+          <path d="M4 6.5l8 6 8-6" />
+        </svg>
+        <span>Contact Forms</span>
+      </div>
+      <div class="nav-item" onclick="showPanel('quotes')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M6 2h9l3 3v17H6z" />
+          <path d="M15 2v3h3M9 12h6M9 15.5h6M9 8.5h3" />
+        </svg>
+        <span>Quote Requests</span>
+      </div>
+      <div class="nav-item" onclick="showPanel('newsletter')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M4 4h16v16H4z" />
+          <path d="M4 8l8 5 8-5" />
+        </svg>
+        <span>Newsletter</span>
       </div>
     </div>
 
-    <!-- QUOTES -->
-    <div class="panel" id="panel-quotes">
-      <div class="table-wrap">
-        <div class="table-header">
-          <h3>Quote Requests</h3>
-          <button class="btn-action btn-add" onclick="loadQuotes()">↻ Refresh</button>
-        </div>
-        <table>
-          <thead><tr><th>#</th><th>Name</th><th>Company</th><th>Email</th><th>Phone</th><th>Subject</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
-          <tbody id="quotes-body"><tr><td colspan="9" class="empty-state">Loading...</td></tr></tbody>
-        </table>
+    <div class="nav-section">
+      <div class="nav-label">Content</div>
+      <div class="nav-item" onclick="showPanel('products')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M12 2l8 3v6c0 5-3.4 8.7-8 11-4.6-2.3-8-6-8-11V5z" />
+        </svg>
+        <span>Products</span>
+      </div>
+      <div class="nav-item" onclick="showPanel('services')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+          <circle cx="12" cy="12" r="3" />
+          <path d="M12 2v3M12 19v3M4.2 4.2l2 2M17.8 17.8l2 2M2 12h3M19 12h3M4.2 19.8l2-2M17.8 6.2l2-2" />
+        </svg>
+        <span>Analyse</span>
       </div>
     </div>
 
-    <!-- NEWSLETTER -->
-    <div class="panel" id="panel-newsletter">
-      <!-- Newsletters / Broadcasts Card -->
-      <div class="table-wrap" style="margin-bottom: 24px;">
-        <div class="table-header">
-          <h3>Newsletters &amp; Email Broadcasts</h3>
-          <div style="display:flex;gap:8px;">
-            <button class="btn-action btn-add" onclick="openCreateNewsletterCampaignModal()">+ Create Newsletter</button>
-            <button class="btn-action" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border);" onclick="loadNewsletter()">↻ Refresh</button>
+    <div class="sidebar-footer">
+      <div class="admin-name" id="admin-name" style="font-size:12px;margin-bottom:6px;color:var(--title);"></div>
+      <button class="btn-logout" onclick="logout()">Sign Out</button>
+    </div>
+  </aside>
+
+  <!-- ── Main ── -->
+  <div class="main">
+    <div class="topbar">
+      <h1 id="panel-title">Dashboard</h1>
+      <span class="badge" id="panel-time"></span>
+    </div>
+
+    <div class="content">
+
+      <!-- DASHBOARD -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="label">Contact Forms</div>
+            <div class="value" id="stat-contacts">—</div>
+            <div class="sub">Total submissions</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Quote Requests</div>
+            <div class="value" id="stat-quotes">—</div>
+            <div class="sub">Total requests</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Subscribers</div>
+            <div class="value" id="stat-newsletter">—</div>
+            <div class="sub">Newsletter list</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Products</div>
+            <div class="value" id="stat-products">—</div>
+            <div class="sub">Active listings</div>
           </div>
         </div>
-        <table>
-          <thead><tr><th>#</th><th>Title</th><th>Subject</th><th>Status</th><th>Created On</th><th>Actions</th></tr></thead>
-          <tbody id="newsletter-campaigns-body"><tr><td colspan="6" class="empty-state">Loading...</td></tr></tbody>
-        </table>
-      </div>
-
-      <!-- Subscribers Card -->
-      <div class="table-wrap">
-        <div class="table-header">
-          <h3>Newsletter Subscribers</h3>
-          <div style="display:flex;gap:8px;">
-            <button class="btn-action btn-add" onclick="openAddNewsletterModal()">+ Add Subscriber</button>
+        <div style="background:var(--surface);border:1px solid var(--border);padding:28px 26px;">
+          <h3
+            style="font-family:'Barlow Semi Condensed',sans-serif;font-size:18px;color:var(--title);text-transform:uppercase;margin-bottom:14px;">
+            Quick Links</h3>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="/" target="_blank"
+              style="background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:10px 18px;font-size:13px;text-decoration:none;">🌐
+              View Website</a>
+            <button class="btn-action btn-add" onclick="showPanel('contacts')">View Contacts</button>
+            <button class="btn-action btn-add" onclick="showPanel('quotes')">View Quotes</button>
+            <button class="btn-action btn-add" onclick="showPanel('products')">Manage Products</button>
           </div>
         </div>
-        <table>
-          <thead><tr><th>#</th><th>Email Address</th><th>Subscribed On</th><th>Actions</th></tr></thead>
-          <tbody id="newsletter-body"><tr><td colspan="4" class="empty-state">Loading...</td></tr></tbody>
-        </table>
       </div>
-    </div>
 
-    <!-- PRODUCTS -->
-    <div class="panel" id="panel-products">
-      <div class="table-wrap">
-        <div class="table-header">
-          <h3>Products</h3>
-          <button class="btn-action btn-add" onclick="openProductModal()">+ Add Product</button>
+      <!-- CONTACTS -->
+      <div class="panel" id="panel-contacts">
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Contact Form Submissions</h3>
+            <button class="btn-action btn-add" onclick="loadContacts()">↻ Refresh</button>
+          </div>
+          <table id="contacts-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Subject</th>
+                <th>Message</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="contacts-body">
+              <tr>
+                <td colspan="9" class="empty-state">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <table>
-          <thead><tr><th>#</th><th>Image</th><th>Name</th><th>Category</th><th>Tolerance</th><th>Description</th><th>Active</th><th>Actions</th></tr></thead>
-          <tbody id="products-body"><tr><td colspan="8" class="empty-state">Loading...</td></tr></tbody>
-        </table>
       </div>
-    </div>
 
-    <!-- SERVICES -->
-    <div class="panel" id="panel-services">
-      <div class="table-wrap">
-        <div class="table-header">
-          <h3>Analyse</h3>
-          <button class="btn-action btn-add" onclick="openServiceModal()">+ Add Analyse</button>
+      <!-- QUOTES -->
+      <div class="panel" id="panel-quotes">
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Quote Requests</h3>
+            <button class="btn-action btn-add" onclick="loadQuotes()">↻ Refresh</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Subject</th>
+                <th>Status</th>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="quotes-body">
+              <tr>
+                <td colspan="9" class="empty-state">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        <table>
-          <thead><tr><th>#</th><th>Image</th><th>Code</th><th>Title</th><th>Specs / Attributes</th><th>Description</th><th>Active</th><th>Actions</th></tr></thead>
-          <tbody id="services-body"><tr><td colspan="8" class="empty-state">Loading...</td></tr></tbody>
-        </table>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div class="panel" id="panel-newsletter">
+        <!-- Newsletters / Broadcasts Card -->
+        <div class="table-wrap" style="margin-bottom: 24px;">
+          <div class="table-header">
+            <h3>Newsletters &amp; Email Broadcasts</h3>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-action btn-add" onclick="openCreateNewsletterCampaignModal()">+ Create
+                Newsletter</button>
+              <button class="btn-action"
+                style="background:var(--surface2);color:var(--muted);border:1px solid var(--border);"
+                onclick="loadNewsletter()">↻ Refresh</button>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Title</th>
+                <th>Subject</th>
+                <th>Status</th>
+                <th>Created On</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="newsletter-campaigns-body">
+              <tr>
+                <td colspan="6" class="empty-state">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Subscribers Card -->
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Newsletter Subscribers</h3>
+            <div style="display:flex;gap:8px;">
+              <button class="btn-action btn-add" onclick="openAddNewsletterModal()">+ Add Subscriber</button>
+            </div>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Email Address</th>
+                <th>Subscribed On</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="newsletter-body">
+              <tr>
+                <td colspan="4" class="empty-state">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- PRODUCTS -->
+      <div class="panel" id="panel-products">
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Products</h3>
+            <button class="btn-action btn-add" onclick="openProductModal()">+ Add Product</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Tolerance</th>
+                <th>Description</th>
+                <th>Active</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-body">
+              <tr>
+                <td colspan="8" class="empty-state">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SERVICES -->
+      <div class="panel" id="panel-services">
+        <div class="table-wrap">
+          <div class="table-header">
+            <h3>Analyse</h3>
+            <button class="btn-action btn-add" onclick="openServiceModal()">+ Add Analyse</button>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Image</th>
+                <th>Code</th>
+                <th>Title</th>
+                <th>Specs / Attributes</th>
+                <th>Description</th>
+                <th>Active</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="services-body">
+              <tr>
+                <td colspan="8" class="empty-state">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Product Modal -->
+  <div class="modal-overlay" id="product-modal">
+    <div class="modal">
+      <h3 id="product-modal-title">Add Product</h3>
+      <input type="hidden" id="product-id">
+      <label class="f-label">Product Name *</label>
+      <input class="f-input" id="product-name" placeholder="e.g. Precision Shaft Assembly">
+      <label class="f-label">Category</label>
+      <input class="f-input" id="product-cat" placeholder="e.g. CNC Precision Component">
+      <label class="f-label">Tolerance / Spec</label>
+      <input class="f-input" id="product-tol" placeholder="e.g. ±0.005mm">
+      <label class="f-label">Image Path</label>
+      <input class="f-input" id="product-img" placeholder="e.g. images/products/plain_plug_gauge.png">
+      <label class="f-label">Description</label>
+      <input class="f-input" id="product-desc" placeholder="Short description...">
+      <label class="f-label">Active</label>
+      <select class="f-input" id="product-active">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      <div class="modal-actions">
+        <button class="btn-save" onclick="saveProduct()">Save Product</button>
+        <button class="btn-cancel" onclick="closeModal('product-modal')">Cancel</button>
       </div>
     </div>
-
   </div>
-</div>
 
-<!-- Product Modal -->
-<div class="modal-overlay" id="product-modal">
-  <div class="modal">
-    <h3 id="product-modal-title">Add Product</h3>
-    <input type="hidden" id="product-id">
-    <label class="f-label">Product Name *</label>
-    <input class="f-input" id="product-name" placeholder="e.g. Precision Shaft Assembly">
-    <label class="f-label">Category</label>
-    <input class="f-input" id="product-cat" placeholder="e.g. CNC Precision Component">
-    <label class="f-label">Tolerance / Spec</label>
-    <input class="f-input" id="product-tol" placeholder="e.g. ±0.005mm">
-    <label class="f-label">Image Path</label>
-    <input class="f-input" id="product-img" placeholder="e.g. images/products/plain_plug_gauge.png">
-    <label class="f-label">Description</label>
-    <input class="f-input" id="product-desc" placeholder="Short description...">
-    <label class="f-label">Active</label>
-    <select class="f-input" id="product-active"><option value="1">Yes</option><option value="0">No</option></select>
-    <div class="modal-actions">
-      <button class="btn-save" onclick="saveProduct()">Save Product</button>
-      <button class="btn-cancel" onclick="closeModal('product-modal')">Cancel</button>
+  <!-- Service Modal -->
+  <div class="modal-overlay" id="service-modal">
+    <div class="modal">
+      <h3 id="service-modal-title">Add Analyse</h3>
+      <input type="hidden" id="service-id">
+      <label class="f-label">Service Code</label>
+      <input class="f-input" id="service-number" placeholder="e.g. Optional Code">
+      <label class="f-label">Service Title *</label>
+      <input class="f-input" id="service-title" placeholder="e.g. Linear Laser Calibration">
+      <label class="f-label">Specs / Attributes</label>
+      <input class="f-input" id="service-specs" placeholder="e.g. Accuracy up to 0.005 ppm, ISO 230-2 compliant">
+      <label class="f-label">Image Path</label>
+      <input class="f-input" id="service-img" placeholder="e.g. images/services/linear_laser_calibration.png">
+      <label class="f-label">Description</label>
+      <input class="f-input" id="service-desc" placeholder="Short description...">
+      <label class="f-label">Active</label>
+      <select class="f-input" id="service-active">
+        <option value="1">Yes</option>
+        <option value="0">No</option>
+      </select>
+      <div class="modal-actions">
+        <button class="btn-save" onclick="saveService()">Save Service</button>
+        <button class="btn-cancel" onclick="closeModal('service-modal')">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Service Modal -->
-<div class="modal-overlay" id="service-modal">
-  <div class="modal">
-    <h3 id="service-modal-title">Add Analyse</h3>
-    <input type="hidden" id="service-id">
-    <label class="f-label">Service Code</label>
-    <input class="f-input" id="service-number" placeholder="e.g. Optional Code">
-    <label class="f-label">Service Title *</label>
-    <input class="f-input" id="service-title" placeholder="e.g. Linear Laser Calibration">
-    <label class="f-label">Specs / Attributes</label>
-    <input class="f-input" id="service-specs" placeholder="e.g. Accuracy up to 0.005 ppm, ISO 230-2 compliant">
-    <label class="f-label">Image Path</label>
-    <input class="f-input" id="service-img" placeholder="e.g. images/services/linear_laser_calibration.png">
-    <label class="f-label">Description</label>
-    <input class="f-input" id="service-desc" placeholder="Short description...">
-    <label class="f-label">Active</label>
-    <select class="f-input" id="service-active"><option value="1">Yes</option><option value="0">No</option></select>
-    <div class="modal-actions">
-      <button class="btn-save" onclick="saveService()">Save Service</button>
-      <button class="btn-cancel" onclick="closeModal('service-modal')">Cancel</button>
+  <!-- Newsletter Campaign Create/Edit Modal -->
+  <div class="modal-overlay" id="newsletter-campaign-modal">
+    <div class="modal" style="max-width: 560px;">
+      <h3 id="newsletter-campaign-modal-title">Create Newsletter</h3>
+      <input type="hidden" id="newsletter-campaign-id">
+      <label class="f-label">Newsletter Title *</label>
+      <input class="f-input" id="newsletter-campaign-title" placeholder="e.g. Q3 Precision Metrology Updates">
+
+      <label class="f-label">Email Subject Line *</label>
+      <input class="f-input" id="newsletter-campaign-subject"
+        placeholder="e.g. Hexacore Precision Insights &amp; Service Updates">
+
+      <label class="f-label">Newsletter Content (Text or HTML) *</label>
+      <textarea class="f-input" id="newsletter-campaign-content"
+        style="height:140px;font-family:inherit;line-height:1.5;resize:vertical;"
+        placeholder="Write your newsletter update here..."></textarea>
+
+      <div id="newsletter-campaign-err"
+        style="color:var(--red);font-size:12.5px;margin-top:-6px;margin-bottom:10px;display:none;"></div>
+      <div class="modal-actions">
+        <button class="btn-save" id="newsletter-campaign-save-btn" onclick="saveNewsletterCampaign()">Save
+          Newsletter</button>
+        <button class="btn-cancel" onclick="closeModal('newsletter-campaign-modal')">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Newsletter Campaign Create/Edit Modal -->
-<div class="modal-overlay" id="newsletter-campaign-modal">
-  <div class="modal" style="max-width: 560px;">
-    <h3 id="newsletter-campaign-modal-title">Create Newsletter</h3>
-    <input type="hidden" id="newsletter-campaign-id">
-    <label class="f-label">Newsletter Title *</label>
-    <input class="f-input" id="newsletter-campaign-title" placeholder="e.g. Q3 Precision Metrology Updates">
-    
-    <label class="f-label">Email Subject Line *</label>
-    <input class="f-input" id="newsletter-campaign-subject" placeholder="e.g. Hexacore Precision Insights &amp; Service Updates">
-
-    <label class="f-label">Newsletter Content (Text or HTML) *</label>
-    <textarea class="f-input" id="newsletter-campaign-content" style="height:140px;font-family:inherit;line-height:1.5;resize:vertical;" placeholder="Write your newsletter update here..."></textarea>
-
-    <div id="newsletter-campaign-err" style="color:var(--red);font-size:12.5px;margin-top:-6px;margin-bottom:10px;display:none;"></div>
-    <div class="modal-actions">
-      <button class="btn-save" id="newsletter-campaign-save-btn" onclick="saveNewsletterCampaign()">Save Newsletter</button>
-      <button class="btn-cancel" onclick="closeModal('newsletter-campaign-modal')">Cancel</button>
+  <!-- Newsletter Edit Modal -->
+  <div class="modal-overlay" id="newsletter-modal">
+    <div class="modal">
+      <h3 id="newsletter-modal-title">Edit Subscriber</h3>
+      <input type="hidden" id="newsletter-id">
+      <label class="f-label">Email Address *</label>
+      <input class="f-input" id="newsletter-email" type="email" placeholder="subscriber@example.com">
+      <div id="newsletter-edit-err"
+        style="color:var(--red);font-size:12.5px;margin-top:-6px;margin-bottom:10px;display:none;"></div>
+      <div class="modal-actions">
+        <button class="btn-save" id="newsletter-save-btn" onclick="saveNewsletter()">Save Changes</button>
+        <button class="btn-cancel" onclick="closeModal('newsletter-modal')">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Newsletter Edit Modal -->
-<div class="modal-overlay" id="newsletter-modal">
-  <div class="modal">
-    <h3 id="newsletter-modal-title">Edit Subscriber</h3>
-    <input type="hidden" id="newsletter-id">
-    <label class="f-label">Email Address *</label>
-    <input class="f-input" id="newsletter-email" type="email" placeholder="subscriber@example.com">
-    <div id="newsletter-edit-err" style="color:var(--red);font-size:12.5px;margin-top:-6px;margin-bottom:10px;display:none;"></div>
-    <div class="modal-actions">
-      <button class="btn-save" id="newsletter-save-btn" onclick="saveNewsletter()">Save Changes</button>
-      <button class="btn-cancel" onclick="closeModal('newsletter-modal')">Cancel</button>
+  <!-- Newsletter Add Modal -->
+  <div class="modal-overlay" id="newsletter-add-modal">
+    <div class="modal">
+      <h3>Add Subscriber</h3>
+      <label class="f-label">Email Address *</label>
+      <input class="f-input" id="newsletter-new-email" type="email" placeholder="newsubscriber@example.com">
+      <div id="newsletter-add-err"
+        style="color:var(--red);font-size:12.5px;margin-top:-6px;margin-bottom:10px;display:none;"></div>
+      <div class="modal-actions">
+        <button class="btn-save" id="newsletter-add-btn" onclick="addNewsletterSubscriber()">Add Subscriber</button>
+        <button class="btn-cancel" onclick="closeModal('newsletter-add-modal')">Cancel</button>
+      </div>
     </div>
   </div>
-</div>
 
-<!-- Newsletter Add Modal -->
-<div class="modal-overlay" id="newsletter-add-modal">
-  <div class="modal">
-    <h3>Add Subscriber</h3>
-    <label class="f-label">Email Address *</label>
-    <input class="f-input" id="newsletter-new-email" type="email" placeholder="newsubscriber@example.com">
-    <div id="newsletter-add-err" style="color:var(--red);font-size:12.5px;margin-top:-6px;margin-bottom:10px;display:none;"></div>
-    <div class="modal-actions">
-      <button class="btn-save" id="newsletter-add-btn" onclick="addNewsletterSubscriber()">Add Subscriber</button>
-      <button class="btn-cancel" onclick="closeModal('newsletter-add-modal')">Cancel</button>
-    </div>
-  </div>
-</div>
+  <script>
+    const API = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') && window.location.port !== '3000' && window.location.port !== ''
+      ? 'http://localhost:3000'
+      : '';
+    let TOKEN = localStorage.getItem('hx_token') || '';
+    let currentPanel = 'dashboard';
 
-<script>
-  const API = '';  // same origin
-  let TOKEN = localStorage.getItem('hx_token') || '';
-  let currentPanel = 'dashboard';
-
-  // ── Auth ────────────────────────────────────────────────────────
-  async function doLogin() {
-    const username = document.getElementById('login-user').value.trim();
-    const password = document.getElementById('login-pass').value;
-    const err = document.getElementById('login-err');
-    err.style.display = 'none';
-    try {
-      const res = await fetch(`${API}/api/login`, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error);
-      TOKEN = data.token;
-      localStorage.setItem('hx_token', TOKEN);
-      document.getElementById('admin-name').textContent = data.username;
-      document.getElementById('login-screen').style.display = 'none';
-      init();
-    } catch (e) {
-      err.style.display = 'block';
-    }
-  }
-
-  function logout() {
-    TOKEN = '';
-    localStorage.removeItem('hx_token');
-    location.reload();
-  }
-
-  // Check existing token
-  let tokenValid = false;
-  if (TOKEN) {
-    try {
-      const payload = JSON.parse(atob(TOKEN.split('.')[1]));
-      if (payload.exp && payload.exp * 1000 > Date.now()) {
-        tokenValid = true;
-        document.getElementById('admin-name').textContent = payload.username || 'Admin';
+    // ── Auth ────────────────────────────────────────────────────────
+    async function doLogin() {
+      const username = document.getElementById('login-user').value.trim();
+      const password = document.getElementById('login-pass').value;
+      const err = document.getElementById('login-err');
+      err.style.display = 'none';
+      try {
+        const res = await fetch(`${API}/api/login`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Invalid username or password.');
+        TOKEN = data.token;
+        localStorage.setItem('hx_token', TOKEN);
+        document.getElementById('admin-name').textContent = data.username;
         document.getElementById('login-screen').style.display = 'none';
         init();
+      } catch (e) {
+        err.textContent = e.message || 'Invalid username or password.';
+        err.style.display = 'block';
       }
-    } catch (e) {
-      tokenValid = false;
     }
-  }
 
-  if (!tokenValid) {
-    TOKEN = '';
-    localStorage.removeItem('hx_token');
-    document.getElementById('login-screen').style.display = 'flex';
-  }
+    function logout() {
+      TOKEN = '';
+      localStorage.removeItem('hx_token');
+      location.reload();
+    }
 
-  document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
-  ['login-user', 'login-pass'].forEach(id => {
-    document.getElementById(id).addEventListener('input', () => {
-      document.getElementById('login-err').style.display = 'none';
-    });
-  });
-
-  // ── Navigation ──────────────────────────────────────────────────
-  const panelTitles = {
-    dashboard: 'Dashboard', contacts: 'Contact Forms', quotes: 'Quote Requests',
-    newsletter: 'Newsletter', products: 'Products', services: 'Services'
-  };
-
-  function showPanel(name) {
-    document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.getElementById('panel-' + name).classList.add('active');
-    document.querySelector(`[onclick="showPanel('${name}')"]`).classList.add('active');
-    document.getElementById('panel-title').textContent = panelTitles[name] || name;
-    currentPanel = name;
-    if (name === 'contacts')   loadContacts();
-    if (name === 'quotes')     loadQuotes();
-    if (name === 'newsletter') loadNewsletter();
-    if (name === 'products')   loadProducts();
-    if (name === 'services')   loadServices();
-  }
-
-  // ── Init ─────────────────────────────────────────────────────────
-  async function init() {
-    document.getElementById('panel-time').textContent = new Date().toLocaleString('en-IN');
-    await loadStats();
-  }
-
-  async function authFetch(url, opts = {}) {
-    const res = await fetch(url, {
-      ...opts,
-      headers: {
-        ...(opts.headers || {}),
-        'Authorization': 'Bearer ' + TOKEN,
-        'Content-Type': 'application/json'
+    // Check existing token
+    let tokenValid = false;
+    if (TOKEN) {
+      try {
+        const payload = JSON.parse(atob(TOKEN.split('.')[1]));
+        if (payload.exp && payload.exp * 1000 > Date.now()) {
+          tokenValid = true;
+          document.getElementById('admin-name').textContent = payload.username || 'Admin';
+          document.getElementById('login-screen').style.display = 'none';
+          init();
+        }
+      } catch (e) {
+        tokenValid = false;
       }
-    });
+    }
 
-    if (res.status === 401) {
+    if (!tokenValid) {
       TOKEN = '';
       localStorage.removeItem('hx_token');
       document.getElementById('login-screen').style.display = 'flex';
-      const err = document.getElementById('login-err');
-      if (err) {
-        err.textContent = 'Session expired or invalid token. Please log in again.';
-        err.style.display = 'block';
+    }
+
+    document.getElementById('login-pass').addEventListener('keydown', e => { if (e.key === 'Enter') doLogin(); });
+    ['login-user', 'login-pass'].forEach(id => {
+      document.getElementById(id).addEventListener('input', () => {
+        document.getElementById('login-err').style.display = 'none';
+      });
+    });
+
+    // ── Navigation ──────────────────────────────────────────────────
+    const panelTitles = {
+      dashboard: 'Dashboard', contacts: 'Contact Forms', quotes: 'Quote Requests',
+      newsletter: 'Newsletter', products: 'Products', services: 'Services'
+    };
+
+    function showPanel(name) {
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+      document.getElementById('panel-' + name).classList.add('active');
+      document.querySelector(`[onclick="showPanel('${name}')"]`).classList.add('active');
+      document.getElementById('panel-title').textContent = panelTitles[name] || name;
+      currentPanel = name;
+      if (name === 'contacts') loadContacts();
+      if (name === 'quotes') loadQuotes();
+      if (name === 'newsletter') loadNewsletter();
+      if (name === 'products') loadProducts();
+      if (name === 'services') loadServices();
+    }
+
+    // ── Init ─────────────────────────────────────────────────────────
+    async function init() {
+      document.getElementById('panel-time').textContent = new Date().toLocaleString('en-IN');
+      await loadStats();
+    }
+
+    async function authFetch(url, opts = {}) {
+      const res = await fetch(url, {
+        ...opts,
+        headers: {
+          ...(opts.headers || {}),
+          'Authorization': 'Bearer ' + TOKEN,
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (res.status === 401) {
+        TOKEN = '';
+        localStorage.removeItem('hx_token');
+        document.getElementById('login-screen').style.display = 'flex';
+        const err = document.getElementById('login-err');
+        if (err) {
+          err.textContent = 'Session expired or invalid token. Please log in again.';
+          err.style.display = 'block';
+        }
+        throw new Error('Invalid or expired token');
       }
-      throw new Error('Invalid or expired token');
+
+      return res;
     }
 
-    return res;
-  }
-
-  // ── Stats ────────────────────────────────────────────────────────
-  async function loadStats() {
-    try {
-      const [c, q, n, p] = await Promise.all([
-        authFetch('/api/contacts').then(r => r.json()),
-        authFetch('/api/quotes').then(r => r.json()),
-        authFetch('/api/newsletter').then(r => r.json()),
-        authFetch('/api/products/all').then(r => r.json()),
-      ]);
-      document.getElementById('stat-contacts').textContent   = Array.isArray(c) ? c.length : '—';
-      document.getElementById('stat-quotes').textContent     = Array.isArray(q) ? q.length : '—';
-      document.getElementById('stat-newsletter').textContent = Array.isArray(n) ? n.length : '—';
-      document.getElementById('stat-products').textContent   = Array.isArray(p) ? p.length : '—';
-    } catch (e) {
-      console.warn('Stats fetch interrupted (auth required):', e.message);
+    // ── Stats ────────────────────────────────────────────────────────
+    async function loadStats() {
+      try {
+        const [c, q, n, p] = await Promise.all([
+          authFetch('/api/contacts').then(r => r.json()),
+          authFetch('/api/quotes').then(r => r.json()),
+          authFetch('/api/newsletter').then(r => r.json()),
+          authFetch('/api/products/all').then(r => r.json()),
+        ]);
+        document.getElementById('stat-contacts').textContent = Array.isArray(c) ? c.length : '—';
+        document.getElementById('stat-quotes').textContent = Array.isArray(q) ? q.length : '—';
+        document.getElementById('stat-newsletter').textContent = Array.isArray(n) ? n.length : '—';
+        document.getElementById('stat-products').textContent = Array.isArray(p) ? p.length : '—';
+      } catch (e) {
+        console.warn('Stats fetch interrupted (auth required):', e.message);
+      }
     }
-  }
 
-  // ── Contacts ─────────────────────────────────────────────────────
-  async function loadContacts() {
-    const rows = await authFetch('/api/contacts').then(r => r.json());
-    const tb = document.getElementById('contacts-body');
-    if (!rows.length) { tb.innerHTML = `<tr><td colspan="9"><div class="empty-state">No contact submissions yet.</div></td></tr>`; return; }
-    tb.innerHTML = rows.map(r => `
+    // ── Contacts ─────────────────────────────────────────────────────
+    async function loadContacts() {
+      const rows = await authFetch('/api/contacts').then(r => r.json());
+      const tb = document.getElementById('contacts-body');
+      if (!rows.length) { tb.innerHTML = `<tr><td colspan="9"><div class="empty-state">No contact submissions yet.</div></td></tr>`; return; }
+      tb.innerHTML = rows.map(r => `
       <tr>
         <td class="mono">#${r.id}</td>
         <td>${esc(r.name)}</td>
@@ -640,24 +1217,24 @@
           <button class="btn-action btn-del"  onclick="deleteContact(${r.id})">Delete</button>
         </td>
       </tr>`).join('');
-  }
+    }
 
-  async function markContact(id, status) {
-    await authFetch(`/api/contacts/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) });
-    loadContacts();
-  }
-  async function deleteContact(id) {
-    if (!confirm('Delete this contact?')) return;
-    await authFetch(`/api/contacts/${id}`, { method: 'DELETE' });
-    loadContacts(); loadStats();
-  }
+    async function markContact(id, status) {
+      await authFetch(`/api/contacts/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) });
+      loadContacts();
+    }
+    async function deleteContact(id) {
+      if (!confirm('Delete this contact?')) return;
+      await authFetch(`/api/contacts/${id}`, { method: 'DELETE' });
+      loadContacts(); loadStats();
+    }
 
-  // ── Quotes ───────────────────────────────────────────────────────
-  async function loadQuotes() {
-    const rows = await authFetch('/api/quotes').then(r => r.json());
-    const tb = document.getElementById('quotes-body');
-    if (!rows.length) { tb.innerHTML = `<tr><td colspan="9"><div class="empty-state">No quote requests yet.</div></td></tr>`; return; }
-    tb.innerHTML = rows.map(r => `
+    // ── Quotes ───────────────────────────────────────────────────────
+    async function loadQuotes() {
+      const rows = await authFetch('/api/quotes').then(r => r.json());
+      const tb = document.getElementById('quotes-body');
+      if (!rows.length) { tb.innerHTML = `<tr><td colspan="9"><div class="empty-state">No quote requests yet.</div></td></tr>`; return; }
+      tb.innerHTML = rows.map(r => `
       <tr>
         <td class="mono">#${r.id}</td>
         <td>${esc(r.name)}</td>
@@ -672,29 +1249,29 @@
           <button class="btn-action btn-del"  onclick="deleteQuote(${r.id})">Delete</button>
         </td>
       </tr>`).join('');
-  }
+    }
 
-  async function markQuote(id, status) {
-    await authFetch(`/api/quotes/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) });
-    loadQuotes();
-  }
-  async function deleteQuote(id) {
-    if (!confirm('Delete this quote request?')) return;
-    await authFetch(`/api/quotes/${id}`, { method: 'DELETE' });
-    loadQuotes(); loadStats();
-  }
+    async function markQuote(id, status) {
+      await authFetch(`/api/quotes/${id}/status`, { method: 'PATCH', body: JSON.stringify({ status }) });
+      loadQuotes();
+    }
+    async function deleteQuote(id) {
+      if (!confirm('Delete this quote request?')) return;
+      await authFetch(`/api/quotes/${id}`, { method: 'DELETE' });
+      loadQuotes(); loadStats();
+    }
 
-  // ── Newsletter ───────────────────────────────────────────────────
-  async function loadNewsletter() {
-    // 1. Load Newsletters / Campaigns
-    try {
-      const campaigns = await authFetch('/api/newsletter/campaigns').then(r => r.json());
-      const ctb = document.getElementById('newsletter-campaigns-body');
-      if (ctb) {
-        if (!campaigns || !campaigns.length) {
-          ctb.innerHTML = `<tr><td colspan="6"><div class="empty-state">No newsletters created yet. Click "+ Create Newsletter" to draft one.</div></td></tr>`;
-        } else {
-          ctb.innerHTML = campaigns.map(c => `
+    // ── Newsletter ───────────────────────────────────────────────────
+    async function loadNewsletter() {
+      // 1. Load Newsletters / Campaigns
+      try {
+        const campaigns = await authFetch('/api/newsletter/campaigns').then(r => r.json());
+        const ctb = document.getElementById('newsletter-campaigns-body');
+        if (ctb) {
+          if (!campaigns || !campaigns.length) {
+            ctb.innerHTML = `<tr><td colspan="6"><div class="empty-state">No newsletters created yet. Click "+ Create Newsletter" to draft one.</div></td></tr>`;
+          } else {
+            ctb.innerHTML = campaigns.map(c => `
             <tr>
               <td class="mono">#${c.id}</td>
               <td style="font-weight:600;color:var(--fg);">${esc(c.title)}</td>
@@ -709,19 +1286,19 @@
                 <button class="btn-action btn-del" onclick="deleteNewsletterCampaign(${c.id})">Delete</button>
               </td>
             </tr>`).join('');
+          }
         }
-      }
-    } catch (e) { console.error('Error loading newsletter campaigns', e); }
+      } catch (e) { console.error('Error loading newsletter campaigns', e); }
 
-    // 2. Load Subscribers
-    try {
-      const rows = await authFetch('/api/newsletter').then(r => r.json());
-      const tb = document.getElementById('newsletter-body');
-      if (tb) {
-        if (!rows || !rows.length) {
-          tb.innerHTML = `<tr><td colspan="4"><div class="empty-state">No subscribers yet.</div></td></tr>`;
-        } else {
-          tb.innerHTML = rows.map(r => `
+      // 2. Load Subscribers
+      try {
+        const rows = await authFetch('/api/newsletter').then(r => r.json());
+        const tb = document.getElementById('newsletter-body');
+        if (tb) {
+          if (!rows || !rows.length) {
+            tb.innerHTML = `<tr><td colspan="4"><div class="empty-state">No subscribers yet.</div></td></tr>`;
+          } else {
+            tb.innerHTML = rows.map(r => `
             <tr>
               <td class="mono">#${r.id}</td>
               <td><a href="mailto:${esc(r.email)}" style="color:var(--orange)">${esc(r.email)}</a></td>
@@ -731,193 +1308,193 @@
                 <button class="btn-action btn-del" onclick="deleteSubscriber(${r.id})">Remove</button>
               </td>
             </tr>`).join('');
+          }
+        }
+      } catch (e) { console.error('Error loading newsletter subscribers', e); }
+    }
+
+    function openCreateNewsletterCampaignModal() {
+      document.getElementById('newsletter-campaign-modal-title').textContent = 'Create Newsletter';
+      document.getElementById('newsletter-campaign-id').value = '';
+      document.getElementById('newsletter-campaign-title').value = '';
+      document.getElementById('newsletter-campaign-subject').value = '';
+      document.getElementById('newsletter-campaign-content').value = '';
+      const errEl = document.getElementById('newsletter-campaign-err');
+      if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+      document.getElementById('newsletter-campaign-save-btn').textContent = 'Save Newsletter';
+      document.getElementById('newsletter-campaign-save-btn').disabled = false;
+      document.getElementById('newsletter-campaign-modal').classList.add('open');
+    }
+
+    function openEditNewsletterCampaignModal(id) {
+      document.getElementById('newsletter-campaign-modal-title').textContent = 'Edit Newsletter';
+      document.getElementById('newsletter-campaign-id').value = id;
+      const errEl = document.getElementById('newsletter-campaign-err');
+      if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+      document.getElementById('newsletter-campaign-save-btn').textContent = 'Save Changes';
+      document.getElementById('newsletter-campaign-save-btn').disabled = false;
+
+      authFetch('/api/newsletter/campaigns').then(r => r.json()).then(rows => {
+        const c = rows.find(x => x.id == id);
+        if (c) {
+          document.getElementById('newsletter-campaign-title').value = c.title || '';
+          document.getElementById('newsletter-campaign-subject').value = c.subject || '';
+          document.getElementById('newsletter-campaign-content').value = c.content || '';
+        }
+      });
+      document.getElementById('newsletter-campaign-modal').classList.add('open');
+    }
+
+    async function saveNewsletterCampaign() {
+      const id = document.getElementById('newsletter-campaign-id').value;
+      const title = document.getElementById('newsletter-campaign-title').value.trim();
+      const subject = document.getElementById('newsletter-campaign-subject').value.trim();
+      const content = document.getElementById('newsletter-campaign-content').value.trim();
+      const errEl = document.getElementById('newsletter-campaign-err');
+      const btn = document.getElementById('newsletter-campaign-save-btn');
+
+      if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+      if (!title || !subject || !content) {
+        if (errEl) { errEl.textContent = 'Title, Subject, and Content are all required.'; errEl.style.display = 'block'; }
+        return;
+      }
+
+      btn.textContent = 'Saving…'; btn.disabled = true;
+      try {
+        const url = id ? `/api/newsletter/campaigns/${id}` : '/api/newsletter/campaigns';
+        const method = id ? 'PUT' : 'POST';
+        const res = await authFetch(url, { method, body: JSON.stringify({ title, subject, content }) });
+        const data = await res.json();
+        if (!res.ok) {
+          if (errEl) { errEl.textContent = data.error || 'Failed to save newsletter.'; errEl.style.display = 'block'; }
+          btn.textContent = 'Save Newsletter'; btn.disabled = false;
+          return;
+        }
+        closeModal('newsletter-campaign-modal');
+        loadNewsletter();
+      } catch (e) {
+        if (e.message !== 'Invalid or expired token') {
+          if (errEl) { errEl.textContent = e.message || 'Error saving newsletter. Please try again.'; errEl.style.display = 'block'; }
+        }
+        btn.textContent = 'Save Newsletter'; btn.disabled = false;
+      }
+    }
+
+    async function deleteNewsletterCampaign(id) {
+      if (!confirm('Delete this newsletter?')) return;
+      await authFetch(`/api/newsletter/campaigns/${id}`, { method: 'DELETE' });
+      loadNewsletter();
+    }
+
+    async function sendNewsletterCampaign(id) {
+      if (!confirm('Are you sure you want to broadcast this newsletter to ALL active subscribers?')) return;
+      try {
+        const res = await authFetch(`/api/newsletter/campaigns/${id}/send`, { method: 'POST' });
+        const data = await res.json();
+        if (res.ok) {
+          alert(data.message || 'Newsletter sent successfully!');
+          loadNewsletter();
+        } else {
+          alert(data.error || 'Failed to send newsletter broadcast.');
+        }
+      } catch (e) {
+        if (e.message !== 'Invalid or expired token') {
+          alert(e.message || 'Error sending broadcast.');
         }
       }
-    } catch (e) { console.error('Error loading newsletter subscribers', e); }
-  }
-
-  function openCreateNewsletterCampaignModal() {
-    document.getElementById('newsletter-campaign-modal-title').textContent = 'Create Newsletter';
-    document.getElementById('newsletter-campaign-id').value = '';
-    document.getElementById('newsletter-campaign-title').value = '';
-    document.getElementById('newsletter-campaign-subject').value = '';
-    document.getElementById('newsletter-campaign-content').value = '';
-    const errEl = document.getElementById('newsletter-campaign-err');
-    if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
-    document.getElementById('newsletter-campaign-save-btn').textContent = 'Save Newsletter';
-    document.getElementById('newsletter-campaign-save-btn').disabled = false;
-    document.getElementById('newsletter-campaign-modal').classList.add('open');
-  }
-
-  function openEditNewsletterCampaignModal(id) {
-    document.getElementById('newsletter-campaign-modal-title').textContent = 'Edit Newsletter';
-    document.getElementById('newsletter-campaign-id').value = id;
-    const errEl = document.getElementById('newsletter-campaign-err');
-    if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
-    document.getElementById('newsletter-campaign-save-btn').textContent = 'Save Changes';
-    document.getElementById('newsletter-campaign-save-btn').disabled = false;
-
-    authFetch('/api/newsletter/campaigns').then(r => r.json()).then(rows => {
-      const c = rows.find(x => x.id == id);
-      if (c) {
-        document.getElementById('newsletter-campaign-title').value = c.title || '';
-        document.getElementById('newsletter-campaign-subject').value = c.subject || '';
-        document.getElementById('newsletter-campaign-content').value = c.content || '';
-      }
-    });
-    document.getElementById('newsletter-campaign-modal').classList.add('open');
-  }
-
-  async function saveNewsletterCampaign() {
-    const id      = document.getElementById('newsletter-campaign-id').value;
-    const title   = document.getElementById('newsletter-campaign-title').value.trim();
-    const subject = document.getElementById('newsletter-campaign-subject').value.trim();
-    const content = document.getElementById('newsletter-campaign-content').value.trim();
-    const errEl   = document.getElementById('newsletter-campaign-err');
-    const btn     = document.getElementById('newsletter-campaign-save-btn');
-
-    if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
-    if (!title || !subject || !content) {
-      if (errEl) { errEl.textContent = 'Title, Subject, and Content are all required.'; errEl.style.display = 'block'; }
-      return;
     }
 
-    btn.textContent = 'Saving…'; btn.disabled = true;
-    try {
-      const url = id ? `/api/newsletter/campaigns/${id}` : '/api/newsletter/campaigns';
-      const method = id ? 'PUT' : 'POST';
-      const res = await authFetch(url, { method, body: JSON.stringify({ title, subject, content }) });
-      const data = await res.json();
-      if (!res.ok) {
-        if (errEl) { errEl.textContent = data.error || 'Failed to save newsletter.'; errEl.style.display = 'block'; }
-        btn.textContent = 'Save Newsletter'; btn.disabled = false;
-        return;
-      }
-      closeModal('newsletter-campaign-modal');
-      loadNewsletter();
-    } catch (e) {
-      if (e.message !== 'Invalid or expired token') {
-        if (errEl) { errEl.textContent = e.message || 'Error saving newsletter. Please try again.'; errEl.style.display = 'block'; }
-      }
-      btn.textContent = 'Save Newsletter'; btn.disabled = false;
-    }
-  }
+    function openNewsletterModal(id) {
+      document.getElementById('newsletter-id').value = id;
+      document.getElementById('newsletter-email').value = '';
+      const errEl = document.getElementById('newsletter-edit-err');
+      if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+      document.getElementById('newsletter-save-btn').textContent = 'Save Changes';
+      document.getElementById('newsletter-save-btn').disabled = false;
 
-  async function deleteNewsletterCampaign(id) {
-    if (!confirm('Delete this newsletter?')) return;
-    await authFetch(`/api/newsletter/campaigns/${id}`, { method: 'DELETE' });
-    loadNewsletter();
-  }
-
-  async function sendNewsletterCampaign(id) {
-    if (!confirm('Are you sure you want to broadcast this newsletter to ALL active subscribers?')) return;
-    try {
-      const res = await authFetch(`/api/newsletter/campaigns/${id}/send`, { method: 'POST' });
-      const data = await res.json();
-      if (res.ok) {
-        alert(data.message || 'Newsletter sent successfully!');
-        loadNewsletter();
-      } else {
-        alert(data.error || 'Failed to send newsletter broadcast.');
-      }
-    } catch (e) {
-      if (e.message !== 'Invalid or expired token') {
-        alert(e.message || 'Error sending broadcast.');
-      }
-    }
-  }
-
-  function openNewsletterModal(id) {
-    document.getElementById('newsletter-id').value = id;
-    document.getElementById('newsletter-email').value = '';
-    const errEl = document.getElementById('newsletter-edit-err');
-    if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
-    document.getElementById('newsletter-save-btn').textContent = 'Save Changes';
-    document.getElementById('newsletter-save-btn').disabled = false;
-
-    authFetch('/api/newsletter').then(r => r.json()).then(rows => {
-      const s = rows.find(x => x.id == id);
-      if (s) document.getElementById('newsletter-email').value = s.email;
-    });
-    document.getElementById('newsletter-modal').classList.add('open');
-  }
-
-  async function saveNewsletter() {
-    const id    = document.getElementById('newsletter-id').value;
-    const email = document.getElementById('newsletter-email').value.trim();
-    const errEl = document.getElementById('newsletter-edit-err');
-    const btn   = document.getElementById('newsletter-save-btn');
-    if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
-    if (!email) {
-      if (errEl) { errEl.textContent = 'Email is required.'; errEl.style.display = 'block'; }
-      else alert('Email is required');
-      return;
-    }
-    btn.textContent = 'Saving…'; btn.disabled = true;
-    try {
-      const res  = await authFetch(`/api/newsletter/${id}`, { method: 'PUT', body: JSON.stringify({ email }) });
-      const data = await res.json();
-      if (!res.ok) {
-        const msg = data.error || 'Failed to update email';
-        if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; }
-        else alert(msg);
-        btn.textContent = 'Save Changes'; btn.disabled = false;
-        return;
-      }
-      closeModal('newsletter-modal');
-      loadNewsletter();
-    } catch (e) {
-      if (e.message !== 'Invalid or expired token') {
-        if (errEl) { errEl.textContent = e.message || 'Error updating email.'; errEl.style.display = 'block'; }
-      }
-      btn.textContent = 'Save Changes'; btn.disabled = false;
-    }
-  }
-
-  function openAddNewsletterModal() {
-    document.getElementById('newsletter-new-email').value = '';
-    document.getElementById('newsletter-add-err').style.display = 'none';
-    document.getElementById('newsletter-add-btn').textContent = 'Add Subscriber';
-    document.getElementById('newsletter-add-btn').disabled = false;
-    document.getElementById('newsletter-add-modal').classList.add('open');
-  }
-
-  async function addNewsletterSubscriber() {
-    const email = document.getElementById('newsletter-new-email').value.trim();
-    const errEl = document.getElementById('newsletter-add-err');
-    const btn   = document.getElementById('newsletter-add-btn');
-    errEl.style.display = 'none';
-    if (!email) { errEl.textContent = 'Email is required.'; errEl.style.display = 'block'; return; }
-    btn.textContent = 'Adding…'; btn.disabled = true;
-    try {
-      const res  = await authFetch('/api/newsletter', {
-        method: 'POST',
-        body: JSON.stringify({ email }),
+      authFetch('/api/newsletter').then(r => r.json()).then(rows => {
+        const s = rows.find(x => x.id == id);
+        if (s) document.getElementById('newsletter-email').value = s.email;
       });
-      const data = await res.json();
-      if (!res.ok) { errEl.textContent = data.error || 'Failed to add subscriber.'; errEl.style.display = 'block'; btn.textContent = 'Add Subscriber'; btn.disabled = false; return; }
-      closeModal('newsletter-add-modal');
-      loadNewsletter(); loadStats();
-    } catch (e) {
-      if (e.message !== 'Invalid or expired token') {
-        errEl.textContent = e.message || 'Error adding subscriber.'; errEl.style.display = 'block';
-      }
-      btn.textContent = 'Add Subscriber'; btn.disabled = false;
+      document.getElementById('newsletter-modal').classList.add('open');
     }
-  }
 
-  async function deleteSubscriber(id) {
-    if (!confirm('Remove subscriber?')) return;
-    await authFetch(`/api/newsletter/${id}`, { method: 'DELETE' });
-    loadNewsletter(); loadStats();
-  }
+    async function saveNewsletter() {
+      const id = document.getElementById('newsletter-id').value;
+      const email = document.getElementById('newsletter-email').value.trim();
+      const errEl = document.getElementById('newsletter-edit-err');
+      const btn = document.getElementById('newsletter-save-btn');
+      if (errEl) { errEl.style.display = 'none'; errEl.textContent = ''; }
+      if (!email) {
+        if (errEl) { errEl.textContent = 'Email is required.'; errEl.style.display = 'block'; }
+        else alert('Email is required');
+        return;
+      }
+      btn.textContent = 'Saving…'; btn.disabled = true;
+      try {
+        const res = await authFetch(`/api/newsletter/${id}`, { method: 'PUT', body: JSON.stringify({ email }) });
+        const data = await res.json();
+        if (!res.ok) {
+          const msg = data.error || 'Failed to update email';
+          if (errEl) { errEl.textContent = msg; errEl.style.display = 'block'; }
+          else alert(msg);
+          btn.textContent = 'Save Changes'; btn.disabled = false;
+          return;
+        }
+        closeModal('newsletter-modal');
+        loadNewsletter();
+      } catch (e) {
+        if (e.message !== 'Invalid or expired token') {
+          if (errEl) { errEl.textContent = e.message || 'Error updating email.'; errEl.style.display = 'block'; }
+        }
+        btn.textContent = 'Save Changes'; btn.disabled = false;
+      }
+    }
 
-  // ── Products ─────────────────────────────────────────────────────
-  async function loadProducts() {
-    const rows = await authFetch('/api/products/all').then(r => r.json());
-    const tb = document.getElementById('products-body');
-    if (!rows.length) { tb.innerHTML = `<tr><td colspan="8"><div class="empty-state">No products yet.</div></td></tr>`; return; }
-    tb.innerHTML = rows.map(r => `
+    function openAddNewsletterModal() {
+      document.getElementById('newsletter-new-email').value = '';
+      document.getElementById('newsletter-add-err').style.display = 'none';
+      document.getElementById('newsletter-add-btn').textContent = 'Add Subscriber';
+      document.getElementById('newsletter-add-btn').disabled = false;
+      document.getElementById('newsletter-add-modal').classList.add('open');
+    }
+
+    async function addNewsletterSubscriber() {
+      const email = document.getElementById('newsletter-new-email').value.trim();
+      const errEl = document.getElementById('newsletter-add-err');
+      const btn = document.getElementById('newsletter-add-btn');
+      errEl.style.display = 'none';
+      if (!email) { errEl.textContent = 'Email is required.'; errEl.style.display = 'block'; return; }
+      btn.textContent = 'Adding…'; btn.disabled = true;
+      try {
+        const res = await authFetch('/api/newsletter', {
+          method: 'POST',
+          body: JSON.stringify({ email }),
+        });
+        const data = await res.json();
+        if (!res.ok) { errEl.textContent = data.error || 'Failed to add subscriber.'; errEl.style.display = 'block'; btn.textContent = 'Add Subscriber'; btn.disabled = false; return; }
+        closeModal('newsletter-add-modal');
+        loadNewsletter(); loadStats();
+      } catch (e) {
+        if (e.message !== 'Invalid or expired token') {
+          errEl.textContent = e.message || 'Error adding subscriber.'; errEl.style.display = 'block';
+        }
+        btn.textContent = 'Add Subscriber'; btn.disabled = false;
+      }
+    }
+
+    async function deleteSubscriber(id) {
+      if (!confirm('Remove subscriber?')) return;
+      await authFetch(`/api/newsletter/${id}`, { method: 'DELETE' });
+      loadNewsletter(); loadStats();
+    }
+
+    // ── Products ─────────────────────────────────────────────────────
+    async function loadProducts() {
+      const rows = await authFetch('/api/products/all').then(r => r.json());
+      const tb = document.getElementById('products-body');
+      if (!rows.length) { tb.innerHTML = `<tr><td colspan="8"><div class="empty-state">No products yet.</div></td></tr>`; return; }
+      tb.innerHTML = rows.map(r => `
       <tr>
         <td class="mono">#${r.id}</td>
         <td>${r.image ? `<img src="../${esc(r.image)}" alt="${esc(r.name)}" style="width:48px;height:36px;object-fit:contain;background:#fff;border-radius:4px;border:1px solid var(--border);">` : '<span style="color:var(--muted);font-size:11px;">No image</span>'}</td>
@@ -931,61 +1508,61 @@
           <button class="btn-action btn-del"  onclick="deleteProduct(${r.id})">Delete</button>
         </td>
       </tr>`).join('');
-  }
-
-  let allProducts = [];
-  function openProductModal(id) {
-    document.getElementById('product-id').value = id || '';
-    document.getElementById('product-modal-title').textContent = id ? 'Edit Product' : 'Add Product';
-    if (id) {
-      authFetch('/api/products/all').then(r => r.json()).then(rows => {
-        const p = rows.find(x => x.id === id);
-        if (!p) return;
-        document.getElementById('product-name').value   = p.name;
-        document.getElementById('product-cat').value    = p.category;
-        document.getElementById('product-tol').value    = p.tolerance;
-        document.getElementById('product-img').value    = p.image || '';
-        document.getElementById('product-desc').value   = p.description;
-        document.getElementById('product-active').value = p.active;
-      });
-    } else {
-      ['product-name','product-cat','product-tol','product-img','product-desc'].forEach(id => document.getElementById(id).value = '');
-      document.getElementById('product-active').value = '1';
     }
-    document.getElementById('product-modal').classList.add('open');
-  }
 
-  async function saveProduct() {
-    const id   = document.getElementById('product-id').value;
-    const body = {
-      name:        document.getElementById('product-name').value.trim(),
-      category:    document.getElementById('product-cat').value.trim(),
-      tolerance:   document.getElementById('product-tol').value.trim(),
-      image:       document.getElementById('product-img').value.trim(),
-      description: document.getElementById('product-desc').value.trim(),
-      active:      parseInt(document.getElementById('product-active').value),
-    };
-    if (!body.name) return alert('Product name is required');
-    if (id) {
-      await authFetch(`/api/products/${id}`, { method: 'PUT', body: JSON.stringify(body) });
-    } else {
-      await authFetch('/api/products', { method: 'POST', body: JSON.stringify(body) });
+    let allProducts = [];
+    function openProductModal(id) {
+      document.getElementById('product-id').value = id || '';
+      document.getElementById('product-modal-title').textContent = id ? 'Edit Product' : 'Add Product';
+      if (id) {
+        authFetch('/api/products/all').then(r => r.json()).then(rows => {
+          const p = rows.find(x => x.id === id);
+          if (!p) return;
+          document.getElementById('product-name').value = p.name;
+          document.getElementById('product-cat').value = p.category;
+          document.getElementById('product-tol').value = p.tolerance;
+          document.getElementById('product-img').value = p.image || '';
+          document.getElementById('product-desc').value = p.description;
+          document.getElementById('product-active').value = p.active;
+        });
+      } else {
+        ['product-name', 'product-cat', 'product-tol', 'product-img', 'product-desc'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('product-active').value = '1';
+      }
+      document.getElementById('product-modal').classList.add('open');
     }
-    closeModal('product-modal'); loadProducts(); loadStats();
-  }
 
-  async function deleteProduct(id) {
-    if (!confirm('Delete this product?')) return;
-    await authFetch(`/api/products/${id}`, { method: 'DELETE' });
-    loadProducts(); loadStats();
-  }
+    async function saveProduct() {
+      const id = document.getElementById('product-id').value;
+      const body = {
+        name: document.getElementById('product-name').value.trim(),
+        category: document.getElementById('product-cat').value.trim(),
+        tolerance: document.getElementById('product-tol').value.trim(),
+        image: document.getElementById('product-img').value.trim(),
+        description: document.getElementById('product-desc').value.trim(),
+        active: parseInt(document.getElementById('product-active').value),
+      };
+      if (!body.name) return alert('Product name is required');
+      if (id) {
+        await authFetch(`/api/products/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+      } else {
+        await authFetch('/api/products', { method: 'POST', body: JSON.stringify(body) });
+      }
+      closeModal('product-modal'); loadProducts(); loadStats();
+    }
 
-  // ── Services ─────────────────────────────────────────────────────
-  async function loadServices() {
-    const rows = await authFetch('/api/services/all').then(r => r.json());
-    const tb = document.getElementById('services-body');
-    if (!rows.length) { tb.innerHTML = `<tr><td colspan="8"><div class="empty-state">No analysis records yet.</div></td></tr>`; return; }
-    tb.innerHTML = rows.map(r => `
+    async function deleteProduct(id) {
+      if (!confirm('Delete this product?')) return;
+      await authFetch(`/api/products/${id}`, { method: 'DELETE' });
+      loadProducts(); loadStats();
+    }
+
+    // ── Services ─────────────────────────────────────────────────────
+    async function loadServices() {
+      const rows = await authFetch('/api/services/all').then(r => r.json());
+      const tb = document.getElementById('services-body');
+      if (!rows.length) { tb.innerHTML = `<tr><td colspan="8"><div class="empty-state">No analysis records yet.</div></td></tr>`; return; }
+      tb.innerHTML = rows.map(r => `
       <tr>
         <td class="mono">#${r.id}</td>
         <td>${r.image ? `<img src="/${r.image}" style="width:48px;height:36px;object-fit:cover;border-radius:4px;border:1px solid var(--border);" onerror="this.style.display='none'">` : '<span style="color:var(--muted)">No img</span>'}</td>
@@ -999,494 +1576,562 @@
           <button class="btn-action btn-del"  onclick="deleteService(${r.id})">Delete</button>
         </td>
       </tr>`).join('');
-  }
-
-  function openServiceModal(id) {
-    document.getElementById('service-id').value = id || '';
-    document.getElementById('service-modal-title').textContent = id ? 'Edit Analyse' : 'Add Analyse';
-    if (id) {
-      authFetch('/api/services/all').then(r => r.json()).then(rows => {
-        const s = rows.find(x => x.id === id);
-        if (!s) return;
-        document.getElementById('service-number').value = s.number || '';
-        document.getElementById('service-title').value  = s.title || '';
-        document.getElementById('service-specs').value  = s.specs || '';
-        document.getElementById('service-img').value    = s.image || '';
-        document.getElementById('service-desc').value   = s.description || '';
-        document.getElementById('service-active').value = s.active;
-      });
-    } else {
-      ['service-number','service-title','service-specs','service-img','service-desc'].forEach(id => document.getElementById(id).value = '');
-      document.getElementById('service-active').value = '1';
     }
-    document.getElementById('service-modal').classList.add('open');
-  }
 
-  async function saveService() {
-    const id   = document.getElementById('service-id').value;
-    const body = {
-      number:      document.getElementById('service-number').value.trim(),
-      title:       document.getElementById('service-title').value.trim(),
-      specs:       document.getElementById('service-specs').value.trim(),
-      image:       document.getElementById('service-img').value.trim(),
-      description: document.getElementById('service-desc').value.trim(),
-      active:      parseInt(document.getElementById('service-active').value),
-    };
-    if (!body.title) return alert('Service title is required');
-    if (id) {
-      await authFetch(`/api/services/${id}`, { method: 'PUT', body: JSON.stringify(body) });
-    } else {
-      await authFetch('/api/services', { method: 'POST', body: JSON.stringify(body) });
+    function openServiceModal(id) {
+      document.getElementById('service-id').value = id || '';
+      document.getElementById('service-modal-title').textContent = id ? 'Edit Analyse' : 'Add Analyse';
+      if (id) {
+        authFetch('/api/services/all').then(r => r.json()).then(rows => {
+          const s = rows.find(x => x.id === id);
+          if (!s) return;
+          document.getElementById('service-number').value = s.number || '';
+          document.getElementById('service-title').value = s.title || '';
+          document.getElementById('service-specs').value = s.specs || '';
+          document.getElementById('service-img').value = s.image || '';
+          document.getElementById('service-desc').value = s.description || '';
+          document.getElementById('service-active').value = s.active;
+        });
+      } else {
+        ['service-number', 'service-title', 'service-specs', 'service-img', 'service-desc'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('service-active').value = '1';
+      }
+      document.getElementById('service-modal').classList.add('open');
     }
-    closeModal('service-modal'); loadServices();
-  }
 
-  async function deleteService(id) {
-    if (!confirm('Delete this service?')) return;
-    await authFetch(`/api/services/${id}`, { method: 'DELETE' });
-    loadServices();
-  }
-
-  // ── Helpers ──────────────────────────────────────────────────────
-  function closeModal(id) { document.getElementById(id).classList.remove('open'); }
-  function esc(s) { return String(s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-  function fmtDate(s) {
-    if (!s) return '—';
-    return new Date(s).toLocaleString('en-IN', { day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit' });
-  }
-
-  // Close modals on overlay click (delegation — works for all modals)
-  document.addEventListener('click', e => {
-    if (e.target.classList.contains('modal-overlay')) {
-      e.target.classList.remove('open');
+    async function saveService() {
+      const id = document.getElementById('service-id').value;
+      const body = {
+        number: document.getElementById('service-number').value.trim(),
+        title: document.getElementById('service-title').value.trim(),
+        specs: document.getElementById('service-specs').value.trim(),
+        image: document.getElementById('service-img').value.trim(),
+        description: document.getElementById('service-desc').value.trim(),
+        active: parseInt(document.getElementById('service-active').value),
+      };
+      if (!body.title) return alert('Service title is required');
+      if (id) {
+        await authFetch(`/api/services/${id}`, { method: 'PUT', body: JSON.stringify(body) });
+      } else {
+        await authFetch('/api/services', { method: 'POST', body: JSON.stringify(body) });
+      }
+      closeModal('service-modal'); loadServices();
     }
-  });
 
-  // Enter key support for add newsletter
-  document.getElementById('newsletter-new-email').addEventListener('keydown', e => {
-    if (e.key === 'Enter') addNewsletterSubscriber();
-  });
-  document.getElementById('newsletter-email').addEventListener('keydown', e => {
-    if (e.key === 'Enter') saveNewsletter();
-  });
-  // Enter key support for login
-  // (login-pass Enter listener is registered above near init)
-</script>
+    async function deleteService(id) {
+      if (!confirm('Delete this service?')) return;
+      await authFetch(`/api/services/${id}`, { method: 'DELETE' });
+      loadServices();
+    }
 
-    <!-- ── WhatsApp Chat Widget ──────────────────────────── -->
-    <div id="wa-widget">
-                <!-- Popup card -->
-        <div id="wa-popup" role="dialog" aria-label="WhatsApp Chat">
-            <!-- Header -->
-            <div id="wa-popup-header">
-                <div id="wa-popup-avatar">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none">
-                        <path fill="#fff" d="M23.5 8.5A10.94 10.94 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.86.48 3.67 1.4 5.27L5.5 26.5l5.37-1.4A10.96 10.96 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5Zm-7.5 16.15a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.18.83.85-3.1-.22-.34A9.1 9.1 0 0 1 6.9 16a9.1 9.1 0 0 1 9.1-9.1 9.1 9.1 0 0 1 9.1 9.1 9.1 9.1 0 0 1-9.1 9.15Zm5-6.8c-.28-.14-1.64-.81-1.9-.9-.26-.1-.44-.14-.63.14-.18.28-.72.9-.88 1.08-.16.18-.33.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.47.14-.15.18-.26.28-.44.09-.18.05-.34-.02-.47-.07-.14-.63-1.52-.87-2.08-.23-.54-.46-.47-.63-.47h-.54c-.18 0-.47.07-.72.34-.24.26-.94.92-.94 2.24 0 1.32.96 2.6 1.1 2.78.14.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33Z"/>
-                    </svg>
-                </div>
-                <div id="wa-popup-info">
-                    <div id="wa-popup-name">Hexacore Precision</div>
-                    <div id="wa-popup-status"><span id="wa-dot"></span>Typically replies instantly</div>
-                </div>
-                <button id="wa-close-btn" aria-label="Close WhatsApp chat">&times;</button>
-            </div>
-            <!-- Body -->
-            <div id="wa-popup-body">
-                <div id="wa-bubble">
-                    <p>👋 Hi! Welcome to <strong>Hexacore Precision</strong>.</p>
-                    <p>Need CNC calibration, laser testing, or metrology support?</p>
-                    <p>📍 <em>HSR Layout, Sector 3, Bengaluru</em></p>
-                </div>
-            </div>
-            <!-- Footer -->
-            <div id="wa-popup-footer">
-                <a id="wa-start-chat"
-                   href="https://wa.me/917339015820?text=Hello%20Hexacore%20Precision%20Technologies%2C%20I%20would%20like%20to%20enquire%20about%20your%20services."
-                   target="_blank" rel="noopener noreferrer">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none">
-                        <path fill="#fff" d="M23.5 8.5A10.94 10.94 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.86.48 3.67 1.4 5.27L5.5 26.5l5.37-1.4A10.96 10.96 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5Zm-7.5 16.15a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.18.83.85-3.1-.22-.34A9.1 9.1 0 0 1 6.9 16a9.1 9.1 0 0 1 9.1-9.1 9.1 9.1 0 0 1 9.1 9.1 9.1 9.1 0 0 1-9.1 9.15Zm5-6.8c-.28-.14-1.64-.81-1.9-.9-.26-.1-.44-.14-.63.14-.18.28-.72.9-.88 1.08-.16.18-.33.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.47.14-.15.18-.26.28-.44.09-.18.05-.34-.02-.47-.07-.14-.63-1.52-.87-2.08-.23-.54-.46-.47-.63-.47h-.54c-.18 0-.47.07-.72.34-.24.26-.94.92-.94 2.24 0 1.32.96 2.6 1.1 2.78.14.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33Z"/>
-                    </svg>
-                    Start Chat on WhatsApp
-                </a>
-            </div>
+    // ── Helpers ──────────────────────────────────────────────────────
+    function closeModal(id) { document.getElementById(id).classList.remove('open'); }
+    function esc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+    function fmtDate(s) {
+      if (!s) return '—';
+      return new Date(s).toLocaleString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+    }
+
+    // Close modals on overlay click (delegation — works for all modals)
+    document.addEventListener('click', e => {
+      if (e.target.classList.contains('modal-overlay')) {
+        e.target.classList.remove('open');
+      }
+    });
+
+    // Enter key support for add newsletter
+    document.getElementById('newsletter-new-email').addEventListener('keydown', e => {
+      if (e.key === 'Enter') addNewsletterSubscriber();
+    });
+    document.getElementById('newsletter-email').addEventListener('keydown', e => {
+      if (e.key === 'Enter') saveNewsletter();
+    });
+    // Enter key support for login
+    // (login-pass Enter listener is registered above near init)
+  </script>
+
+  <!-- ── WhatsApp Chat Widget ──────────────────────────── -->
+  <div id="wa-widget">
+    <!-- Popup card -->
+    <div id="wa-popup" role="dialog" aria-label="WhatsApp Chat">
+      <!-- Header -->
+      <div id="wa-popup-header">
+        <div id="wa-popup-avatar">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="none">
+            <path fill="#fff"
+              d="M23.5 8.5A10.94 10.94 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.86.48 3.67 1.4 5.27L5.5 26.5l5.37-1.4A10.96 10.96 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5Zm-7.5 16.15a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.18.83.85-3.1-.22-.34A9.1 9.1 0 0 1 6.9 16a9.1 9.1 0 0 1 9.1-9.1 9.1 9.1 0 0 1 9.1 9.1 9.1 9.1 0 0 1-9.1 9.15Zm5-6.8c-.28-.14-1.64-.81-1.9-.9-.26-.1-.44-.14-.63.14-.18.28-.72.9-.88 1.08-.16.18-.33.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.47.14-.15.18-.26.28-.44.09-.18.05-.34-.02-.47-.07-.14-.63-1.52-.87-2.08-.23-.54-.46-.47-.63-.47h-.54c-.18 0-.47.07-.72.34-.24.26-.94.92-.94 2.24 0 1.32.96 2.6 1.1 2.78.14.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33Z" />
+          </svg>
         </div>
-
-                <div style="display:flex; align-items:center; gap:10px;">
-            <a id="linkedin-float" href="https://www.linkedin.com/company/hexacore-pt/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on LinkedIn" title="Follow us on LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#fff" style="display:block;">
-                    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/>
-                </svg>
-            </a>
-            <a id="instagram-float" href="https://www.instagram.com/hexacore_precision_tech?stkn=MWFxMmpmZmJvdzVvdg==" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" title="Follow us on Instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#fff;display:block;">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                </svg>
-            </a>
-            <button id="whatsapp-float" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">
-            <svg id="wa-icon-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="none">
-                <path fill="#fff" d="M23.5 8.5A10.94 10.94 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.86.48 3.67 1.4 5.27L5.5 26.5l5.37-1.4A10.96 10.96 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5Zm-7.5 16.15a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.18.83.85-3.1-.22-.34A9.1 9.1 0 0 1 6.9 16a9.1 9.1 0 0 1 9.1-9.1 9.1 9.1 0 0 1 9.1 9.1 9.1 9.1 0 0 1-9.1 9.15Zm5-6.8c-.28-.14-1.64-.81-1.9-.9-.26-.1-.44-.14-.63.14-.18.28-.72.9-.88 1.08-.16.18-.33.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.47.14-.15.18-.26.28-.44.09-.18.05-.34-.02-.47-.07-.14-.63-1.52-.87-2.08-.23-.54-.46-.47-.63-.47h-.54c-.18 0-.47.07-.72.34-.24.26-.94.92-.94 2.24 0 1.32.96 2.6 1.1 2.78.14.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33Z"/>
-            </svg>
-            <svg id="wa-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none" style="display:none;">
-                <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/>
-            </svg>
-            <span id="wa-badge">1</span>
-        </button>
+        <div id="wa-popup-info">
+          <div id="wa-popup-name">Hexacore Precision</div>
+          <div id="wa-popup-status"><span id="wa-dot"></span>Typically replies instantly</div>
         </div>
+        <button id="wa-close-btn" aria-label="Close WhatsApp chat">&times;</button>
+      </div>
+      <!-- Body -->
+      <div id="wa-popup-body">
+        <div id="wa-bubble">
+          <p>👋 Hi! Welcome to <strong>Hexacore Precision</strong>.</p>
+          <p>Need CNC calibration, laser testing, or metrology support?</p>
+          <p>📍 <em>HSR Layout, Sector 3, Bengaluru</em></p>
+        </div>
+      </div>
+      <!-- Footer -->
+      <div id="wa-popup-footer">
+        <a id="wa-start-chat"
+          href="https://wa.me/917339015820?text=Hello%20Hexacore%20Precision%20Technologies%2C%20I%20would%20like%20to%20enquire%20about%20your%20services."
+          target="_blank" rel="noopener noreferrer">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none">
+            <path fill="#fff"
+              d="M23.5 8.5A10.94 10.94 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.86.48 3.67 1.4 5.27L5.5 26.5l5.37-1.4A10.96 10.96 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5Zm-7.5 16.15a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.18.83.85-3.1-.22-.34A9.1 9.1 0 0 1 6.9 16a9.1 9.1 0 0 1 9.1-9.1 9.1 9.1 0 0 1 9.1 9.1 9.1 9.1 0 0 1-9.1 9.15Zm5-6.8c-.28-.14-1.64-.81-1.9-.9-.26-.1-.44-.14-.63.14-.18.28-.72.9-.88 1.08-.16.18-.33.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.47.14-.15.18-.26.28-.44.09-.18.05-.34-.02-.47-.07-.14-.63-1.52-.87-2.08-.23-.54-.46-.47-.63-.47h-.54c-.18 0-.47.07-.72.34-.24.26-.94.92-.94 2.24 0 1.32.96 2.6 1.1 2.78.14.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33Z" />
+          </svg>
+          Start Chat on WhatsApp
+        </a>
+      </div>
     </div>
 
-    <style>
-        
-        /* ── WhatsApp Floating Widget & Popup ── */
-        #wa-widget {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 10px;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        }
+    <div style="display:flex; align-items:center; gap:10px;">
+      <a id="linkedin-float" href="https://www.linkedin.com/company/hexacore-pt/" target="_blank"
+        rel="noopener noreferrer" aria-label="Follow us on LinkedIn" title="Follow us on LinkedIn">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="#fff"
+          style="display:block;">
+          <path
+            d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z" />
+        </svg>
+      </a>
+      <a id="instagram-float" href="https://www.instagram.com/hexacore_precision_tech?stkn=MWFxMmpmZmJvdzVvdg=="
+        target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" title="Follow us on Instagram">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          style="color:#fff;display:block;">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+        </svg>
+      </a>
+      <button id="whatsapp-float" aria-label="Chat with us on WhatsApp" title="Chat on WhatsApp">
+        <svg id="wa-icon-open" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32"
+          fill="none">
+          <path fill="#fff"
+            d="M23.5 8.5A10.94 10.94 0 0 0 16 5.5C10.2 5.5 5.5 10.2 5.5 16c0 1.86.48 3.67 1.4 5.27L5.5 26.5l5.37-1.4A10.96 10.96 0 0 0 16 26.5c5.8 0 10.5-4.7 10.5-10.5 0-2.8-1.09-5.43-3-7.5Zm-7.5 16.15a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.18.83.85-3.1-.22-.34A9.1 9.1 0 0 1 6.9 16a9.1 9.1 0 0 1 9.1-9.1 9.1 9.1 0 0 1 9.1 9.1 9.1 9.1 0 0 1-9.1 9.15Zm5-6.8c-.28-.14-1.64-.81-1.9-.9-.26-.1-.44-.14-.63.14-.18.28-.72.9-.88 1.08-.16.18-.33.2-.6.07-.28-.14-1.17-.43-2.23-1.37-.82-.73-1.38-1.63-1.54-1.9-.16-.28-.02-.43.12-.57.12-.12.28-.32.42-.47.14-.15.18-.26.28-.44.09-.18.05-.34-.02-.47-.07-.14-.63-1.52-.87-2.08-.23-.54-.46-.47-.63-.47h-.54c-.18 0-.47.07-.72.34-.24.26-.94.92-.94 2.24 0 1.32.96 2.6 1.1 2.78.14.18 1.9 2.9 4.6 4.06.64.28 1.14.44 1.53.56.64.2 1.23.17 1.69.1.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.12-.25-.19-.53-.33Z" />
+        </svg>
+        <svg id="wa-icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="26" height="26"
+          fill="none" style="display:none;">
+          <path stroke="#fff" stroke-width="2.5" stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+        </svg>
+        <span id="wa-badge">1</span>
+      </button>
+    </div>
+  </div>
 
-        
-        
-        #linkedin-float {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: #0A66C2;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 18px rgba(10,102,194,0.45), 0 2px 6px rgba(0,0,0,0.18);
-            transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
-            text-decoration: none;
-            flex-shrink: 0;
-        }
+  <style>
+    /* ── WhatsApp Floating Widget & Popup ── */
+    #wa-widget {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
 
-        #linkedin-float:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 28px rgba(10,102,194,0.6), 0 3px 10px rgba(0,0,0,0.22);
-        }
 
-        #instagram-float {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 18px rgba(214,36,159,0.45), 0 2px 6px rgba(0,0,0,0.18);
-            transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
-            text-decoration: none;
-            flex-shrink: 0;
-        }
 
-        #instagram-float:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 28px rgba(214,36,159,0.6), 0 3px 10px rgba(0,0,0,0.22);
-        }
+    #linkedin-float {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: #0A66C2;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(10, 102, 194, 0.45), 0 2px 6px rgba(0, 0, 0, 0.18);
+      transition: transform 0.25s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.25s;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
 
-        #whatsapp-float {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 18px rgba(37,211,102,0.45), 0 2px 6px rgba(0,0,0,0.18);
-            transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
-            animation: wa-bounce 3s ease-in-out infinite;
-            position: relative;
-        }
+    #linkedin-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 28px rgba(10, 102, 194, 0.6), 0 3px 10px rgba(0, 0, 0, 0.22);
+    }
 
-        #whatsapp-float:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 28px rgba(37,211,102,0.6), 0 3px 10px rgba(0,0,0,0.22);
-            animation: none;
-        }
+    #instagram-float {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(214, 36, 159, 0.45), 0 2px 6px rgba(0, 0, 0, 0.18);
+      transition: transform 0.25s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.25s;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
 
-        #wa-badge {
-            position: absolute;
-            top: -2px;
-            right: -2px;
-            background: #FF4444;
-            color: #fff;
-            font-size: 10px;
-            font-weight: 700;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #fff;
-            animation: wa-ping 1.5s ease-in-out infinite;
-        }
+    #instagram-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 28px rgba(214, 36, 159, 0.6), 0 3px 10px rgba(0, 0, 0, 0.22);
+    }
 
-        #wa-badge.hidden { display: none; }
+    #whatsapp-float {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 18px rgba(37, 211, 102, 0.45), 0 2px 6px rgba(0, 0, 0, 0.18);
+      transition: transform 0.25s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.25s;
+      animation: wa-bounce 3s ease-in-out infinite;
+      position: relative;
+    }
 
-        /* ── Compact Popup Card ── */
-        #wa-popup {
-            width: 260px;
-            max-width: calc(100vw - 32px);
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 12px 36px rgba(0,0,0,0.22), 0 3px 10px rgba(0,0,0,0.12);
-            transform: scale(0.85) translateY(15px);
-            transform-origin: bottom right;
-            opacity: 0;
-            pointer-events: none;
-            transition: transform 0.3s cubic-bezier(.34,1.4,.64,1), opacity 0.25s ease;
-        }
+    #whatsapp-float:hover {
+      transform: scale(1.08);
+      box-shadow: 0 8px 28px rgba(37, 211, 102, 0.6), 0 3px 10px rgba(0, 0, 0, 0.22);
+      animation: none;
+    }
 
-        #wa-popup.open {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-            pointer-events: all;
-        }
+    #wa-badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background: #FF4444;
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid #fff;
+      animation: wa-ping 1.5s ease-in-out infinite;
+    }
 
-        /* ── Compact Header ── */
-        #wa-popup-header {
-            background: linear-gradient(135deg, #075E54, #128C7E);
-            padding: 10px 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    #wa-badge.hidden {
+      display: none;
+    }
 
-        #wa-popup-avatar {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            border: 1.5px solid rgba(255,255,255,0.4);
-        }
+    /* ── Compact Popup Card ── */
+    #wa-popup {
+      width: 260px;
+      max-width: calc(100vw - 32px);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22), 0 3px 10px rgba(0, 0, 0, 0.12);
+      transform: scale(0.85) translateY(15px);
+      transform-origin: bottom right;
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.3s cubic-bezier(.34, 1.4, .64, 1), opacity 0.25s ease;
+    }
 
-        #wa-popup-info { flex: 1; min-width: 0; }
+    #wa-popup.open {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
 
-        #wa-popup-name {
-            color: #fff;
-            font-size: 12.5px;
-            font-weight: 700;
-            line-height: 1.25;
-            letter-spacing: 0.01em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
+    /* ── Compact Header ── */
+    #wa-popup-header {
+      background: linear-gradient(135deg, #075E54, #128C7E);
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-        #wa-popup-status {
-            color: rgba(255,255,255,0.85);
-            font-size: 10.5px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            margin-top: 2px;
-        }
+    #wa-popup-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+    }
 
-        #wa-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #4AFF82;
-            display: inline-block;
-            animation: wa-pulse 2s ease-in-out infinite;
-            flex-shrink: 0;
-        }
+    #wa-popup-info {
+      flex: 1;
+      min-width: 0;
+    }
 
-        #wa-close-btn {
-            background: rgba(255,255,255,0.18);
-            border: none;
-            color: #fff;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            font-size: 15px;
-            line-height: 1;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background 0.2s;
-            flex-shrink: 0;
-        }
+    #wa-popup-name {
+      color: #fff;
+      font-size: 12.5px;
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-        #wa-close-btn:hover { background: rgba(255,255,255,0.35); }
+    #wa-popup-status {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 10.5px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 2px;
+    }
 
-        /* ── Compact Body ── */
-        #wa-popup-body {
-            background: #ECE5DD;
-            padding: 10px;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8b9a8' fill-opacity='0.18'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-        }
+    #wa-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4AFF82;
+      display: inline-block;
+      animation: wa-pulse 2s ease-in-out infinite;
+      flex-shrink: 0;
+    }
 
-        #wa-bubble {
-            background: #fff;
-            border-radius: 0 10px 10px 10px;
-            padding: 10px 12px;
-            font-size: 12px;
-            line-height: 1.45;
-            color: #2c3e50;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.08);
-            position: relative;
-        }
+    #wa-close-btn {
+      background: rgba(255, 255, 255, 0.18);
+      border: none;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      font-size: 15px;
+      line-height: 1;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      flex-shrink: 0;
+    }
 
-        #wa-bubble::before {
-            content: '';
-            position: absolute;
-            left: -6px;
-            top: 0;
-            border: 6px solid transparent;
-            border-right-color: #fff;
-            border-top-color: #fff;
-            border-left: none;
-            border-bottom: none;
-        }
+    #wa-close-btn:hover {
+      background: rgba(255, 255, 255, 0.35);
+    }
 
-        #wa-bubble p { margin: 0 0 5px; }
-        #wa-bubble p:last-child { margin-bottom: 0; }
-        #wa-bubble strong { color: #075E54; }
-        #wa-bubble em { font-style: normal; font-size: 11px; color: #666; }
+    /* ── Compact Body ── */
+    #wa-popup-body {
+      background: #ECE5DD;
+      padding: 10px;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8b9a8' fill-opacity='0.18'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
 
-        /* ── Compact Footer ── */
-        #wa-popup-footer {
-            background: #F0F0F0;
-            padding: 9px 10px;
-        }
+    #wa-bubble {
+      background: #fff;
+      border-radius: 0 10px 10px 10px;
+      padding: 10px 12px;
+      font-size: 12px;
+      line-height: 1.45;
+      color: #2c3e50;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
 
-        #wa-start-chat {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 40px;
-            padding: 8px 14px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.01em;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 3px 12px rgba(37,211,102,0.35);
-        }
+    #wa-bubble::before {
+      content: '';
+      position: absolute;
+      left: -6px;
+      top: 0;
+      border: 6px solid transparent;
+      border-right-color: #fff;
+      border-top-color: #fff;
+      border-left: none;
+      border-bottom: none;
+    }
 
-        #wa-start-chat:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(37,211,102,0.5);
-        }
+    #wa-bubble p {
+      margin: 0 0 5px;
+    }
 
-        @keyframes wa-bounce {
-            0%, 100% { transform: translateY(0); }
-            40%       { transform: translateY(-6px); }
-            60%       { transform: translateY(-3px); }
-        }
-        @keyframes wa-ping {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50%       { transform: scale(1.15); opacity: 0.75; }
-        }
-        @keyframes wa-pulse {
-            0%, 100% { opacity: 1; }
-            50%       { opacity: 0.4; }
-        }
+    #wa-bubble p:last-child {
+      margin-bottom: 0;
+    }
 
-        @media (max-width: 600px) {
-            #wa-widget { bottom: 14px; right: 14px; }
-            
-        
-        #linkedin-float {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: #0A66C2;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 18px rgba(10,102,194,0.45), 0 2px 6px rgba(0,0,0,0.18);
-            transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
-            text-decoration: none;
-            flex-shrink: 0;
-        }
+    #wa-bubble strong {
+      color: #075E54;
+    }
 
-        #linkedin-float:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 28px rgba(10,102,194,0.6), 0 3px 10px rgba(0,0,0,0.22);
-        }
+    #wa-bubble em {
+      font-style: normal;
+      font-size: 11px;
+      color: #666;
+    }
 
-        #instagram-float {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 18px rgba(214,36,159,0.45), 0 2px 6px rgba(0,0,0,0.18);
-            transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
-            text-decoration: none;
-            flex-shrink: 0;
-        }
+    /* ── Compact Footer ── */
+    #wa-popup-footer {
+      background: #F0F0F0;
+      padding: 9px 10px;
+    }
 
-        #instagram-float:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 28px rgba(214,36,159,0.6), 0 3px 10px rgba(0,0,0,0.22);
-        }
+    #wa-start-chat {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 40px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 3px 12px rgba(37, 211, 102, 0.35);
+    }
 
-        #whatsapp-float, 
-        #linkedin-float {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            background: #0A66C2;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 18px rgba(10,102,194,0.45), 0 2px 6px rgba(0,0,0,0.18);
-            transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s;
-            text-decoration: none;
-            flex-shrink: 0;
-        }
+    #wa-start-chat:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.5);
+    }
 
-        #linkedin-float:hover {
-            transform: scale(1.08);
-            box-shadow: 0 8px 28px rgba(10,102,194,0.6), 0 3px 10px rgba(0,0,0,0.22);
-        }
+    @keyframes wa-bounce {
 
-        #instagram-float { width: 48px; height: 48px; }
-            #wa-popup { width: calc(100vw - 28px); }
-        }
-</style>
-    <script>
-        (function() {
-            var fab=document.getElementById('whatsapp-float'),popup=document.getElementById('wa-popup'),closeBtn=document.getElementById('wa-close-btn'),badge=document.getElementById('wa-badge'),iconOpen=document.getElementById('wa-icon-open'),iconClose=document.getElementById('wa-icon-close');
-            function openPopup(){popup.classList.add('open');iconOpen.style.display='none';iconClose.style.display='block';badge.classList.add('hidden');fab.style.animation='none';}
-            function closePopup(){popup.classList.remove('open');iconOpen.style.display='block';iconClose.style.display='none';}
-            fab.addEventListener('click',function(){popup.classList.contains('open')?closePopup():openPopup();});
-            closeBtn.addEventListener('click',function(e){e.stopPropagation();closePopup();});
-            if(!sessionStorage.getItem('wa_opened')){setTimeout(function(){openPopup();sessionStorage.setItem('wa_opened','1');},4000);}
-        })();
-    </script>
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      40% {
+        transform: translateY(-6px);
+      }
+
+      60% {
+        transform: translateY(-3px);
+      }
+    }
+
+    @keyframes wa-ping {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+
+      50% {
+        transform: scale(1.15);
+        opacity: 0.75;
+      }
+    }
+
+    @keyframes wa-pulse {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.4;
+      }
+    }
+
+    @media (max-width: 600px) {
+      #wa-widget {
+        bottom: 14px;
+        right: 14px;
+      }
+
+
+      #linkedin-float {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #0A66C2;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 18px rgba(10, 102, 194, 0.45), 0 2px 6px rgba(0, 0, 0, 0.18);
+        transition: transform 0.25s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.25s;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+
+      #linkedin-float:hover {
+        transform: scale(1.08);
+        box-shadow: 0 8px 28px rgba(10, 102, 194, 0.6), 0 3px 10px rgba(0, 0, 0, 0.22);
+      }
+
+      #instagram-float {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 18px rgba(214, 36, 159, 0.45), 0 2px 6px rgba(0, 0, 0, 0.18);
+        transition: transform 0.25s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.25s;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+
+      #instagram-float:hover {
+        transform: scale(1.08);
+        box-shadow: 0 8px 28px rgba(214, 36, 159, 0.6), 0 3px 10px rgba(0, 0, 0, 0.22);
+      }
+
+      #whatsapp-float,
+      #linkedin-float {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background: #0A66C2;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 18px rgba(10, 102, 194, 0.45), 0 2px 6px rgba(0, 0, 0, 0.18);
+        transition: transform 0.25s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.25s;
+        text-decoration: none;
+        flex-shrink: 0;
+      }
+
+      #linkedin-float:hover {
+        transform: scale(1.08);
+        box-shadow: 0 8px 28px rgba(10, 102, 194, 0.6), 0 3px 10px rgba(0, 0, 0, 0.22);
+      }
+
+      #instagram-float {
+        width: 48px;
+        height: 48px;
+      }
+
+      #wa-popup {
+        width: calc(100vw - 28px);
+      }
+    }
+  </style>
+  <script>
+    (function () {
+      var fab = document.getElementById('whatsapp-float'), popup = document.getElementById('wa-popup'), closeBtn = document.getElementById('wa-close-btn'), badge = document.getElementById('wa-badge'), iconOpen = document.getElementById('wa-icon-open'), iconClose = document.getElementById('wa-icon-close');
+      function openPopup() { popup.classList.add('open'); iconOpen.style.display = 'none'; iconClose.style.display = 'block'; badge.classList.add('hidden'); fab.style.animation = 'none'; }
+      function closePopup() { popup.classList.remove('open'); iconOpen.style.display = 'block'; iconClose.style.display = 'none'; }
+      fab.addEventListener('click', function () { popup.classList.contains('open') ? closePopup() : openPopup(); });
+      closeBtn.addEventListener('click', function (e) { e.stopPropagation(); closePopup(); });
+      if (!sessionStorage.getItem('wa_opened')) { setTimeout(function () { openPopup(); sessionStorage.setItem('wa_opened', '1'); }, 4000); }
+    })();
+  </script>
 </body>
+
 </html>

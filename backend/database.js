@@ -142,10 +142,10 @@ async function init() {
     db.exec2('INSERT INTO admins (username, password) VALUES (?, ?)', [adminUser, hash]);
     console.log(`✅ Default admin created — username: ${adminUser} | password: ${adminPass}`);
   } else {
-    const firstAdminId = db.queryOne('SELECT id FROM admins LIMIT 1').id;
-    db.exec2('UPDATE admins SET username = ?, password = ? WHERE id = ?', [adminUser, hash, firstAdminId]);
+    db.exec2('UPDATE admins SET password = ? WHERE username = ?', [hash, adminUser]);
     console.log(`✅ Admin credentials synchronized — username: ${adminUser}`);
   }
+
 
   // ── Seed Products ──────────────────────────────────────────────
   const pdfProducts = [
