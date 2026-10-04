@@ -63,7 +63,19 @@ if (empty($name) || empty($email)) {
     exit;
 }
 
-// 3. Helper to send SMTP mail via socket or fallback mail()
+// 3. Helper to read multiline SMTP responses cleanly
+function readSmtpResponse($socket) {
+    $response = '';
+    while ($line = fgets($socket, 512)) {
+        $response .= $line;
+        if (strlen($line) >= 4 && substr($line, 3, 1) === ' ') {
+            break;
+        }
+    }
+    return $response;
+}
+
+// 4. Helper to send authenticated SMTP mail via socket or fallback mail()
 function sendMailSmtp($to, $subject, $bodyHtml, $fromEmail, $fromName, $replyTo, $host, $port, $user, $pass) {
     if (!empty($user) && !empty($pass)) {
         $context = stream_context_create([
@@ -78,24 +90,29 @@ function sendMailSmtp($to, $subject, $bodyHtml, $fromEmail, $fromName, $replyTo,
         $socket = @stream_socket_client($socketHost . ':' . $port, $errno, $errstr, 10, STREAM_CLIENT_CONNECT, $context);
         
         if ($socket) {
-            fgets($socket, 512);
+            readSmtpResponse($socket);
+            
             fputs($socket, "EHLO " . gethostname() . "\r\n");
-            fgets($socket, 512);
+            readSmtpResponse($socket);
             
             fputs($socket, "AUTH LOGIN\r\n");
-            fgets($socket, 512);
-            fputs($socket, base64_encode($user) . "\r\n");
-            fgets($socket, 512);
-            fputs($socket, base64_encode($pass) . "\r\n");
-            $authRes = fgets($socket, 512);
+            readSmtpResponse($socket);
             
-            if (strpos($authRes, '235') !== false || strpos($authRes, '250') !== false) {
+            fputs($socket, base64_encode($user) . "\r\n");
+            readSmtpResponse($socket);
+            
+            fputs($socket, base64_encode($pass) . "\r\n");
+            $authRes = readSmtpResponse($socket);
+            
+            if (strpos($authRes, '235') !== false) {
                 fputs($socket, "MAIL FROM: <$user>\r\n");
-                fgets($socket, 512);
+                readSmtpResponse($socket);
+                
                 fputs($socket, "RCPT TO: <$to>\r\n");
-                fgets($socket, 512);
+                readSmtpResponse($socket);
+                
                 fputs($socket, "DATA\r\n");
-                fgets($socket, 512);
+                readSmtpResponse($socket);
                 
                 $headers  = "From: \"$fromName\" <$user>\r\n";
                 if (!empty($replyTo)) {
@@ -107,12 +124,16 @@ function sendMailSmtp($to, $subject, $bodyHtml, $fromEmail, $fromName, $replyTo,
                 $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
                 
                 fputs($socket, $headers . "\r\n" . $bodyHtml . "\r\n.\r\n");
-                fgets($socket, 512);
+                $dataRes = readSmtpResponse($socket);
                 fputs($socket, "QUIT\r\n");
                 fclose($socket);
-                return true;
+                
+                if (strpos($dataRes, '250') !== false) {
+                    return true;
+                }
+            } else {
+                fclose($socket);
             }
-            fclose($socket);
         }
     }
     
@@ -126,7 +147,7 @@ function sendMailSmtp($to, $subject, $bodyHtml, $fromEmail, $fromName, $replyTo,
     return @mail($to, $subject, $bodyHtml, $headers);
 }
 
-// 4. Construct HTML Shell
+// 5. Construct HTML Shell
 function buildEmailHtml($title, $body) {
     return '<!DOCTYPE html>
 <html>
@@ -157,7 +178,7 @@ function buildEmailHtml($title, $body) {
 </html>';
 }
 
-// 5. Send notification email to Company
+// 6. Send notification email to Company
 $adminBody = '
   <div class="title">New Contact Submission</div>
   <div class="field"><div class="label">Full Name</div><div class="value">' . htmlspecialchars($name) . '</div></div>
@@ -175,7 +196,7 @@ if ($companyEmail !== 'ceo@hexacoreprecision.com') {
     sendMailSmtp('ceo@hexacoreprecision.com', "[Contact] $subject — $name", $adminHtml, $mailUser, $companyName, $email, $mailHost, $mailPort, $mailUser, $mailPass);
 }
 
-// 6. Send auto-reply to user
+// 7. Send auto-reply to user
 $userBody = '
   <div class="title">Thank You, ' . htmlspecialchars(explode(' ', $name)[0]) . '</div>
   <p>We have received your enquiry and our engineering team will review it shortly. You can expect a response within one business day.</p>
@@ -186,7 +207,7 @@ $userHtml = buildEmailHtml('We received your message', $userBody);
 
 @sendMailSmtp($email, "We received your message — Hexacore Precision Technologies", $userHtml, $mailUser, $companyName, $companyEmail, $mailHost, $mailPort, $mailUser, $mailPass);
 
-// 7. Return 201 Created Response
+// 8. Return 201 Created Response
 http_response_code(201);
 echo json_encode([
     "success" => true,
